@@ -145,18 +145,20 @@ the long framework paths in the process list are shortened with dots.
 ## Checking the file that was created
 
     $ ls -l sysreport/
-    -rw-r--r--  1 abdulkalamazad  staff  177734  3 Sep 19:25 processes.txt
+    -rw-r--r--  1 abdulkalamazad  staff  163035  3 Sep 21:22 processes.txt
 
     $ head -3 sysreport/processes.txt
     USER               PID  %CPU %MEM      VSZ    RSS   TT  STAT STARTED      TIME COMMAND
-    root              1447  37.6  0.2 435409040  38016   ??  Ss    8:41AM   0:22.45 /System/...
-    abdulkalamazad   10486   3.4  2.4 441116048 593024 s002  S+    7:21PM   0:12.01 claude
+    abdulkalamazad     677  13.7  3.2 436929024 814864   ??  S     8:39AM  35:30.69 /Applications/WhatsApp.app/...
+    abdulkalamazad    7212   5.0  1.1 1949553920 267920  ??  S     4:43PM   6:50.36 /Applications/Visual Studio Code.app/...
 
     $ wc -l sysreport/processes.txt
-         704 sysreport/processes.txt
+         693 sysreport/processes.txt
 
-The line count is 707 in the script's own summary and 704 here, because the second number
-comes from a later run. The process list is a snapshot, so it changes every time.
+The line count is 707 in the script's own summary and 693 here, because the second number
+comes from a later run. The process list is a snapshot, so it changes every time. The two
+command lines above are also cut short with dots, because a GUI app's full command line
+runs to several hundred characters.
 
 ## Notes
 
