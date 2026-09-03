@@ -1,5 +1,9 @@
 # Git Homework
 
+Name: T. Abdul Kalam Azad
+
+Roll number: 24BCS10053
+
 Everything below was run in a throwaway repo created with git init, so the output is
 real and the commit hashes match across the sections.
 
@@ -132,7 +136,7 @@ commits are not finished and should stay on the branch.
 
     $ git show cfec984 --stat
     commit cfec984f468e0e8be2b72b9d0936ca89606e119d
-    Author: abdurrahmaan11265 <abdurrahmaan11265@gmail.com>
+    Author: Abdul Kalam Azad <abdulkalam.azad@scalerailabs.com>
     Date:   Tue Sep 1 17:47:11 2026 +0530
 
         Bugfix: correct typo in config

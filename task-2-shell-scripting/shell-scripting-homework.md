@@ -1,30 +1,47 @@
 # System Information Script
 
+Name: T. Abdul Kalam Azad
+
+Roll number: 24BCS10053
+
 A shell script that prints basic system details, asks the user where to save a report,
 and writes the full list of running processes into a file.
 
 ## What it does
 
 1. Prints the current date, the hostname and the username, all stored in variables.
-2. Prints disk usage with df -h.
-3. Prints the first ten running processes with ps.
-4. Uses read -p to ask for a directory name and a file name.
-5. Creates the directory with mkdir and the file with touch.
-6. Saves the full process list into that file using the > redirection operator.
+2. Also prints the kernel version and the uptime, so the header is a fuller picture.
+3. Prints disk usage with df -h.
+4. Prints the first ten running processes with ps.
+5. Uses read -p to ask for a directory name and a file name, with defaults if left blank.
+6. Creates the directory with mkdir and the file with touch.
+7. Saves the full process list into that file using the > redirection operator.
+8. Prints a summary: the absolute path of the report, its line count and its size.
 
 ## Commands used
 
-mkdir, touch, echo, date, hostname, whoami, df, ps, read -p, variables, and >
-redirection.
+mkdir, touch, echo, date, hostname, whoami, uname, uptime, df, ps, du, wc, read -p,
+variables, and > redirection.
 
 ## The script
 
     #!/bin/bash
     # System Information Script
+    # Prints basic system details, then saves the running processes to a file.
+    #
+    # Author : T. Abdul Kalam Azad
+    # Roll no: 24BCS10053
 
+    # Treat the use of an unset variable as an error, so a typo in a variable
+    # name fails loudly instead of silently expanding to an empty string.
+    set -u
+
+    # Variables holding the system details
     CURRENT_DATE=$(date)
     HOST_NAME=$(hostname)
     USER_NAME=$(whoami)
+    KERNEL=$(uname -sr)
+    UP_TIME=$(uptime | sed 's/^ *//')
 
     echo "=============================="
     echo "     SYSTEM INFORMATION"
@@ -32,6 +49,8 @@ redirection.
     echo "Date     : $CURRENT_DATE"
     echo "Hostname : $HOST_NAME"
     echo "Username : $USER_NAME"
+    echo "Kernel   : $KERNEL"
+    echo "Uptime   : $UP_TIME"
     echo ""
 
     echo "----- Disk Usage -----"
@@ -42,18 +61,31 @@ redirection.
     ps -eo pid,user,%cpu,%mem,comm | head -10
     echo ""
 
-    read -p "Enter a directory name to create: " DIR_NAME
-    read -p "Enter a file name for the process list: " FILE_NAME
+    # Ask the user where to save the report.
+    # Initialised first so that `set -u` is safe if read hits end of input.
+    DIR_NAME=""
+    FILE_NAME=""
+    read -p "Enter a directory name to create [sysreport]: " DIR_NAME
+    read -p "Enter a file name for the process list [processes.txt]: " FILE_NAME
+
+    # Fall back to sensible defaults if the answer was left blank
+    DIR_NAME=${DIR_NAME:-sysreport}
+    FILE_NAME=${FILE_NAME:-processes.txt}
+
+    REPORT="$DIR_NAME/$FILE_NAME"
 
     mkdir -p "$DIR_NAME"
-    touch "$DIR_NAME/$FILE_NAME"
+    touch "$REPORT"
 
-    ps aux > "$DIR_NAME/$FILE_NAME"
+    # Save the full process list into the file
+    ps aux > "$REPORT"
 
     echo ""
     echo "Directory created : $DIR_NAME"
-    echo "File created      : $DIR_NAME/$FILE_NAME"
-    echo "Lines saved       : $(wc -l < "$DIR_NAME/$FILE_NAME")"
+    echo "File created      : $REPORT"
+    echo "Full path         : $(cd "$DIR_NAME" && pwd)/$FILE_NAME"
+    echo "Lines saved       : $(wc -l < "$REPORT" | tr -d " ")"
+    echo "Size on disk      : $(du -h "$REPORT" | cut -f1)"
     echo "Done."
 
 ## How to run it
@@ -62,66 +94,76 @@ redirection.
     ./sysinfo.sh
 
 It will ask for a directory name and a file name. I used sysreport and processes.txt.
+Pressing Enter at either prompt accepts the default shown in the square brackets.
 
 ## Output
 
     ==============================
          SYSTEM INFORMATION
     ==============================
-    Date     : Tue Sep  1 12:11:51 IST 2026
-    Hostname : Mohammeds-MacBook-Pro.local
-    Username : mohammedabdurrahman
+    Date     : Thu Sep  3 19:25:25 IST 2026
+    Hostname : Abduls-MacBook-Pro.local
+    Username : abdulkalamazad
+    Kernel   : Darwin 25.6.0
+    Uptime   : 19:25  up 10:46, 1 user, load averages: 1.74 1.81 1.70
 
     ----- Disk Usage -----
     Filesystem        Size    Used   Avail Capacity  Mounted on
-    /dev/disk3s1s1   926Gi    16Gi   571Gi     3%    /
-    devfs            206Ki   206Ki     0Bi   100%    /dev
-    /dev/disk3s6     926Gi    19Gi   571Gi     4%    /System/Volumes/VM
-    /dev/disk3s2     926Gi    17Gi   571Gi     3%    /System/Volumes/Preboot
-    /dev/disk3s4     926Gi   868Mi   571Gi     1%    /System/Volumes/Update
-    /dev/disk3s5     926Gi   299Gi   571Gi    35%    /System/Volumes/Data
+    /dev/disk3s1s1   926Gi    12Gi   829Gi     2%    /
+    devfs            200Ki   200Ki     0Bi   100%    /dev
+    /dev/disk3s6     926Gi    20Ki   829Gi     1%    /System/Volumes/VM
+    /dev/disk3s2     926Gi   8.5Gi   829Gi     2%    /System/Volumes/Preboot
+    /dev/disk3s4     926Gi   3.7Mi   829Gi     1%    /System/Volumes/Update
+    /dev/disk3s5     926Gi    75Gi   829Gi     9%    /System/Volumes/Data
 
     ----- Running Processes (first 10) -----
       PID USER              %CPU %MEM COMM
-        1 root               0.0  0.1 /sbin/launchd
-      336 root               0.2  0.1 /usr/libexec/logd
-      338 root               0.0  0.0 /usr/libexec/UserEventAgent
-      340 root               0.0  0.0 .../FSEvents.framework/Support/fseventsd
-      341 root               0.0  0.0 .../MediaRemote.framework/Support/mediaremoted
-      344 root               0.0  0.0 /usr/sbin/systemstats
-      348 root               0.0  0.0 /usr/libexec/configd
-      350 root               0.0  0.0 /System/Library/CoreServices/powerd.bundle/powerd
-      351 root               0.0  0.0 /usr/libexec/IOMFB_bics_daemon
+        1 root               0.1  0.1 /sbin/launchd
+      330 root               0.6  0.2 /usr/libexec/logd
+      331 root               0.0  0.0 /usr/libexec/smd
+      332 root               0.0  0.1 /usr/libexec/UserEventAgent
+      334 root               0.0  0.0 .../FSEvents.framework/Support/fseventsd
+      335 root               0.0  0.1 .../MediaRemote.framework/Support/mediaremoted
+      338 root               0.0  0.1 /usr/sbin/systemstats
+      340 _accessoryupdater  0.0  0.0 .../Support/accessoryupdaterd
+      341 _accessoryupdater  0.0  0.0 /usr/libexec/uarpassetmanagerd
 
-    Enter a directory name to create: sysreport
-    Enter a file name for the process list: processes.txt
+    Enter a directory name to create [sysreport]: sysreport
+    Enter a file name for the process list [processes.txt]: processes.txt
 
     Directory created : sysreport
     File created      : sysreport/processes.txt
-    Lines saved       : 649
+    Full path         : /Users/abdulkalamazad/Documents/scaler-devops-homework/task-2-shell-scripting/sysreport/processes.txt
+    Lines saved       : 707
+    Size on disk      : 176K
     Done.
 
 The disk usage and process lists above are trimmed so they fit here, the script prints
-the full output.
+the full output. The real df -h on macOS also has iused, ifree and %iused columns, and
+the long framework paths in the process list are shortened with dots.
 
 ## Checking the file that was created
 
     $ ls -l sysreport/
-    -rw-r--r--  1 mohammedabdurrahman  staff  230231  1 Sep 12:11 processes.txt
+    -rw-r--r--  1 abdulkalamazad  staff  177734  3 Sep 19:25 processes.txt
 
     $ head -3 sysreport/processes.txt
     USER               PID  %CPU %MEM      VSZ    RSS   TT  STAT STARTED      TIME COMMAND
-    _windowserver      409  33.7  0.4 438071280 108368   ??  Rs    1Apr76 1819:40.36 /System/...
-    mohammedabdurrahman 35830 24.7  2.6 1957543776 655104  ??  S    Tue03PM  43:24.54 /Applic...
+    root              1447  37.6  0.2 435409040  38016   ??  Ss    8:41AM   0:22.45 /System/...
+    abdulkalamazad   10486   3.4  2.4 441116048 593024 s002  S+    7:21PM   0:12.01 claude
 
     $ wc -l sysreport/processes.txt
-    649 sysreport/processes.txt
+         704 sysreport/processes.txt
+
+The line count is 707 in the script's own summary and 704 here, because the second number
+comes from a later run. The process list is a snapshot, so it changes every time.
 
 ## Notes
 
 I ran this on macOS, so the hostname, disk names and process names look Apple specific.
 On Linux the same script works unchanged, only the output looks different, for example
-df -h shows /dev/sda1 style filesystems.
+df -h shows /dev/sda1 style filesystems and uname -sr shows something like
+Linux 6.8.0-45-generic.
 
 The ps line uses -eo pid,user,%cpu,%mem,comm because plain ps aux prints very long
 command lines that wrap badly. The full ps aux output is still what gets saved to the
@@ -132,3 +174,12 @@ a directory already exists error.
 
 The variables are quoted, as in "$DIR_NAME/$FILE_NAME", so that names with spaces still
 work.
+
+set -u is at the top rather than set -euo pipefail on purpose. pipefail would break the
+ps ... | head -10 line, because head exits as soon as it has ten lines and ps is then
+killed by SIGPIPE, which pipefail would report as a failure and set -e would turn into an
+exit. set -u gives the useful half, catching misspelled variable names, without that side
+effect.
+
+wc -l < file is piped through tr -d " " because macOS pads the count with spaces, so the
+summary line would otherwise read "Lines saved :      707".

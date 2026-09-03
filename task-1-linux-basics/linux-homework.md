@@ -1,5 +1,9 @@
 # Linux Homework
 
+Name: T. Abdul Kalam Azad
+
+Roll number: 24BCS10053
+
 ## Task 1: Soft Link and Hard Link
 
 A hard link is another name for the same file. Both names point to the same inode, the

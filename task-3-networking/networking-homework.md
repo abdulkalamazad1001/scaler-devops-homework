@@ -1,5 +1,9 @@
 # Networking Homework
 
+Name: T. Abdul Kalam Azad
+
+Roll number: 24BCS10053
+
 Notes and command output from the devops-hero repo session 4 (networking) and the Linux
 ip command cheat sheet from session 2.
 
