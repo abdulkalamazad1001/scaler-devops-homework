@@ -1,8 +1,8 @@
 # Docker Multi-Stage Build Homework
 
-Name: Mohammed Abdurrahman
+Name: T. Abdul Kalam Azad
 
-Enrollment number: <ENROLLMENT_NUMBER>
+Roll number: 24BCS10053
 
 ## Task 1: Run the multi-stage Dockerfile
 
@@ -109,9 +109,9 @@ asked for.
 
 ## Task 2: Evidence
 
-Name: Mohammed Abdurrahman
+Name: T. Abdul Kalam Azad
 
-Enrollment number: <ENROLLMENT_NUMBER>
+Roll number: 24BCS10053
 
 ### The application running in a browser
 

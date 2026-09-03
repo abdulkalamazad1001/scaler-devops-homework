@@ -1,5 +1,9 @@
 # Docker Homework: Hello World Applications
 
+Name: T. Abdul Kalam Azad
+
+Roll number: 24BCS10053
+
 Six Hello World web apps, each in its own folder with its own Dockerfile. All of them
 were built and run, and the Hello World page was checked in a browser. The screenshots
 are in the screenshots folder.
@@ -40,12 +44,19 @@ The Dockerfile:
 
     FROM node:20-alpine
 
+    # Tells Express and the npm packages to run in production mode
+    ENV NODE_ENV=production
+
     WORKDIR /app
 
     COPY package.json ./
     RUN npm install --omit=dev
 
     COPY server.js ./
+
+    # The node image ships an unprivileged "node" user.
+    # Running as it means a bug in the app does not get root inside the container.
+    USER node
 
     EXPOSE 3000
     CMD ["npm", "start"]
@@ -71,11 +82,17 @@ Screenshot: screenshots/nodejs-app.png
 
 A Flask app that returns the same page.
 
-Files: requirements.txt, app.py, Dockerfile
+Files: requirements.txt, app.py, Dockerfile, .dockerignore
 
 The Dockerfile:
 
     FROM python:3.12-slim
+
+    # Send stdout and stderr straight through, so docker logs shows the
+    # Flask output immediately instead of holding it in a buffer.
+    ENV PYTHONUNBUFFERED=1
+    # Do not litter the image with .pyc files
+    ENV PYTHONDONTWRITEBYTECODE=1
 
     WORKDIR /app
 
@@ -83,6 +100,11 @@ The Dockerfile:
     RUN pip install --no-cache-dir -r requirements.txt
 
     COPY app.py ./
+
+    # Run as an unprivileged user rather than root.
+    # Port 5000 is above 1024, so no special privilege is needed to bind it.
+    RUN useradd --create-home appuser
+    USER appuser
 
     EXPOSE 5000
     CMD ["python", "app.py"]
@@ -259,8 +281,13 @@ Screenshot: screenshots/react-app.png
 
 ### Verifying all six
 
-    $ for port in 3001 5001 8080 8081 8082 8083; do
-        curl -s -o /dev/null -w "$port -> %{http_code}\n" http://localhost:$port
+    $ for app in "Node.js 3001" "Python 5001" "Java 8080" \
+                 "Apache 8081" "Nginx 8082" "React 8083"; do
+        set -- $app
+        echo "=== $1  http://localhost:$2 ==="
+        code=$(curl -s -o /dev/null -w '%{http_code}' http://localhost:$2)
+        body=$(curl -s http://localhost:$2 | grep -o '<h1>.*</h1>')
+        echo "HTTP status: $code   $body"
       done
 
     === Node.js  http://localhost:3001 ===
@@ -285,6 +312,31 @@ Screenshot: screenshots/react-app.png
 
     docker rm -f node-hello py-hello jv-hello ap-hello ng-hello rc-hello
     docker rmi nodejs-hello python-hello java-hello apache-hello nginx-hello react-hello
+
+## Improvements made after the first run
+
+Two of the Dockerfiles were tightened up after the six apps were first built and
+screenshotted.
+
+nodejs-app now sets ENV NODE_ENV=production and ends with USER node, so the container
+runs as the unprivileged node user the official image already provides, instead of as
+root. Nothing in the app needs root, so there is no reason to hand it over.
+
+python-app now sets PYTHONUNBUFFERED=1, so docker logs shows Flask output as it happens
+rather than holding it in a buffer, and PYTHONDONTWRITEBYTECODE=1 so no .pyc files are
+baked into the image. It also creates an appuser account and switches to it with USER.
+Port 5000 is above 1024, so binding it does not need root. A .dockerignore was added as
+well, matching the one the Node app already had.
+
+The Apache and Nginx images were left alone on purpose. Those base images start a root
+master process only to bind port 80 and then run their worker processes as an
+unprivileged user, so the privilege drop is already built in. The Java image keeps its
+two stage JDK to JRE build, which is the same idea applied to image size rather than to
+privilege.
+
+The command output recorded above is from the original run, before these two edits. The
+edits change who the process runs as and how its output is flushed, not what the apps
+serve or which ports they listen on.
 
 ## What I understood from doing this
 
