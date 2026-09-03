@@ -18,7 +18,7 @@ are in the screenshots folder.
       React-app/      React built with Vite, served by Nginx
       nginx-app/      Nginx serving a static page
       screenshots/    browser screenshots of each app
-      docker-homework.md
+      README.md
 
 ## Summary of all six
 

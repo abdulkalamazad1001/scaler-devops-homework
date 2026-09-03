@@ -14,7 +14,7 @@ and the Docker tasks also carry browser screenshots as evidence.
 
 Every box below was completed and has written evidence in the linked file.
 
-### Task 1 — Linux basics → [`task-1-linux-basics/linux-homework.md`](task-1-linux-basics/linux-homework.md)
+### Task 1 — Linux basics → [`task-1-linux-basics/README.md`](task-1-linux-basics/README.md)
 
 - [x] Soft link vs hard link, demonstrated with `ln`, `ln -s` and `ls -li` inode output
 - [x] Proved the difference by deleting the target: the hard link survives, the soft link breaks
@@ -31,7 +31,7 @@ Every box below was completed and has written evidence in the linked file.
 - [x] Saves the full `ps aux` output to the file with `>` redirection
 - [x] Script re-run on 3 September 2026 and the write-up updated with that real output
 
-### Task 3 — Networking → [`task-3-networking/networking-homework.md`](task-3-networking/networking-homework.md)
+### Task 3 — Networking → [`task-3-networking/README.md`](task-3-networking/README.md)
 
 - [x] Addresses and interfaces: `ip addr`, `ip -brief addr`, `ip link`, `ifconfig`, `hostname -I`
 - [x] Routing: `ip route`, `ip route get`, `ip route add` / `delete`, `ip neigh`
@@ -42,14 +42,14 @@ Every box below was completed and has written evidence in the linked file.
 - [x] Web requests: `curl -I`, public IP lookup, `wget`
 - [x] Ran inside an Ubuntu container, because `ip` and `ss` do not exist on macOS
 
-### Task 4 — Git → [`task-4-git/git-homework.md`](task-4-git/git-homework.md)
+### Task 4 — Git → [`task-4-git/README.md`](task-4-git/README.md)
 
 - [x] `git commit -m` vs `git commit -a -m`, tested on a tracked file
 - [x] Showed that `-a` does **not** pick up untracked files
 - [x] `git cherry-pick`: moved one bugfix commit to `main` and left the feature commits behind
 - [x] Explained from the `--graph` output that cherry-pick creates a new hash, it does not move a commit
 
-### Task 5 — Docker, six Hello World apps → [`task-5-docker/docker-homework.md`](task-5-docker/docker-homework.md)
+### Task 5 — Docker, six Hello World apps → [`task-5-docker/README.md`](task-5-docker/README.md)
 
 - [x] Node.js and Express — `node:20-alpine`, port 3000 → host 3001
 - [x] Python and Flask — `python:3.12-slim`, port 5000 → host 5001
@@ -60,14 +60,14 @@ Every box below was completed and has written evidence in the linked file.
 - [x] All six built, run and opened in a browser, with a screenshot for each in `screenshots/`
 - [x] Hardening pass afterwards: `USER node`, non-root `appuser`, `NODE_ENV`, `PYTHONUNBUFFERED`
 
-### Task 6 — Docker multi-stage build → [`task-6-docker-multistage/multistage-homework.md`](task-6-docker-multistage/multistage-homework.md)
+### Task 6 — Docker multi-stage build → [`task-6-docker-multistage/README.md`](task-6-docker-multistage/README.md)
 
 - [x] Built the given multi-stage Dockerfile and ran it on host port 8080
 - [x] Verified with `docker ps`, `docker logs` and `curl`, plus a browser screenshot
 - [x] Compared against a single stage build of the same app and explained the small 6 MB gap honestly
 - [x] Deployed three different application types — Node.js, Python and Java — side by side
 
-### Task 7 — Docker networking and volumes → [`task-7-docker-networking-volume/docker-networking-volume-homework.md`](task-7-docker-networking-volume/docker-networking-volume-homework.md)
+### Task 7 — Docker networking and volumes → [`task-7-docker-networking-volume/README.md`](task-7-docker-networking-volume/README.md)
 
 - [x] Three containers across three custom bridge networks, with the backend on two of them
 - [x] Proved the isolation: frontend reaches backend, backend reaches MySQL, frontend cannot resolve the database at all
@@ -82,25 +82,25 @@ Every box below was completed and has written evidence in the linked file.
     scaler-devops-homework/
     ├── README.md                          this file
     ├── task-1-linux-basics/
-    │   └── linux-homework.md
+    │   └── README.md
     ├── task-2-shell-scripting/
-    │   ├── shell-scripting-homework.md
+    │   ├── README.md
     │   └── sysinfo.sh                     the script itself
     ├── task-3-networking/
-    │   └── networking-homework.md
+    │   └── README.md
     ├── task-4-git/
-    │   └── git-homework.md
+    │   └── README.md
     ├── task-5-docker/
-    │   ├── docker-homework.md
+    │   ├── README.md
     │   ├── nodejs-app/    python-app/    java-app/
     │   ├── Apache-app/    nginx-app/     React-app/
     │   └── screenshots/                   one per app
     ├── task-6-docker-multistage/
-    │   ├── multistage-homework.md
+    │   ├── README.md
     │   ├── multi-stage-app/
     │   └── screenshots/
     └── task-7-docker-networking-volume/
-        ├── docker-networking-volume-homework.md
+        ├── README.md
         ├── bind-mount-demo/website/
         └── screenshots/
 
