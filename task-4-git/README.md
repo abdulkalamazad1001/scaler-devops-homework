@@ -136,7 +136,7 @@ commits are not finished and should stay on the branch.
 
     $ git show cfec984 --stat
     commit cfec984f468e0e8be2b72b9d0936ca89606e119d
-    Author: Abdul Kalam Azad <abdulkalam.azad@scalerailabs.com>
+    Author: T. Abdul Kalam Azad <197808334+abdulkalamazad1001@users.noreply.github.com>
     Date:   Tue Sep 1 17:47:11 2026 +0530
 
         Bugfix: correct typo in config
