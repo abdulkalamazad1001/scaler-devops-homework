@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-config
+  labels:
+    {{- include "notes-chart.labels" . | nindent 4 }}
+data:
+  APP_NAME: {{ .Values.app.name | quote }}
+  ENVIRONMENT: {{ .Values.app.environment | quote }}
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head><title>{{ .Values.app.name }}</title></head>
+    <body>
+      <h1>{{ .Values.app.message }}</h1>
+      <p>app: {{ .Values.app.name }}</p>
+      <p>environment: {{ .Values.app.environment }}</p>
+      <p>release: {{ .Release.Name }}</p>
+      <p>image: {{ .Values.image.repository }}:{{ .Values.image.tag }}</p>
+    </body>
+    </html>

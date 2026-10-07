@@ -1,0 +1,17 @@
+# Trivy ignore file for the devsecops-demo image.
+#
+# Policy: an entry is allowed only with
+#   1. the CVE ID,
+#   2. a one line reason why it does not affect this image, and
+#   3. an expiry date (exp:YYYY-MM-DD) so it is reviewed again.
+# After the expiry date Trivy reports the CVE again and the gate blocks.
+#
+# The pipeline already uses --ignore-unfixed, so CVEs without an upstream fix
+# never need to be listed here.
+#
+# Format example (not active):
+# CVE-2025-8869 exp:2026-12-31
+#   reason: pip tar extraction issue; pip is only used at build time in the
+#   builder stage and never installs untrusted sdists in the running container.
+#
+# Active entries: none

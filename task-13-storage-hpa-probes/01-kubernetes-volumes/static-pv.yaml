@@ -1,0 +1,35 @@
+# Static provisioning: an admin creates the PersistentVolume by hand,
+# a PersistentVolumeClaim then binds to it.
+#
+# storageClassName: manual on BOTH objects matters. If the PVC had no
+# storageClassName, minikube's default StorageClass "standard" would be filled
+# in and a new volume would be provisioned dynamically instead of binding to this PV.
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: manual-pv
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    # /data on the minikube node survives "minikube stop/start"
+    path: /data/manual-pv
+    type: DirectoryOrCreate
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: manual-pvc
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi

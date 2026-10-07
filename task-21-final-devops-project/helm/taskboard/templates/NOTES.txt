@@ -1,0 +1,9 @@
+TaskBoard {{ .Values.image.tag }} is deployed to namespace {{ .Release.Namespace }}.
+
+  kubectl -n {{ .Release.Namespace }} get pods,svc,ingress,hpa
+{{- if .Values.ingress.enabled }}
+
+Open: http{{ if .Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.host }}/
+{{- end }}
+
+Smoke test:  helm test {{ .Release.Name }} -n {{ .Release.Namespace }}

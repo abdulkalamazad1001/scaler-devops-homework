@@ -1,0 +1,17 @@
+# Headless Service: clusterIP None. DNS returns the Pod IPs directly, and each
+# StatefulSet Pod gets its own name: web-0.web-headless.default.svc.cluster.local
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-headless
+  labels:
+    app: web-headless
+spec:
+  clusterIP: None
+  selector:
+    app: web-headless
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP

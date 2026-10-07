@@ -1,0 +1,72 @@
+# prometheus-community/kube-prometheus-stack 65.1.1
+# Installed by Argo CD (gitops/argocd/monitoring.yaml) or by hand:
+#   helm upgrade --install kube-prometheus-stack prometheus-community/kube-prometheus-stack \
+#     --version 65.1.1 -n monitoring --create-namespace -f monitoring/kube-prometheus-stack-values.yaml
+
+# Control plane components are not reachable on minikube or EKS (managed).
+kubeControllerManager:
+  enabled: false
+kubeScheduler:
+  enabled: false
+kubeEtcd:
+  enabled: false
+kubeProxy:
+  enabled: false
+
+prometheus:
+  prometheusSpec:
+    # Load ServiceMonitors and PrometheusRules from every namespace.
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+    ruleSelectorNilUsesHelmValues: false
+    retention: 7d
+    resources:
+      requests:
+        cpu: 200m
+        memory: 512Mi
+      limits:
+        memory: 1Gi
+
+alertmanager:
+  config:
+    route:
+      group_by: ["alertname", "namespace"]
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 4h
+      receiver: "null"
+      routes:
+        - matchers:
+            - namespace = "taskboard"
+          receiver: slack-taskboard
+    receivers:
+      - name: "null"
+      - name: slack-taskboard
+        slack_configs:
+          # The webhook URL is read from a Secret mounted into Alertmanager,
+          # so it never appears in Git. Create it with:
+          #   kubectl -n monitoring create secret generic alertmanager-slack \
+          #     --from-literal=url=https://hooks.slack.com/services/XXX/YYY/ZZZ
+          - api_url_file: /etc/alertmanager/secrets/alertmanager-slack/url
+            channel: "#taskboard-alerts"
+            send_resolved: true
+            title: '[{{ .Status | toUpper }}] {{ .CommonLabels.alertname }}'
+            text: '{{ range .Alerts }}{{ .Annotations.summary }}{{ "\n" }}{{ end }}'
+  alertmanagerSpec:
+    secrets:
+      - alertmanager-slack
+
+grafana:
+  defaultDashboardsTimezone: utc
+  sidecar:
+    dashboards:
+      enabled: true
+      label: grafana_dashboard
+      labelValue: "1"
+      searchNamespace: ALL
+  additionalDataSources:
+    - name: Loki
+      type: loki
+      uid: loki
+      access: proxy
+      url: http://loki.monitoring.svc:3100

@@ -1,0 +1,11 @@
+# Only tool configuration lives here; the app is not packaged.
+
+[tool.bandit]
+# Tests use assert on purpose (B101), so they are not scanned.
+exclude_dirs = ["tests", ".venv"]
+# No rules are skipped. If one ever has to be, add it here with a comment
+# saying why, rather than sprinkling "# nosec" through the code.
+skips = []
+
+[tool.coverage.run]
+source = ["app"]

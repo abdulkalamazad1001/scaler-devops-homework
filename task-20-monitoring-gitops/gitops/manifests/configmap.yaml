@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: web-content
+  namespace: gitops-demo
+data:
+  index.html: |
+    <!doctype html>
+    <html>
+      <head><title>GitOps demo</title></head>
+      <body>
+        <h1>Deployed by Argo CD</h1>
+        <p>Release: v1</p>
+      </body>
+    </html>

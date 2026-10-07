@@ -1,0 +1,174 @@
+# Continuous Integration: lint, security check, unit tests with coverage, Docker build.
+#
+# GitHub only runs workflows from .github/workflows/ at the ROOT of the repository.
+# This copy lives inside the task folder; copy it to <repo-root>/.github/workflows/ci.yml.
+# The paths below assume the app lives in task-16-cicd-github-actions/. If you push this
+# folder as its own repository instead, set APP_DIR and working-directory to "." and
+# drop the folder prefix from the path filters.
+name: CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "task-16-cicd-github-actions/**"
+      - ".github/workflows/ci.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "task-16-cicd-github-actions/**"
+      - ".github/workflows/ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  APP_DIR: task-16-cicd-github-actions
+  IMAGE_NAME: cicd-demo
+
+defaults:
+  run:
+    working-directory: task-16-cicd-github-actions
+
+jobs:
+  lint:
+    name: Lint (flake8)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install flake8
+        run: pip install flake8==7.1.1
+
+      - name: Run flake8
+        run: flake8 app tests
+
+  security:
+    name: Security check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Check for committed secret files
+        run: |
+          found=$(find . -type f \( -name ".env" -o -name "*.pem" -o -name "*.key" -o -name "id_rsa*" \))
+          if [ -n "$found" ]; then
+            echo "::error::Sensitive files committed:"
+            echo "$found"
+            exit 1
+          fi
+          echo "No sensitive files found."
+
+  test:
+    name: Test (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: ${{ env.APP_DIR }}/requirements-dev.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+
+      - name: Run tests with coverage
+        run: |
+          mkdir -p reports
+          pytest \
+            --junitxml=reports/junit.xml \
+            --cov=app \
+            --cov-report=term-missing \
+            --cov-report=xml:reports/coverage.xml \
+            --cov-report=html:reports/htmlcov \
+            --cov-fail-under=90
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report-py${{ matrix.python-version }}
+          path: ${{ env.APP_DIR }}/reports/
+          retention-days: 14
+
+  build:
+    name: Build Docker image
+    needs: [lint, security, test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build image
+        uses: docker/build-push-action@v6
+        with:
+          context: ${{ env.APP_DIR }}
+          load: true
+          push: false
+          tags: ${{ env.IMAGE_NAME }}:ci-${{ github.sha }}
+          build-args: APP_VERSION=${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Smoke test the container
+        run: |
+          docker run -d --name smoke -p 8000:8000 "${IMAGE_NAME}:ci-${GITHUB_SHA}"
+          for i in $(seq 1 20); do
+            curl -fsS http://127.0.0.1:8000/health && break
+            sleep 1
+          done
+          echo
+          curl -fsS http://127.0.0.1:8000/health
+          echo
+          curl -fsS "http://127.0.0.1:8000/api/add?a=2&b=3" | tee /tmp/add.json
+          echo
+          python3 -c "import json; assert json.load(open('/tmp/add.json'))['result'] == 5"
+          docker inspect --format '{{.State.Health.Status}}' smoke || true
+          docker rm -f smoke
+
+      - name: Save image as a tarball
+        run: docker save "${IMAGE_NAME}:ci-${GITHUB_SHA}" | gzip > cicd-demo-image.tar.gz
+
+      - name: Upload image artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cicd-demo-image
+          path: ${{ env.APP_DIR }}/cicd-demo-image.tar.gz
+          retention-days: 3
+
+      - name: Write job summary
+        run: |
+          {
+            echo "### CI build"
+            echo ""
+            echo "| Item | Value |"
+            echo "|---|---|"
+            echo "| Commit | \`${GITHUB_SHA}\` |"
+            echo "| Image | \`${IMAGE_NAME}:ci-${GITHUB_SHA}\` |"
+            echo "| Image size | $(docker image inspect "${IMAGE_NAME}:ci-${GITHUB_SHA}" --format '{{.Size}}' | numfmt --to=iec) |"
+          } >> "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ .Release.Name }}-test-connection
+  labels:
+    {{- include "notes-chart.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": before-hook-creation
+spec:
+  containers:
+    - name: wget
+      image: busybox:1.36
+      command: ["sh", "-c"]
+      args:
+        - wget -qO- http://{{ .Release.Name }}-svc:{{ .Values.service.port }} | grep -q "environment: {{ .Values.app.environment }}"
+  restartPolicy: Never

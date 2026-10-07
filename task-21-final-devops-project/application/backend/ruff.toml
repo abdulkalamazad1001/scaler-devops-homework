@@ -1,0 +1,15 @@
+target-version = "py312"
+line-length = 110
+
+[lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+# FastAPI's dependency injection is written as `db: Session = Depends(get_db)`.
+ignore = ["B008"]
+
+[lint.per-file-ignores]
+# conftest sets environment variables before importing the app on purpose.
+"tests/conftest.py" = ["E402"]
+
+[lint.isort]
+# The local alembic/ folder holds migrations; the import is the alembic package.
+known-third-party = ["alembic"]

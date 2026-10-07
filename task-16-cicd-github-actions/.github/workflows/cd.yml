@@ -1,0 +1,185 @@
+# Continuous Delivery/Deployment: runs after CI succeeds on main.
+#   1. build the image and push it to GitHub Container Registry (GHCR) with GITHUB_TOKEN
+#   2. deploy it to a throwaway Kubernetes cluster (kind) inside the runner, using the
+#      "staging" environment and its APP_SECRET_KEY secret, then smoke test it
+#
+# Like ci.yml, copy this file to <repo-root>/.github/workflows/cd.yml. workflow_run only
+# fires for workflow files that are on the default branch.
+name: CD
+run-name: CD (${{ github.event_name }}) on ${{ github.event.workflow_run.head_branch || github.ref_name }}
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cd-staging
+  cancel-in-progress: false
+
+env:
+  APP_DIR: task-16-cicd-github-actions
+  REGISTRY: ghcr.io
+  IMAGE_NAME: cicd-demo
+  # The exact commit CI tested (workflow_run), or the commit a manual run was started on
+  COMMIT_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+defaults:
+  run:
+    working-directory: task-16-cicd-github-actions
+
+jobs:
+  build-and-push:
+    name: Build and push image to GHCR
+    # Only deploy commits that passed CI on a push to main (not pull requests)
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image: ${{ steps.meta.outputs.image }}
+    steps:
+      - name: Checkout tested commit
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ env.COMMIT_SHA }}
+
+      - name: Work out image name
+        id: meta
+        run: |
+          owner=$(echo "${GITHUB_REPOSITORY_OWNER}" | tr '[:upper:]' '[:lower:]')
+          base="${REGISTRY}/${owner}/${IMAGE_NAME}"
+          echo "image=${base}:sha-${COMMIT_SHA::7}" >> "$GITHUB_OUTPUT"
+          echo "latest=${base}:latest" >> "$GITHUB_OUTPUT"
+          echo "Image: ${base}:sha-${COMMIT_SHA::7}"
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: ${{ env.APP_DIR }}
+          push: true
+          tags: |
+            ${{ steps.meta.outputs.image }}
+            ${{ steps.meta.outputs.latest }}
+          build-args: APP_VERSION=${{ env.COMMIT_SHA }}
+          labels: |
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.revision=${{ env.COMMIT_SHA }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy-staging:
+    name: Deploy to staging (kind)
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+    permissions:
+      contents: read
+      packages: read
+    env:
+      IMAGE: ${{ needs.build-and-push.outputs.image }}
+    steps:
+      - name: Checkout tested commit
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ env.COMMIT_SHA }}
+
+      - name: Check required secret
+        env:
+          APP_SECRET_KEY: ${{ secrets.APP_SECRET_KEY }}
+        run: |
+          if [ -z "${APP_SECRET_KEY}" ]; then
+            echo "::error::APP_SECRET_KEY is not set on the 'staging' environment"
+            exit 1
+          fi
+          echo "APP_SECRET_KEY is set (length ${#APP_SECRET_KEY})"
+
+      - name: Create kind cluster
+        uses: helm/kind-action@v1
+        with:
+          cluster_name: staging
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull image and load it into kind
+        run: |
+          docker pull "${IMAGE}"
+          kind load docker-image "${IMAGE}" --name staging
+
+      - name: Create app secret in the cluster
+        env:
+          APP_SECRET_KEY: ${{ secrets.APP_SECRET_KEY }}
+        run: |
+          kubectl create secret generic cicd-demo-secret \
+            --from-literal=SECRET_KEY="${APP_SECRET_KEY}" \
+            --dry-run=client -o yaml | kubectl apply -f -
+
+      - name: Deploy manifests
+        run: |
+          sed "s|IMAGE_PLACEHOLDER|${IMAGE}|" k8s/deployment.yaml | kubectl apply -f -
+          kubectl apply -f k8s/service.yaml
+          kubectl rollout status deployment/cicd-demo --timeout=120s
+          kubectl get deploy,pods,svc -l app=cicd-demo -o wide
+
+      - name: Smoke test
+        run: |
+          kubectl port-forward svc/cicd-demo 8080:80 > /tmp/port-forward.log 2>&1 &
+          sleep 3
+          curl -fsS http://127.0.0.1:8080/health
+          echo
+          curl -fsS http://127.0.0.1:8080/ | tee /tmp/index.json
+          echo
+          python3 - <<'PY'
+          import json, os
+          body = json.load(open("/tmp/index.json"))
+          assert body["version"] == os.environ["COMMIT_SHA"], body
+          assert body["environment"] == "staging", body
+          assert body["secret_configured"] is True, body
+          print("Smoke test passed: version, environment and secret are correct")
+          PY
+          curl -fsS "http://127.0.0.1:8080/api/multiply?a=6&b=7"
+          echo
+
+      - name: Show pod details on failure
+        if: failure()
+        run: |
+          kubectl get pods -l app=cicd-demo -o wide || true
+          kubectl describe pods -l app=cicd-demo || true
+          kubectl logs -l app=cicd-demo --tail=50 || true
+
+      - name: Write job summary
+        run: |
+          {
+            echo "### Deployed to staging"
+            echo ""
+            echo "| Item | Value |"
+            echo "|---|---|"
+            echo "| Image | \`${IMAGE}\` |"
+            echo "| Commit | \`${COMMIT_SHA}\` |"
+            echo "| Replicas ready | $(kubectl get deploy cicd-demo -o jsonpath='{.status.readyReplicas}') |"
+          } >> "$GITHUB_STEP_SUMMARY"

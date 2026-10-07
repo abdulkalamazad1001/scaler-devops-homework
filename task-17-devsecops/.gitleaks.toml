@@ -1,0 +1,27 @@
+# Gitleaks configuration for task-17-devsecops (gitleaks v8.21.x).
+# Start from the built-in rule set (AWS keys, GitHub tokens, private keys,
+# Slack tokens, generic API keys, ...) and add project specific bits.
+
+title = "devsecops-demo gitleaks config"
+
+[extend]
+useDefault = true
+
+# Project specific rule: the demo app's internal API tokens look like
+# "dsd_" followed by 32 alphanumeric characters.
+[[rules]]
+id = "devsecops-demo-api-token"
+description = "devsecops-demo internal API token"
+regex = '''\bdsd_[A-Za-z0-9]{32}\b'''
+keywords = ["dsd_"]
+
+# Global allowlist. Keep this short: every entry is a place a real secret
+# could hide without anyone noticing.
+[allowlist]
+description = "Known false positives"
+paths = [
+  # Scanner reports quote the findings they contain.
+  '''(^|/)reports/.*\.json$''',
+  # Lock files contain integrity hashes that look like high entropy strings.
+  '''(^|/)package-lock\.json$''',
+]

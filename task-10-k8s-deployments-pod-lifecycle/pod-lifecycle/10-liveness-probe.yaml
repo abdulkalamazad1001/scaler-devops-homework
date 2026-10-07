@@ -1,0 +1,18 @@
+# The container stays "Running" but becomes unhealthy after 20s (the health
+# file is removed). The liveness probe fails twice and the kubelet restarts it.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: lifecycle-liveness
+spec:
+  terminationGracePeriodSeconds: 5
+  containers:
+    - name: app
+      image: busybox:1.36
+      command: ["sh", "-c", "echo 'App started'; touch /tmp/healthy; sleep 20; rm /tmp/healthy; echo 'Health file removed'; sleep 600"]
+      livenessProbe:
+        exec:
+          command: ["sh", "-c", "test -f /tmp/healthy"]
+        initialDelaySeconds: 5
+        periodSeconds: 5
+        failureThreshold: 2

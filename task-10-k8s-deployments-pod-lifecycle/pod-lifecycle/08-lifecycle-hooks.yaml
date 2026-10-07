@@ -1,0 +1,32 @@
+# postStart runs right after the container is created; preStop runs before
+# the container is sent SIGTERM. preStop writes to PID 1's stdout so its
+# message shows up in "kubectl logs".
+apiVersion: v1
+kind: Pod
+metadata:
+  name: lifecycle-hooks
+spec:
+  terminationGracePeriodSeconds: 30
+  containers:
+    - name: app
+      image: busybox:1.36
+      command:
+        - sh
+        - -c
+        - |
+          trap 'echo "main: SIGTERM received at $(date +%T), exiting"; exit 0' TERM
+          echo "main: started at $(date +%T)"
+          while true; do sleep 1; done
+      lifecycle:
+        postStart:
+          exec:
+            command:
+              - sh
+              - -c
+              - echo "postStart ran at $(date +%T)" > /tmp/poststart.txt
+        preStop:
+          exec:
+            command:
+              - sh
+              - -c
+              - 'echo "preStop: draining for 5s at $(date +%T)" > /proc/1/fd/1; sleep 5'

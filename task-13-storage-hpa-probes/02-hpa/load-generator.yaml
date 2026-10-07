@@ -1,0 +1,15 @@
+# Non-interactive version of the load generator:
+#   kubectl apply -f 02-hpa/load-generator.yaml
+#   kubectl delete pod load-generator      (stops the load)
+apiVersion: v1
+kind: Pod
+metadata:
+  name: load-generator
+  labels:
+    app: load-generator
+spec:
+  restartPolicy: Never
+  containers:
+    - name: load
+      image: busybox:1.36
+      command: ["/bin/sh", "-c", "while sleep 0.01; do wget -q -O- http://php-apache; done"]

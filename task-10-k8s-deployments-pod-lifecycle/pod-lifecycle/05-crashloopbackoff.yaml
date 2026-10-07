@@ -1,0 +1,11 @@
+# CrashLoopBackOff. The container exits 1 every few seconds and restartPolicy
+# defaults to Always, so the kubelet keeps restarting it with a growing delay.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: lifecycle-crashloop
+spec:
+  containers:
+    - name: crashing-app
+      image: busybox:1.36
+      command: ["sh", "-c", "echo 'Application started'; sleep 3; echo 'Application crashed'; exit 1"]

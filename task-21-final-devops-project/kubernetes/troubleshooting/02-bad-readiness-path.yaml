@@ -1,0 +1,9 @@
+# The app serves readiness on /ready, not /readyz.
+spec:
+  template:
+    spec:
+      containers:
+        - name: backend
+          readinessProbe:
+            httpGet:
+              path: /readyz

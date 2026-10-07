@@ -1,0 +1,21 @@
+# Provider plugins and modules downloaded by terraform init
+.terraform/
+# State can contain secrets and is per-environment: never commit it
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+# Saved plans
+*.tfplan
+tfplan
+# Crash logs
+crash.log
+crash.*.log
+# Local overrides
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+# Note: terraform.tfvars in this folder holds no secrets and is committed on purpose.
+# .terraform.lock.hcl is committed on purpose so everyone gets the same provider build.

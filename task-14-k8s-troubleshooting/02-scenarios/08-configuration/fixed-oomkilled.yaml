@@ -1,0 +1,34 @@
+# Fixed:
+#   - the job processes one 10 MiB chunk at a time and drops it, so peak memory
+#     stays around 20 MiB instead of growing to ~1 GiB
+#   - limit raised to 64Mi with a matching request, leaving headroom
+#   - flush=True so log lines are not lost in Python's stdout buffer if it dies
+#   - restartPolicy OnFailure because this is a run-to-completion task
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fail-5-oomkilled-pod
+  labels:
+    tier: triage-gauntlet
+    scenario: oomkilled
+spec:
+  restartPolicy: OnFailure
+  containers:
+    - name: memory-leaker
+      image: python:3.11-alpine
+      command:
+        - "python3"
+        - "-c"
+        - |
+          print("Processing 100 chunks of 10 MiB...", flush=True)
+          total = 0
+          for i in range(100):
+              chunk = b"x" * (10 * 1024 * 1024)
+              total += len(chunk)
+              del chunk
+          print(f"Done, processed {total // (1024 * 1024)} MiB", flush=True)
+      resources:
+        requests:
+          memory: "48Mi"
+        limits:
+          memory: "64Mi"

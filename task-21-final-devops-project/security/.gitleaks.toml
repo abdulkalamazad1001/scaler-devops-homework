@@ -1,0 +1,17 @@
+# Gitleaks configuration: the built-in rules plus a narrow allowlist.
+# Used by the "Secret scanning" job:  gitleaks git --config security/.gitleaks.toml .
+title = "final-devops-project"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Documented lab-only placeholder values, never used outside minikube"
+regexes = [
+  '''change-me-lab-only''',
+  '''taskboard-local''',
+]
+paths = [
+  # Provider checksums, not secrets.
+  '''terraform/\.terraform\.lock\.hcl''',
+]

@@ -1,0 +1,17 @@
+# LoadBalancer: a NodePort plus an external IP from a load balancer implementation.
+# On minikube the external IP is provided by "minikube tunnel".
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-lb
+  labels:
+    app: web-lb
+spec:
+  type: LoadBalancer
+  selector:
+    app: web-lb
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP

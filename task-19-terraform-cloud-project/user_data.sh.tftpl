@@ -1,0 +1,36 @@
+#!/bin/bash
+# Runs once, as root, on the first boot of the instance (cloud-init).
+# Rendered by Terraform's templatefile(): the project and bucket_name
+# placeholders are filled in by Terraform; plain $VARS are left for bash.
+set -euxo pipefail
+
+dnf install -y nginx
+
+# IMDSv2: get a session token first, then read metadata with it.
+TOKEN=$(curl -sS -X PUT "http://169.254.169.254/latest/api/token" \
+  -H "X-aws-ec2-metadata-token-ttl-seconds: 300")
+md() {
+  curl -sS -H "X-aws-ec2-metadata-token: $TOKEN" "http://169.254.169.254/latest/meta-data/$1"
+}
+INSTANCE_ID=$(md instance-id)
+AZ=$(md placement/availability-zone)
+PRIVATE_IP=$(md local-ipv4)
+
+cat > /usr/share/nginx/html/index.html <<HTML
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>${project}</title></head>
+<body>
+<h1>${project}</h1>
+<p>Deployed with Terraform on Amazon Linux 2023 and nginx.</p>
+<ul>
+<li>Instance: $INSTANCE_ID</li>
+<li>Availability Zone: $AZ</li>
+<li>Private IP: $PRIVATE_IP</li>
+<li>Assets bucket: ${bucket_name}</li>
+</ul>
+</body>
+</html>
+HTML
+
+systemctl enable --now nginx

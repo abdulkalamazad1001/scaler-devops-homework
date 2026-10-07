@@ -1,0 +1,20 @@
+# Test client with curl, nslookup and dig (netshoot image), used for every
+# in-cluster connectivity and DNS check in this task.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: net-client
+  labels:
+    app: net-client
+spec:
+  containers:
+    - name: net-client
+      image: nicolaka/netshoot:v0.13
+      command: ["sleep", "infinity"]
+      resources:
+        requests:
+          cpu: 10m
+          memory: 32Mi
+        limits:
+          cpu: 200m
+          memory: 128Mi

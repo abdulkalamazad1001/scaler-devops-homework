@@ -1,0 +1,51 @@
+rule_files:
+  - metrics-demo-rules.yaml
+
+evaluation_interval: 15s
+
+tests:
+  # Target down for 2 minutes -> MetricsDemoDown fires.
+  - interval: 15s
+    input_series:
+      - series: 'up{namespace="monitoring-demo", job="metrics-demo", instance="10.244.0.21:8080"}'
+        values: '1 1 0 0 0 0 0 0 0 0 0 0'
+    alert_rule_test:
+      - eval_time: 30s
+        alertname: MetricsDemoDown
+        exp_alerts: []
+      - eval_time: 2m30s
+        alertname: MetricsDemoDown
+        exp_alerts:
+          - exp_labels:
+              severity: critical
+              namespace: monitoring-demo
+              job: metrics-demo
+              instance: 10.244.0.21:8080
+            exp_annotations:
+              summary: metrics-demo target 10.244.0.21:8080 is down
+              description: Prometheus could not scrape 10.244.0.21:8080 for more than 1 minute.
+
+  # 10 req/s total, 2 req/s of them 500s -> 20% errors -> MetricsDemoHighErrorRate fires.
+  - interval: 15s
+    input_series:
+      - series: 'demo_http_requests_total{namespace="monitoring-demo", job="metrics-demo", method="GET", path="/", status="200"}'
+        values: '0+120x40'
+      - series: 'demo_http_requests_total{namespace="monitoring-demo", job="metrics-demo", method="GET", path="/error", status="500"}'
+        values: '0+30x40'
+    alert_rule_test:
+      - eval_time: 5m
+        alertname: MetricsDemoHighErrorRate
+        exp_alerts:
+          - exp_labels:
+              severity: warning
+              namespace: monitoring-demo
+              job: metrics-demo
+            exp_annotations:
+              summary: metrics-demo is returning more than 5% errors
+              description: 20% of requests failed over the last 2 minutes.
+    promql_expr_test:
+      - expr: job:demo_http_errors:ratio_rate5m
+        eval_time: 5m
+        exp_samples:
+          - labels: 'job:demo_http_errors:ratio_rate5m{job="metrics-demo"}'
+            value: 0.2

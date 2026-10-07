@@ -1,0 +1,43 @@
+# Host based + path based routing through ingress-nginx.
+#
+#   demo.local/         -> web-svc
+#   demo.local/api...   -> api-svc   (path routing)
+#   api.demo.local/     -> api-svc   (host routing)
+#
+# No rewrite annotation is needed because http-echo answers on every path.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: demo-ingress
+  labels:
+    app: demo
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: demo.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web-svc
+                port:
+                  number: 80
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: api-svc
+                port:
+                  number: 80
+    - host: api.demo.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: api-svc
+                port:
+                  number: 80

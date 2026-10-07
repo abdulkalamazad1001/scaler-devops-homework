@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-nodeport
+  labels:
+    app: web-nodeport
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-nodeport
+  template:
+    metadata:
+      labels:
+        app: web-nodeport
+    spec:
+      containers:
+        - name: web
+          image: nginx:1.27-alpine
+          # Page names the app and the Pod that served it, so load balancing is visible.
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              echo "web-nodeport served by $(hostname)" > /usr/share/nginx/html/index.html
+              exec nginx -g 'daemon off;'
+          ports:
+            - name: http
+              containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            periodSeconds: 5
+          resources:
+            requests:
+              cpu: 20m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
