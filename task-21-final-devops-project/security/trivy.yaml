@@ -1,0 +1,17 @@
+# Shared Trivy settings for image and IaC scans.
+#   trivy image  --config security/trivy.yaml ghcr.io/devops-student/taskboard-backend:<sha>
+#   trivy config --config security/trivy.yaml .
+severity:
+  - HIGH
+  - CRITICAL
+exit-code: 1
+ignorefile: security/trivyignore.yaml
+vulnerability:
+  # A finding with no released fix cannot be acted on by bumping a version;
+  # it is reviewed in the scheduled full report instead of blocking every build.
+  ignore-unfixed: true
+misconfiguration:
+  helm:
+    # The chart needs either a password or an existing Secret to render.
+    values:
+      - helm/taskboard/values-dev.yaml

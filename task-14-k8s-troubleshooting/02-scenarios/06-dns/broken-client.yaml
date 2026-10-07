@@ -1,0 +1,21 @@
+# BUG: the client runs in "default" and uses the short name "orders-api".
+# Short names are only searched in the pod's own namespace, so the lookup
+# fails (NXDOMAIN). Same class of bug as course scenario-4, which used a wrong
+# host name (postgres-db-wrong-name.production.svc.cluster.local).
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dns-client
+  labels:
+    scenario: dns
+spec:
+  containers:
+    - name: client
+      image: curlimages/curl:8.6.0
+      command: ["sh", "-c"]
+      args:
+        - |
+          while true; do
+            curl -sSf -o /dev/null --connect-timeout 3 http://orders-api && echo "OK: orders-api reachable"
+            sleep 10
+          done

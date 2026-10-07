@@ -1,0 +1,39 @@
+# The TaskBoard app on minikube. Argo CD renders helm/taskboard with
+# values-dev.yaml; CI changes image.tag in that file after every green build.
+# Prerequisite (once): the taskboard-db Secret, see helm/taskboard/values-dev.yaml.
+#
+# The Application is named like the Helm release on purpose. Argo CD 2.x tracks
+# resources with the label app.kubernetes.io/instance=<app name>; the chart
+# uses the same label in its selectors, so both must be "taskboard".
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: taskboard
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: taskboard
+  source:
+    repoURL: https://github.com/devops-student/final-devops-project.git
+    targetRevision: main
+    path: helm/taskboard
+    helm:
+      releaseName: taskboard
+      valueFiles:
+        - values-dev.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: taskboard
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 10s
+        factor: 2
+        maxDuration: 3m

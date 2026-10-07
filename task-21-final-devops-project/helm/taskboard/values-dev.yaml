@@ -1,0 +1,19 @@
+# minikube, deployed by Argo CD (gitops/argocd/taskboard-dev.yaml).
+# The Secret is created once by hand, so no password is stored in Git:
+#   kubectl -n taskboard create secret generic taskboard-db \
+#     --from-literal=DB_USER=taskboard --from-literal=DB_PASSWORD="$(openssl rand -base64 24)"
+image:
+  tag: "4c2e9d1"
+
+config:
+  appEnv: dev
+  logLevel: INFO
+
+database:
+  existingSecret: taskboard-db
+
+frontend:
+  replicaCount: 3
+
+ingress:
+  host: taskboard.local

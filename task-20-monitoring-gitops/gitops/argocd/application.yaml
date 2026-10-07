@@ -1,0 +1,32 @@
+# Applied once by hand with kubectl. It lives outside the manifests/ folder on
+# purpose: Argo CD renders everything under spec.source.path, and the Application
+# object should not manage itself.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitops-demo
+  namespace: argocd
+  finalizers:
+    # Deleting the Application also deletes the resources it created.
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/devops-student/devops-homework.git
+    targetRevision: main
+    path: task-20-monitoring-gitops/gitops/manifests
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gitops-demo
+  syncPolicy:
+    automated:
+      prune: true      # delete cluster objects whose YAML was removed from Git
+      selfHeal: true   # undo manual changes made directly in the cluster
+    syncOptions:
+      - CreateNamespace=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 10s
+        factor: 2
+        maxDuration: 3m

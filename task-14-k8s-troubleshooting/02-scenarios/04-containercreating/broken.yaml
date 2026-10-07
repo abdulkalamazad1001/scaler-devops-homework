@@ -1,0 +1,19 @@
+# BUG: mounts ConfigMap "app-settings" as a volume, but that ConfigMap was never created.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configvol-demo
+  labels:
+    scenario: containercreating
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.27
+      volumeMounts:
+        - name: app-settings
+          mountPath: /etc/app
+          readOnly: true
+  volumes:
+    - name: app-settings
+      configMap:
+        name: app-settings

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-lb
+  labels:
+    app: web-lb
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-lb
+  template:
+    metadata:
+      labels:
+        app: web-lb
+    spec:
+      containers:
+        - name: web
+          image: nginx:1.27-alpine
+          # Page names the app and the Pod that served it, so load balancing is visible.
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              echo "web-lb served by $(hostname)" > /usr/share/nginx/html/index.html
+              exec nginx -g 'daemon off;'
+          ports:
+            - name: http
+              containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            periodSeconds: 5
+          resources:
+            requests:
+              cpu: 20m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi

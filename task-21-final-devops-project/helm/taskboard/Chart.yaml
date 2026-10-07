@@ -1,0 +1,7 @@
+apiVersion: v2
+name: taskboard
+description: TaskBoard (React + FastAPI + PostgreSQL) with ingress, autoscaling and Prometheus monitoring
+type: application
+version: 1.2.0
+appVersion: "4c2e9d1"
+keywords: [taskboard, fastapi, react, postgresql]

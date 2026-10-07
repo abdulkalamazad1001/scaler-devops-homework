@@ -1,0 +1,54 @@
+# Full local stack.  From the project root:
+#   docker compose -f docker/docker-compose.yml up --build
+# Frontend: http://localhost:3000   Backend: http://localhost:8000/docs
+name: taskboard
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: taskboard
+      POSTGRES_USER: taskboard
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-taskboard-local}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U taskboard -d taskboard"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/backend.Dockerfile
+      args:
+        APP_VERSION: compose
+    image: taskboard-backend:local
+    environment:
+      APP_ENV: compose
+      DB_HOST: postgres
+      DB_NAME: taskboard
+      DB_USER: taskboard
+      DB_PASSWORD: ${DB_PASSWORD:-taskboard-local}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/frontend.Dockerfile
+    image: taskboard-frontend:local
+    environment:
+      BACKEND_URL: http://backend:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "3000:8080"
+
+volumes:
+  postgres-data:

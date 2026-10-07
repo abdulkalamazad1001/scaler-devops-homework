@@ -1,0 +1,27 @@
+# Two image problems:
+#   fail-2-imagepull-pod: repository does not exist (course scenario-2)
+#   image-demo:           repository exists, tag does not (course 07-imagepullbackoff)
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fail-2-imagepull-pod
+  labels:
+    tier: triage-gauntlet
+    scenario: imagepull
+spec:
+  containers:
+    - name: web-app
+      # BUG: repository and tag do not exist on Docker Hub
+      image: yatri-api-service:v999-invalid-tag-does-not-exist
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: image-demo
+  labels:
+    scenario: imagepull
+spec:
+  containers:
+    - name: app
+      # BUG: nginx exists, this tag does not
+      image: nginx:this-image-does-not-exist

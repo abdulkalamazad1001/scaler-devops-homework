@@ -1,0 +1,28 @@
+# BROKEN on purpose (scenario 3): copied from a cluster that runs Traefik.
+# No controller in this cluster claims the class "traefik".
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: demo-ingress
+  labels:
+    app: demo
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: demo.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web-svc
+                port:
+                  number: 80
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: api-svc
+                port:
+                  number: 80

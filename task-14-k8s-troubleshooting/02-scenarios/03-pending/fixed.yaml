@@ -1,0 +1,31 @@
+# Requests sized to what the container really needs and what one node can offer.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fail-3-pending-pod
+  labels:
+    tier: triage-gauntlet
+    scenario: pending
+spec:
+  containers:
+    - name: hungry-app
+      image: nginx:alpine
+      resources:
+        requests:
+          cpu: 100m
+          memory: 128Mi
+        limits:
+          cpu: 250m
+          memory: 256Mi
+---
+# nodeSelector removed (or set to a label a node really has, see kubectl get nodes --show-labels)
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pending-demo
+  labels:
+    scenario: pending
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.27

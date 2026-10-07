@@ -1,0 +1,27 @@
+# Both pods point at an image reference that exists.
+# For the yatri-api-service case the real fix is the full, correct reference
+# (registry/owner/repo:tag, e.g. ghcr.io/devops-student/yatri-api-service:v1.0.0)
+# plus an imagePullSecret if the registry is private. nginx:1.27 stands in here
+# so the manifest works on any cluster.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fail-2-imagepull-pod
+  labels:
+    tier: triage-gauntlet
+    scenario: imagepull
+spec:
+  containers:
+    - name: web-app
+      image: nginx:1.27
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: image-demo
+  labels:
+    scenario: imagepull
+spec:
+  containers:
+    - name: app
+      image: nginx:1.27

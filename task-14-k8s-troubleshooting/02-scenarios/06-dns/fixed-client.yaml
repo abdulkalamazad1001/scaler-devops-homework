@@ -1,0 +1,18 @@
+# Fixed: use the namespace-qualified name (orders-api.production would also work).
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dns-client
+  labels:
+    scenario: dns
+spec:
+  containers:
+    - name: client
+      image: curlimages/curl:8.6.0
+      command: ["sh", "-c"]
+      args:
+        - |
+          while true; do
+            curl -sSf -o /dev/null --connect-timeout 3 http://orders-api.production.svc.cluster.local && echo "OK: orders-api reachable"
+            sleep 10
+          done

@@ -1,0 +1,22 @@
+# Provider plugins downloaded by terraform init
+.terraform/
+# State files: contain resource IDs and can contain secrets; never commit
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+# Saved plans
+*.tfplan
+tfplan
+# Crash logs
+crash.log
+crash.*.log
+# Local overrides and real backend config
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+backend.tf
+.terraformrc
+terraform.rc
+# terraform.tfvars here holds no secrets and is committed on purpose.
+# .terraform.lock.hcl is committed on purpose.

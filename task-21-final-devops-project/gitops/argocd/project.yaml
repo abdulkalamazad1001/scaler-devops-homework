@@ -1,0 +1,18 @@
+# AppProject: limits what the TaskBoard applications may deploy and where.
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: taskboard
+  namespace: argocd
+spec:
+  description: TaskBoard application
+  # Only this repository may be deployed, only into the taskboard namespace.
+  sourceRepos:
+    - https://github.com/devops-student/final-devops-project.git
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: taskboard
+  # The only cluster-scoped object the app may create is its namespace.
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace

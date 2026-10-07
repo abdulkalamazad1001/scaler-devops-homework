@@ -1,0 +1,76 @@
+# Plain Prometheus rules file. The same groups are wrapped in a PrometheusRule
+# object in ../k8s/prometheusrule.yaml so the Prometheus Operator loads them.
+# Check with:  promtool check rules metrics-demo-rules.yaml
+# Unit test:   promtool test rules metrics-demo-rules.test.yaml
+groups:
+  - name: metrics-demo.rules
+    rules:
+      - record: job:demo_http_requests:rate5m
+        expr: sum by (job) (rate(demo_http_requests_total[5m]))
+
+      - record: job:demo_http_errors:ratio_rate5m
+        expr: |
+          sum by (job) (rate(demo_http_requests_total{status=~"5.."}[5m]))
+            /
+          sum by (job) (rate(demo_http_requests_total[5m]))
+
+      - alert: MetricsDemoDown
+        expr: up{job="metrics-demo"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: metrics-demo target {{ $labels.instance }} is down
+          description: Prometheus could not scrape {{ $labels.instance }} for more than 1 minute.
+
+      - alert: MetricsDemoHighErrorRate
+        expr: |
+          sum by (namespace, job) (rate(demo_http_requests_total{job="metrics-demo", status=~"5.."}[2m]))
+            /
+          sum by (namespace, job) (rate(demo_http_requests_total{job="metrics-demo"}[2m]))
+            > 0.05
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: metrics-demo is returning more than 5% errors
+          description: '{{ $value | humanizePercentage }} of requests failed over the last 2 minutes.'
+
+      - alert: MetricsDemoHighCPU
+        expr: |
+          sum by (namespace, pod) (rate(container_cpu_usage_seconds_total{namespace="monitoring-demo", container="metrics-demo"}[2m]))
+            /
+          sum by (namespace, pod) (kube_pod_container_resource_limits{namespace="monitoring-demo", container="metrics-demo", resource="cpu"})
+            > 0.8
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: CPU of {{ $labels.pod }} above 80% of its limit
+          description: '{{ $labels.pod }} is using {{ $value | humanizePercentage }} of its CPU limit.'
+
+      - alert: MetricsDemoHighMemory
+        expr: |
+          sum by (namespace, pod) (container_memory_working_set_bytes{namespace="monitoring-demo", container="metrics-demo"})
+            /
+          sum by (namespace, pod) (kube_pod_container_resource_limits{namespace="monitoring-demo", container="metrics-demo", resource="memory"})
+            > 0.8
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: Memory of {{ $labels.pod }} above 80% of its limit
+          description: '{{ $labels.pod }} is using {{ $value | humanizePercentage }} of its memory limit.'
+
+      - alert: MetricsDemoReplicasUnavailable
+        expr: |
+          kube_deployment_spec_replicas{namespace="monitoring-demo", deployment="metrics-demo"}
+            -
+          kube_deployment_status_replicas_available{namespace="monitoring-demo", deployment="metrics-demo"}
+            > 0
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: metrics-demo has unavailable replicas
+          description: '{{ $value }} replica(s) of metrics-demo are not available (failing readiness or not scheduled).'

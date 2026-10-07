@@ -1,0 +1,42 @@
+# Project-specific Semgrep rules, run together with the public rulesets:
+#   semgrep scan --config p/python --config p/javascript --config p/dockerfile \
+#                --config security/semgrep-rules.yaml --error
+rules:
+  - id: fastapi-cors-allow-all-origins
+    languages: [python]
+    severity: ERROR
+    message: >-
+      CORSMiddleware with allow_origins=["*"] lets any website call this API from a
+      browser. The frontend is served from the same origin through nginx/Ingress,
+      so CORS is not needed; if it is, list the allowed origins explicitly.
+    patterns:
+      - pattern: $APP.add_middleware(CORSMiddleware, ..., allow_origins=["*"], ...)
+    metadata:
+      category: security
+      cwe: "CWE-942: Permissive Cross-domain Policy with Untrusted Domains"
+
+  - id: sqlalchemy-raw-sql-fstring
+    languages: [python]
+    severity: ERROR
+    message: Raw SQL built with an f-string can lead to SQL injection. Use bound parameters.
+    pattern-either:
+      - pattern: text(f"...")
+      - pattern: $DB.execute(f"...")
+    metadata:
+      category: security
+      cwe: "CWE-89: SQL Injection"
+
+  - id: k8s-image-without-pinned-tag
+    languages: [yaml]
+    severity: ERROR
+    message: >-
+      Container image "$IMAGE" uses :latest or no tag. Pin a version or the
+      commit SHA so deployments are repeatable and roll-backs work.
+    paths:
+      include:
+        - "kubernetes/*.yaml"
+    patterns:
+      - pattern: "image: $IMAGE"
+      - metavariable-regex:
+          metavariable: $IMAGE
+          regex: ^([^:@]+|.*:latest)$

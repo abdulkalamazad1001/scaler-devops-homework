@@ -1,0 +1,47 @@
+# Fix 1: provide DATABASE_URL from a ConfigMap.
+# Fix 2: keep the process running. The original script exits with code 0 right
+#        after "started successfully", and with restartPolicy Always a container
+#        that exits (even successfully) is restarted, so it would still end up in
+#        CrashLoopBackOff.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: crashloop-app-config
+  labels:
+    tier: triage-gauntlet
+data:
+  DATABASE_URL: "postgres://demo_user@postgres-db.production.svc.cluster.local:5432/demo_db"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fail-1-crashloop-pod
+  labels:
+    tier: triage-gauntlet
+    scenario: crashloop
+spec:
+  containers:
+    - name: python-app
+      image: python:3.11-alpine
+      envFrom:
+        - configMapRef:
+            name: crashloop-app-config
+      command:
+        - "python3"
+        - "-c"
+        - |
+          import os, sys, time
+          db_url = os.environ.get("DATABASE_URL")
+          if not db_url:
+              print("[FATAL ERROR]: DATABASE_URL environment variable is MISSING!", file=sys.stderr)
+              sys.exit(1)
+          print("Application started successfully!", flush=True)
+          while True:
+              time.sleep(30)
+      resources:
+        requests:
+          cpu: 10m
+          memory: 32Mi
+        limits:
+          cpu: 100m
+          memory: 64Mi

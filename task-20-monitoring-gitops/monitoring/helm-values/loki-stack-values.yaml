@@ -1,0 +1,25 @@
+# Values for grafana/loki-stack 2.10.2 (Loki 2.9.3 + Promtail 2.9.3).
+# helm upgrade --install loki grafana/loki-stack --version 2.10.2 \
+#   -n monitoring -f loki-stack-values.yaml
+#
+# Grafana comes from kube-prometheus-stack, so the bundled one is disabled and
+# the Loki data source is added in kube-prometheus-stack-values.yaml instead.
+loki:
+  enabled: true
+  isDefault: false
+  persistence:
+    enabled: false
+  config:
+    table_manager:
+      retention_deletes_enabled: true
+      retention_period: 48h
+
+promtail:
+  enabled: true
+
+grafana:
+  enabled: false
+prometheus:
+  enabled: false
+fluent-bit:
+  enabled: false
