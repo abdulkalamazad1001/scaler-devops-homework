@@ -1,0 +1,14 @@
+# Phase: Pending. Requests far more CPU and memory than the minikube node has,
+# so the scheduler can never place it.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: lifecycle-pending
+spec:
+  containers:
+    - name: impossible-resource
+      image: nginx:1.27
+      resources:
+        requests:
+          cpu: "16"
+          memory: 64Gi

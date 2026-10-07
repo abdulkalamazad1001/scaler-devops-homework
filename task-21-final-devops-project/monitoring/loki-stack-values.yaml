@@ -1,0 +1,16 @@
+# grafana/loki-stack 2.10.2 (Loki + Promtail). Grafana comes from kube-prometheus-stack.
+#   helm upgrade --install loki grafana/loki-stack --version 2.10.2 -n monitoring -f monitoring/loki-stack-values.yaml
+loki:
+  enabled: true
+  isDefault: false
+  persistence:
+    enabled: true
+    size: 5Gi
+promtail:
+  enabled: true
+grafana:
+  enabled: false
+prometheus:
+  enabled: false
+fluent-bit:
+  enabled: false

@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-settings
+  labels:
+    scenario: containercreating
+data:
+  settings.ini: |
+    [app]
+    mode=production
+    workers=2
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configvol-demo
+  labels:
+    scenario: containercreating
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.27
+      volumeMounts:
+        - name: app-settings
+          mountPath: /etc/app
+          readOnly: true
+  volumes:
+    - name: app-settings
+      configMap:
+        name: app-settings

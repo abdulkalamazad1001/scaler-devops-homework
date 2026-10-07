@@ -1,0 +1,44 @@
+# Declarative version of what the Kubernetes Basics tutorial builds with
+# "kubectl create deployment" and "kubectl expose". Applying this gives the same
+# Deployment and NodePort Service as the imperative commands in submission.md.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernetes-bootcamp
+  labels:
+    app: kubernetes-bootcamp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubernetes-bootcamp
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: kubernetes-bootcamp
+    spec:
+      containers:
+        - name: kubernetes-bootcamp
+          image: gcr.io/google-samples/kubernetes-bootcamp:v1
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubernetes-bootcamp
+  labels:
+    app: kubernetes-bootcamp
+spec:
+  type: NodePort
+  selector:
+    app: kubernetes-bootcamp
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP

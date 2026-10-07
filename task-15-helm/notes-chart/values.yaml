@@ -1,0 +1,29 @@
+# Default (development) values for notes-chart.
+
+replicaCount: 1
+
+image:
+  repository: nginx
+  tag: "1.24"
+  pullPolicy: IfNotPresent
+
+service:
+  # NodePort so the app can be reached on the minikube node IP
+  type: NodePort
+  port: 80
+  # Leave empty to let Kubernetes pick a free port in 30000-32767
+  nodePort: 30090
+
+app:
+  name: notes-app
+  environment: development
+  # Shown on the home page served by nginx
+  message: "Welcome to the Notes app"
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 32Mi
+  limits:
+    cpu: 200m
+    memory: 128Mi

@@ -1,0 +1,19 @@
+# Tells the Prometheus Operator to scrape every endpoint of the metrics-demo Service.
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: metrics-demo
+  namespace: monitoring-demo
+  labels:
+    release: kube-prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      app: metrics-demo
+  namespaceSelector:
+    matchNames:
+      - monitoring-demo
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 15s

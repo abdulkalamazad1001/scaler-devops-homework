@@ -1,0 +1,29 @@
+# Init containers run one after another, each to completion, before the app
+# container starts. The first writes the web page into a shared emptyDir,
+# the second simulates waiting for a dependency.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: lifecycle-init
+spec:
+  volumes:
+    - name: html
+      emptyDir: {}
+  initContainers:
+    - name: write-content
+      image: busybox:1.36
+      command: ["sh", "-c", "echo 'page written by init container' > /work/index.html; echo 'content ready'"]
+      volumeMounts:
+        - name: html
+          mountPath: /work
+    - name: wait-for-deps
+      image: busybox:1.36
+      command: ["sh", "-c", "echo 'waiting 10s for dependencies'; sleep 10; echo 'dependencies ready'"]
+  containers:
+    - name: web
+      image: nginx:1.27
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html

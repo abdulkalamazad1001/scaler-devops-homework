@@ -1,0 +1,84 @@
+# Default values. Environment files (values-dev.yaml, values-prod.yaml) override these.
+
+image:
+  registry: ghcr.io/devops-student
+  # Commit SHA of the build. CI writes the new value into values-dev.yaml.
+  tag: "4c2e9d1"
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+
+config:
+  appEnv: dev
+  logLevel: INFO
+
+database:
+  name: taskboard
+  user: taskboard
+  # Name of an existing Secret with keys DB_USER and DB_PASSWORD.
+  # When empty the chart creates one from database.password (which is then required).
+  existingSecret: ""
+  password: ""
+
+postgres:
+  # In-cluster PostgreSQL. Set to false and point database.host at RDS for production.
+  enabled: true
+  image: postgres:16-alpine
+  host: ""          # defaults to the in-cluster Service name
+  storage:
+    size: 1Gi
+    storageClassName: ""   # "" = cluster default (minikube: standard, EKS: gp2)
+  resources:
+    requests: {cpu: 100m, memory: 128Mi}
+    limits: {cpu: 500m, memory: 512Mi}
+
+backend:
+  repository: taskboard-backend
+  replicaCount: 2
+  port: 8000
+  probes:
+    livenessPath: /health
+    readinessPath: /ready
+  resources:
+    requests: {cpu: 100m, memory: 128Mi}
+    limits: {cpu: 500m, memory: 256Mi}
+
+frontend:
+  repository: taskboard-frontend
+  replicaCount: 2
+  port: 8080
+  resources:
+    requests: {cpu: 50m, memory: 32Mi}
+    limits: {cpu: 200m, memory: 128Mi}
+
+ingress:
+  enabled: true
+  className: nginx
+  host: taskboard.local
+  annotations: {}
+  tls: []
+  #  - secretName: taskboard-tls
+  #    hosts: [taskboard.example.com]
+
+hpa:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 70
+
+monitoring:
+  # Requires the Prometheus Operator CRDs (kube-prometheus-stack).
+  serviceMonitor:
+    enabled: true
+    interval: 15s
+  prometheusRule:
+    enabled: true
+  # Grafana dashboard ConfigMap (dashboards/taskboard.json).
+  dashboard:
+    enabled: true
+  labels:
+    release: kube-prometheus-stack
+
+networkPolicy:
+  # Only enforced when the CNI supports NetworkPolicy (Calico, Cilium, EKS VPC CNI with policy enabled).
+  enabled: false

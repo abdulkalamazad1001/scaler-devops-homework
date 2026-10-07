@@ -1,0 +1,89 @@
+# Plain-kubectl version of the objects the Helm chart renders (helm/taskboard/templates/).
+# Use with the manifests in kubernetes/; the Helm/Argo CD path does not need this file.
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: taskboard
+  namespace: taskboard
+  labels:
+    app.kubernetes.io/name: taskboard
+    app.kubernetes.io/part-of: taskboard
+    release: kube-prometheus-stack
+spec:
+  groups:
+  - name: taskboard.rules
+    rules:
+    - record: taskboard:http_requests:rate5m
+      expr: sum by (namespace, status) (rate(http_requests_total{job="taskboard-backend"}[5m]))
+    - record: taskboard:http_request_duration_seconds:p95_5m
+      expr: histogram_quantile(0.95, sum by (namespace, le) (rate(http_request_duration_highr_seconds_bucket{job="taskboard-backend"}[5m])))
+    - alert: TaskboardBackendDown
+      expr: up{job="taskboard-backend"} == 0
+      for: 1m
+      labels:
+        severity: critical
+      annotations:
+        summary: TaskBoard backend target {{ $labels.pod }} is down
+        description: Prometheus has not been able to scrape {{ $labels.instance }} for 1 minute.
+    - alert: TaskboardHighErrorRate
+      expr: |
+        sum by (namespace) (rate(http_requests_total{job="taskboard-backend", status="5xx"}[5m]))
+          /
+        sum by (namespace) (rate(http_requests_total{job="taskboard-backend"}[5m]))
+          > 0.05
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: TaskBoard API error rate above 5%
+        description: '{{ $value | humanizePercentage }} of API requests returned 5xx in the last 5 minutes.'
+    - alert: TaskboardHighLatency
+      expr: taskboard:http_request_duration_seconds:p95_5m{namespace="taskboard"} > 0.5
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        summary: TaskBoard API p95 latency above 500ms
+        description: p95 latency is {{ $value | humanizeDuration }}.
+    - alert: TaskboardReplicasUnavailable
+      expr: |
+        kube_deployment_spec_replicas{namespace="taskboard", deployment=~"taskboard-.*"}
+          -
+        kube_deployment_status_replicas_available{namespace="taskboard", deployment=~"taskboard-.*"}
+          > 0
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: '{{ $labels.deployment }} has unavailable replicas'
+        description: '{{ $value }} replica(s) of {{ $labels.deployment }} are not ready for 5 minutes.'
+    - alert: TaskboardPodRestarting
+      expr: increase(kube_pod_container_status_restarts_total{namespace="taskboard"}[15m]) > 2
+      labels:
+        severity: warning
+      annotations:
+        summary: '{{ $labels.pod }} restarted more than twice in 15 minutes'
+        description: Container {{ $labels.container }} is restarting. Check `kubectl logs --previous`.
+    - alert: TaskboardHPAAtMaxReplicas
+      expr: |
+        kube_horizontalpodautoscaler_status_current_replicas{namespace="taskboard"}
+          >=
+        kube_horizontalpodautoscaler_spec_max_replicas{namespace="taskboard"}
+      for: 15m
+      labels:
+        severity: warning
+      annotations:
+        summary: HPA {{ $labels.horizontalpodautoscaler }} has been at max replicas for 15 minutes
+        description: The backend cannot scale further. Raise maxReplicas or add nodes.
+    - alert: TaskboardDatabaseVolumeFilling
+      expr: |
+        kubelet_volume_stats_available_bytes{namespace="taskboard", persistentvolumeclaim=~"data-.*postgres.*"}
+          /
+        kubelet_volume_stats_capacity_bytes{namespace="taskboard", persistentvolumeclaim=~"data-.*postgres.*"}
+          < 0.15
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        summary: PostgreSQL volume {{ $labels.persistentvolumeclaim }} has less than 15% free space
+        description: Only {{ $value | humanizePercentage }} of the volume is free.

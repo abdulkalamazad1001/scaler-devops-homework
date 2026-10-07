@@ -1,0 +1,13 @@
+# Second Pending cause (course 08-pending-pods): nodeSelector matches no node.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pending-demo
+  labels:
+    scenario: pending
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: node-that-does-not-exist
+  containers:
+    - name: nginx
+      image: nginx:1.27

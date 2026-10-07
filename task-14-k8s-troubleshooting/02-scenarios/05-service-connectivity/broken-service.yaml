@@ -1,0 +1,14 @@
+# Two bugs:
+#   selector app: web-app  -> pods are labelled app: web, so no endpoints
+#   targetPort: 8080       -> nginx listens on 80
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  type: ClusterIP
+  selector:
+    app: web-app
+  ports:
+    - port: 80
+      targetPort: 8080

@@ -1,0 +1,22 @@
+# Production overrides. Only keys that differ from values.yaml are needed,
+# Helm merges this file on top of the defaults.
+
+replicaCount: 3
+
+image:
+  tag: "1.25"
+
+service:
+  # Different NodePort so a dev and a prod release can run side by side
+  nodePort: 30091
+
+app:
+  environment: production
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 64Mi
+  limits:
+    cpu: 500m
+    memory: 256Mi

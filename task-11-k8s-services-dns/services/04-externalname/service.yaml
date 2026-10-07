@@ -1,0 +1,9 @@
+# ExternalName: no selector, no ClusterIP, no endpoints. CoreDNS answers queries for
+# external-api.default.svc.cluster.local with a CNAME to example.com.
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-api
+spec:
+  type: ExternalName
+  externalName: example.com

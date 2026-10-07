@@ -1,0 +1,39 @@
+# EKS (terraform/), ingress-nginx in front, TLS from cert-manager.
+image:
+  tag: "4c2e9d1"
+
+config:
+  appEnv: prod
+  logLevel: WARNING
+
+database:
+  existingSecret: taskboard-db
+
+postgres:
+  storage:
+    size: 10Gi
+    storageClassName: gp2
+
+backend:
+  replicaCount: 3
+  resources:
+    requests: {cpu: 250m, memory: 256Mi}
+    limits: {cpu: "1", memory: 512Mi}
+
+frontend:
+  replicaCount: 3
+
+ingress:
+  host: taskboard.example.com
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+  tls:
+    - secretName: taskboard-tls
+      hosts: [taskboard.example.com]
+
+hpa:
+  minReplicas: 3
+  maxReplicas: 10
+
+networkPolicy:
+  enabled: true

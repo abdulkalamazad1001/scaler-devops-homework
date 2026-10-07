@@ -1,0 +1,28 @@
+# emptyDir: scratch space created when the Pod starts and deleted with the Pod.
+# Two containers in the same Pod share it: "writer" appends a line every
+# 5 seconds, "reader" follows the file.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: emptydir-demo
+  labels:
+    app: emptydir-demo
+spec:
+  containers:
+    - name: writer
+      image: busybox:1.36
+      command: ["sh", "-c", "while true; do echo \"$(date -u +%H:%M:%S) written by writer\" >> /cache/log.txt; sleep 5; done"]
+      volumeMounts:
+        - name: cache
+          mountPath: /cache
+    - name: reader
+      image: busybox:1.36
+      command: ["sh", "-c", "touch /cache/log.txt; tail -f /cache/log.txt"]
+      volumeMounts:
+        - name: cache
+          mountPath: /cache
+          readOnly: true
+  volumes:
+    - name: cache
+      emptyDir:
+        sizeLimit: 64Mi

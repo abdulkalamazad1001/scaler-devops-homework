@@ -1,0 +1,22 @@
+# Both images are built with the project root as the context:
+#   docker build -f docker/backend.Dockerfile .
+.git
+.github
+**/node_modules
+**/dist
+**/__pycache__
+**/*.pyc
+**/.pytest_cache
+**/.ruff_cache
+**/.coverage
+**/.venv
+**/.env
+**/test.db
+application/backend/tests
+terraform
+kubernetes
+helm
+gitops
+monitoring
+security
+*.md

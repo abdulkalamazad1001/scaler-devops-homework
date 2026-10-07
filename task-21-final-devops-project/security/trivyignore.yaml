@@ -1,0 +1,19 @@
+# Accepted risks. Every entry has a statement (why) and an expiry date, after
+# which the finding blocks the pipeline again and has to be reviewed.
+misconfigurations:
+  - id: AWS-0040
+    paths:
+      - "terraform-aws-modules/eks/aws/main.tf"
+    statement: >-
+      The EKS API endpoint is public so the cluster can be managed from a laptop
+      without a VPN or bastion. Access is limited to var.api_allowed_cidrs (no
+      0.0.0.0/0, enforced by a variable validation) and requires IAM auth.
+    expired_at: 2027-03-31
+
+  - id: AWS-0104
+    paths:
+      - "terraform-aws-modules/eks/aws/node_groups.tf"
+    statement: >-
+      Worker nodes need outbound HTTPS through the NAT gateway to pull images from
+      ghcr.io and reach AWS APIs. Ingress to the nodes stays restricted.
+    expired_at: 2027-03-31

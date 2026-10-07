@@ -1,0 +1,9 @@
+# Waiting: ErrImagePull / ImagePullBackOff. The image does not exist.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: lifecycle-image-error
+spec:
+  containers:
+    - name: broken-image
+      image: doesnotexist/no-such-image:1.0

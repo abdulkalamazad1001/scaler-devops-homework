@@ -1,0 +1,5 @@
+# Bandit (Python SAST):  bandit -c security/bandit.yaml -r application/backend/app
+# Tests use assert on purpose, so they are not scanned.
+exclude_dirs:
+  - application/backend/tests
+  - application/backend/alembic

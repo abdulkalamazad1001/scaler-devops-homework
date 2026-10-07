@@ -1,0 +1,86 @@
+# Values for prometheus-community/kube-prometheus-stack 65.1.1 on a 2 CPU / 4 GB minikube.
+# helm upgrade --install kube-prometheus-stack prometheus-community/kube-prometheus-stack \
+#   --version 65.1.1 -n monitoring --create-namespace -f kube-prometheus-stack-values.yaml
+
+# minikube runs these control plane components bound to 127.0.0.1, so Prometheus
+# cannot scrape them and the stack would raise TargetDown alerts for them forever.
+kubeControllerManager:
+  enabled: false
+kubeScheduler:
+  enabled: false
+kubeEtcd:
+  enabled: false
+kubeProxy:
+  enabled: false
+
+prometheus:
+  prometheusSpec:
+    # Pick up ServiceMonitors / PrometheusRules from every namespace, not only
+    # objects labelled with this Helm release.
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+    ruleSelectorNilUsesHelmValues: false
+    retention: 2d
+    scrapeInterval: 15s
+    evaluationInterval: 15s
+    resources:
+      requests:
+        cpu: 200m
+        memory: 512Mi
+      limits:
+        memory: 1Gi
+
+alertmanager:
+  alertmanagerSpec:
+    resources:
+      requests:
+        cpu: 20m
+        memory: 64Mi
+  config:
+    route:
+      group_by: ["alertname", "namespace"]
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 4h
+      receiver: "null"
+      routes:
+        - matchers:
+            - alertname = "Watchdog"
+          receiver: "null"
+        - matchers:
+            - namespace = "monitoring-demo"
+          receiver: demo-webhook
+    receivers:
+      - name: "null"
+      # Replace the URL with a Slack/Teams/webhook.site endpoint to receive notifications.
+      - name: demo-webhook
+        webhook_configs:
+          - url: http://alert-sink.monitoring-demo.svc:8080/alerts
+            send_resolved: true
+    inhibit_rules:
+      - source_matchers:
+          - severity = "critical"
+        target_matchers:
+          - severity = "warning"
+        equal: ["namespace", "alertname"]
+
+grafana:
+  # Default admin password is prom-operator; read it from the grafana Secret.
+  defaultDashboardsTimezone: utc
+  sidecar:
+    dashboards:
+      enabled: true
+      label: grafana_dashboard
+      labelValue: "1"
+      searchNamespace: ALL
+  additionalDataSources:
+    - name: Loki
+      type: loki
+      uid: loki
+      access: proxy
+      url: http://loki.monitoring.svc:3100
+      isDefault: false
+
+prometheus-node-exporter:
+  hostRootFsMount:
+    enabled: false

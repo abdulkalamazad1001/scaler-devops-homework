@@ -1,0 +1,4 @@
+# Pods are labelled app.kubernetes.io/component=backend, not "api".
+spec:
+  selector:
+    app.kubernetes.io/component: api

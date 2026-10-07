@@ -1,0 +1,8 @@
+# Strategic merge patch: containers are merged by name.
+# The tag is missing its last character (4c2e9d1 -> 4c2e9d).
+spec:
+  template:
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/devops-student/taskboard-backend:4c2e9d

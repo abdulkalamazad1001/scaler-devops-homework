@@ -1,0 +1,42 @@
+# A second StorageClass using the same minikube provisioner, but:
+#   reclaimPolicy: Retain                -> deleting the PVC keeps the PV and its data
+#   volumeBindingMode: WaitForFirstConsumer -> the volume is only provisioned once a
+#                                           Pod using the PVC is scheduled
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: standard-retain
+provisioner: k8s.io/minikube-hostpath
+reclaimPolicy: Retain
+volumeBindingMode: WaitForFirstConsumer
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: retain-pvc
+spec:
+  storageClassName: standard-retain
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 200Mi
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: retain-demo
+  labels:
+    app: retain-demo
+spec:
+  containers:
+    - name: app
+      image: busybox:1.36
+      command: ["sh", "-c", "sleep 3600"]
+      volumeMounts:
+        - name: data
+          mountPath: /data
+  volumes:
+    - name: data
+      persistentVolumeClaim:
+        claimName: retain-pvc

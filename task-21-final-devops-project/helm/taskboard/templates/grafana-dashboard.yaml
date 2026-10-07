@@ -1,0 +1,13 @@
+{{- if .Values.monitoring.dashboard.enabled }}
+# Picked up by the Grafana dashboard sidecar (searchNamespace: ALL).
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "taskboard.fullname" . }}-dashboard
+  labels:
+    {{- include "taskboard.labels" . | nindent 4 }}
+    grafana_dashboard: "1"
+data:
+  taskboard.json: |-
+{{ .Files.Get "dashboards/taskboard.json" | indent 4 }}
+{{- end }}
