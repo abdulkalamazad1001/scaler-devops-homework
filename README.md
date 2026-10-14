@@ -1,5 +1,13 @@
 # Scaler DevOps Homework
 
+## Final Capstone: CampusDesk
+
+The original campus IT helpdesk project is in **[capstone-campusdesk/](capstone-campusdesk/README.md)**.
+It includes React, FastAPI, PostgreSQL, Docker, GitHub Actions, Trivy, Terraform, Kubernetes,
+Helm, Argo CD, Prometheus and Grafana. See the **[submission checklist](capstone-campusdesk/SUBMISSION.md)**
+for actual verification status and remaining evidence. Earlier homework/reference folders are separate.
+
+
 **Name:** T. Abdul Kalam Azad  
 **Roll number:** 24BCS10053  
 **Checkpoints:** 40 of 40 complete
