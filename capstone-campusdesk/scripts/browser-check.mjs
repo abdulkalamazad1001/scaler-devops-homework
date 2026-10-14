@@ -45,6 +45,8 @@ try {
   await page.getByLabel('Search tickets').fill('');
   await page.getByRole('button', { name: 'Library Wi-Fi keeps disconnecting', exact: true }).waitFor();
   await page.setViewportSize({width:390,height:844});
+  await page.getByLabel('Search tickets').blur();
+  await page.locator('.toast').waitFor({state:'hidden'});
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   await page.screenshot({path:path.join(evidence,'application-mobile.png'),fullPage:true});
   await page.getByRole('button',{name:'New ticket',exact:true}).click();

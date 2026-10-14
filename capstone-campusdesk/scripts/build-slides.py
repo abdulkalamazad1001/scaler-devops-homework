@@ -103,7 +103,7 @@ start("Git records the desired deployment", "GitOps")
 bullets(["Argo CD reads the CampusDesk Helm chart from the GitHub repository.",
          "Sync compares the committed configuration with the running cluster.",
          "Migration ordering prepares the database before application rollout.",
-         "Manual sync keeps demonstration changes deliberate and reviewable."])
+         "CI promotes scanned image tags; automatic sync deploys that Git revision."])
 c.showPage()
 
 start("Metrics explain what the service is doing", "Observability")

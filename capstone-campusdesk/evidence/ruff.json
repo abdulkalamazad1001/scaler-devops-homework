@@ -1,0 +1,14 @@
+{
+  "name": "ruff",
+  "capturedAt": "2026-10-14T21:29:45.036518+00:00",
+  "command": [
+    "C:\\Users\\abdul\\Downloads\\devops\\scaler-devops-homework\\capstone-campusdesk\\.venv\\Scripts\\python.exe",
+    "-m",
+    "ruff",
+    "check",
+    "."
+  ],
+  "exitCode": 0,
+  "stdout": "All checks passed!\n",
+  "stderr": ""
+}

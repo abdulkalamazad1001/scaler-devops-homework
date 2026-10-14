@@ -1,0 +1,7 @@
+Captured at 2026-10-14T21:29:45.572218+00:00
+Command: docker image inspect campusdesk-backend:local campusdesk-frontend:local --format {{.RepoTags}} user={{.Config.User}}
+Exit code: 0
+
+[campusdesk-backend:local] user=10001:10001
+[campusdesk-frontend:local] user=101
+

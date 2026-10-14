@@ -1,0 +1,16 @@
+{
+  "capturedAt": "2026-10-14T21:17:18.095Z",
+  "base": "http://127.0.0.1:3000",
+  "passed": [
+    "desktop render",
+    "real create",
+    "search",
+    "edit and persistence",
+    "delete",
+    "mobile layout",
+    "mobile dialog",
+    "error state and retry",
+    "no JavaScript exceptions",
+    "campus image loaded"
+  ]
+}

@@ -10,6 +10,16 @@ implementation for the DevOps capstone, using the course architecture.
 **Start here:** [Submission status](SUBMISSION.md) | [Demo guide](demo/WALKTHROUGH.md) |
 [AWS deployment](terraform/README.md) | [Troubleshooting](troubleshooting/README.md)
 
+**Verified locally:** 16 API tests, browser CRUD checks, healthy Compose and Kind
+deployments, live monitoring, and Argo CD GitOps. The
+[successful CI/CD run](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38639295103)
+tested PostgreSQL, passed both application-image security gates, deployed to Kubernetes,
+published images and promoted their SHA tags. See [real evidence](evidence/README.md),
+[slides](demo/slides.pdf) and the [silent local walkthrough](demo/local-walkthrough.mp4).
+AWS deployment and the complete student-narrated AWS video remain pending.
+
+![CampusDesk running through local Kubernetes Ingress](evidence/application-ingress.png)
+
 ## Architecture
 
 ```mermaid
@@ -124,6 +134,8 @@ It triggers for capstone changes pushed to `main`, pull requests, and manual run
 4. Trivy scans both images and blocks the pipeline on any HIGH or CRITICAL finding.
 5. An ephemeral Kind cluster deploys the Helm chart and runs a smoke test.
 6. A successful main-branch run publishes both images to GHCR.
+7. CI commits those verified SHA tags to `helm/campusdesk/values-release.json`.
+   Argo CD automatically reconciles that release into the local cluster.
 
 Test and scan reports are uploaded as workflow artifacts. There is no `continue-on-error`
 on quality/security gates and no fabricated successful scan output. A failed scan must
@@ -190,15 +202,24 @@ notification destination is configured in the local demonstration.
 ## Argo CD And GitOps
 
 [`gitops/application.yaml`](gitops/application.yaml) tracks this repository's Helm
-chart on `main`, using local images for the local cluster. Install Argo CD with the
-values in `gitops/values-argocd.yaml` and apply that Application after pushing code.
-It uses manual sync so an unreviewed commit cannot alter the running demo.
+chart on `main`. It combines local networking values with the verified GHCR image
+tags in `values-release.json`. CI updates that file only after tests, scans and the
+ephemeral Kubernetes smoke deployment pass. Automated sync and self-healing are
+enabled; automatic pruning is disabled. Promotion commits use `[skip ci]` to avoid
+an image-build loop. The cluster must have the `ghcr-pull` image-pull Secret when
+registry packages are private.
+
+Install Argo CD using `gitops/values-argocd.yaml`, then apply the Application and
+`gitops/argocd-ingress.yaml`. The local Argo CD UI is at
+<http://argocd.localhost:8088>. Its `admin` password is in the
+`argocd-initial-admin-secret` Secret in namespace `argocd`.
 
 Use one deployment owner at a time. Bootstrap with Helm for the Helm demonstration,
 then let Argo CD reconcile the rendered resources for the GitOps demonstration.
 Argo CD uses Helm as a template renderer; its syncs do not create Helm release history.
-When deploying new source code locally, rebuild and load the images before syncing;
-for AWS, commit immutable GHCR tags into a deployment values file.
+The initial Helm demonstration uses loaded local images. The GitOps demonstration
+pulls the scanned registry images by immutable SHA. For AWS, replace the local
+networking values with `values-aws.yaml` and configure the cloud cluster destination.
 
 ## AWS Infrastructure
 

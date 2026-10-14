@@ -6,6 +6,11 @@ The final submission requires a video beginning with at least eight slides, foll
 by the real project walkthrough. A local demonstration is incomplete until the AWS
 portion has also been recorded. Do not claim pending work was executed.
 
+`slides.pdf` contains 12 slides. `local-walkthrough.mp4` is an automated, silent local
+demonstration using the real application, source, command transcripts, CI page and
+monitoring services. It is a rehearsal asset, not a substitute for the complete
+student-narrated recording with AWS evidence required for final submission.
+
 1. Explain CampusDesk's purpose: campus IT tickets with assignment and resolution.
 2. Present the architecture: browser, React/Nginx, FastAPI, PostgreSQL and observability.
 3. Show source code, input validation, migration, and isolated tests.
