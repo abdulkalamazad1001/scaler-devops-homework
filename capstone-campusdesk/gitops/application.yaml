@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: campusdesk
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/abdulkalamazad1001/scaler-devops-homework.git
+    targetRevision: main
+    path: capstone-campusdesk/helm/campusdesk
+    helm:
+      releaseName: campusdesk
+      valueFiles: [values-local.yaml]
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: campusdesk
+  syncPolicy:
+    syncOptions: [CreateNamespace=true]
+  # Preserve the replica count managed by the HorizontalPodAutoscaler.
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      name: backend
+      jsonPointers: [/spec/replicas]

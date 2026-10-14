@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: broken-backend-demo
+  namespace: campusdesk
+spec:
+  selector: {app: nonexistent-backend}
+  ports:
+    - port: 8000
+      targetPort: 8000

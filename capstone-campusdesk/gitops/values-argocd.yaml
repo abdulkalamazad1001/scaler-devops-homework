@@ -1,0 +1,22 @@
+configs:
+  params:
+    server.insecure: true
+server:
+  service:
+    type: ClusterIP
+controller:
+  resources:
+    requests: {cpu: 100m, memory: 128Mi}
+    limits: {cpu: 500m, memory: 512Mi}
+redis:
+  resources:
+    requests: {cpu: 50m, memory: 64Mi}
+repoServer:
+  resources:
+    requests: {cpu: 100m, memory: 128Mi}
+dex:
+  enabled: false
+notifications:
+  enabled: false
+applicationSet:
+  enabled: false

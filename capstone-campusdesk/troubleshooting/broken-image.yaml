@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: broken-image-demo
+  namespace: campusdesk
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: broken-image-demo}
+  template:
+    metadata:
+      labels: {app: broken-image-demo}
+    spec:
+      containers:
+        - name: demo
+          image: nginx:campusdesk-intentionally-missing-tag
+          resources:
+            requests: {cpu: 10m, memory: 32Mi}
+            limits: {cpu: 100m, memory: 64Mi}
