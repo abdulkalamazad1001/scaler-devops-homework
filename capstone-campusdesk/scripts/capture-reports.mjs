@@ -28,8 +28,25 @@ try {
   }
   await page.goto('http://campusdesk.localhost:8088');
   await page.locator('.page-title').getByRole('button',{name:'New ticket',exact:true}).waitFor();
+  await page.waitForFunction(()=>!document.querySelector('button[aria-label="Refresh tickets"]').disabled);
   await page.waitForFunction(()=>Array.from(document.images).every(image=>image.complete));
   await page.screenshot({path:path.join(evidence,'application-ingress.png'),fullPage:true});
+  for (const width of [320,768,1920]) {
+    await page.setViewportSize({width,height:960});
+    await page.screenshot({path:path.join(evidence,`application-${width}.png`),fullPage:true});
+  }
+  await page.setViewportSize({width:320,height:844});
+  await page.locator('.page-title').getByRole('button',{name:'New ticket',exact:true}).click();
+  const controlsFit = await page.locator('dialog').evaluate(dialog => {
+    const bounds = dialog.getBoundingClientRect();
+    return Array.from(dialog.querySelectorAll('input,select,textarea,button')).every(control => {
+      const rect = control.getBoundingClientRect();
+      return rect.left >= bounds.left && rect.right <= bounds.right;
+    });
+  });
+  if (!controlsFit) throw Error('Dialog controls overflow at 320px');
+  await page.screenshot({path:path.join(evidence,'ticket-320.png')});
+  await page.getByRole('button',{name:'Close dialog'}).click();
   console.log('Captured actual transcripts, public packages and Ingress application.');
 } finally {
   await browser.close();

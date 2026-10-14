@@ -19,7 +19,7 @@ let createdId;
 async function loaded() {
   await page.getByRole('heading', { name: 'Support tickets' }).waitFor();
   await page.getByRole('button', { name: 'Refresh tickets' }).waitFor();
-  await page.waitForFunction(() => !document.querySelector('button[aria-label="Refresh tickets"]').disabled);
+  await page.waitForFunction(() => !document.querySelector('button[aria-label="Refresh tickets"]').disabled && !document.querySelector('.ticket-section [role="alert"]'));
 }
 try {
   await page.goto(base);
@@ -96,6 +96,9 @@ try {
   for (const width of [320,768,1920]) {
     await page.setViewportSize({width,height:900});
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    if (width === 768) {
+      assert.equal(await page.getByRole('navigation',{name:'Ticket navigation'}).getByRole('button',{name:'All tickets',exact:true}).count(),1);
+    }
   }
   await page.route('**/api/tickets?**', route=>route.fulfill({json:[]}));
   await page.getByRole('button',{name:'Refresh tickets'}).click();
@@ -108,7 +111,7 @@ try {
   await page.locator('dialog').waitFor({state:'detached'});
   await page.unroute('**/api/tickets?**');
   assert.deepEqual(errors,[]);
-  const result = {capturedAt:new Date().toISOString(),base,passed:['desktop render','real create','search','edit and persistence','delete','mobile layout','mobile dialog','error state and retry','no JavaScript exceptions','campus image loaded','pagination boundary (mocked rows)','disabled pagination on failure','320/768/1920px layout','required-field validation','Escape closes dialog','empty-desk actions'],mocked:['outage response','pagination rows','empty list']};
+  const result = {capturedAt:new Date().toISOString(),base,passed:['desktop render','real create','search','edit and persistence','delete','mobile layout','mobile dialog','error state and retry','no JavaScript exceptions','campus image loaded','pagination boundary (mocked rows)','disabled pagination on failure','320/768/1920px layout','required-field validation','Escape closes dialog','empty-desk actions','accessible tablet navigation'],mocked:['outage response','pagination rows','empty list']};
   await fs.writeFile(path.join(evidence,'browser-results.json'),JSON.stringify(result,null,2));
   console.log(JSON.stringify(result,null,2));
 } catch (error) {
