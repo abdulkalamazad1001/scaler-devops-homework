@@ -3,18 +3,18 @@
   "Trivy": {
     "Version": "0.76.0"
   },
-  "ReportID": "01a13c41-dae6-7c2e-8b45-6265b92345be",
-  "CreatedAt": "2026-10-14T21:11:51.270801487Z",
-  "ArtifactID": "sha256:fedff8fd543b7b61732562973d1e37fd80acb8193f3c707a0ee5032b12f24fe9",
+  "ReportID": "01a13c6f-0532-7dd1-b446-9b1e702e78c5",
+  "CreatedAt": "2026-10-14T22:01:11.218909914Z",
+  "ArtifactID": "sha256:7eccc27a67982f3f513a08ff4ce36288dbcfc6199d5a03c1d308775716be7757",
   "ArtifactName": "campusdesk-frontend:local",
   "ArtifactType": "container_image",
   "Metadata": {
-    "Size": 61873664,
+    "Size": 61874176,
     "OS": {
       "Family": "alpine",
       "Name": "3.24.2"
     },
-    "ImageID": "sha256:db5804d2fd6fce480d0173dfb5d77dba3a48e5631cadb946d53e6ceaccfcb250",
+    "ImageID": "sha256:282bcf630b17ab659db3814d2bf65de70fea8a7caef63544243f7c1041994df8",
     "DiffIDs": [
       "sha256:74d97c428c51a828f9051a7a40a53ff1fc99e54fc30323ce36760701b0b7f711",
       "sha256:720d9f321e9c234d7991181a78c9da51c043d23ecc5820fe203e56afe63c9995",
@@ -26,18 +26,18 @@
       "sha256:98403c68f30ef243514dd1f5ab904bb7a1633a2016a9cc2daf4d84eed88a92ce",
       "sha256:8ec7b3b318c4f16ce61958890ccaccb56e1e785a50699f5c4fd3c783d4ad49eb",
       "sha256:78711d1b213becfb64d051fd453c8a82adf8077733ec3dc2b6f94e94f20bd4be",
-      "sha256:418b67c847bc75493a1f15d60b45fad8bc58f607c827813288d32ea257483ea3"
+      "sha256:1f66163eab38c9fea6134fc7971aa5f423ccd919a8a69f68a563de8736cab1d2"
     ],
     "RepoTags": [
       "campusdesk-frontend:local"
     ],
     "RepoDigests": [
-      "campusdesk-frontend@sha256:db5804d2fd6fce480d0173dfb5d77dba3a48e5631cadb946d53e6ceaccfcb250"
+      "campusdesk-frontend@sha256:282bcf630b17ab659db3814d2bf65de70fea8a7caef63544243f7c1041994df8"
     ],
     "Reference": "campusdesk-frontend:local",
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2026-10-14T21:09:11.079899593Z",
+      "created": "2026-10-14T21:59:29.076388716Z",
       "history": [
         {
           "created": "2026-09-17T20:37:20Z",
@@ -198,24 +198,24 @@
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-14T21:09:11Z",
+          "created": "2026-10-14T21:59:29Z",
           "created_by": "COPY /app/dist /usr/share/nginx/html # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-14T21:09:11Z",
+          "created": "2026-10-14T21:59:29Z",
           "created_by": "USER 101",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-10-14T21:09:11Z",
+          "created": "2026-10-14T21:59:29Z",
           "created_by": "EXPOSE [8080/tcp]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-10-14T21:09:11Z",
+          "created": "2026-10-14T21:59:29Z",
           "created_by": "HEALTHCHECK {Test:[CMD-SHELL wget -q -O /dev/null http://127.0.0.1:8080/healthz || exit 1] Interval:20s Timeout:5s StartPeriod:0s StartInterval:0s Retries:0}",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
@@ -235,7 +235,7 @@
           "sha256:98403c68f30ef243514dd1f5ab904bb7a1633a2016a9cc2daf4d84eed88a92ce",
           "sha256:8ec7b3b318c4f16ce61958890ccaccb56e1e785a50699f5c4fd3c783d4ad49eb",
           "sha256:78711d1b213becfb64d051fd453c8a82adf8077733ec3dc2b6f94e94f20bd4be",
-          "sha256:418b67c847bc75493a1f15d60b45fad8bc58f607c827813288d32ea257483ea3"
+          "sha256:1f66163eab38c9fea6134fc7971aa5f423ccd919a8a69f68a563de8736cab1d2"
         ]
       },
       "config": {
@@ -264,6 +264,9 @@
           "NJS_RELEASE=1"
         ],
         "Labels": {
+          "com.docker.compose.project": "campusdesk",
+          "com.docker.compose.service": "frontend",
+          "com.docker.compose.version": "5.1.4",
           "maintainer": "NGINX Docker Maintainers \u003cdocker-maint@nginx.com\u003e",
           "org.opencontainers.image.created": "2026-10-14T17:14:41.904Z",
           "org.opencontainers.image.description": "Unprivileged NGINX Dockerfiles",
@@ -335,9 +338,9 @@
         "DiffID": "sha256:78711d1b213becfb64d051fd453c8a82adf8077733ec3dc2b6f94e94f20bd4be"
       },
       {
-        "Size": 330752,
-        "Digest": "sha256:66a9a052db317d078fbd514a86af6d47f4397213de78a620a1ae9d9e4488ed73",
-        "DiffID": "sha256:418b67c847bc75493a1f15d60b45fad8bc58f607c827813288d32ea257483ea3"
+        "Size": 331264,
+        "Digest": "sha256:0465bb25f3478440106471c76f326a85e2102aa57084a4ac4866880192b43b99",
+        "DiffID": "sha256:1f66163eab38c9fea6134fc7971aa5f423ccd919a8a69f68a563de8736cab1d2"
       }
     ]
   },

@@ -1,7 +1,12 @@
-Captured at 2026-10-14T21:29:55.928659+00:00
+Captured at 2026-10-14T22:07:01.884741+00:00
 Command: git log -15 --format=%h %s
 Exit code: 0
 
+f25cceb chore(gitops): promote verified CampusDesk images [skip ci]
+475f2ae fix(ui): retain accessible navigation labels and stabilize retry verification
+4649898 test(capstone): verify empty-desk actions and reliable evidence capture
+26a737c fix(capstone): cover API failures, pagination and deployed browser checks
+ebae0db docs(capstone): publish verified evidence, slides and local walkthrough [skip ci]
 d2de93d chore(gitops): promote verified CampusDesk images [skip ci]
 7e81657 feat(cd): promote scanned registry images through automated Argo CD sync
 dff7d32 fix(deployment): handle Windows local DNS and graceful pod shutdown
@@ -12,9 +17,4 @@ a2d03ad docs(campusdesk): document operation grading evidence and presentation
 b2fe379 feat(observability): provision Prometheus and Grafana service dashboards
 e2ba761 infra(campusdesk): package replicas persistence ingress and HPA with Helm
 9cacd7c build(campusdesk): containerize non-root services and database startup
-2ec707c feat(campusdesk): build responsive campus support workspace
-338434b test(campusdesk): cover CRUD validation filters and database failures
-2d0d7ff feat(campusdesk): implement validated ticket API and health metrics
-c224414 feat(campusdesk): define PostgreSQL ticket schema and migration
-785d9b1 Merge pull request #1 from Shaikh-Suja-Rahaman/main
 

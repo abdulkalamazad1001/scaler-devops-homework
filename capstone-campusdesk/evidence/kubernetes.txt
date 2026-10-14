@@ -1,27 +1,27 @@
-Captured at 2026-10-14T21:29:45.726435+00:00
+Captured at 2026-10-14T22:06:54.472328+00:00
 Command: kubectl --context kind-campusdesk -n campusdesk get pods,svc,ingress,hpa
 Exit code: 0
 
 NAME                              READY   STATUS    RESTARTS   AGE
-pod/backend-847764b968-bshbs      1/1     Running   0          83s
-pod/backend-847764b968-tjtkw      1/1     Running   0          53s
-pod/frontend-78d8685995-fl8l2     1/1     Running   0          72s
-pod/frontend-78d8685995-jvcpp     1/1     Running   0          83s
-pod/grafana-57987d6bb8-qjcm5      1/1     Running   0          27m
-pod/postgres-0                    1/1     Running   0          27m
-pod/prometheus-55556d754b-c68vp   1/1     Running   0          27m
+pod/backend-86b4d9b9cb-p5z4q      1/1     Running   0          61s
+pod/backend-86b4d9b9cb-zvwkp      1/1     Running   0          76s
+pod/frontend-5c9c7cf5-bbm4h       1/1     Running   0          76s
+pod/frontend-5c9c7cf5-nbhcz       1/1     Running   0          66s
+pod/grafana-57987d6bb8-qjcm5      1/1     Running   0          64m
+pod/postgres-0                    1/1     Running   0          64m
+pod/prometheus-55556d754b-c68vp   1/1     Running   0          64m
 
 NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
-service/backend           ClusterIP   10.96.179.39    <none>        8000/TCP         27m
-service/backend-metrics   ClusterIP   None            <none>        8000/TCP         27m
-service/frontend          ClusterIP   10.96.17.71     <none>        8080/TCP         27m
-service/grafana           NodePort    10.96.109.255   <none>        3000:30300/TCP   27m
-service/postgres          ClusterIP   None            <none>        5432/TCP         27m
-service/prometheus        NodePort    10.96.145.135   <none>        9090:30900/TCP   27m
+service/backend           ClusterIP   10.96.179.39    <none>        8000/TCP         64m
+service/backend-metrics   ClusterIP   None            <none>        8000/TCP         64m
+service/frontend          ClusterIP   10.96.17.71     <none>        8080/TCP         64m
+service/grafana           NodePort    10.96.109.255   <none>        3000:30300/TCP   64m
+service/postgres          ClusterIP   None            <none>        5432/TCP         64m
+service/prometheus        NodePort    10.96.145.135   <none>        9090:30900/TCP   64m
 
 NAME                                   CLASS     HOSTS                  ADDRESS     PORTS   AGE
-ingress.networking.k8s.io/campusdesk   traefik   campusdesk.localhost   127.0.0.1   80      27m
+ingress.networking.k8s.io/campusdesk   traefik   campusdesk.localhost   127.0.0.1   80      64m
 
 NAME                                          REFERENCE            TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-horizontalpodautoscaler.autoscaling/backend   Deployment/backend   cpu: 5%/70%   2         4         2          27m
+horizontalpodautoscaler.autoscaling/backend   Deployment/backend   cpu: 7%/70%   2         4         2          64m
 

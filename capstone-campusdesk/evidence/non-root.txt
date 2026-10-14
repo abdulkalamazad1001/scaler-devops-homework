@@ -1,4 +1,4 @@
-Captured at 2026-10-14T21:29:45.572218+00:00
+Captured at 2026-10-14T22:06:53.882863+00:00
 Command: docker image inspect campusdesk-backend:local campusdesk-frontend:local --format {{.RepoTags}} user={{.Config.User}}
 Exit code: 0
 

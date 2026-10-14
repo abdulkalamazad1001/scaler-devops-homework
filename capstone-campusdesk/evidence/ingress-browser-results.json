@@ -1,0 +1,28 @@
+{
+  "capturedAt": "2026-10-14T22:06:49.174Z",
+  "base": "http://campusdesk.localhost:8088",
+  "passed": [
+    "desktop render",
+    "real create",
+    "search",
+    "edit and persistence",
+    "delete",
+    "mobile layout",
+    "mobile dialog",
+    "error state and retry",
+    "no JavaScript exceptions",
+    "campus image loaded",
+    "pagination boundary (mocked rows)",
+    "disabled pagination on failure",
+    "320/768/1920px layout",
+    "required-field validation",
+    "Escape closes dialog",
+    "empty-desk actions",
+    "accessible tablet navigation"
+  ],
+  "mocked": [
+    "outage response",
+    "pagination rows",
+    "empty list"
+  ]
+}

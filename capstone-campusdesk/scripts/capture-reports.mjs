@@ -15,7 +15,7 @@ try {
     await page.setContent(`<html><body style="margin:0;padding:32px;background:#f5f8f6;color:#183b2d;font-family:Arial"><h1 style="font-size:24px">CampusDesk | Captured command output: ${escape(name)}</h1><p>Original recorded output, rendered for readability. Environment: local Windows / Kind.</p><pre style="font:14px/1.55 monospace;white-space:pre-wrap;overflow-wrap:anywhere">${escape(transcript)}</pre></body></html>`);
     await page.screenshot({path:path.join(evidence,`${name}-output.png`),fullPage:true});
   }
-  const run = process.env.CI_RUN_ID || '38639295103';
+  const run = process.env.CI_RUN_ID || '38644518494';
   for (const component of ['backend','frontend']) {
     const report = await fs.readFile(path.join(evidence,`ci-run-${run}/trivy-reports/${component}-trivy.txt`),'utf8');
     await page.setContent(`<html><body style="margin:0;padding:32px;background:#f5f8f6;color:#183b2d;font-family:Arial"><h1>Trivy | ${escape(component)} | HIGH / CRITICAL gate</h1><p>Original artifact from GitHub Actions run ${escape(run)}. Not a local scan.</p><pre style="font:12px/1.4 monospace;white-space:pre-wrap">${escape(report)}</pre></body></html>`);

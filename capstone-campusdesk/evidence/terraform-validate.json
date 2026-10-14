@@ -1,6 +1,6 @@
 {
   "name": "terraform-validate",
-  "capturedAt": "2026-10-14T21:29:46.381031+00:00",
+  "capturedAt": "2026-10-14T22:06:54.895027+00:00",
   "command": [
     "C:\\Users\\abdul\\Downloads\\devops\\scaler-devops-homework\\tools\\terraform\\terraform.exe",
     "-chdir=terraform",

@@ -3,18 +3,18 @@
   "Trivy": {
     "Version": "0.76.0"
   },
-  "ReportID": "01a13c40-7e13-79b7-afbc-5866ab35263e",
-  "CreatedAt": "2026-10-14T21:10:21.971639538Z",
-  "ArtifactID": "sha256:b6a61a0ad2ed0dacd563707de1a6584959a1709d9f9498bfd29e8d5a1f704a82",
+  "ReportID": "01a13c67-dd93-7604-a27a-f76aa471997a",
+  "CreatedAt": "2026-10-14T21:53:22.323397889Z",
+  "ArtifactID": "sha256:fe57f53275a9eb2cff13a0acd21c08882ec4d245a4b37773f7d5de9069f45691",
   "ArtifactName": "campusdesk-backend:local",
   "ArtifactType": "container_image",
   "Metadata": {
-    "Size": 123601408,
+    "Size": 123601920,
     "OS": {
       "Family": "alpine",
       "Name": "3.24.2"
     },
-    "ImageID": "sha256:ea5cece38172cb03a5c1ace7b7077066ec7b703f418a5cfe42afbf7397fb020c",
+    "ImageID": "sha256:f9fc205e4b9c1c34a9a12dffaeb0fb41d3bc1cbdeabcd629b9c511b552ce7755",
     "DiffIDs": [
       "sha256:74d97c428c51a828f9051a7a40a53ff1fc99e54fc30323ce36760701b0b7f711",
       "sha256:ebc25a7288717fe6abb2c2f4fa2ee06b6f93926f76a88ba5ac61338d2c22a42f",
@@ -23,20 +23,20 @@
       "sha256:8a050039f2cb733b9a1079c7475b64e8add24f69641baabc532aef92c7c296d2",
       "sha256:73d404aef30167cef5a8c5247165855c9a5bb116a99bec99ec17bbd814a07dcf",
       "sha256:0f5976aeabe8323c9037dac30afc6dd43a4cbbca4d2fce2b43ffdbb9df4b407d",
-      "sha256:b8ac6409a8f40216b37911b4de024e77f468ac158d757b8c4e918a7d71d4e53f",
-      "sha256:a1536aabc9ad038d09775afffaf2eedd49f72288aaf09ec1e01455236d41d2c3",
-      "sha256:e6097c9f202a03b868b166e4cdb32037764b99dbd948e11d2afabdad46007f55"
+      "sha256:947e53a9ad5bc425cfb685b0eb43538cdb36778e69fb17b44600598b24d2ecf2",
+      "sha256:3f1f7a01780e4fe8d48508d2fb7bb15f2db4dc9a8f96293e2c6200f1c2144e8c",
+      "sha256:cedc3d29a72de170d7325297ec73c23ac417a260abc9630dc15286892d4c5ef4"
     ],
     "RepoTags": [
       "campusdesk-backend:local"
     ],
     "RepoDigests": [
-      "campusdesk-backend@sha256:ea5cece38172cb03a5c1ace7b7077066ec7b703f418a5cfe42afbf7397fb020c"
+      "campusdesk-backend@sha256:f9fc205e4b9c1c34a9a12dffaeb0fb41d3bc1cbdeabcd629b9c511b552ce7755"
     ],
     "Reference": "campusdesk-backend:local",
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2026-10-14T21:08:51.679577636Z",
+      "created": "2026-10-14T21:43:26.271455826Z",
       "history": [
         {
           "created": "2026-09-17T20:37:20Z",
@@ -116,40 +116,40 @@
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-14T21:08:51Z",
+          "created": "2026-10-14T21:43:26Z",
           "created_by": "COPY --chown=10001:10001 app ./app # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-14T21:08:51Z",
+          "created": "2026-10-14T21:43:26Z",
           "created_by": "COPY --chown=10001:10001 alembic ./alembic # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-14T21:08:51Z",
+          "created": "2026-10-14T21:43:26Z",
           "created_by": "COPY --chown=10001:10001 alembic.ini . # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-10-14T21:08:51Z",
+          "created": "2026-10-14T21:43:26Z",
           "created_by": "USER 10001:10001",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-10-14T21:08:51Z",
+          "created": "2026-10-14T21:43:26Z",
           "created_by": "EXPOSE [8000/tcp]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-10-14T21:08:51Z",
+          "created": "2026-10-14T21:43:26Z",
           "created_by": "HEALTHCHECK {Test:[CMD-SHELL python -c \"import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')\"] Interval:20s Timeout:5s StartPeriod:0s StartInterval:0s Retries:0}",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-10-14T21:08:51Z",
+          "created": "2026-10-14T21:43:26Z",
           "created_by": "CMD [\"uvicorn\" \"app.main:app\" \"--host\" \"0.0.0.0\" \"--port\" \"8000\"]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
@@ -166,9 +166,9 @@
           "sha256:8a050039f2cb733b9a1079c7475b64e8add24f69641baabc532aef92c7c296d2",
           "sha256:73d404aef30167cef5a8c5247165855c9a5bb116a99bec99ec17bbd814a07dcf",
           "sha256:0f5976aeabe8323c9037dac30afc6dd43a4cbbca4d2fce2b43ffdbb9df4b407d",
-          "sha256:b8ac6409a8f40216b37911b4de024e77f468ac158d757b8c4e918a7d71d4e53f",
-          "sha256:a1536aabc9ad038d09775afffaf2eedd49f72288aaf09ec1e01455236d41d2c3",
-          "sha256:e6097c9f202a03b868b166e4cdb32037764b99dbd948e11d2afabdad46007f55"
+          "sha256:947e53a9ad5bc425cfb685b0eb43538cdb36778e69fb17b44600598b24d2ecf2",
+          "sha256:3f1f7a01780e4fe8d48508d2fb7bb15f2db4dc9a8f96293e2c6200f1c2144e8c",
+          "sha256:cedc3d29a72de170d7325297ec73c23ac417a260abc9630dc15286892d4c5ef4"
         ]
       },
       "config": {
@@ -197,6 +197,11 @@
           "PYTHONUNBUFFERED=1",
           "PIP_NO_CACHE_DIR=1"
         ],
+        "Labels": {
+          "com.docker.compose.project": "campusdesk",
+          "com.docker.compose.service": "backend",
+          "com.docker.compose.version": "5.1.4"
+        },
         "User": "10001:10001",
         "WorkingDir": "/app",
         "ExposedPorts": {
@@ -242,19 +247,19 @@
         "DiffID": "sha256:0f5976aeabe8323c9037dac30afc6dd43a4cbbca4d2fce2b43ffdbb9df4b407d"
       },
       {
-        "Size": 30720,
-        "Digest": "sha256:9ab5a846350919e707bf74a64ad185161a350362094719f65ad74deac4eaedc4",
-        "DiffID": "sha256:b8ac6409a8f40216b37911b4de024e77f468ac158d757b8c4e918a7d71d4e53f"
+        "Size": 31232,
+        "Digest": "sha256:a5c855623df03004d81b0656cd05fbd7ea28d1fd52c99b1a4578cc439fe3459d",
+        "DiffID": "sha256:947e53a9ad5bc425cfb685b0eb43538cdb36778e69fb17b44600598b24d2ecf2"
       },
       {
         "Size": 5632,
-        "Digest": "sha256:7ca26117dc1070068d1597893797bf7e160d93e3d2689c20b9c0310d24a8863f",
-        "DiffID": "sha256:a1536aabc9ad038d09775afffaf2eedd49f72288aaf09ec1e01455236d41d2c3"
+        "Digest": "sha256:6f3987f72ae1d73f6278750f4da0141da81df213e948094956d11fc64a685706",
+        "DiffID": "sha256:3f1f7a01780e4fe8d48508d2fb7bb15f2db4dc9a8f96293e2c6200f1c2144e8c"
       },
       {
         "Size": 2560,
-        "Digest": "sha256:281f385073694c18f7ade603d5bf91ef01badb25801547d1bce8bbba4d9e94dc",
-        "DiffID": "sha256:e6097c9f202a03b868b166e4cdb32037764b99dbd948e11d2afabdad46007f55"
+        "Digest": "sha256:c4ecac2cc57c3e523dd3d616a13020350e20c89cbee5988effa6b1a742be7fce",
+        "DiffID": "sha256:cedc3d29a72de170d7325297ec73c23ac417a260abc9630dc15286892d4c5ef4"
       }
     ]
   },

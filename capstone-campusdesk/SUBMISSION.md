@@ -11,10 +11,10 @@ screenshots as substitutes for operations that were not executed.
 | Rubric module | Implementation and evidence | Status |
 |---|---|---|
 | M1 Application | React/FastAPI/PostgreSQL, Alembic, CRUD, `evidence/application-desktop.png` | Compose and Ingress running; browser checks passed |
-| M2 Testing | `backend/tests/`, 20 API tests; browser regressions | Local tests passed; historical PostgreSQL results and latest CI linked below |
+| M2 Testing | `backend/tests/`, 20 API tests; 17 browser checks | Passed locally and in CI against PostgreSQL/Kubernetes |
 | M3 Git/GitHub | Root repository, more than 10 scoped implementation commits, `.gitignore` | Published to the owner's repository |
 | M4 Docker | Non-root Dockerfiles, migration service, healthy Compose stack | Verified locally |
-| M5 CI/CD | Root `.github/workflows/campusdesk.yml`, tests/build/scan/Kind/GHCR/GitOps promotion | Two successful real workflow runs |
+| M5 CI/CD | Root `.github/workflows/campusdesk.yml`, tests/build/scan/Kind/browser/GHCR/GitOps promotion | Revised workflow passed all gates and published/promoted images |
 | M6 Security | Trivy HIGH/CRITICAL gate, initial findings and remediation recorded | Both published application images passed the gate |
 | M7 Terraform | VPC, subnets, EKS, nodes, EBS CSI, `.tfvars.example` | Init/validate passed; AWS plan/apply/destroy deferred |
 | M8 Kubernetes | Helm chart, Ingress, HPA, StatefulSet/PVC, Argo CD | Local Helm deployment and GitOps verified; scale-out to four observed |
@@ -23,7 +23,8 @@ screenshots as substitutes for operations that were not executed.
 
 ## Verified Deliverables
 
-- [Successful CI/CD and automated promotion](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38639295103)
+- [Latest successful CI/CD, browser tests and automated promotion](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38644518494)
+- [Local quality review and fixes](LOCAL-REVIEW.md)
 - [Earlier successful independent run](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38638277372)
 - [Evidence inventory](evidence/README.md), including actual test and scan artifacts
 - [12-slide presentation](demo/slides.pdf)

@@ -1,4 +1,4 @@
-Captured at 2026-10-14T21:29:45.930540+00:00
+Captured at 2026-10-14T22:06:54.728652+00:00
 Command: C:\Users\abdul\Downloads\devops\scaler-devops-homework\tools\helm\windows-amd64\helm.exe --kube-context kind-campusdesk list -n campusdesk
 Exit code: 0
 

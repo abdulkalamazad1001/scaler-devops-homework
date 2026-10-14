@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-14T21:17:18.095Z",
+  "capturedAt": "2026-10-14T22:00:04.180Z",
   "base": "http://127.0.0.1:3000",
   "passed": [
     "desktop render",
@@ -11,6 +11,18 @@
     "mobile dialog",
     "error state and retry",
     "no JavaScript exceptions",
-    "campus image loaded"
+    "campus image loaded",
+    "pagination boundary (mocked rows)",
+    "disabled pagination on failure",
+    "320/768/1920px layout",
+    "required-field validation",
+    "Escape closes dialog",
+    "empty-desk actions",
+    "accessible tablet navigation"
+  ],
+  "mocked": [
+    "outage response",
+    "pagination rows",
+    "empty list"
   ]
 }

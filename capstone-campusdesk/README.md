@@ -7,14 +7,14 @@ software and account-access issues. The support team assigns tickets, sets prior
 tracks progress, searches requests and resolves them. The application is an original
 implementation for the DevOps capstone, using the course architecture.
 
-**Start here:** [Submission status](SUBMISSION.md) | [Demo guide](demo/WALKTHROUGH.md) |
+**Start here:** [Submission status](SUBMISSION.md) | [Local quality review](LOCAL-REVIEW.md) | [Demo guide](demo/WALKTHROUGH.md) |
 [AWS deployment](terraform/README.md) | [Troubleshooting](troubleshooting/README.md)
 
 **Verified locally:** 20 API tests, browser CRUD checks, healthy Compose and Kind
 deployments, live monitoring, and Argo CD GitOps. The
-[successful CI/CD run](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38639295103)
+[successful CI/CD run](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38644518494)
 tested PostgreSQL, passed both application-image security gates, deployed to Kubernetes,
-published images and promoted their SHA tags. See [real evidence](evidence/README.md),
+passed 17 browser checks, published images and promoted their SHA tags. See [real evidence](evidence/README.md),
 [slides](demo/slides.pdf) and the [silent local walkthrough](demo/local-walkthrough.mp4).
 AWS deployment and the complete student-narrated AWS video remain pending.
 
@@ -141,7 +141,8 @@ both deployment paths use PostgreSQL.
 
 The active workflow is at the **repository root**,
 [`../.github/workflows/campusdesk.yml`](../.github/workflows/campusdesk.yml).
-It triggers for capstone changes pushed to `main`, pull requests, and manual runs.
+It triggers on pushes to `main`, capstone pull requests, and manual runs. GitOps
+promotion and evidence-only snapshot commits use `[skip ci]` to avoid redundant builds.
 
 1. Ruff, Alembic, pytest against PostgreSQL, and the frontend production build run.
 2. Helm and Terraform are validated without creating cloud resources.
