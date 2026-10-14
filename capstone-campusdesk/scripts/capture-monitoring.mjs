@@ -15,9 +15,16 @@ try {
   const page = await browser.newPage({viewport:{width:1440,height:1000}});
   await page.goto('http://localhost:9090/targets');
   await page.getByText('campusdesk',{exact:false}).first().waitFor();
+  let targets;
+  for (let attempt = 0; attempt < 18; attempt++) {
+    targets = await (await fetch('http://localhost:9090/api/v1/targets')).json();
+    if (targets.data.activeTargets.length && targets.data.activeTargets.every(t=>t.health==='up')) break;
+    if (attempt === 17) throw Error('Prometheus still has unhealthy targets after discovery settled');
+    await new Promise(resolve=>setTimeout(resolve,5000));
+  }
+  await page.reload();
+  await page.getByText('campusdesk',{exact:false}).first().waitFor();
   await page.screenshot({path:path.join(root,'evidence/prometheus-targets.png'),fullPage:true});
-  const targets = await (await fetch('http://localhost:9090/api/v1/targets')).json();
-  if (!targets.data.activeTargets.length || targets.data.activeTargets.some(t=>t.health!=='up')) throw Error('Prometheus has unhealthy targets');
   await fs.writeFile(path.join(root,'evidence/prometheus-targets.json'),JSON.stringify(targets,null,2));
   await page.goto('http://localhost:3001/login');
   await page.getByRole('textbox',{name:'Email or username'}).fill('admin');

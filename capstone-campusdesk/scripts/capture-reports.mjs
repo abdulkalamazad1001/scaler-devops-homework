@@ -27,7 +27,7 @@ try {
     await page.screenshot({path:path.join(evidence,`registry-${name}.png`),fullPage:true});
   }
   await page.goto('http://campusdesk.localhost:8088');
-  await page.getByRole('button',{name:'New ticket',exact:true}).waitFor();
+  await page.locator('.page-title').getByRole('button',{name:'New ticket',exact:true}).waitFor();
   await page.waitForFunction(()=>Array.from(document.images).every(image=>image.complete));
   await page.screenshot({path:path.join(evidence,'application-ingress.png'),fullPage:true});
   console.log('Captured actual transcripts, public packages and Ingress application.');

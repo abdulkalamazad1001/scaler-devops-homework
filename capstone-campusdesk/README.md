@@ -76,7 +76,9 @@ python scripts/seed.py
 
 The optional seed script inserts synthetic demonstration tickets. They are example
 data, not real student requests. Compose defaults are for a loopback-only classroom
-environment. Use `.env.example` to configure a different database password.
+environment. Use `.env.example` to configure a different database password; choose
+a long random alphanumeric value because this Compose file interpolates it into
+the connection URL. Do not URL-encode the shared password value.
 
 ```powershell
 docker compose ps

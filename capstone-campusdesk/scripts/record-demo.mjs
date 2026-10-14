@@ -38,9 +38,9 @@ try {
   }
   console.log('Recorded slide presentation.');
   await page.goto('http://campusdesk.localhost:8088');
-  await page.getByRole('button',{name:'New ticket',exact:true}).waitFor();
+  await page.locator('.page-title').getByRole('button',{name:'New ticket',exact:true}).waitFor();
   await hold(3000);
-  await page.getByRole('button',{name:'New ticket',exact:true}).click();
+  await page.locator('.page-title').getByRole('button',{name:'New ticket',exact:true}).click();
   await page.getByLabel('Subject',{exact:true}).fill('Walkthrough verification ticket');
   await page.getByLabel('Requester',{exact:true}).fill('Demo Presenter');
   await page.getByLabel('Location',{exact:true}).fill('Campus IT Lab');

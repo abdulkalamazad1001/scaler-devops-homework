@@ -27,7 +27,7 @@ try {
   await page.evaluate(() => document.fonts.ready);
   await page.screenshot({ path: path.join(evidence, 'application-desktop.png'), fullPage: true });
   assert(await page.locator('.campus-image').evaluate(img => img.complete && img.naturalWidth > 0));
-  await page.getByRole('button', {name: 'New ticket', exact: true}).click();
+  await page.locator('.page-title').getByRole('button', {name: 'New ticket', exact: true}).click();
   await page.getByLabel('Subject', {exact:true}).fill(ticketTitle);
   await page.getByLabel('Description', {exact:true}).fill('Created and removed during a real Playwright CRUD check.');
   await page.getByLabel('Requester', {exact:true}).fill('Demo Tester');
@@ -58,7 +58,7 @@ try {
   await page.locator('.toast').waitFor({state:'hidden'});
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   await page.screenshot({path:path.join(evidence,'application-mobile.png'),fullPage:true});
-  await page.getByRole('button',{name:'New ticket',exact:true}).click();
+  await page.locator('.page-title').getByRole('button',{name:'New ticket',exact:true}).click();
   assert(await page.locator('dialog').evaluate(el => el.getBoundingClientRect().right <= innerWidth));
   await page.screenshot({path:path.join(evidence,'ticket-mobile.png')});
   await page.getByRole('button',{name:'Close dialog'}).click();
@@ -97,13 +97,18 @@ try {
     await page.setViewportSize({width,height:900});
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   }
-  await page.getByRole('button',{name:'New ticket',exact:true}).click();
+  await page.route('**/api/tickets?**', route=>route.fulfill({json:[]}));
+  await page.getByRole('button',{name:'Refresh tickets'}).click();
+  await page.getByRole('heading',{name:'Your desk is clear',exact:true}).waitFor();
+  assert.equal(await page.getByRole('button',{name:'New ticket',exact:true}).count(),2);
+  await page.locator('.page-title').getByRole('button',{name:'New ticket',exact:true}).click();
   await page.getByRole('button',{name:'Create ticket',exact:true}).click();
   assert(await page.getByLabel('Subject',{exact:true}).evaluate(input=>!input.validity.valid));
   await page.keyboard.press('Escape');
   await page.locator('dialog').waitFor({state:'detached'});
+  await page.unroute('**/api/tickets?**');
   assert.deepEqual(errors,[]);
-  const result = {capturedAt:new Date().toISOString(),base,passed:['desktop render','real create','search','edit and persistence','delete','mobile layout','mobile dialog','error state and retry','no JavaScript exceptions','campus image loaded','pagination boundary (mocked rows)','disabled pagination on failure','320/768/1920px layout','required-field validation','Escape closes dialog'],mocked:['outage response','pagination rows']};
+  const result = {capturedAt:new Date().toISOString(),base,passed:['desktop render','real create','search','edit and persistence','delete','mobile layout','mobile dialog','error state and retry','no JavaScript exceptions','campus image loaded','pagination boundary (mocked rows)','disabled pagination on failure','320/768/1920px layout','required-field validation','Escape closes dialog','empty-desk actions'],mocked:['outage response','pagination rows','empty list']};
   await fs.writeFile(path.join(evidence,'browser-results.json'),JSON.stringify(result,null,2));
   console.log(JSON.stringify(result,null,2));
 } catch (error) {
