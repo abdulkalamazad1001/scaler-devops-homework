@@ -11,11 +11,14 @@ spec:
     path: capstone-campusdesk/helm/campusdesk
     helm:
       releaseName: campusdesk
-      valueFiles: [values-local.yaml]
+      valueFiles: [values-local.yaml, values-release.json]
   destination:
     server: https://kubernetes.default.svc
     namespace: campusdesk
   syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
     syncOptions: [CreateNamespace=true]
   # Preserve the replica count managed by the HorizontalPodAutoscaler.
   ignoreDifferences:

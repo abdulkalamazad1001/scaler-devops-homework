@@ -1,5 +1,7 @@
 service:
   type: NodePort
+additionalArguments:
+  - --providers.kubernetesingress.ingressendpoint.ip=127.0.0.1
 ports:
   web:
     nodePort: 30080
@@ -11,6 +13,8 @@ providers:
     enabled: false
   kubernetesIngress:
     enabled: true
+    publishedService:
+      enabled: false
 ingressClass:
   enabled: true
   isDefaultClass: false

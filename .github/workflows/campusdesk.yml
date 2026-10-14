@@ -67,7 +67,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       packages: write
     steps:
       - uses: actions/checkout@v4
@@ -116,6 +116,17 @@ jobs:
         run: |
           docker push ghcr.io/abdulkalamazad1001/campusdesk-backend:${{ github.sha }}
           docker push ghcr.io/abdulkalamazad1001/campusdesk-frontend:${{ github.sha }}
+      - name: Promote verified images to GitOps
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          python "$PROJECT/scripts/promote.py"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$PROJECT/helm/campusdesk/values-release.json"
+          git diff --cached --quiet && exit 0
+          git commit -m 'chore(gitops): promote verified CampusDesk images [skip ci]'
+          git pull --rebase origin main
+          git push origin HEAD:main
       - name: Collect cluster diagnostics
         if: always()
         run: |
