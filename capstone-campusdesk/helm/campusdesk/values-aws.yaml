@@ -1,0 +1,5 @@
+database:
+  storageClass: gp3
+monitoring:
+  nodePorts: false
+# Override ingress.host and TLS secret with your domain/certificate at deployment.

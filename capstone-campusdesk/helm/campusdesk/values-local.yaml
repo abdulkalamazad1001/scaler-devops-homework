@@ -1,0 +1,6 @@
+backend:
+  repository: campusdesk-backend
+frontend:
+  repository: campusdesk-frontend
+monitoring:
+  nodePorts: true

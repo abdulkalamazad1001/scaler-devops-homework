@@ -1,0 +1,31 @@
+backend:
+  repository: ghcr.io/abdulkalamazad1001/campusdesk-backend
+  tag: local
+  replicas: 2
+frontend:
+  repository: ghcr.io/abdulkalamazad1001/campusdesk-frontend
+  tag: local
+  replicas: 2
+imagePullPolicy: IfNotPresent
+imagePullSecrets: []
+database:
+  image: postgres:17-alpine
+  existingSecret: campusdesk-db
+  storageClass: ""
+  size: 2Gi
+ingress:
+  enabled: true
+  className: traefik
+  host: campusdesk.localhost
+  tlsSecret: ""
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 4
+  targetCPU: 70
+monitoring:
+  enabled: true
+  prometheusImage: prom/prometheus:v3.2.1
+  grafanaImage: grafana/grafana:11.6.0
+  grafanaSecret: campusdesk-grafana
+  nodePorts: false

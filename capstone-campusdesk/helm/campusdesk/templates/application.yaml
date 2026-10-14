@@ -1,0 +1,103 @@
+{{- range $component := list "backend" "frontend" }}
+{{- $config := index $.Values $component }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $component }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  labels:
+    app: {{ $component }}
+spec:
+  {{- if or (eq $component "frontend") (not $.Values.autoscaling.enabled) }}
+  replicas: {{ $config.replicas }}
+  {{- end }}
+  selector:
+    matchLabels:
+      app: {{ $component }}
+  template:
+    metadata:
+      labels:
+        app: {{ $component }}
+    spec:
+      automountServiceAccountToken: false
+      {{- with $.Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      {{- if eq $component "backend" }}
+      initContainers:
+        - name: wait-for-schema
+          image: "{{ $config.repository }}:{{ $config.tag }}"
+          imagePullPolicy: {{ $.Values.imagePullPolicy }}
+          command: [python, -c]
+          args:
+            - "import time; from app.db import engine; from sqlalchemy import text; connection=engine.connect(); connection.execute(text('SELECT id FROM tickets LIMIT 1')); connection.close()"
+          envFrom:
+            - secretRef:
+                name: {{ $.Values.database.existingSecret }}
+          securityContext:
+            runAsUser: 10001
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: [ALL]
+      {{- end }}
+      containers:
+        - name: {{ $component }}
+          image: "{{ $config.repository }}:{{ $config.tag }}"
+          imagePullPolicy: {{ $.Values.imagePullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ if eq $component "backend" }}8000{{ else }}8080{{ end }}
+          {{- if eq $component "backend" }}
+          envFrom:
+            - secretRef:
+                name: {{ $.Values.database.existingSecret }}
+          {{- end }}
+          securityContext:
+            runAsUser: {{ if eq $component "backend" }}10001{{ else }}101{{ end }}
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: [ALL]
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+          startupProbe:
+            httpGet:
+              path: {{ if eq $component "backend" }}/health{{ else }}/healthz{{ end }}
+              port: http
+            failureThreshold: 30
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: {{ if eq $component "backend" }}/ready{{ else }}/healthz{{ end }}
+              port: http
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: {{ if eq $component "backend" }}/health{{ else }}/healthz{{ end }}
+              port: http
+            periodSeconds: 15
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $component }}
+spec:
+  type: ClusterIP
+  selector:
+    app: {{ $component }}
+  ports:
+    - name: http
+      port: {{ if eq $component "backend" }}8000{{ else }}8080{{ end }}
+      targetPort: http
+{{- end }}

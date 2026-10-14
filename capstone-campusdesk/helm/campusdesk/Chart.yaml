@@ -1,0 +1,6 @@
+apiVersion: v2
+name: campusdesk
+description: Campus IT helpdesk with PostgreSQL and observability
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
