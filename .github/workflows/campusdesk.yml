@@ -1,0 +1,123 @@
+name: CampusDesk CI/CD
+on:
+  push:
+    branches: [main]
+    paths: ['capstone-campusdesk/**', '.github/workflows/campusdesk.yml']
+  pull_request:
+    paths: ['capstone-campusdesk/**', '.github/workflows/campusdesk.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: campusdesk-${{ github.ref }}
+  cancel-in-progress: true
+env:
+  PROJECT: capstone-campusdesk
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: campusdesk_test
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test-only
+        ports: ['5432:5432']
+        options: --health-cmd "pg_isready -U test -d campusdesk_test" --health-interval 5s --health-timeout 5s --health-retries 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.13'}
+      - name: Test against an isolated PostgreSQL database
+        working-directory: capstone-campusdesk/backend
+        env:
+          DATABASE_URL: postgresql+psycopg://test:test-only@localhost:5432/campusdesk_test
+          TEST_DATABASE_URL: postgresql+psycopg://test:test-only@localhost:5432/campusdesk_test
+        run: |
+          pip install -r requirements-dev.txt
+          ruff check .
+          alembic upgrade head
+          pytest -v --junitxml=pytest-results.xml
+      - uses: actions/setup-node@v4
+        with: {node-version: '24', cache: npm, cache-dependency-path: capstone-campusdesk/frontend/package-lock.json}
+      - name: Build the frontend
+        working-directory: capstone-campusdesk/frontend
+        run: npm ci && npm run build
+      - uses: azure/setup-helm@v4.3.0
+        with: {version: v3.17.4}
+      - name: Validate Helm
+        run: |
+          helm lint "$PROJECT/helm/campusdesk"
+          helm template campusdesk "$PROJECT/helm/campusdesk" > /tmp/campusdesk.yaml
+      - uses: hashicorp/setup-terraform@v3
+        with: {terraform_version: 1.11.4}
+      - name: Validate Terraform without creating cloud resources
+        working-directory: capstone-campusdesk/terraform
+        run: |
+          terraform fmt -check
+          terraform init -backend=false -input=false
+          terraform validate
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: capstone-campusdesk/backend/pytest-results.xml
+  build-scan-deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build both images using the source commit
+        run: |
+          docker build --pull -t ghcr.io/abdulkalamazad1001/campusdesk-backend:${{ github.sha }} "$PROJECT/backend"
+          docker build --pull -t ghcr.io/abdulkalamazad1001/campusdesk-frontend:${{ github.sha }} "$PROJECT/frontend"
+      - name: Scan backend image
+        uses: aquasecurity/trivy-action@0.35.0
+        with:
+          image-ref: ghcr.io/abdulkalamazad1001/campusdesk-backend:${{ github.sha }}
+          format: table
+          severity: HIGH,CRITICAL
+          exit-code: '1'
+          output: backend-trivy.txt
+      - name: Scan frontend image
+        uses: aquasecurity/trivy-action@0.35.0
+        with:
+          image-ref: ghcr.io/abdulkalamazad1001/campusdesk-frontend:${{ github.sha }}
+          format: table
+          severity: HIGH,CRITICAL
+          exit-code: '1'
+          output: frontend-trivy.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: trivy-reports
+          path: '*-trivy.txt'
+      - name: Create an ephemeral Kubernetes cluster
+        uses: helm/kind-action@v1.12.0
+        with: {cluster_name: campusdesk-ci}
+      - uses: azure/setup-helm@v4.3.0
+        with: {version: v3.17.4}
+      - name: Deploy and verify the Helm release
+        env:
+          IMAGE_TAG: ${{ github.sha }}
+        run: bash "$PROJECT/scripts/ci-k8s.sh"
+      - uses: docker/login-action@v3
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish verified images
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          docker push ghcr.io/abdulkalamazad1001/campusdesk-backend:${{ github.sha }}
+          docker push ghcr.io/abdulkalamazad1001/campusdesk-frontend:${{ github.sha }}
+      - name: Collect cluster diagnostics
+        if: always()
+        run: |
+          kubectl get pods,svc,ingress,hpa -n campusdesk || true
+          kubectl get events -n campusdesk --sort-by=.lastTimestamp || true
