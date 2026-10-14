@@ -14,6 +14,16 @@ if ($LASTEXITCODE -ne 0) { throw 'Docker/kind is unavailable' }
 if ($clusters -notcontains 'campusdesk') {
     Invoke-Checked { kind create cluster --config k8s/kind.yaml --wait 180s }
 }
+$argoCrd = kubectl --context kind-campusdesk get crd applications.argoproj.io -o name --ignore-not-found
+if ($LASTEXITCODE -ne 0) { throw 'Cannot query the local cluster' }
+if ($argoCrd) {
+    $managed = kubectl --context kind-campusdesk -n argocd get application campusdesk -o name --ignore-not-found
+    if ($LASTEXITCODE -ne 0) { throw 'Cannot query Argo CD' }
+    if ($managed) { throw 'CampusDesk is managed by Argo CD. Push changes through GitOps; do not overwrite it with Helm.' }
+}
+# Single-platform manifests also work with Docker Desktop's containerd image store.
+Invoke-Checked { docker build --provenance=false -t "campusdesk-backend:$ImageTag" backend }
+Invoke-Checked { docker build --provenance=false -t "campusdesk-frontend:$ImageTag" frontend }
 Invoke-Checked { kind load docker-image "campusdesk-backend:$ImageTag" "campusdesk-frontend:$ImageTag" --name campusdesk }
 Invoke-Checked { kubectl --context kind-campusdesk apply -f k8s/namespace.yaml }
 function Ensure-Secret {

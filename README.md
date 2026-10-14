@@ -7,6 +7,35 @@ It includes React, FastAPI, PostgreSQL, Docker, GitHub Actions, Trivy, Terraform
 Helm, Argo CD, Prometheus and Grafana. See the **[submission checklist](capstone-campusdesk/SUBMISSION.md)**
 for actual verification status and remaining evidence. Earlier homework/reference folders are separate.
 
+### Capstone Quick Start
+
+From the repository root, with Docker Desktop running:
+
+```powershell
+cd capstone-campusdesk
+docker compose up --build -d
+python scripts/seed.py
+```
+
+Open [CampusDesk](http://localhost:3000). The seed records are synthetic examples.
+Architecture: browser -> React/Nginx -> FastAPI -> PostgreSQL, with Alembic migrations.
+GitHub Actions runs tests, image builds, Trivy scans and a Kubernetes/browser check,
+then publishes SHA-tagged images to GHCR. Argo CD deploys the verified release;
+Prometheus and Grafana observe the backend. Local Kubernetes uses Kind and Traefik.
+
+| Technical Guide | Location |
+|---|---|
+| Stack, architecture diagram, API and tests | [Project README](capstone-campusdesk/README.md) |
+| Kubernetes, Helm and GitOps commands | [Local deployment](capstone-campusdesk/README.md#local-kubernetes-and-helm) |
+| Prometheus and Grafana configuration | [Monitoring](capstone-campusdesk/monitoring/README.md) |
+| Terraform VPC/EKS configuration and cleanup | [AWS runbook](capstone-campusdesk/terraform/README.md) |
+| Actual screenshots and reports | [Evidence](capstone-campusdesk/evidence/README.md) |
+| Slides and silent local rehearsal | [Demo](capstone-campusdesk/demo/WALKTHROUGH.md) |
+
+**Limits:** classroom app without authentication, single-instance database, ephemeral
+local monitoring storage. AWS execution and the complete narrated walkthrough remain
+pending. No cloud deployment is claimed by these local results.
+
 
 **Name:** T. Abdul Kalam Azad  
 **Roll number:** 24BCS10053  

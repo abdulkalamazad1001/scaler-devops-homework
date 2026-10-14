@@ -11,7 +11,7 @@ screenshots as substitutes for operations that were not executed.
 | Rubric module | Implementation and evidence | Status |
 |---|---|---|
 | M1 Application | React/FastAPI/PostgreSQL, Alembic, CRUD, `evidence/application-desktop.png` | Compose and Ingress running; browser checks passed |
-| M2 Testing | `backend/tests/`, 16 passing API tests | Passed locally and against PostgreSQL in CI |
+| M2 Testing | `backend/tests/`, 20 API tests; browser regressions | Local tests passed; historical PostgreSQL results and latest CI linked below |
 | M3 Git/GitHub | Root repository, more than 10 scoped implementation commits, `.gitignore` | Published to the owner's repository |
 | M4 Docker | Non-root Dockerfiles, migration service, healthy Compose stack | Verified locally |
 | M5 CI/CD | Root `.github/workflows/campusdesk.yml`, tests/build/scan/Kind/GHCR/GitOps promotion | Two successful real workflow runs |

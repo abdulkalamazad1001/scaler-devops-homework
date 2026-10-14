@@ -3,7 +3,7 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-const require = createRequire(new URL('../../tools/browser/package.json', import.meta.url));
+const require = createRequire(new URL('../frontend/package.json', import.meta.url));
 const { chromium } = require('playwright');
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const browser = await chromium.launch();
@@ -61,7 +61,7 @@ try {
   const source = await fs.readFile(path.join(root,'backend/app/main.py'),'utf8');
   await report('Source excerpt | backend/app/main.py',source.split('\n').slice(0,45).join('\n'));
   await report('Captured command output | API tests',await fs.readFile(path.join(root,'evidence/pytest.txt'),'utf8'),8000);
-  await page.goto('https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38639295103');
+  await page.goto(`https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/${process.env.CI_RUN_ID || '38639295103'}`);
   await page.getByText('CampusDesk CI/CD',{exact:false}).first().waitFor();
   await hold(7000);
   await page.screenshot({path:path.join(root,'evidence/github-actions.png'),fullPage:true});

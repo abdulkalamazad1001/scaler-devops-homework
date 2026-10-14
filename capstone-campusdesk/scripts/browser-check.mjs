@@ -3,10 +3,10 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
-const require = createRequire(new URL('../../tools/browser/package.json', import.meta.url));
+const require = createRequire(new URL('../frontend/package.json', import.meta.url));
 const { chromium } = require('playwright');
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const evidence = path.join(root, 'evidence');
+const evidence = process.env.EVIDENCE_DIR || path.join(root, 'evidence');
 await fs.mkdir(evidence, { recursive: true });
 const browser = await chromium.launch({headless: true});
 const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
@@ -14,36 +14,45 @@ const page = await context.newPage();
 const errors = [];
 page.on('pageerror', error => errors.push(error.message));
 const base = process.env.APP_URL || 'http://127.0.0.1:3000';
+const ticketTitle = `Browser verification ${Date.now()}`;
+let createdId;
+async function loaded() {
+  await page.getByRole('heading', { name: 'Support tickets' }).waitFor();
+  await page.getByRole('button', { name: 'Refresh tickets' }).waitFor();
+  await page.waitForFunction(() => !document.querySelector('button[aria-label="Refresh tickets"]').disabled);
+}
 try {
   await page.goto(base);
-  await page.getByRole('heading', { name: 'Support tickets' }).waitFor();
-  await page.getByRole('button', { name: 'Library Wi-Fi keeps disconnecting', exact: true }).waitFor();
+  await loaded();
   await page.evaluate(() => document.fonts.ready);
   await page.screenshot({ path: path.join(evidence, 'application-desktop.png'), fullPage: true });
   assert(await page.locator('.campus-image').evaluate(img => img.complete && img.naturalWidth > 0));
   await page.getByRole('button', {name: 'New ticket', exact: true}).click();
-  await page.getByLabel('Subject', {exact:true}).fill('Browser verification ticket');
+  await page.getByLabel('Subject', {exact:true}).fill(ticketTitle);
   await page.getByLabel('Description', {exact:true}).fill('Created and removed during a real Playwright CRUD check.');
   await page.getByLabel('Requester', {exact:true}).fill('Demo Tester');
   await page.getByLabel('Location', {exact:true}).fill('Test Lab');
   await page.getByRole('combobox', {name:'Priority',exact:true}).selectOption('high');
   await page.screenshot({path:path.join(evidence,'ticket-create.png')});
+  const created = page.waitForResponse(response => response.url().endsWith('/api/tickets') && response.request().method() === 'POST');
   await page.getByRole('button', {name:'Create ticket',exact:true}).click();
+  createdId = (await (await created).json()).id;
   await page.getByText('Ticket created',{exact:true}).waitFor();
-  await page.getByLabel('Search tickets').fill('Browser verification ticket');
-  await page.getByRole('button',{name:'Browser verification ticket',exact:true}).click();
+  await page.getByLabel('Search tickets').fill(ticketTitle);
+  await page.getByRole('button',{name:ticketTitle,exact:true}).click();
   await page.getByRole('combobox',{name:'Status',exact:true}).selectOption('resolved');
   await page.getByLabel('Assigned to',{exact:true}).fill('Campus Support');
   await page.getByRole('button',{name:'Save changes',exact:true}).click();
   await page.getByText('Ticket updated',{exact:true}).waitFor();
-  await page.getByRole('button',{name:'Browser verification ticket',exact:true}).click();
+  await page.getByRole('button',{name:ticketTitle,exact:true}).click();
   assert.equal(await page.getByRole('combobox',{name:'Status',exact:true}).inputValue(),'resolved');
   await page.getByRole('button',{name:'Delete ticket',exact:true}).click();
   await page.locator('.delete-confirm').getByRole('button',{name:'Delete ticket',exact:true}).click();
   await page.getByText('Ticket deleted',{exact:true}).waitFor();
+  createdId = undefined;
   await page.getByRole('heading',{name:'No matching tickets'}).waitFor();
   await page.getByLabel('Search tickets').fill('');
-  await page.getByRole('button', { name: 'Library Wi-Fi keeps disconnecting', exact: true }).waitFor();
+  await loaded();
   await page.setViewportSize({width:390,height:844});
   await page.getByLabel('Search tickets').blur();
   await page.locator('.toast').waitFor({state:'hidden'});
@@ -57,11 +66,50 @@ try {
   await page.route('**/api/tickets?**', route => route.fulfill({status:503,contentType:'application/json',body:JSON.stringify({detail:'Simulated outage for browser test'})}));
   await page.getByRole('button',{name:'Refresh tickets'}).click();
   await page.getByRole('heading',{name:'Tickets could not be loaded'}).waitFor();
+  assert(await page.getByRole('button',{name:'Next page',exact:true}).isDisabled());
   await page.unroute('**/api/tickets?**');
   await page.getByRole('button',{name:'Try again',exact:true}).click();
-  await page.getByRole('button', { name: 'Library Wi-Fi keeps disconnecting', exact: true }).waitFor();
+  await loaded();
+  assert.equal(await page.getByRole('heading',{name:'Tickets could not be loaded'}).count(),0);
+
+  // Pagination fixtures are intercepted test data, never deployment evidence.
+  const rows = Array.from({length:24}, (_, i) => ({id:1000+i,title:`Pagination fixture ${i+1}`,description:'',requester:'Test',location:'Test lab',category:'network',priority:'low',status:'open',assignee:'Unassigned',created_at:'2026-01-01T00:00:00Z'}));
+  await page.route('**/api/tickets?**', route => {
+    const params = new URL(route.request().url()).searchParams;
+    const offset = Number(params.get('offset'));
+    const limit = Number(params.get('limit'));
+    return route.fulfill({json:rows.slice(offset,offset+limit)});
+  });
+  await page.getByRole('button',{name:'Refresh tickets'}).click();
+  await page.getByRole('button',{name:'Pagination fixture 1',exact:true}).waitFor();
+  assert.equal(await page.locator('tbody tr').count(),12);
+  assert(await page.getByRole('button',{name:'Next page',exact:true}).isEnabled());
+  await page.getByRole('button',{name:'Next page',exact:true}).click();
+  await page.getByRole('button',{name:'Pagination fixture 13',exact:true}).waitFor();
+  assert.equal(await page.locator('tbody tr').count(),12);
+  assert(await page.getByRole('button',{name:'Next page',exact:true}).isDisabled());
+  await page.getByRole('button',{name:'Previous page',exact:true}).click();
+  await page.getByRole('button',{name:'Pagination fixture 1',exact:true}).waitFor();
+  await page.unroute('**/api/tickets?**');
+  await page.getByRole('button',{name:'Refresh tickets'}).click();
+  await loaded();
+  for (const width of [320,768,1920]) {
+    await page.setViewportSize({width,height:900});
+    assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  }
+  await page.getByRole('button',{name:'New ticket',exact:true}).click();
+  await page.getByRole('button',{name:'Create ticket',exact:true}).click();
+  assert(await page.getByLabel('Subject',{exact:true}).evaluate(input=>!input.validity.valid));
+  await page.keyboard.press('Escape');
+  await page.locator('dialog').waitFor({state:'detached'});
   assert.deepEqual(errors,[]);
-  const result = {capturedAt:new Date().toISOString(),base,passed:['desktop render','real create','search','edit and persistence','delete','mobile layout','mobile dialog','error state and retry','no JavaScript exceptions','campus image loaded']};
+  const result = {capturedAt:new Date().toISOString(),base,passed:['desktop render','real create','search','edit and persistence','delete','mobile layout','mobile dialog','error state and retry','no JavaScript exceptions','campus image loaded','pagination boundary (mocked rows)','disabled pagination on failure','320/768/1920px layout','required-field validation','Escape closes dialog'],mocked:['outage response','pagination rows']};
   await fs.writeFile(path.join(evidence,'browser-results.json'),JSON.stringify(result,null,2));
   console.log(JSON.stringify(result,null,2));
-} finally { await browser.close(); }
+} catch (error) {
+  await page.screenshot({path:path.join(evidence,'browser-failure.png'),fullPage:true});
+  throw error;
+} finally {
+  if (createdId) await context.request.delete(`${base}/api/tickets/${createdId}`);
+  await browser.close();
+}

@@ -2,7 +2,7 @@ import pytest
 from sqlalchemy.exc import OperationalError
 
 from app.db import get_db
-from app.main import app
+from app.main import app, latency, requests
 
 
 def test_health_ready_metrics(client):
@@ -77,3 +77,44 @@ def test_readiness_failure(client):
     app.dependency_overrides[get_db] = lambda: Unavailable()
     assert client.get("/ready").status_code == 503
     assert client.get("/health").status_code == 200
+
+
+def test_unhandled_failure_is_counted(client):
+    class Unavailable:
+        def scalars(self, query):
+            raise OperationalError("SELECT", {}, Exception("offline"))
+
+    app.dependency_overrides[get_db] = lambda: Unavailable()
+    counter = requests.labels("GET", "/api/tickets", "500")
+    histogram = latency.labels("GET", "/api/tickets")
+    before_count = counter._value.get()
+    before_latency = histogram._sum.get()
+    with pytest.raises(OperationalError):
+        client.get("/api/tickets")
+    assert counter._value.get() == before_count + 1
+    assert histogram._sum.get() > before_latency
+
+
+def test_metrics_use_bounded_routes_and_exclude_scrapes(client, payload):
+    ticket_id = client.post("/api/tickets", json=payload).json()["id"]
+    counter = requests.labels("GET", "/api/tickets/{ticket_id}", "200")
+    before = counter._value.get()
+    client.get(f"/api/tickets/{ticket_id}")
+    assert counter._value.get() == before + 1
+    output = client.get("/metrics").text
+    assert f'route="/api/tickets/{ticket_id}"' not in output
+    assert 'route="/metrics"' not in output
+
+
+def test_invalid_update_preserves_existing_ticket(client, payload):
+    ticket_id = client.post("/api/tickets", json=payload).json()["id"]
+    assert client.put(f"/api/tickets/{ticket_id}", json={**payload, "title": " "}).status_code == 422
+    assert client.get(f"/api/tickets/{ticket_id}").json()["title"] == payload["title"]
+
+
+def test_pagination_has_stable_order(client, payload):
+    ids = [client.post("/api/tickets", json={**payload, "title": f"Ticket {i}"}).json()["id"]
+           for i in range(15)]
+    first = client.get("/api/tickets?limit=13").json()
+    second = client.get("/api/tickets?limit=13&offset=12").json()
+    assert [row["id"] for row in first[:12]] + [row["id"] for row in second] == ids[::-1]

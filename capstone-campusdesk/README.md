@@ -10,7 +10,7 @@ implementation for the DevOps capstone, using the course architecture.
 **Start here:** [Submission status](SUBMISSION.md) | [Demo guide](demo/WALKTHROUGH.md) |
 [AWS deployment](terraform/README.md) | [Troubleshooting](troubleshooting/README.md)
 
-**Verified locally:** 16 API tests, browser CRUD checks, healthy Compose and Kind
+**Verified locally:** 20 API tests, browser CRUD checks, healthy Compose and Kind
 deployments, live monitoring, and Argo CD GitOps. The
 [successful CI/CD run](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38639295103)
 tested PostgreSQL, passed both application-image security gates, deployed to Kubernetes,
@@ -117,6 +117,19 @@ missing IDs and readiness failure. Local unit tests use isolated in-memory SQLit
 CI additionally runs them against a dedicated PostgreSQL database, with each test
 inside a rolled-back transaction. No test touches application data.
 
+Browser regression checks exercise the running application, including real CRUD,
+validation, keyboard dismissal, narrow-screen layout and mocked failure/pagination
+boundaries. CI runs them against its isolated Kubernetes deployment before publishing:
+
+```powershell
+npm --prefix frontend ci
+node frontend/node_modules/playwright/cli.js install chromium
+node scripts/browser-check.mjs
+```
+
+No seed data is required. Only the browser test's uniquely named ticket is created
+and deleted. Use `APP_URL` to target a different local deployment.
+
 For a lightweight development server, run `alembic upgrade head` and
 `uvicorn app.main:app --port 8000` inside `backend`, then `npm ci` and `npm run dev`
 inside `frontend`. SQLite is the development fallback when `DATABASE_URL` is unset;
@@ -132,7 +145,7 @@ It triggers for capstone changes pushed to `main`, pull requests, and manual run
 2. Helm and Terraform are validated without creating cloud resources.
 3. Both Docker images are built and tagged with the full Git commit SHA.
 4. Trivy scans both images and blocks the pipeline on any HIGH or CRITICAL finding.
-5. An ephemeral Kind cluster deploys the Helm chart and runs a smoke test.
+5. An ephemeral Kind cluster deploys the Helm chart and runs smoke and browser tests.
 6. A successful main-branch run publishes both images to GHCR.
 7. CI commits those verified SHA tags to `helm/campusdesk/values-release.json`.
    Argo CD automatically reconciles that release into the local cluster.
@@ -155,7 +168,7 @@ a Kubernetes image-pull Secret using a token with `read:packages`. Never commit 
 ## Local Kubernetes And Helm
 
 Install Kind, Helm 3 and kubectl; this workspace also has local tools under the
-repository's ignored `tools/` directory. Build Compose images first, then run:
+repository's ignored `tools/` directory. With Docker running, bootstrap a new cluster:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/local-k8s.ps1
@@ -165,7 +178,8 @@ helm --kube-context kind-campusdesk list -n campusdesk
 ```
 
 The script creates only a dedicated `campusdesk` cluster, generates local Secrets,
-loads local images, installs Traefik and Metrics Server, and installs the Helm chart.
+builds and loads single-platform images, installs Traefik and Metrics Server, and
+installs the Helm chart. It refuses to overwrite an app already managed by Argo CD.
 Backend and frontend each run at least two replicas. A migration Job prepares the
 database before backend readiness succeeds. PostgreSQL uses a StatefulSet and PVC.
 
@@ -206,11 +220,18 @@ chart on `main`. It combines local networking values with the verified GHCR imag
 tags in `values-release.json`. CI updates that file only after tests, scans and the
 ephemeral Kubernetes smoke deployment pass. Automated sync and self-healing are
 enabled; automatic pruning is disabled. Promotion commits use `[skip ci]` to avoid
-an image-build loop. The cluster must have the `ghcr-pull` image-pull Secret when
-registry packages are private.
+an image-build loop. The published packages are public and require no pull token.
+For private packages, create an image-pull Secret outside Git and reference its name
+in the chart's `imagePullSecrets` values.
 
-Install Argo CD using `gitops/values-argocd.yaml`, then apply the Application and
-`gitops/argocd-ingress.yaml`. The local Argo CD UI is at
+After the local Helm bootstrap, transfer deployment ownership to Argo CD:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/local-gitops.ps1
+```
+
+This installs the pinned Argo CD chart, applies the Ingress and Application, and
+waits for Synced/Healthy status. The local Argo CD UI is at
 <http://argocd.localhost:8088>. Its `admin` password is in the
 `argocd-initial-admin-secret` Secret in namespace `argocd`.
 

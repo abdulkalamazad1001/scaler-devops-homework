@@ -2,7 +2,6 @@ name: CampusDesk CI/CD
 on:
   push:
     branches: [main]
-    paths: ['capstone-campusdesk/**', '.github/workflows/campusdesk.yml']
   pull_request:
     paths: ['capstone-campusdesk/**', '.github/workflows/campusdesk.yml']
   workflow_dispatch:
@@ -16,6 +15,7 @@ env:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     services:
       postgres:
         image: postgres:17-alpine
@@ -66,6 +66,7 @@ jobs:
   build-scan-deploy:
     needs: test
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: write
       packages: write
@@ -105,6 +106,28 @@ jobs:
         env:
           IMAGE_TAG: ${{ github.sha }}
         run: bash "$PROJECT/scripts/ci-k8s.sh"
+      - uses: actions/setup-node@v4
+        with: {node-version: '24', cache: npm, cache-dependency-path: capstone-campusdesk/frontend/package-lock.json}
+      - name: Install browser test dependencies
+        working-directory: capstone-campusdesk/frontend
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+      - name: Browser regression checks against the deployed Kubernetes application
+        env:
+          APP_URL: http://127.0.0.1:3000
+          EVIDENCE_DIR: ${{ github.workspace }}/capstone-campusdesk/evidence/local/ci-browser
+        run: |
+          kubectl -n campusdesk port-forward service/frontend 3000:8080 > /tmp/campusdesk-forward.log 2>&1 &
+          FORWARD_PID=$!
+          trap 'kill "$FORWARD_PID" 2>/dev/null || true' EXIT
+          curl --fail --retry 30 --retry-connrefused --retry-delay 2 "$APP_URL/healthz"
+          node "$PROJECT/scripts/browser-check.mjs"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-results
+          path: capstone-campusdesk/evidence/local/ci-browser/
       - uses: docker/login-action@v3
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:

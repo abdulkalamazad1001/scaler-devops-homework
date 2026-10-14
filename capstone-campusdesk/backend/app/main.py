@@ -21,13 +21,18 @@ logger = logging.getLogger("uvicorn.error")
 @app.middleware("http")
 async def observe(request, call_next):
     started = time.perf_counter()
-    response = await call_next(request)
-    route = request.scope.get("route")
-    path = route.path if route else "unmatched"
-    if path != "/metrics":
-        requests.labels(request.method, path, str(response.status_code)).inc()
-        latency.labels(request.method, path).observe(time.perf_counter() - started)
-    return response
+    status = 500
+    try:
+        response = await call_next(request)
+        status = response.status_code
+        return response
+    finally:
+        # Unhandled exceptions must count toward error-rate alerts as well.
+        route = request.scope.get("route")
+        path = route.path if route else "unmatched"
+        if path != "/metrics":
+            requests.labels(request.method, path, str(status)).inc()
+            latency.labels(request.method, path).observe(time.perf_counter() - started)
 
 
 @app.get("/health")

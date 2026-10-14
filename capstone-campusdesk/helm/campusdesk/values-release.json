@@ -7,9 +7,5 @@
     "repository": "ghcr.io/abdulkalamazad1001/campusdesk-frontend",
     "tag": "7e81657284b6ce5d54b989d2defdeb4bf5020e12"
   },
-  "imagePullSecrets": [
-    {
-      "name": "ghcr-pull"
-    }
-  ]
+  "imagePullSecrets": []
 }
