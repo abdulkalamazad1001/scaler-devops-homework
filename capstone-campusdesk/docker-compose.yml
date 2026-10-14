@@ -1,0 +1,46 @@
+name: campusdesk
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: campusdesk
+      POSTGRES_USER: campusdesk
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-campusdesk-local-only}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U campusdesk -d campusdesk]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  migrate:
+    image: campusdesk-backend:local
+    environment:
+      DATABASE_URL: postgresql+psycopg://campusdesk:${POSTGRES_PASSWORD:-campusdesk-local-only}@postgres:5432/campusdesk
+    command: [alembic, upgrade, head]
+    depends_on:
+      postgres:
+        condition: service_healthy
+  backend:
+    build: ./backend
+    image: campusdesk-backend:local
+    environment:
+      DATABASE_URL: postgresql+psycopg://campusdesk:${POSTGRES_PASSWORD:-campusdesk-local-only}@postgres:5432/campusdesk
+    ports: ["127.0.0.1:8000:8000"]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready')"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  frontend:
+    build: ./frontend
+    image: campusdesk-frontend:local
+    ports: ["127.0.0.1:3000:8080"]
+    depends_on:
+      backend:
+        condition: service_healthy
+volumes:
+  postgres-data:
