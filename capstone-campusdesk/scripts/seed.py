@@ -2,10 +2,16 @@
 import argparse
 import json
 import urllib.request
+from urllib.parse import urlsplit, urlunsplit
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--url", default="http://127.0.0.1:3000")
 args = parser.parse_args()
+parsed = urlsplit(args.url)
+headers = {"Content-Type": "application/json"}
+if parsed.hostname and parsed.hostname.endswith(".localhost"):
+    headers["Host"] = parsed.netloc
+    args.url = urlunsplit(parsed._replace(netloc=f"127.0.0.1:{parsed.port or 80}"))
 records = [
     ("Library Wi-Fi keeps disconnecting", "network", "high", "open", "Aisha Khan", "Central Library", "Unassigned"),
     ("Projector display flickers in Lab 3", "hardware", "medium", "in_progress", "Rohan Mehta", "Engineering / Lab 3", "IT Support"),
@@ -16,7 +22,7 @@ records = [
     ("License renewal for design software", "software", "high", "open", "Nisha Sharma", "Design Studio", "Unassigned"),
     ("Email password reset request", "access", "medium", "resolved", "Kabir Das", "Student Centre", "IT Support"),
 ]
-existing = json.load(urllib.request.urlopen(args.url + "/api/tickets?limit=100"))
+existing = json.load(urllib.request.urlopen(urllib.request.Request(args.url + "/api/tickets?limit=100", headers=headers)))
 titles = {ticket["title"] for ticket in existing}
 count = 0
 for title, category, priority, status, requester, location, assignee in records:
@@ -26,7 +32,7 @@ for title, category, priority, status, requester, location, assignee in records:
             "requester": requester, "location": location, "assignee": assignee,
             "description": "Synthetic demonstration ticket for the CampusDesk capstone."}
     request = urllib.request.Request(args.url + "/api/tickets", data=json.dumps(body).encode(),
-                                     headers={"Content-Type": "application/json"}, method="POST")
+                                     headers=headers, method="POST")
     with urllib.request.urlopen(request) as response:
         assert response.status == 201
     count += 1
