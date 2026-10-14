@@ -1,0 +1,176 @@
+{{- if .Values.monitoring.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-metrics
+spec:
+  clusterIP: None
+  selector: {app: backend}
+  ports:
+    - name: http
+      port: 8000
+      targetPort: http
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 15s
+      evaluation_interval: 15s
+    rule_files: [/etc/prometheus/alerts.yml]
+    scrape_configs:
+      - job_name: campusdesk
+        dns_sd_configs:
+          - names: [backend-metrics.{{ .Release.Namespace }}.svc.cluster.local]
+            type: A
+            port: 8000
+  alerts.yml: |
+    groups:
+      - name: campusdesk
+        rules:
+          - alert: CampusDeskBackendUnavailable
+            expr: absent(up{job="campusdesk"}) or max(up{job="campusdesk"}) == 0
+            for: 2m
+            labels: {severity: critical}
+            annotations: {summary: "No CampusDesk backend is available"}
+          - alert: CampusDeskHighErrorRate
+            expr: sum(rate(campusdesk_http_requests_total{status=~"5.."}[5m])) / clamp_min(sum(rate(campusdesk_http_requests_total[5m])), 0.001) > 0.05
+            for: 5m
+            labels: {severity: warning}
+            annotations: {summary: "Backend error ratio exceeds five percent"}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: prometheus}
+  template:
+    metadata:
+      labels: {app: prometheus}
+    spec:
+      automountServiceAccountToken: false
+      securityContext: {runAsUser: 65534, runAsNonRoot: true, fsGroup: 65534}
+      containers:
+        - name: prometheus
+          image: {{ .Values.monitoring.prometheusImage }}
+          args: ["--config.file=/etc/prometheus/prometheus.yml", "--storage.tsdb.path=/prometheus", "--storage.tsdb.retention.time=24h"]
+          ports: [{name: http, containerPort: 9090}]
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities: {drop: [ALL]}
+          resources:
+            requests: {cpu: 100m, memory: 128Mi}
+            limits: {cpu: 500m, memory: 512Mi}
+          readinessProbe:
+            httpGet: {path: /-/ready, port: http}
+          volumeMounts:
+            - {name: config, mountPath: /etc/prometheus}
+            - {name: data, mountPath: /prometheus}
+      volumes:
+        - name: config
+          configMap: {name: prometheus-config}
+        - name: data
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus
+spec:
+  type: {{ if .Values.monitoring.nodePorts }}NodePort{{ else }}ClusterIP{{ end }}
+  selector: {app: prometheus}
+  ports:
+    - port: 9090
+      targetPort: http
+      {{- if .Values.monitoring.nodePorts }}
+      nodePort: 30900
+      {{- end }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-config
+data:
+  datasource.yaml: |
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        uid: prometheus
+        type: prometheus
+        access: proxy
+        url: http://prometheus:9090
+        isDefault: true
+  dashboard-provider.yaml: |
+    apiVersion: 1
+    providers:
+      - name: CampusDesk
+        type: file
+        options:
+          path: /var/lib/grafana/dashboards
+  campusdesk.json: |
+{{ .Files.Get "dashboards/campusdesk.json" | indent 4 }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: grafana}
+  template:
+    metadata:
+      labels: {app: grafana}
+    spec:
+      automountServiceAccountToken: false
+      securityContext: {runAsUser: 472, runAsNonRoot: true, fsGroup: 472}
+      containers:
+        - name: grafana
+          image: {{ .Values.monitoring.grafanaImage }}
+          env:
+            - name: GF_SECURITY_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.monitoring.grafanaSecret }}
+                  key: password
+            - {name: GF_USERS_ALLOW_SIGN_UP, value: "false"}
+          ports: [{name: http, containerPort: 3000}]
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities: {drop: [ALL]}
+          resources:
+            requests: {cpu: 100m, memory: 128Mi}
+            limits: {cpu: 500m, memory: 512Mi}
+          readinessProbe:
+            httpGet: {path: /api/health, port: http}
+          volumeMounts:
+            - {name: data, mountPath: /var/lib/grafana}
+            - {name: config, mountPath: /etc/grafana/provisioning/datasources/datasource.yaml, subPath: datasource.yaml}
+            - {name: config, mountPath: /etc/grafana/provisioning/dashboards/provider.yaml, subPath: dashboard-provider.yaml}
+            - {name: config, mountPath: /var/lib/grafana/dashboards/campusdesk.json, subPath: campusdesk.json}
+      volumes:
+        - name: config
+          configMap: {name: grafana-config}
+        - name: data
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+spec:
+  type: {{ if .Values.monitoring.nodePorts }}NodePort{{ else }}ClusterIP{{ end }}
+  selector: {app: grafana}
+  ports:
+    - port: 3000
+      targetPort: http
+      {{- if .Values.monitoring.nodePorts }}
+      nodePort: 30300
+      {{- end }}
+{{- end }}
