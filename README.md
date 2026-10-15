@@ -1,6 +1,7 @@
 # Scaler DevOps Homework
 
-**T. Abdul Kalam Azad | 24BCS10053**  
+**T. Abdul Kalam Azad | 24BCS10053**
+
 GitHub: [abdulkalamazad1001](https://github.com/abdulkalamazad1001)
 
 Course assignments covering Linux, Git, Docker, Kubernetes, Helm, CI/CD,
