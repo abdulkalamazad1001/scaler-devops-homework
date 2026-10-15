@@ -1,24 +1,30 @@
 # Scaler DevOps Homework
 
-**Project-by-project review:** [All homework tasks, verified checks and remaining gaps](review/README.md).
-This is separate from the capstone audit. Course session 8 (Docker networking and
-volumes) is submitted in `task-7-docker-networking-volume`; the numbering difference
-does not mean that topic has no submission.
+**T. Abdul Kalam Azad | 24BCS10053**  
+GitHub: [abdulkalamazad1001](https://github.com/abdulkalamazad1001)
 
-## Final Capstone: CampusDesk
+Course assignments covering Linux, Git, Docker, Kubernetes, Helm, CI/CD,
+DevSecOps, Terraform and monitoring. **CampusDesk** is the original capstone;
+the numbered directories contain the individual assignments and lab references.
 
-The original campus IT helpdesk project is in **[capstone-campusdesk/](capstone-campusdesk/README.md)**.
-It includes React, FastAPI, PostgreSQL, Docker, GitHub Actions, Trivy, Terraform, Kubernetes,
-Helm, Argo CD, Prometheus and Grafana. See the **[submission checklist](capstone-campusdesk/SUBMISSION.md)**
-for actual verification status and remaining evidence. Earlier homework/reference folders are separate.
+## CampusDesk
 
-**Final review:** [Grading audit](capstone-campusdesk/GRADING-AUDIT.md) |
-[Presentation assets](demo/README.md) |
-[Credited shared AWS evidence](capstone-campusdesk/evidence/shared-aws/README.md).
+A campus IT helpdesk built with React, FastAPI and PostgreSQL. The delivery stack
+includes Docker, GitHub Actions, Helm, Argo CD, Prometheus and Grafana, with
+Terraform configuration for AWS VPC/EKS.
 
-### Capstone Quick Start
+| Deliverable | Location |
+|---|---|
+| Application, architecture and setup | [CampusDesk README](capstone-campusdesk/README.md) |
+| Submission status by rubric module | [Submission checklist](capstone-campusdesk/SUBMISSION.md) |
+| Detailed requirements and evidence | [Grading audit](capstone-campusdesk/GRADING-AUDIT.md) |
+| Screenshots and test reports | [Evidence inventory](capstone-campusdesk/evidence/README.md) |
+| AWS provisioning and cleanup instructions | [Terraform runbook](capstone-campusdesk/terraform/README.md) |
+| Slides and local rehearsal video | [Presentation](demo/README.md) |
 
-From the repository root, with Docker Desktop running:
+### Run Locally
+
+With Docker Desktop running, execute from the repository root:
 
 ```powershell
 cd capstone-campusdesk
@@ -26,230 +32,60 @@ docker compose up --build -d
 python scripts/seed.py
 ```
 
-Open [CampusDesk](http://localhost:3000). The seed records are synthetic examples.
-Architecture: browser -> React/Nginx -> FastAPI -> PostgreSQL, with Alembic migrations.
-GitHub Actions runs tests, image builds, Trivy scans and a Kubernetes/browser check,
-then publishes SHA-tagged images to GHCR. Argo CD deploys the verified release;
-Prometheus and Grafana observe the backend. Local Kubernetes uses Kind and Traefik.
+Open [CampusDesk](http://localhost:3000). Seeding adds synthetic demonstration
+tickets. The application is a classroom project without authentication, not a
+production service.
 
-| Technical Guide | Location |
-|---|---|
-| Stack, architecture diagram, API and tests | [Project README](capstone-campusdesk/README.md) |
-| Kubernetes, Helm and GitOps commands | [Local deployment](capstone-campusdesk/README.md#local-kubernetes-and-helm) |
-| Prometheus and Grafana configuration | [Monitoring](capstone-campusdesk/monitoring/README.md) |
-| Terraform VPC/EKS configuration and cleanup | [AWS runbook](capstone-campusdesk/terraform/README.md) |
-| Actual screenshots and reports | [Evidence](capstone-campusdesk/evidence/README.md) |
-| Slides and silent local rehearsal | [Demo](capstone-campusdesk/demo/WALKTHROUGH.md) |
+## Assignments
 
-**Limits:** classroom app without authentication, single-instance database, ephemeral
-local monitoring storage. CampusDesk's AWS execution and the complete explained live
-walkthrough remain pending. Shared TaskBoard AWS screenshots are separately credited
-under reported instructor permission; they are not a CampusDesk cloud deployment.
+Each linked directory contains its own instructions and supporting files.
+There are 20 numbered directories: tasks 1-7 and 9-21. Course session 8's Docker
+networking and volumes topic is covered by task 7.
 
-
-**Name:** T. Abdul Kalam Azad  
-**Roll number:** 24BCS10053  
-**Checkpoints:** 40 of 40 complete
-
-Seven homework tasks covering Linux basics, shell scripting, networking, Git and Docker.
-Each task lives in its own folder with a write-up that carries the real command output,
-and the Docker tasks also carry browser screenshots as evidence.
-
----
-
-## Checkpoints
-
-Every box below was completed and has written evidence in the linked file.
-
-### Task 1 — Linux basics → [`task-1-linux-basics/README.md`](task-1-linux-basics/README.md)
-
-- [x] Soft link vs hard link, demonstrated with `ln`, `ln -s` and `ls -li` inode output
-- [x] Proved the difference by deleting the target: the hard link survives, the soft link breaks
-- [x] `adduser` vs `useradd`, with the equivalent flags spelled out for each
-- [x] `journalctl` for reading systemd logs, including the follow, filter and vacuum flags
-- [x] A command cheat sheet covering navigation, files, permissions, processes and archives
-
-### Task 2 — Shell scripting → [`task-2-shell-scripting/`](task-2-shell-scripting/)
-
-- [x] `sysinfo.sh` stores the date, hostname and username in variables and prints them
-- [x] Prints disk usage with `df -h` and the first ten processes with `ps`
-- [x] Asks for a directory name and a file name with `read -p`
-- [x] Creates them with `mkdir -p` and `touch`
-- [x] Saves the full `ps aux` output to the file with `>` redirection
-- [x] Script re-run on 3 September 2026 and the write-up updated with that real output
-
-### Task 3 — Networking → [`task-3-networking/README.md`](task-3-networking/README.md)
-
-- [x] Addresses and interfaces: `ip addr`, `ip -brief addr`, `ip link`, `ifconfig`, `hostname -I`
-- [x] Routing: `ip route`, `ip route get`, `ip route add` / `delete`, `ip neigh`
-- [x] Changing addresses and links: `ip addr add` / `del`, `ip link set`
-- [x] Connectivity: `ping`, `traceroute`
-- [x] DNS: `nslookup`, `dig`, `host`, `/etc/resolv.conf`, `/etc/hosts`
-- [x] Ports and sockets: `ss -tulpn`, `netstat -tulpn`, `ss -s`
-- [x] Web requests: `curl -I`, public IP lookup, `wget`
-- [x] Ran inside an Ubuntu container, because `ip` and `ss` do not exist on macOS
-
-### Task 4 — Git → [`task-4-git/README.md`](task-4-git/README.md)
-
-- [x] `git commit -m` vs `git commit -a -m`, tested on a tracked file
-- [x] Showed that `-a` does **not** pick up untracked files
-- [x] `git cherry-pick`: moved one bugfix commit to `main` and left the feature commits behind
-- [x] Explained from the `--graph` output that cherry-pick creates a new hash, it does not move a commit
-
-### Task 5 — Docker, six Hello World apps → [`task-5-docker/README.md`](task-5-docker/README.md)
-
-- [x] Node.js and Express — `node:20-alpine`, port 3000 → host 3001
-- [x] Python and Flask — `python:3.12-slim`, port 5000 → host 5001
-- [x] Java with the JDK's built-in HTTP server — two stage JDK → JRE build, port 8080
-- [x] Apache serving a static page — `httpd:2.4-alpine`, port 80 → host 8081
-- [x] Nginx serving a static page — `nginx:1.27-alpine`, port 80 → host 8082
-- [x] React built with Vite, served by Nginx — two stage build, 76 MB final image, host 8083
-- [x] All six built, run and opened in a browser, with a screenshot for each in `screenshots/`
-- [x] Hardening pass afterwards: `USER node`, non-root `appuser`, `NODE_ENV`, `PYTHONUNBUFFERED`
-
-### Task 6 — Docker multi-stage build → [`task-6-docker-multistage/README.md`](task-6-docker-multistage/README.md)
-
-- [x] Built the given multi-stage Dockerfile and ran it on host port 8080
-- [x] Verified with `docker ps`, `docker logs` and `curl`, plus a browser screenshot
-- [x] Compared against a single stage build of the same app and explained the small 6 MB gap honestly
-- [x] Deployed three different application types — Node.js, Python and Java — side by side
-
-### Task 7 — Docker networking and volumes → [`task-7-docker-networking-volume/README.md`](task-7-docker-networking-volume/README.md)
-
-- [x] Three containers across three custom bridge networks, with the backend on two of them
-- [x] Proved the isolation: frontend reaches backend, backend reaches MySQL, frontend cannot resolve the database at all
-- [x] Host networking with Apache on port 80, including why it behaves differently on macOS
-- [x] Bind mount into Nginx, edited the file on the host and saw it served without a restart
-- [x] Overlay networks on a single node swarm, and how VXLAN carries traffic between hosts
-
----
-
-## Sessions 9–21: reference write-ups
-
-These are learning references for the Kubernetes, Helm, CI/CD, DevSecOps, Terraform, monitoring
-and final-project assignments. The source files (YAML, charts, Terraform, workflows, app code) are
-provided for the labs; the precise current validation scope is in [the review](review/README.md).
-The command output in each `submission.md` is
-representative expected output, not captured from a live run. Each file says so at the top.
-Output blocks are shown as terminal-style screenshots tagged "expected output", with the
-text version collapsed underneath. They were generated by the local `tools/termshot`
-helper, which is not included in this repository.
-
-| Session | Topic | Write-up |
+| Task | Topic | Files |
 |---|---|---|
-| 9 | Kubernetes fundamentals, Minikube, architecture | [`task-9-kubernetes-fundamentals/submission.md`](task-9-kubernetes-fundamentals/submission.md) |
-| 10 | Deployment strategies and Pod lifecycle | [`task-10-k8s-deployments-pod-lifecycle/submission.md`](task-10-k8s-deployments-pod-lifecycle/submission.md) |
-| 11 | Services, object comparison, FQDN, CoreDNS | [`task-11-k8s-services-dns/submission.md`](task-11-k8s-services-dns/submission.md) |
-| 12 | ConfigMaps, Secrets, Ingress, troubleshooting | [`task-12-ingress-configmaps-secrets/submission.md`](task-12-ingress-configmaps-secrets/submission.md) |
-| 13 | Volumes, HPA, probes mini project | [`task-13-storage-hpa-probes/submission.md`](task-13-storage-hpa-probes/submission.md) |
-| 14 | Kubernetes troubleshooting | [`task-14-k8s-troubleshooting/submission.md`](task-14-k8s-troubleshooting/submission.md) |
-| 15 | Helm commands, rollback, mini project | [`task-15-helm/submission.md`](task-15-helm/submission.md) |
-| 16 | CI/CD with GitHub Actions | [`task-16-cicd-github-actions/submission.md`](task-16-cicd-github-actions/submission.md) |
-| 17 | DevSecOps pipeline | [`task-17-devsecops/submission.md`](task-17-devsecops/submission.md) |
-| 18 | Terraform S3 demo and AWS services | [`task-18-terraform-aws/submission.md`](task-18-terraform-aws/submission.md) |
-| 19 | End-to-end Terraform cloud project | [`task-19-terraform-cloud-project/submission.md`](task-19-terraform-cloud-project/submission.md) |
-| 20 | Monitoring, observability, GitOps | [`task-20-monitoring-gitops/submission.md`](task-20-monitoring-gitops/submission.md) |
-| 21 | Final DevOps project | [`task-21-final-devops-project/submission.md`](task-21-final-devops-project/submission.md) |
+| 1 | Linux basics | [Task 1](task-1-linux-basics/README.md) |
+| 2 | Shell scripting | [Task 2](task-2-shell-scripting/README.md) |
+| 3 | Networking | [Task 3](task-3-networking/README.md) |
+| 4 | Git | [Task 4](task-4-git/README.md) |
+| 5 | Docker: six application images | [Task 5](task-5-docker/README.md) |
+| 6 | Docker multi-stage builds | [Task 6](task-6-docker-multistage/README.md) |
+| 7 | Docker networking and volumes | [Task 7](task-7-docker-networking-volume/README.md) |
+| 9 | Kubernetes fundamentals | [Task 9](task-9-kubernetes-fundamentals/README.md) |
+| 10 | Deployments and Pod lifecycle | [Task 10](task-10-k8s-deployments-pod-lifecycle/README.md) |
+| 11 | Services and DNS | [Task 11](task-11-k8s-services-dns/README.md) |
+| 12 | Ingress, ConfigMaps and Secrets | [Task 12](task-12-ingress-configmaps-secrets/README.md) |
+| 13 | Storage, HPA and probes | [Task 13](task-13-storage-hpa-probes/README.md) |
+| 14 | Kubernetes troubleshooting | [Task 14](task-14-k8s-troubleshooting/README.md) |
+| 15 | Helm | [Task 15](task-15-helm/README.md) |
+| 16 | CI/CD with GitHub Actions | [Task 16](task-16-cicd-github-actions/README.md) |
+| 17 | DevSecOps | [Task 17](task-17-devsecops/README.md) |
+| 18 | Terraform and AWS services | [Task 18](task-18-terraform-aws/README.md) |
+| 19 | Terraform cloud project | [Task 19](task-19-terraform-cloud-project/README.md) |
+| 20 | Monitoring and GitOps | [Task 20](task-20-monitoring-gitops/README.md) |
+| 21 | TaskBoard reference project | [Task 21](task-21-final-devops-project/README.md) |
 
----
+## Verification and Remaining Work
 
-## Repository layout
+The [project-by-project review](review/README.md) links the recorded checks,
+successful CI runs, fixes and remaining lab scenarios. Verification scripts and
+run-specific reports are kept together under `review/`.
 
-    scaler-devops-homework/
-    ├── README.md                          this file
-    ├── task-1-linux-basics/
-    │   └── README.md
-    ├── task-2-shell-scripting/
-    │   ├── README.md
-    │   └── sysinfo.sh                     the script itself
-    ├── task-3-networking/
-    │   └── README.md
-    ├── task-4-git/
-    │   └── README.md
-    ├── task-5-docker/
-    │   ├── README.md
-    │   ├── nodejs-app/    python-app/    java-app/
-    │   ├── Apache-app/    nginx-app/     React-app/
-    │   └── screenshots/                   one per app
-    ├── task-6-docker-multistage/
-    │   ├── README.md
-    │   ├── multi-stage-app/
-    │   └── screenshots/
-    └── task-7-docker-networking-volume/
-        ├── README.md
-        ├── bind-mount-demo/website/
-        └── screenshots/
+- Recorded checks include 106 Python tests across tasks 16, 17, 20 and 21,
+  Docker builds, infrastructure validation and selected live Kubernetes/Helm exercises.
+- CampusDesk's tests, security scans, browser checks and local GitOps deployment
+  have passed; detailed evidence is linked above.
+- CampusDesk's own AWS deployment, the complete narrated walkthrough and final
+  course submission remain pending. Shared TaskBoard AWS screenshots are
+  [separately credited](capstone-campusdesk/evidence/shared-aws/README.md), not
+  evidence of a CampusDesk cloud deployment.
+- The `submission.md` transcripts and terminal-style images in tasks 9-21 are
+  labelled expected-output examples. Actual execution evidence is in the review
+  reports; examples are not substitutes for completed exercises.
 
-## Reproducing the work
+## Reference Material
 
-### Task 2, the shell script
-
-    cd task-2-shell-scripting
-    chmod +x sysinfo.sh
-    ./sysinfo.sh
-
-Press Enter at both prompts to accept the defaults, `sysreport` and `processes.txt`.
-The generated folder is in `.gitignore`, so it never gets committed.
-
-### Task 5, the six Docker apps
-
-    cd task-5-docker
-
-    docker build -t nodejs-hello nodejs-app
-    docker build -t python-hello python-app
-    docker build -t java-hello   java-app
-    docker build -t apache-hello Apache-app
-    docker build -t nginx-hello  nginx-app
-    docker build -t react-hello  React-app
-
-    docker run -d --name node-hello -p 3001:3000 nodejs-hello
-    docker run -d --name py-hello   -p 5001:5000 python-hello
-    docker run -d --name jv-hello   -p 8080:8080 java-hello
-    docker run -d --name ap-hello   -p 8081:80   apache-hello
-    docker run -d --name ng-hello   -p 8082:80   nginx-hello
-    docker run -d --name rc-hello   -p 8083:80   react-hello
-
-Then check all six at once:
-
-    for p in 3001 5001 8080 8081 8082 8083; do
-      printf '%s -> %s\n' "$p" "$(curl -s -o /dev/null -w '%{http_code}' http://localhost:$p)"
-    done
-
-The React app returns an almost empty body to `curl`, because it renders in the browser,
-so open <http://localhost:8083> to see it.
-
-Cleanup:
-
-    docker rm -f node-hello py-hello jv-hello ap-hello ng-hello rc-hello
-    docker rmi nodejs-hello python-hello java-hello apache-hello nginx-hello react-hello
-
-### Task 6, the multi-stage build
-
-    cd task-6-docker-multistage
-    docker build -t multistage-hello multi-stage-app
-    docker run -d --name multistage-app -p 8080:3000 multistage-hello
-    curl http://localhost:8080
-
-### Task 7, networking and volumes
-
-The write-up lists the commands for each of the four parts in order. Note that Task 2
-of it publishes port 80, so nothing else can be holding that port, and Task 4 needs
-`docker swarm init` for overlay networks.
-
-## Environment these were run on
-
-    Machine   MacBook Pro, macOS (Darwin 25.6.0)
-    Docker    Docker Desktop for Mac
-    Linux     Ubuntu 22.04 in a container, for Task 3, since macOS has no ip or ss
-
-Because it is Docker Desktop, containers run inside a small Linux VM. That matters in
-two places and both are called out where they come up: host networking in Task 7 reaches
-the VM rather than macOS, and the ports the container sees are always the right hand side
-of the `-p host:container` mapping.
-
-## A note on ports
-
-Ports 3000 and 5000 were already in use, so the Node and Python apps are published on
-3001 and 5001 instead. Only the host side of the mapping changed. Inside their
-containers the apps still listen on their normal ports, which is why the Dockerfiles
-still say `EXPOSE 3000` and `EXPOSE 5000`.
+`devops-heros-main/` contains imported instructor material, separate from the
+student projects. Original acknowledgements and licenses are retained. Historical
+lab transcripts describe the environment used for those runs; the later review
+records Windows/Docker/Kind and GitHub runner checks separately.
