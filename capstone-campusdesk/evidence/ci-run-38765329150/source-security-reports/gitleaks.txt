@@ -1,0 +1,28 @@
+Started: 2026-10-15T16:01:13.894543+00:00
+Command: ["docker", "run", "--rm", "-v", "/home/runner/work/scaler-devops-homework/scaler-devops-homework:/repo:ro", "-v", "/home/runner/work/scaler-devops-homework/scaler-devops-homework/capstone-campusdesk/evidence/local/security:/reports", "-w", "/repo", "zricethezav/gitleaks:v8.30.1", "git", "--redact", "--no-banner", "--config=/repo/capstone-campusdesk/security/gitleaks.toml", "--log-opts=--all -- capstone-campusdesk .github/workflows/campusdesk.yml", "--report-format=json", "--report-path=/reports/gitleaks.json"]
+
+Unable to find image 'zricethezav/gitleaks:v8.30.1' locally
+v8.30.1: Pulling from zricethezav/gitleaks
+d49a2dee86fb: Pulling fs layer
+d92b655ae8e2: Pulling fs layer
+61fdfd7c0175: Pulling fs layer
+a43ab0c74cc4: Pulling fs layer
+a43ab0c74cc4: Waiting
+d49a2dee86fb: Verifying Checksum
+d49a2dee86fb: Download complete
+61fdfd7c0175: Verifying Checksum
+61fdfd7c0175: Download complete
+d92b655ae8e2: Verifying Checksum
+d92b655ae8e2: Download complete
+d49a2dee86fb: Pull complete
+a43ab0c74cc4: Verifying Checksum
+d92b655ae8e2: Pull complete
+61fdfd7c0175: Pull complete
+a43ab0c74cc4: Pull complete
+Digest: sha256:c00b6bd0aeb3071cbcb79009cb16a60dd9e0a7c60e2be9ab65d25e6bc8abbb7f
+Status: Downloaded newer image for zricethezav/gitleaks:v8.30.1
+[90m4:01PM[0m [32mINF[0m [1m21 commits scanned.[0m
+[90m4:01PM[0m [32mINF[0m [1mscanned ~1594584 bytes (1.59 MB) in 1.85s[0m
+[90m4:01PM[0m [32mINF[0m [1mno leaks found[0m
+
+Exit code: 0

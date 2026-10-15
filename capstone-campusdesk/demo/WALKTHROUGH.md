@@ -39,3 +39,15 @@ student-narrated recording with AWS evidence required for final submission.
 
 Capture your final narration with these concepts understood. Never show credentials,
 browser authorization codes or decoded Kubernetes Secrets in the recording.
+
+## Final Recording Checks
+
+- Explain the source-security job as well as the existing Trivy image gates.
+- Use a real code/documentation change for the recorded push, without `[skip ci]`,
+  and show that run completing. An older green run alone is not the requested sequence.
+- For shared AWS work, identify the original TaskBoard environment, source of the
+  screenshots and your actual contribution. Do not describe it as CampusDesk on EKS.
+- The current shared images are terminal captures, not Console proof. Add genuine
+  VPC/EKS Console material or the instructor-approved alternative before finalizing.
+- Keep the rehearsal labeled as such; upload the complete final recording separately.
+- Use the [grading audit](../GRADING-AUDIT.md) to check outstanding items before submitting.

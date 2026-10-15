@@ -8,6 +8,8 @@
 This checklist records actual verification. It does not claim a grade or use generated
 screenshots as substitutes for operations that were not executed.
 
+**Current review:** [Criterion-by-criterion grading audit](GRADING-AUDIT.md).
+
 | Rubric module | Implementation and evidence | Status |
 |---|---|---|
 | M1 Application | React/FastAPI/PostgreSQL, Alembic, CRUD, `evidence/application-desktop.png` | Compose and Ingress running; browser checks passed |
@@ -28,7 +30,7 @@ screenshots as substitutes for operations that were not executed.
 
 - [Reference comparison and added safeguards](REFERENCE-COMPARISON.md); source-security gates and an additional readiness exercise supplement the previous release below.
 
-- [Latest successful CI/CD, browser tests and automated promotion](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38644518494)
+- [Previous successful CI/CD, browser tests and automated promotion](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38644518494)
 - [Local quality review and fixes](LOCAL-REVIEW.md)
 - [Earlier successful independent run](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38638277372)
 - [Evidence inventory](evidence/README.md), including actual test and scan artifacts
@@ -54,6 +56,8 @@ reference folder is not this capstone's verification evidence.
   performed all parts of the shared AWS work is recorded in the shared evidence appendix.
 - Record the final narrated walkthrough including the actual AWS work, CI/CD and GitOps.
 - Review the complete submission against the current instructor rubric.
+- Review the whole-repository history findings documented in `GRADING-AUDIT.md`;
+  the passing capstone secret scan does not cover unrelated homework history.
 
 The instructor's [submission guide](https://github.com/Nency-Ravaliya/devsecops-python/blob/main/SUBMISSION.md)
 requires a repository link, video and slide deck. The student must review and submit

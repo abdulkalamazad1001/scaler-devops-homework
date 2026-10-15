@@ -1,0 +1,578 @@
+Captured at 2026-10-15T16:23:47.519483+00:00
+Command: kubectl --context kind-campusdesk -n argocd get application campusdesk -o json
+Exit code: 0
+
+{
+    "apiVersion": "argoproj.io/v1alpha1",
+    "kind": "Application",
+    "metadata": {
+        "annotations": {
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"argoproj.io/v1alpha1\",\"kind\":\"Application\",\"metadata\":{\"annotations\":{},\"name\":\"campusdesk\",\"namespace\":\"argocd\"},\"spec\":{\"destination\":{\"namespace\":\"campusdesk\",\"server\":\"https://kubernetes.default.svc\"},\"ignoreDifferences\":[{\"group\":\"apps\",\"jsonPointers\":[\"/spec/replicas\"],\"kind\":\"Deployment\",\"name\":\"backend\"}],\"project\":\"default\",\"source\":{\"helm\":{\"releaseName\":\"campusdesk\",\"valueFiles\":[\"values-local.yaml\",\"values-release.json\"]},\"path\":\"capstone-campusdesk/helm/campusdesk\",\"repoURL\":\"https://github.com/abdulkalamazad1001/scaler-devops-homework.git\",\"targetRevision\":\"main\"},\"syncPolicy\":{\"automated\":{\"prune\":false,\"selfHeal\":true},\"syncOptions\":[\"CreateNamespace=true\"]}}}\n"
+        },
+        "creationTimestamp": "2026-10-14T21:12:07Z",
+        "generation": 123,
+        "name": "campusdesk",
+        "namespace": "argocd",
+        "resourceVersion": "14336",
+        "uid": "c9429849-b590-4a96-bd2d-0466384a88b4"
+    },
+    "spec": {
+        "destination": {
+            "namespace": "campusdesk",
+            "server": "https://kubernetes.default.svc"
+        },
+        "ignoreDifferences": [
+            {
+                "group": "apps",
+                "jsonPointers": [
+                    "/spec/replicas"
+                ],
+                "kind": "Deployment",
+                "name": "backend"
+            }
+        ],
+        "project": "default",
+        "source": {
+            "helm": {
+                "releaseName": "campusdesk",
+                "valueFiles": [
+                    "values-local.yaml",
+                    "values-release.json"
+                ]
+            },
+            "path": "capstone-campusdesk/helm/campusdesk",
+            "repoURL": "https://github.com/abdulkalamazad1001/scaler-devops-homework.git",
+            "targetRevision": "main"
+        },
+        "syncPolicy": {
+            "automated": {
+                "prune": false,
+                "selfHeal": true
+            },
+            "syncOptions": [
+                "CreateNamespace=true"
+            ]
+        }
+    },
+    "status": {
+        "controllerNamespace": "argocd",
+        "health": {
+            "lastTransitionTime": "2026-10-15T16:07:23Z",
+            "status": "Healthy"
+        },
+        "history": [
+            {
+                "deployStartedAt": "2026-10-14T21:13:29Z",
+                "deployedAt": "2026-10-14T21:19:03Z",
+                "id": 0,
+                "initiatedBy": {},
+                "revision": "a2d03ad1ab43cb5a730c043570252f843868be41",
+                "source": {
+                    "helm": {
+                        "releaseName": "campusdesk",
+                        "valueFiles": [
+                            "values-local.yaml"
+                        ]
+                    },
+                    "path": "capstone-campusdesk/helm/campusdesk",
+                    "repoURL": "https://github.com/abdulkalamazad1001/scaler-devops-homework.git",
+                    "targetRevision": "main"
+                }
+            },
+            {
+                "deployStartedAt": "2026-10-14T21:19:05Z",
+                "deployedAt": "2026-10-14T21:19:31Z",
+                "id": 1,
+                "initiatedBy": {
+                    "automated": true
+                },
+                "revision": "7e81657284b6ce5d54b989d2defdeb4bf5020e12",
+                "source": {
+                    "helm": {
+                        "releaseName": "campusdesk",
+                        "valueFiles": [
+                            "values-local.yaml",
+                            "values-release.json"
+                        ]
+                    },
+                    "path": "capstone-campusdesk/helm/campusdesk",
+                    "repoURL": "https://github.com/abdulkalamazad1001/scaler-devops-homework.git",
+                    "targetRevision": "main"
+                }
+            },
+            {
+                "deployStartedAt": "2026-10-14T21:46:22Z",
+                "deployedAt": "2026-10-14T21:46:39Z",
+                "id": 2,
+                "initiatedBy": {
+                    "automated": true
+                },
+                "revision": "26a737cd7648806f812d616ea123939a9b697ba9",
+                "source": {
+                    "helm": {
+                        "releaseName": "campusdesk",
+                        "valueFiles": [
+                            "values-local.yaml",
+                            "values-release.json"
+                        ]
+                    },
+                    "path": "capstone-campusdesk/helm/campusdesk",
+                    "repoURL": "https://github.com/abdulkalamazad1001/scaler-devops-homework.git",
+                    "targetRevision": "main"
+                }
+            },
+            {
+                "deployStartedAt": "2026-10-14T22:05:14Z",
+                "deployedAt": "2026-10-14T22:05:38Z",
+                "id": 3,
+                "initiatedBy": {
+                    "automated": true
+                },
+                "revision": "f25ccebeb93877a908cc7c1334d1f500e82711b3",
+                "source": {
+                    "helm": {
+                        "releaseName": "campusdesk",
+                        "valueFiles": [
+                            "values-local.yaml",
+                            "values-release.json"
+                        ]
+                    },
+                    "path": "capstone-campusdesk/helm/campusdesk",
+                    "repoURL": "https://github.com/abdulkalamazad1001/scaler-devops-homework.git",
+                    "targetRevision": "main"
+                }
+            },
+            {
+                "deployStartedAt": "2026-10-15T16:06:02Z",
+                "deployedAt": "2026-10-15T16:06:30Z",
+                "id": 4,
+                "initiatedBy": {
+                    "automated": true
+                },
+                "revision": "2b65a2a739161439bc7f336256b4a5884001a63e",
+                "source": {
+                    "helm": {
+                        "releaseName": "campusdesk",
+                        "valueFiles": [
+                            "values-local.yaml",
+                            "values-release.json"
+                        ]
+                    },
+                    "path": "capstone-campusdesk/helm/campusdesk",
+                    "repoURL": "https://github.com/abdulkalamazad1001/scaler-devops-homework.git",
+                    "targetRevision": "main"
+                }
+            }
+        ],
+        "operationState": {
+            "finishedAt": "2026-10-15T16:06:30Z",
+            "message": "successfully synced (all tasks run)",
+            "operation": {
+                "initiatedBy": {
+                    "automated": true
+                },
+                "retry": {
+                    "limit": 5
+                },
+                "sync": {
+                    "revision": "2b65a2a739161439bc7f336256b4a5884001a63e",
+                    "source": {
+                        "helm": {
+                            "releaseName": "campusdesk",
+                            "valueFiles": [
+                                "values-local.yaml",
+                                "values-release.json"
+                            ]
+                        },
+                        "path": "capstone-campusdesk/helm/campusdesk",
+                        "repoURL": "https://github.com/abdulkalamazad1001/scaler-devops-homework.git",
+                        "targetRevision": "main"
+                    },
+                    "syncOptions": [
+                        "CreateNamespace=true"
+                    ]
+                }
+            },
+            "phase": "Succeeded",
+            "startedAt": "2026-10-15T16:06:02Z",
+            "syncResult": {
+                "resources": [
+                    {
+                        "group": "",
+                        "hookPhase": "Succeeded",
+                        "kind": "ConfigMap",
+                        "message": "configmap/prometheus-config unchanged",
+                        "name": "prometheus-config",
+                        "namespace": "campusdesk",
+                        "status": "Synced",
+                        "syncPhase": "Sync",
+                        "version": "v1"
+                    },
+                    {
+                        "group": "",
+                        "hookPhase": "Succeeded",
+                        "kind": "ConfigMap",
+                        "message": "configmap/grafana-config unchanged",
+                        "name": "grafana-config",
+                        "namespace": "campusdesk",
+                        "status": "Synced",
+                        "syncPhase": "Sync",
+                        "version": "v1"
+                    },
+                    {
+                        "group": "",
+                        "hookPhase": "Succeeded",
+                        "kind": "Service",
+                        "message": "service/backend unchanged",
+                        "name": "backend",
+                        "namespace": "campusdesk",
+                        "status": "Synced",
+                        "syncPhase": "Sync",
+                        "version": "v1"
+                    },
+                    {
+                        "group": "",
+                        "hookPhase": "Succeeded",
+                        "kind": "Service",
+                        "message": "service/grafana unchanged",
+                        "name": "grafana",
+                        "namespace": "campusdesk",
+                        "status": "Synced",
+                        "syncPhase": "Sync",
+                        "version": "v1"
+                    },
+                    {
+                        "group": "",
+                        "hookPhase": "Succeeded",
+                        "kind": "Service",
+                        "message": "service/frontend unchanged",
+                        "name": "frontend",
+                        "namespace": "campusdesk",
+                        "status": "Synced",
+                        "syncPhase": "Sync",
+                        "version": "v1"
+                    },
+                    {
+                        "group": "",
+                        "hookPhase": "Succeeded",
+                        "kind": "Service",
+                        "message": "service/backend-metrics unchanged",
+                        "name": "backend-metrics",
+                        "namespace": "campusdesk",
+                        "status": "Synced",
+                        "syncPhase": "Sync",
+                        "version": "v1"
+                    },
+                    {
+                        "group": "",
+                        "hookPhase": "Succeeded",
+                        "kind": "Service",
+                        "message": "service/postgres unchanged",
+                        "name": "postgres",
+                        "namespace": "campusdesk",
+                        "status": "Synced",
+                        "syncPhase": "Sync",
+                        "version": "v1"
+                    },
+                    {
+                        "group": "",
+                        "hookPhase": "Succeeded",
+                        "kind": "Service",
+                        "message": "service/prometheus unchanged",
+                        "name": "prometheus",
+                        "namespace": "campusdesk",
+                        "status": "Synced",
+                        "syncPhase": "Sync",
+                        "version": "v1"
+                    },
+                    {
+                        "group": "apps",
+                        "hookPhase": "Succeeded",
+                        "images": [
+                            "grafana/grafana:11.6.0"
+                        ],
+                        "kind": "Deployment",
+                        "message": "deployment.apps/grafana unchanged",
+                        "name": "grafana",
+                        "namespace": "campusdesk",
+                        "status": "Synced",
+                        "syncPhase": "Sync",
+                        "version": "v1"
+                    },
+                    {
+                        "group": "apps",
+                        "hookPhase": "Succeeded",
+                        "images": [
+                            "prom/prometheus:v3.2.1"
+                        ],
+                        "kind": "Deployment",
+                        "message": "deployment.apps/prometheus unchanged",
+                        "name": "prometheus",
+                        "namespace": "campusdesk",
+                        "status": "Synced",
+                        "syncPhase": "Sync",
+                        "version": "v1"
+                    },
+                    {
+                        "group": "autoscaling",
+                        "hookPhase": "Succeeded",
+                        "kind": "HorizontalPodAutoscaler",
+                        "message": "recommended size matches current size",
+                        "name": "backend",
+                        "namespace": "campusdesk",
+                        "status": "Synced",
+                        "syncPhase": "Sync",
+                        "version": "v2"
+                    },
+                    {
+                        "group": "apps",
+                        "hookPhase": "Succeeded",
+                        "images": [
+                            "postgres:17-alpine"
+                        ],
+                        "kind": "StatefulSet",
+                        "message": "partitioned roll out complete: 1 new pods have been updated...",
+                        "name": "postgres",
+                        "namespace": "campusdesk",
+                        "status": "Synced",
+                        "syncPhase": "Sync",
+                        "version": "v1"
+                    },
+                    {
+                        "group": "networking.k8s.io",
+                        "hookPhase": "Succeeded",
+                        "kind": "Ingress",
+                        "message": "ingress.networking.k8s.io/campusdesk unchanged",
+                        "name": "campusdesk",
+                        "namespace": "campusdesk",
+                        "status": "Synced",
+                        "syncPhase": "Sync",
+                        "version": "v1"
+                    },
+                    {
+                        "group": "batch",
+                        "hookPhase": "Succeeded",
+                        "hookType": "Sync",
+                        "images": [
+                            "ghcr.io/abdulkalamazad1001/campusdesk-backend:a6e93611db267935157a22e566a422e8824249d0"
+                        ],
+                        "kind": "Job",
+                        "message": "Reached expected number of succeeded pods",
+                        "name": "campusdesk-migrate-1",
+                        "namespace": "campusdesk",
+                        "status": "Synced",
+                        "syncPhase": "Sync",
+                        "version": "v1"
+                    },
+                    {
+                        "group": "apps",
+                        "hookPhase": "Running",
+                        "images": [
+                            "ghcr.io/abdulkalamazad1001/campusdesk-frontend:a6e93611db267935157a22e566a422e8824249d0"
+                        ],
+                        "kind": "Deployment",
+                        "message": "deployment.apps/frontend configured",
+                        "name": "frontend",
+                        "namespace": "campusdesk",
+                        "status": "Synced",
+                        "syncPhase": "Sync",
+                        "version": "v1"
+                    },
+                    {
+                        "group": "apps",
+                        "hookPhase": "Running",
+                        "images": [
+                            "ghcr.io/abdulkalamazad1001/campusdesk-backend:a6e93611db267935157a22e566a422e8824249d0"
+                        ],
+                        "kind": "Deployment",
+                        "message": "deployment.apps/backend configured",
+                        "name": "backend",
+                        "namespace": "campusdesk",
+                        "status": "Synced",
+                        "syncPhase": "Sync",
+                        "version": "v1"
+                    }
+                ],
+                "revision": "2b65a2a739161439bc7f336256b4a5884001a63e",
+                "source": {
+                    "helm": {
+                        "releaseName": "campusdesk",
+                        "valueFiles": [
+                            "values-local.yaml",
+                            "values-release.json"
+                        ]
+                    },
+                    "path": "capstone-campusdesk/helm/campusdesk",
+                    "repoURL": "https://github.com/abdulkalamazad1001/scaler-devops-homework.git",
+                    "targetRevision": "main"
+                }
+            }
+        },
+        "reconciledAt": "2026-10-15T16:23:36Z",
+        "resourceHealthSource": "appTree",
+        "resources": [
+            {
+                "kind": "ConfigMap",
+                "name": "grafana-config",
+                "namespace": "campusdesk",
+                "status": "Synced",
+                "version": "v1"
+            },
+            {
+                "kind": "ConfigMap",
+                "name": "prometheus-config",
+                "namespace": "campusdesk",
+                "status": "Synced",
+                "version": "v1"
+            },
+            {
+                "kind": "Service",
+                "name": "backend",
+                "namespace": "campusdesk",
+                "status": "Synced",
+                "version": "v1"
+            },
+            {
+                "kind": "Service",
+                "name": "backend-metrics",
+                "namespace": "campusdesk",
+                "status": "Synced",
+                "version": "v1"
+            },
+            {
+                "kind": "Service",
+                "name": "frontend",
+                "namespace": "campusdesk",
+                "status": "Synced",
+                "version": "v1"
+            },
+            {
+                "kind": "Service",
+                "name": "grafana",
+                "namespace": "campusdesk",
+                "status": "Synced",
+                "version": "v1"
+            },
+            {
+                "kind": "Service",
+                "name": "postgres",
+                "namespace": "campusdesk",
+                "status": "Synced",
+                "version": "v1"
+            },
+            {
+                "kind": "Service",
+                "name": "prometheus",
+                "namespace": "campusdesk",
+                "status": "Synced",
+                "version": "v1"
+            },
+            {
+                "group": "apps",
+                "kind": "Deployment",
+                "name": "backend",
+                "namespace": "campusdesk",
+                "status": "Synced",
+                "syncWave": 2,
+                "version": "v1"
+            },
+            {
+                "group": "apps",
+                "kind": "Deployment",
+                "name": "frontend",
+                "namespace": "campusdesk",
+                "status": "Synced",
+                "syncWave": 2,
+                "version": "v1"
+            },
+            {
+                "group": "apps",
+                "kind": "Deployment",
+                "name": "grafana",
+                "namespace": "campusdesk",
+                "status": "Synced",
+                "version": "v1"
+            },
+            {
+                "group": "apps",
+                "kind": "Deployment",
+                "name": "prometheus",
+                "namespace": "campusdesk",
+                "status": "Synced",
+                "version": "v1"
+            },
+            {
+                "group": "apps",
+                "kind": "StatefulSet",
+                "name": "postgres",
+                "namespace": "campusdesk",
+                "status": "Synced",
+                "version": "v1"
+            },
+            {
+                "group": "autoscaling",
+                "kind": "HorizontalPodAutoscaler",
+                "name": "backend",
+                "namespace": "campusdesk",
+                "status": "Synced",
+                "version": "v2"
+            },
+            {
+                "group": "networking.k8s.io",
+                "kind": "Ingress",
+                "name": "campusdesk",
+                "namespace": "campusdesk",
+                "status": "Synced",
+                "version": "v1"
+            }
+        ],
+        "sourceHydrator": {},
+        "sourceType": "Helm",
+        "summary": {
+            "externalURLs": [
+                "http://campusdesk.localhost/",
+                "http://campusdesk.localhost/api"
+            ],
+            "images": [
+                "ghcr.io/abdulkalamazad1001/campusdesk-backend:a6e93611db267935157a22e566a422e8824249d0",
+                "ghcr.io/abdulkalamazad1001/campusdesk-frontend:a6e93611db267935157a22e566a422e8824249d0",
+                "grafana/grafana:11.6.0",
+                "postgres:17-alpine",
+                "prom/prometheus:v3.2.1"
+            ]
+        },
+        "sync": {
+            "comparedTo": {
+                "destination": {
+                    "namespace": "campusdesk",
+                    "server": "https://kubernetes.default.svc"
+                },
+                "ignoreDifferences": [
+                    {
+                        "group": "apps",
+                        "jsonPointers": [
+                            "/spec/replicas"
+                        ],
+                        "kind": "Deployment",
+                        "name": "backend"
+                    }
+                ],
+                "source": {
+                    "helm": {
+                        "releaseName": "campusdesk",
+                        "valueFiles": [
+                            "values-local.yaml",
+                            "values-release.json"
+                        ]
+                    },
+                    "path": "capstone-campusdesk/helm/campusdesk",
+                    "repoURL": "https://github.com/abdulkalamazad1001/scaler-devops-homework.git",
+                    "targetRevision": "main"
+                }
+            },
+            "revision": "fae24aafe0dbf2411165792c9b92ca5a9f38119f",
+            "status": "Synced"
+        }
+    }
+}
+

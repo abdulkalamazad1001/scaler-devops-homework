@@ -1,0 +1,12 @@
+{
+  "name": "compose",
+  "capturedAt": "2026-10-15T16:23:27.031348+00:00",
+  "command": [
+    "docker",
+    "compose",
+    "ps"
+  ],
+  "exitCode": 0,
+  "stdout": "NAME                    IMAGE                       COMMAND                  SERVICE    CREATED        STATUS                  PORTS\ncampusdesk-backend-1    campusdesk-backend:local    \"uvicorn app.main:ap\u2026\"   backend    18 hours ago   Up 18 hours (healthy)   127.0.0.1:8000->8000/tcp\ncampusdesk-frontend-1   campusdesk-frontend:local   \"/docker-entrypoint.\u2026\"   frontend   18 hours ago   Up 18 hours (healthy)   127.0.0.1:3000->8080/tcp\ncampusdesk-postgres-1   postgres:17-alpine          \"docker-entrypoint.s\u2026\"   postgres   19 hours ago   Up 19 hours (healthy)   5432/tcp\n",
+  "stderr": ""
+}

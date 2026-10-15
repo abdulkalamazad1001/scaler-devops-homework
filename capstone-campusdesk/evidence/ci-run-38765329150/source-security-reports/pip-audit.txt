@@ -1,0 +1,6 @@
+Started: 2026-10-15T16:01:04.226620+00:00
+Command: ["/opt/hostedtoolcache/Python/3.13.16/x64/bin/python", "-m", "pip_audit", "-r", "backend/requirements-dev.txt", "--strict", "--progress-spinner", "off", "-f", "json", "-o", "/home/runner/work/scaler-devops-homework/scaler-devops-homework/capstone-campusdesk/evidence/local/security/pip-audit.json"]
+
+No known vulnerabilities found
+
+Exit code: 0

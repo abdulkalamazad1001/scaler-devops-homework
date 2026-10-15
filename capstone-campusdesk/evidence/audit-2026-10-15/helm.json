@@ -1,0 +1,15 @@
+{
+  "name": "helm",
+  "capturedAt": "2026-10-15T16:23:27.608369+00:00",
+  "command": [
+    "C:\\Users\\abdul\\Downloads\\devops\\scaler-devops-homework\\tools\\helm\\windows-amd64\\helm.exe",
+    "--kube-context",
+    "kind-campusdesk",
+    "list",
+    "-n",
+    "campusdesk"
+  ],
+  "exitCode": 0,
+  "stdout": "NAME      \tNAMESPACE \tREVISION\tUPDATED                             \tSTATUS  \tCHART           \tAPP VERSION\ncampusdesk\tcampusdesk\t1       \t2026-10-15 02:32:15.230235 +0530 IST\tdeployed\tcampusdesk-1.0.0\t1.0.0      \n",
+  "stderr": ""
+}

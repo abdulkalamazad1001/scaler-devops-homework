@@ -1,0 +1,16 @@
+{
+  "name": "non-root",
+  "capturedAt": "2026-10-15T16:23:27.329424+00:00",
+  "command": [
+    "docker",
+    "image",
+    "inspect",
+    "campusdesk-backend:local",
+    "campusdesk-frontend:local",
+    "--format",
+    "{{.RepoTags}} user={{.Config.User}}"
+  ],
+  "exitCode": 0,
+  "stdout": "[campusdesk-backend:local] user=10001:10001\n[campusdesk-frontend:local] user=101\n",
+  "stderr": ""
+}

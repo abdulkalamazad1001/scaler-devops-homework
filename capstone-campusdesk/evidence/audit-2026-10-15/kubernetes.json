@@ -1,0 +1,16 @@
+{
+  "name": "kubernetes",
+  "capturedAt": "2026-10-15T16:23:27.446376+00:00",
+  "command": [
+    "kubectl",
+    "--context",
+    "kind-campusdesk",
+    "-n",
+    "campusdesk",
+    "get",
+    "pods,svc,ingress,hpa"
+  ],
+  "exitCode": 0,
+  "stdout": "NAME                              READY   STATUS    RESTARTS   AGE\npod/backend-75b9846b78-gpnw6      1/1     Running   0          16m\npod/backend-75b9846b78-tfz94      1/1     Running   0          16m\npod/frontend-56dfbbf6f4-66ptw     1/1     Running   0          16m\npod/frontend-56dfbbf6f4-8xsgn     1/1     Running   0          16m\npod/grafana-57987d6bb8-qjcm5      1/1     Running   0          19h\npod/postgres-0                    1/1     Running   0          19h\npod/prometheus-55556d754b-c68vp   1/1     Running   0          19h\n\nNAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE\nservice/backend           ClusterIP   10.96.179.39    <none>        8000/TCP         19h\nservice/backend-metrics   ClusterIP   None            <none>        8000/TCP         19h\nservice/frontend          ClusterIP   10.96.17.71     <none>        8080/TCP         19h\nservice/grafana           NodePort    10.96.109.255   <none>        3000:30300/TCP   19h\nservice/postgres          ClusterIP   None            <none>        5432/TCP         19h\nservice/prometheus        NodePort    10.96.145.135   <none>        9090:30900/TCP   19h\n\nNAME                                   CLASS     HOSTS                  ADDRESS     PORTS   AGE\ningress.networking.k8s.io/campusdesk   traefik   campusdesk.localhost   127.0.0.1   80      19h\n\nNAME                                          REFERENCE            TARGETS       MINPODS   MAXPODS   REPLICAS   AGE\nhorizontalpodautoscaler.autoscaling/backend   Deployment/backend   cpu: 3%/70%   2         4         2          19h\n",
+  "stderr": ""
+}

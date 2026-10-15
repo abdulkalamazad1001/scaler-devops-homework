@@ -1,0 +1,27 @@
+Started: 2026-10-15T16:01:13.531536+00:00
+Command: ["/opt/hostedtoolcache/node/24.21.0/x64/bin/npm", "--prefix", "/home/runner/work/scaler-devops-homework/scaler-devops-homework/capstone-campusdesk/frontend", "audit", "--audit-level=high", "--json"]
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {},
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "dependencies": {
+      "prod": 5,
+      "dev": 114,
+      "optional": 53,
+      "peer": 0,
+      "peerOptional": 0,
+      "total": 118
+    }
+  }
+}
+
+
+Exit code: 0

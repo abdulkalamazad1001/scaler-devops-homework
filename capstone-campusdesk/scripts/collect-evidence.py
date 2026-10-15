@@ -1,14 +1,18 @@
 """Capture actual command output with timestamps and exit codes; never synthesize results."""
+import argparse
 import json
 import subprocess
-import sys
 from datetime import datetime, UTC
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
 repo = root.parent
-evidence = root / "evidence"
-evidence.mkdir(exist_ok=True)
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--output", type=Path, default=root / "evidence")
+parser.add_argument("--compose-build", action="store_true")
+options = parser.parse_args()
+evidence = options.output.resolve()
+evidence.mkdir(parents=True, exist_ok=True)
 kubectl = ["kubectl", "--context", "kind-campusdesk"]
 helm = str(repo / "tools/helm/windows-amd64/helm.exe")
 terraform = str(repo / "tools/terraform/terraform.exe")
@@ -26,7 +30,7 @@ checks = [
     ("commit-history", ["git", "log", "-15", "--format=%h %s"], repo),
 ]
 summary = []
-if "--compose-build" in sys.argv:
+if options.compose_build:
     checks.insert(0, ("compose-build", ["docker", "compose", "up", "--build", "-d"], root))
 for name, command, cwd in checks:
     captured = datetime.now(UTC).isoformat()

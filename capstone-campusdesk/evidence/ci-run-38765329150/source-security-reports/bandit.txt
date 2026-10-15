@@ -1,0 +1,10 @@
+Started: 2026-10-15T16:01:03.935224+00:00
+Command: ["/opt/hostedtoolcache/Python/3.13.16/x64/bin/python", "-m", "bandit", "-r", "backend/app", "backend/alembic", "--severity-level", "medium", "--confidence-level", "all", "--ignore-nosec", "-f", "json", "-o", "/home/runner/work/scaler-devops-homework/scaler-devops-homework/capstone-campusdesk/evidence/local/security/bandit.json"]
+
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[json]	INFO	JSON output written to file: /home/runner/work/scaler-devops-homework/scaler-devops-homework/capstone-campusdesk/evidence/local/security/bandit.json
+
+Exit code: 0

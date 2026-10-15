@@ -1,0 +1,7 @@
+Captured at 2026-10-15T16:23:29.040243+00:00
+Command: C:\Users\abdul\Downloads\devops\scaler-devops-homework\tools\terraform\terraform.exe -chdir=terraform validate -no-color
+Exit code: 0
+
+Success! The configuration is valid.
+
+

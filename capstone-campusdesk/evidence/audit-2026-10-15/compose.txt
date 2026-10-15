@@ -1,0 +1,9 @@
+Captured at 2026-10-15T16:23:27.031348+00:00
+Command: docker compose ps
+Exit code: 0
+
+NAME                    IMAGE                       COMMAND                  SERVICE    CREATED        STATUS                  PORTS
+campusdesk-backend-1    campusdesk-backend:local    "uvicorn app.main:ap…"   backend    18 hours ago   Up 18 hours (healthy)   127.0.0.1:8000->8000/tcp
+campusdesk-frontend-1   campusdesk-frontend:local   "/docker-entrypoint.…"   frontend   18 hours ago   Up 18 hours (healthy)   127.0.0.1:3000->8080/tcp
+campusdesk-postgres-1   postgres:17-alpine          "docker-entrypoint.s…"   postgres   19 hours ago   Up 19 hours (healthy)   5432/tcp
+

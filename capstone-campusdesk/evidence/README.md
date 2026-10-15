@@ -20,7 +20,9 @@ Actions artifacts. The sample ticket records are explicitly synthetic demo data.
 | `trivy-backend.json`, `trivy-frontend.json` | Rescans of the remediated local images |
 | `ci-run-38638277372/` | Downloaded reports from the successful GitHub Actions run |
 | `ci-run-38639295103/` | Reports from the successful automated-promotion workflow |
-| `ci-run-38644518494/` | Latest successful revised workflow: 20 API tests, 17 browser checks and both scans |
+| `ci-run-38644518494/` | Previous successful workflow: 20 API tests, 17 browser checks and both scans |
+| `ci-run-38765329150/` | Latest successful workflow, including all four source-security gates |
+| `audit-2026-10-15/` | Fresh local rechecks and redacted whole-repository history findings; see grading audit |
 | `application-320.png`, `application-768.png`, `application-1920.png`, `ticket-320.png` | Additional actual responsive-layout captures |
 | `github-actions.png`, `registry-*.png` | Actual GitHub run and public package pages |
 | `application-ingress.png` | Application reached through local Kubernetes Ingress |
@@ -34,7 +36,8 @@ Actions artifacts. The sample ticket records are explicitly synthetic demo data.
 
 The `.txt` transcripts are original captured outputs. Browser-rendered transcript
 images are labeled as captured output and are not presented as native terminal
-screenshots. No AWS deployment screenshots exist because cloud deployment was deferred.
+screenshots. CampusDesk's AWS deployment was deferred; separately credited shared
+AWS terminal images are in `shared-aws/`. No AWS Console screenshot is present.
 
 ## Security Findings And Resolution
 
@@ -65,7 +68,7 @@ Use `collect-evidence.py --compose-build` to additionally capture a real rebuild
 For architecture rendering only, install Graphviz WASM in the ignored tools directory:
 `npm install --prefix ../tools/browser @hpcc-js/wasm-graphviz`.
 PDF/video build dependencies are `reportlab`, `pymupdf`, and `imageio-ffmpeg`.
-# Reference-Inspired Follow-Up
+## Reference-Inspired Follow-Up
 
 - `source-security-local/`: actual local Bandit, pip-audit, npm audit and redacted
   Gitleaks reports. All four exit codes were zero; see `summary.json`.
@@ -74,9 +77,10 @@ PDF/video build dependencies are `reportlab`, `pymupdf`, and `imageio-ffmpeg`.
 - `readiness-troubleshooting.txt`: isolated Running/NotReady failure, repair,
   successful Service request and namespace cleanup.
 - [Comparison and verification scope](../REFERENCE-COMPARISON.md), including the
-  revised CI run link. Local results do not claim the revised remote run passed.
+  revised CI run link. That remote run subsequently passed; its artifacts are now
+  committed under `ci-run-38765329150/`.
 
-# Shared AWS Material
+## Shared AWS Material
 
 [Shared AWS screenshots and attribution](shared-aws/README.md) contain unchanged
 files from Shaikh Suja Rahaman's repository. The student reports instructor permission
