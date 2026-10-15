@@ -8,6 +8,13 @@ The full write-up with every command and its output is in [submission.md](submis
 Lab environment: minikube v1.34.0 (Kubernetes v1.31.0, 2 CPU / 4096 MB), Helm v3.16.2,
 kube-prometheus-stack 65.1.1, loki-stack 2.10.2, Argo CD v2.12.4.
 
+Current app regression tests and Prometheus rule checks are recorded in the
+[project review](../review/README.md). `/work` accepts integer `ms` values from 0
+through 5000; `/alloc` accepts integer `mb` values from 0 through 200. Invalid inputs
+return HTTP 400. Repeated allocation intentionally accumulates memory for the OOM
+exercise; these unauthenticated load-test endpoints must remain on an isolated lab
+network, never a public production service.
+
 ## What is in here
 
 | Part | Where | Summary |

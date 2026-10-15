@@ -73,3 +73,18 @@ def test_unknown_route_returns_json_404(client):
     resp = client.get("/nope")
     assert resp.status_code == 404
     assert resp.get_json()["error"] == "not found"
+
+
+@pytest.mark.parametrize("body", [[1], "text", 7, True, {"operation": [], "a": 1, "b": 2}])
+def test_calculate_rejects_wrong_json_types(client, body):
+    assert client.post("/api/calculate", json=body).status_code == 400
+
+
+@pytest.mark.parametrize("value", ["nan", "inf", "-inf", "1e999"])
+def test_calculate_rejects_non_finite_numbers(client, value):
+    assert client.post("/api/calculate", json={"a": value, "b": 1}).status_code == 400
+
+
+def test_calculate_rejects_overflow(client):
+    response = client.post("/api/calculate", json={"a": 1e308, "b": 1e308, "operation": "multiply"})
+    assert response.status_code == 400

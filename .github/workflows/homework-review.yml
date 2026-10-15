@@ -1,0 +1,74 @@
+name: Homework validation
+
+on:
+  push:
+    branches: [main]
+    paths: ["task-*/**", "review/**", ".github/workflows/homework-review.yml", ".gitattributes", "!review/results/**", "!review/README.md", "!task-*/**/*.md"]
+  pull_request:
+    paths: ["task-*/**", "review/**", ".github/workflows/homework-review.yml", ".gitattributes", "!review/results/**", "!review/README.md", "!task-*/**/*.md"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  HOMEWORK_RESULTS_DIR: .review-run-results
+
+concurrency:
+  group: homework-review-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  workflows:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - run: docker run --rm -v "$PWD:/repo:ro" -w /repo rhysd/actionlint:1.7.7
+
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [apps, infra, shell]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: python -m pip install PyYAML==6.0.3
+      - uses: azure/setup-helm@v4.3.1
+        if: matrix.suite == 'infra'
+        with:
+          version: v3.17.4
+      - uses: hashicorp/setup-terraform@v3
+        if: matrix.suite == 'infra'
+        with:
+          terraform_version: 1.11.4
+          terraform_wrapper: false
+      - run: python review/check_sources.py
+      - run: python review/run_checks.py ${{ matrix.suite }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: homework-${{ matrix.suite }}
+          path: .review-run-results/
+          retention-days: 14
+
+  containers:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: python review/smoke_containers.py
+      - run: python review/check_networks.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: homework-containers
+          path: .review-run-results/
+          retention-days: 14

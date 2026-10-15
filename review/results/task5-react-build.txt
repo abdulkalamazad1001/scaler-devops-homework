@@ -1,0 +1,62 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 416B 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/nginx:1.27-alpine
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/node:20-alpine
+#3 DONE 0.5s
+
+#2 [internal] load metadata for docker.io/library/nginx:1.27-alpine
+#2 DONE 1.3s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 60B done
+#4 DONE 0.0s
+
+#5 [stage-1 1/2] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#5 resolve docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10 0.1s done
+#5 DONE 0.1s
+
+#6 [build 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#6 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 0.1s done
+#6 DONE 0.1s
+
+#7 [internal] load build context
+#7 transferring context: 246B done
+#7 DONE 0.0s
+
+#8 [build 6/6] RUN npm run build
+#8 CACHED
+
+#9 [build 5/6] COPY . .
+#9 CACHED
+
+#10 [build 3/6] COPY package.json ./
+#10 CACHED
+
+#11 [build 4/6] RUN npm install
+#11 CACHED
+
+#12 [build 2/6] WORKDIR /app
+#12 CACHED
+
+#13 [stage-1 2/2] COPY --from=build /app/dist /usr/share/nginx/html
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:a4cb9258f5559454a5501781fa86dcb4d967cec41b861deb80931e64af67cdbf done
+#14 exporting config sha256:8b55a8ff58a514025ee0d98f96e4de04612be3c3bdcea30682ef043b6179e52c done
+#14 exporting attestation manifest sha256:2be374e9f46863539eddd30e7bb72fcc65af2dca48c9f00db8f7742cdde9d911 0.1s done
+#14 exporting manifest list sha256:42740ef63a5dcdf6efc58ba31362ba0e1e74e96ee72f0f846344df2cde85b6a0
+#14 exporting manifest list sha256:42740ef63a5dcdf6efc58ba31362ba0e1e74e96ee72f0f846344df2cde85b6a0 0.2s done
+#14 naming to docker.io/homework-review/task5-react:local
+#14 naming to docker.io/homework-review/task5-react:local done
+#14 unpacking to docker.io/homework-review/task5-react:local 0.0s done
+#14 DONE 0.4s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/nds1124ubdt6vjlk9gbzhmhzl

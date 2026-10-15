@@ -17,7 +17,7 @@ spec:
           mountPath: /cache
     - name: reader
       image: busybox:1.36
-      command: ["sh", "-c", "touch /cache/log.txt; tail -f /cache/log.txt"]
+      command: ["sh", "-c", "until [ -f /cache/log.txt ]; do sleep 1; done; exec tail -f /cache/log.txt"]
       volumeMounts:
         - name: cache
           mountPath: /cache

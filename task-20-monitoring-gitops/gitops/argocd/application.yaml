@@ -12,7 +12,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/devops-student/devops-homework.git
+    repoURL: https://github.com/abdulkalamazad1001/scaler-devops-homework.git
     targetRevision: main
     path: task-20-monitoring-gitops/gitops/manifests
   destination:

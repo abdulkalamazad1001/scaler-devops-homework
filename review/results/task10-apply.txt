@@ -1,0 +1,3 @@
+deployment.apps/app-blue created
+deployment.apps/app-green created
+service/myapp-service created

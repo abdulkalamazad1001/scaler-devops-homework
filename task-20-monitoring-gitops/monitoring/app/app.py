@@ -106,7 +106,12 @@ def ready():
 
 @app.get("/work")
 def work():
-    ms = min(int(request.args.get("ms", 200)), 5000)
+    try:
+        ms = int(request.args.get("ms", 200))
+    except ValueError:
+        return jsonify(error="ms must be an integer between 0 and 5000"), 400
+    if not 0 <= ms <= 5000:
+        return jsonify(error="ms must be an integer between 0 and 5000"), 400
     end = time.perf_counter() + ms / 1000
     n = 0
     while time.perf_counter() < end:
@@ -116,7 +121,12 @@ def work():
 
 @app.get("/alloc")
 def alloc():
-    mb = min(int(request.args.get("mb", 20)), 200)
+    try:
+        mb = int(request.args.get("mb", 20))
+    except ValueError:
+        return jsonify(error="mb must be an integer between 0 and 200"), 400
+    if not 0 <= mb <= 200:
+        return jsonify(error="mb must be an integer between 0 and 200"), 400
     _held.append(bytearray(mb * 1024 * 1024))
     total = sum(len(b) for b in _held)
     HELD_MEMORY.set(total)

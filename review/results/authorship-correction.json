@@ -1,0 +1,146 @@
+{
+  "captured_at": "2026-10-15T17:24:29.549830+00:00",
+  "original_head": "cad6a12bc607edf8808e6be23781ae3dc5248a72",
+  "corrected_head": "62a617d735c5be61eb0d31917dd669a7594237a8",
+  "reason": "User confirmed the two commits under Suja's account were their own work. Own previous account email was also normalized.",
+  "validation": "Every rewritten commit retains the same file tree and message. Bot authors preserved. No Claude author or co-author was found in this repository.",
+  "history_note": "Earlier evidence and image tags retain the original execution commit IDs. They were not regenerated or relabelled.",
+  "commits": [
+    {
+      "original": "206dfeecfc92f089d513a0be975a7ef8f11572db",
+      "corrected": "fc92f0a3c3b20f0b7c6591463c4de34b9bcf2105"
+    },
+    {
+      "original": "26a737cd7648806f812d616ea123939a9b697ba9",
+      "corrected": "0c9152aa420716eb95c127955c8021ef4f1cb4de"
+    },
+    {
+      "original": "2b65a2a739161439bc7f336256b4a5884001a63e",
+      "corrected": "a07c24694512472777a3bcab66cf6615a6fbfb26"
+    },
+    {
+      "original": "2d0d7ff22910af582ae522cbe1abc130d11b8c70",
+      "corrected": "951f022197bac6e24402bcfb11d6766d5c2b864d"
+    },
+    {
+      "original": "2ec707c2a5be967dc6bcd28f680e5b11b469c02f",
+      "corrected": "cf12c6ab7e2f0e66968706615f7c27062fa1330e"
+    },
+    {
+      "original": "338434b5a5e300afe4488dc3bb1ad86de6afa415",
+      "corrected": "8121a8e6f69b4ab0a02eefedb5b7993c6de2d46d"
+    },
+    {
+      "original": "341236cf104d995fb2c235d968ff19b55123c3e3",
+      "corrected": "8aec02b31e7f07acc0191a05a3ecc38c1b4a777c"
+    },
+    {
+      "original": "464989847b78889cd0eaa51d0a421a957ed38581",
+      "corrected": "30a90a1b0173f195b6a6a7e8d9db11e0890a06fc"
+    },
+    {
+      "original": "47112a2e034d6ab24595e93ab6ae63041bec1780",
+      "corrected": "bb8d569b6dfff33cb393bbed1f1013445ae024ad"
+    },
+    {
+      "original": "475f2ae689f673c6cb329e92145c3176e150ca39",
+      "corrected": "0fbd0b64814c4a040c2e0cce075445009fac03e6"
+    },
+    {
+      "original": "6d02a737a357bee20a704f5eb8902b6bea16630b",
+      "corrected": "78a5a9787a1298f8d84e926af5e215e5b83787e9"
+    },
+    {
+      "original": "785d9b10f4fd7164e33b2c1dbe17d41d78175c9c",
+      "corrected": "e49bbb3a862bd4968887c981f9240d84399f4abd"
+    },
+    {
+      "original": "7e81657284b6ce5d54b989d2defdeb4bf5020e12",
+      "corrected": "5413cf624397a3553b2f318b50d2f17cd8fc0f53"
+    },
+    {
+      "original": "7f26e413c411e8aed1352d47223fc9ba231bce91",
+      "corrected": "7f26e413c411e8aed1352d47223fc9ba231bce91"
+    },
+    {
+      "original": "8bbc5d96dc21e91ad80f5128658bfb89a5979d34",
+      "corrected": "f61a1fae83a38345beb44fc0173fbd31cb139f81"
+    },
+    {
+      "original": "985ddc435aff22d01472acde9ed8ab4271ca84a3",
+      "corrected": "8f600d0502e0358b55f33a683726b1f9c95741b5"
+    },
+    {
+      "original": "9cacd7cfb3866f7b72763c0bfa943700c1c59967",
+      "corrected": "9d2eabb1fcafdefa7f290382d2d44da4bbc378a0"
+    },
+    {
+      "original": "a2d03ad1ab43cb5a730c043570252f843868be41",
+      "corrected": "0ddab7059d9abb122770ed531279f7b2f4b08f1e"
+    },
+    {
+      "original": "a3e42716c28a725d14d952086b802c6fc59b11d2",
+      "corrected": "701c22e1b5f8dc0110c41a56c5632d232608e762"
+    },
+    {
+      "original": "a6e93611db267935157a22e566a422e8824249d0",
+      "corrected": "a21e4741b6ac263b7c729a4821dafae366132354"
+    },
+    {
+      "original": "b0c5d055b620ac741fe553db9698665faa53ef20",
+      "corrected": "b0c5d055b620ac741fe553db9698665faa53ef20"
+    },
+    {
+      "original": "b2fe3798c6336ab683af97ee00e9d34b907d031d",
+      "corrected": "1f4d7f3dbd14ecf84f61f38c508522368032aae2"
+    },
+    {
+      "original": "c22441478fe8a22127cc9dda4ecef9e5653368c7",
+      "corrected": "6375b827492ae1a60fb9e9a855a091d4de87cbb5"
+    },
+    {
+      "original": "c60abd3f9e4f24f00317305acc66d42257a0bc68",
+      "corrected": "5a218f9f452ab1ee7066f8b42aff35fa9e06cec7"
+    },
+    {
+      "original": "cad6a12bc607edf8808e6be23781ae3dc5248a72",
+      "corrected": "62a617d735c5be61eb0d31917dd669a7594237a8"
+    },
+    {
+      "original": "d2de93dc1087c4c123bc87bcc8c06eb4f7126609",
+      "corrected": "45e8373eaddc506953b7dc0f38d9bd12241a7558"
+    },
+    {
+      "original": "dff7d32fc79bd3478670452aba6f1626f6ea3a42",
+      "corrected": "1a6cd34d4eb1207e562f44a95359f1dbfae3e766"
+    },
+    {
+      "original": "e2ba76147430d8c1f7242950470c397b149ad70b",
+      "corrected": "4e56c3351c16f31bb92962dbb868e48f204a99b3"
+    },
+    {
+      "original": "e4bef9f808faf1ad63fb1f37ba41a38cff8c3c55",
+      "corrected": "e4bef9f808faf1ad63fb1f37ba41a38cff8c3c55"
+    },
+    {
+      "original": "ebae0dbcf9983d2260b694c75a8ba0ce2888c9b1",
+      "corrected": "b9fda306e65f87686daf5b9796ee1e4d848a30c3"
+    },
+    {
+      "original": "ec765699901c18d427788fd3093cc11197caeea7",
+      "corrected": "ec765699901c18d427788fd3093cc11197caeea7"
+    },
+    {
+      "original": "f008ea2fb41c1b88d9d7716e300040307acb0b43",
+      "corrected": "f008ea2fb41c1b88d9d7716e300040307acb0b43"
+    },
+    {
+      "original": "f25ccebeb93877a908cc7c1334d1f500e82711b3",
+      "corrected": "8c4c80bdce4433db7eabcd9ff68827f2475cb5da"
+    },
+    {
+      "original": "fae24aafe0dbf2411165792c9b92ca5a9f38119f",
+      "corrected": "3519fb374ff13805f0f476436b088b3c803e60ad"
+    }
+  ]
+}

@@ -5,9 +5,8 @@
 # Author : T. Abdul Kalam Azad
 # Roll no: 24BCS10053
 
-# Treat the use of an unset variable as an error, so a typo in a variable
-# name fails loudly instead of silently expanding to an empty string.
-set -u
+# Stop before reporting success if collecting or writing the report fails.
+set -euo pipefail
 
 # Variables holding the system details
 CURRENT_DATE=$(date)
@@ -31,15 +30,15 @@ df -h
 echo ""
 
 echo "----- Running Processes (first 10) -----"
-ps -eo pid,user,%cpu,%mem,comm | head -10
+ps -eo pid,user,%cpu,%mem,comm | sed -n '1,10p'
 echo ""
 
 # Ask the user where to save the report.
 # Initialised first so that `set -u` is safe if read hits end of input.
 DIR_NAME=""
 FILE_NAME=""
-read -p "Enter a directory name to create [sysreport]: " DIR_NAME
-read -p "Enter a file name for the process list [processes.txt]: " FILE_NAME
+read -r -p "Enter a directory name to create [sysreport]: " DIR_NAME || true
+read -r -p "Enter a file name for the process list [processes.txt]: " FILE_NAME || true
 
 # Fall back to sensible defaults if the answer was left blank
 DIR_NAME=${DIR_NAME:-sysreport}

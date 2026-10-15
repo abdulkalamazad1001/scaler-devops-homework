@@ -1,0 +1,10 @@
+HTTP 200
+
+    <html>
+      <head><title>Python Hello World</title></head>
+      <body style="font-family: sans-serif; text-align: center; margin-top: 15vh;">
+        <h1>Hello World</h1>
+        <p>Served by Python and Flask inside Docker</p>
+      </body>
+    </html>
+    

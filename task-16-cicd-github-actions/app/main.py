@@ -5,6 +5,7 @@ Endpoints:
     GET /health                 liveness/readiness check
     GET /api/<op>?a=<n>&b=<n>   op is add, subtract, multiply or divide
 """
+import math
 import os
 
 from flask import Flask, jsonify, request
@@ -40,10 +41,14 @@ def create_app():
             return jsonify(error=f"missing query parameter {exc.args[0]}"), 400
         except ValueError:
             return jsonify(error="a and b must be numbers"), 400
+        if not math.isfinite(a) or not math.isfinite(b):
+            return jsonify(error="a and b must be finite numbers"), 400
         try:
             result = func(a, b)
         except ValueError as exc:
             return jsonify(error=str(exc)), 400
+        if not math.isfinite(result):
+            return jsonify(error="result exceeds the supported numeric range"), 400
         return jsonify(operation=op, a=a, b=b, result=result)
 
     return app

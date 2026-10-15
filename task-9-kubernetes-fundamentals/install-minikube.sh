@@ -8,7 +8,14 @@ KUBECTL_VERSION="v1.31.1"
 MINIKUBE_VERSION="v1.34.0"
 K8S_VERSION="v1.31.0"
 
-cd "$(mktemp -d)"
+if [ "$(uname -s)" != Linux ] || [ "$(uname -m)" != x86_64 ]; then
+    echo "This installer requires Linux on amd64. Use an Ubuntu amd64 VM or WSL environment." >&2
+    exit 1
+fi
+
+work=$(mktemp -d)
+trap 'rm -rf -- "$work"' EXIT
+cd "$work"
 
 # kubectl, checked against the published sha256
 curl -fsSLO "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl"
@@ -16,8 +23,10 @@ curl -fsSLO "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubect
 echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
-# minikube
+# minikube, checked against its published sha256 before installation
 curl -fsSLO "https://storage.googleapis.com/minikube/releases/${MINIKUBE_VERSION}/minikube-linux-amd64"
+curl -fsSLO "https://storage.googleapis.com/minikube/releases/${MINIKUBE_VERSION}/minikube-linux-amd64.sha256"
+echo "$(cat minikube-linux-amd64.sha256)  minikube-linux-amd64" | sha256sum --check
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
 
 kubectl version --client

@@ -32,6 +32,10 @@ def load(path):
 
 
 def check_bandit(report):
+    if not isinstance(report, dict) or not isinstance(report.get("results"), list):
+        raise ValueError("Bandit results are missing or malformed")
+    if report.get("errors"):
+        raise ValueError("Bandit could not scan all files")
     findings = []
     for r in report.get("results", []):
         if r["issue_severity"] == "HIGH" and r["issue_confidence"] in BLOCKING_BANDIT_CONFIDENCE:
@@ -40,9 +44,13 @@ def check_bandit(report):
 
 
 def check_pip_audit(report):
+    if not isinstance(report, dict) or not isinstance(report.get("dependencies"), list):
+        raise ValueError("pip-audit dependencies are missing or malformed")
     findings = []
     seen = set()
     for dep in report.get("dependencies", []):
+        if dep.get("skip_reason") or not isinstance(dep.get("vulns"), list):
+            raise ValueError("pip-audit did not evaluate a dependency")
         for v in dep.get("vulns", []):
             key = (dep["name"], v["id"])
             if key in seen:
@@ -55,10 +63,14 @@ def check_pip_audit(report):
 
 def check_gitleaks(report):
     # gitleaks writes a JSON list, empty when nothing was found.
-    return [f"{f['RuleID']} {f['File']}:{f['StartLine']} commit {f.get('Commit', '')[:7]}" for f in report or []]
+    if not isinstance(report, list):
+        raise ValueError("Gitleaks findings must be a JSON list")
+    return [f"{f['RuleID']} {f['File']}:{f['StartLine']} commit {f.get('Commit', '')[:7]}" for f in report]
 
 
 def check_trivy(report):
+    if not isinstance(report, dict) or not isinstance(report.get("Results"), list):
+        raise ValueError("Trivy results are missing or malformed")
     findings = []
     for result in report.get("Results", []) or []:
         for v in result.get("Vulnerabilities", []) or []:
@@ -92,7 +104,7 @@ def main(argv):
         path = reports / filename
         try:
             findings = check(load(path))
-        except (OSError, ValueError, KeyError, TypeError) as exc:
+        except (OSError, ValueError, KeyError, TypeError, AttributeError) as exc:
             rows.append((name, "-", f"FAIL (cannot read {filename}: {exc.__class__.__name__})"))
             blocked = True
             continue

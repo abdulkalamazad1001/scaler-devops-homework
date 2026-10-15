@@ -1,3 +1,6 @@
+import pytest
+
+
 def test_health(client):
     response = client.get("/health")
     assert response.status_code == 200
@@ -75,3 +78,22 @@ def test_metrics_endpoint_exposes_request_counter(client):
     body = client.get("/metrics").text
     assert "http_requests_total" in body
     assert "taskboard_tasks_created_total" in body
+
+
+@pytest.mark.parametrize("field", ["title", "description", "priority", "status", "assignee"])
+def test_update_rejects_explicit_null(client, task, field):
+    response = client.put(f"/api/tasks/{task['id']}", json={field: None})
+    assert response.status_code == 422
+    assert client.get(f"/api/tasks/{task['id']}").json()[field] == task[field]
+
+
+def test_empty_update_preserves_existing_fields(client, task):
+    assert client.put(f"/api/tasks/{task['id']}", json={}).json() == task
+
+
+def test_create_rejects_blank_title(client):
+    assert client.post("/api/tasks", json={"title": "   "}).status_code == 422
+
+
+def test_update_rejects_blank_title(client, task):
+    assert client.put(f"/api/tasks/{task['id']}", json={"title": "   "}).status_code == 422

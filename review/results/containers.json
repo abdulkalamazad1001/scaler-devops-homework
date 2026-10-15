@@ -1,0 +1,448 @@
+{
+  "captured_at": "2026-10-15T17:24:18.370207+00:00",
+  "checks": [
+    {
+      "check": "task5-node-build",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:22:54.722369+00:00",
+      "duration_seconds": 7.11,
+      "log": "task5-node-build.txt",
+      "command": [
+        "docker",
+        "build",
+        "-t",
+        "homework-review/task5-node:local",
+        "task-5-docker/nodejs-app"
+      ]
+    },
+    {
+      "check": "task5-node-start",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:01.832429+00:00",
+      "duration_seconds": 0.54,
+      "log": "task5-node-start.txt",
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "task5-node-review-261c8e09",
+        "-p",
+        "127.0.0.1::3000",
+        "homework-review/task5-node:local"
+      ]
+    },
+    {
+      "check": "task5-node-http",
+      "exit_code": 0,
+      "error": ""
+    },
+    {
+      "check": "task5-node-logs",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:03.537730+00:00",
+      "duration_seconds": 0.07,
+      "log": "task5-node-logs.txt",
+      "command": [
+        "docker",
+        "logs",
+        "task5-node-review-261c8e09"
+      ]
+    },
+    {
+      "check": "task5-node-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:03.609930+00:00",
+      "duration_seconds": 0.7,
+      "log": "task5-node-cleanup.txt",
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "task5-node-review-261c8e09"
+      ]
+    },
+    {
+      "check": "task5-python-build",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:04.310668+00:00",
+      "duration_seconds": 1.19,
+      "log": "task5-python-build.txt",
+      "command": [
+        "docker",
+        "build",
+        "-t",
+        "homework-review/task5-python:local",
+        "task-5-docker/python-app"
+      ]
+    },
+    {
+      "check": "task5-python-start",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:05.503109+00:00",
+      "duration_seconds": 0.51,
+      "log": "task5-python-start.txt",
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "task5-python-review-0b19f4d6",
+        "-p",
+        "127.0.0.1::5000",
+        "homework-review/task5-python:local"
+      ]
+    },
+    {
+      "check": "task5-python-http",
+      "exit_code": 0,
+      "error": ""
+    },
+    {
+      "check": "task5-python-logs",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:07.097369+00:00",
+      "duration_seconds": 0.05,
+      "log": "task5-python-logs.txt",
+      "command": [
+        "docker",
+        "logs",
+        "task5-python-review-0b19f4d6"
+      ]
+    },
+    {
+      "check": "task5-python-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:07.150816+00:00",
+      "duration_seconds": 0.48,
+      "log": "task5-python-cleanup.txt",
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "task5-python-review-0b19f4d6"
+      ]
+    },
+    {
+      "check": "task5-java-build",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:07.630876+00:00",
+      "duration_seconds": 3.67,
+      "log": "task5-java-build.txt",
+      "command": [
+        "docker",
+        "build",
+        "-t",
+        "homework-review/task5-java:local",
+        "task-5-docker/java-app"
+      ]
+    },
+    {
+      "check": "task5-java-start",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:11.298273+00:00",
+      "duration_seconds": 0.64,
+      "log": "task5-java-start.txt",
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "task5-java-review-43b33ff0",
+        "-p",
+        "127.0.0.1::8080",
+        "homework-review/task5-java:local"
+      ]
+    },
+    {
+      "check": "task5-java-http",
+      "exit_code": 0,
+      "error": ""
+    },
+    {
+      "check": "task5-java-logs",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:13.100494+00:00",
+      "duration_seconds": 0.05,
+      "log": "task5-java-logs.txt",
+      "command": [
+        "docker",
+        "logs",
+        "task5-java-review-43b33ff0"
+      ]
+    },
+    {
+      "check": "task5-java-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:13.153347+00:00",
+      "duration_seconds": 0.45,
+      "log": "task5-java-cleanup.txt",
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "task5-java-review-43b33ff0"
+      ]
+    },
+    {
+      "check": "task5-react-build",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:13.605973+00:00",
+      "duration_seconds": 2.68,
+      "log": "task5-react-build.txt",
+      "command": [
+        "docker",
+        "build",
+        "-t",
+        "homework-review/task5-react:local",
+        "task-5-docker/React-app"
+      ]
+    },
+    {
+      "check": "task5-react-start",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:16.289325+00:00",
+      "duration_seconds": 3.54,
+      "log": "task5-react-start.txt",
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "task5-react-review-36d66d7c",
+        "-p",
+        "127.0.0.1::80",
+        "homework-review/task5-react:local"
+      ]
+    },
+    {
+      "check": "task5-react-http",
+      "exit_code": 0,
+      "error": ""
+    },
+    {
+      "check": "task5-react-logs",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:20.898425+00:00",
+      "duration_seconds": 0.07,
+      "log": "task5-react-logs.txt",
+      "command": [
+        "docker",
+        "logs",
+        "task5-react-review-36d66d7c"
+      ]
+    },
+    {
+      "check": "task5-react-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:20.972365+00:00",
+      "duration_seconds": 0.78,
+      "log": "task5-react-cleanup.txt",
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "task5-react-review-36d66d7c"
+      ]
+    },
+    {
+      "check": "task5-nginx-build",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:21.753746+00:00",
+      "duration_seconds": 2.36,
+      "log": "task5-nginx-build.txt",
+      "command": [
+        "docker",
+        "build",
+        "-t",
+        "homework-review/task5-nginx:local",
+        "task-5-docker/nginx-app"
+      ]
+    },
+    {
+      "check": "task5-nginx-start",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:24.112931+00:00",
+      "duration_seconds": 0.56,
+      "log": "task5-nginx-start.txt",
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "task5-nginx-review-e17933e0",
+        "-p",
+        "127.0.0.1::80",
+        "homework-review/task5-nginx:local"
+      ]
+    },
+    {
+      "check": "task5-nginx-http",
+      "exit_code": 0,
+      "error": ""
+    },
+    {
+      "check": "task5-nginx-logs",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:24.737115+00:00",
+      "duration_seconds": 0.07,
+      "log": "task5-nginx-logs.txt",
+      "command": [
+        "docker",
+        "logs",
+        "task5-nginx-review-e17933e0"
+      ]
+    },
+    {
+      "check": "task5-nginx-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:24.803457+00:00",
+      "duration_seconds": 0.59,
+      "log": "task5-nginx-cleanup.txt",
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "task5-nginx-review-e17933e0"
+      ]
+    },
+    {
+      "check": "task5-apache-build",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:25.397067+00:00",
+      "duration_seconds": 23.05,
+      "log": "task5-apache-build.txt",
+      "command": [
+        "docker",
+        "build",
+        "-t",
+        "homework-review/task5-apache:local",
+        "task-5-docker/Apache-app"
+      ]
+    },
+    {
+      "check": "task5-apache-start",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:48.445431+00:00",
+      "duration_seconds": 0.56,
+      "log": "task5-apache-start.txt",
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "task5-apache-review-8eb8279d",
+        "-p",
+        "127.0.0.1::80",
+        "homework-review/task5-apache:local"
+      ]
+    },
+    {
+      "check": "task5-apache-http",
+      "exit_code": 0,
+      "error": ""
+    },
+    {
+      "check": "task5-apache-logs",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:49.062680+00:00",
+      "duration_seconds": 0.06,
+      "log": "task5-apache-logs.txt",
+      "command": [
+        "docker",
+        "logs",
+        "task5-apache-review-8eb8279d"
+      ]
+    },
+    {
+      "check": "task5-apache-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:49.126482+00:00",
+      "duration_seconds": 0.48,
+      "log": "task5-apache-cleanup.txt",
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "task5-apache-review-8eb8279d"
+      ]
+    },
+    {
+      "check": "task6-multistage-build",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:23:49.602698+00:00",
+      "duration_seconds": 25.86,
+      "log": "task6-multistage-build.txt",
+      "command": [
+        "docker",
+        "build",
+        "-t",
+        "homework-review/task6-multistage:local",
+        "task-6-docker-multistage/multi-stage-app"
+      ]
+    },
+    {
+      "check": "task6-multistage-start",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:24:15.459788+00:00",
+      "duration_seconds": 0.78,
+      "log": "task6-multistage-start.txt",
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "task6-multistage-review-85208f8a",
+        "-p",
+        "127.0.0.1::3000",
+        "homework-review/task6-multistage:local"
+      ]
+    },
+    {
+      "check": "task6-multistage-http",
+      "exit_code": 0,
+      "error": ""
+    },
+    {
+      "check": "task6-multistage-nonroot",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:24:17.398511+00:00",
+      "duration_seconds": 0.35,
+      "log": "task6-multistage-nonroot.txt",
+      "command": [
+        "docker",
+        "exec",
+        "task6-multistage-review-85208f8a",
+        "sh",
+        "-ec",
+        "test \"$(id -u)\" != 0; id"
+      ]
+    },
+    {
+      "check": "task6-multistage-logs",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:24:17.753574+00:00",
+      "duration_seconds": 0.08,
+      "log": "task6-multistage-logs.txt",
+      "command": [
+        "docker",
+        "logs",
+        "task6-multistage-review-85208f8a"
+      ]
+    },
+    {
+      "check": "task6-multistage-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:24:17.830115+00:00",
+      "duration_seconds": 0.54,
+      "log": "task6-multistage-cleanup.txt",
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "task6-multistage-review-85208f8a"
+      ]
+    }
+  ],
+  "scope": "Docker builds and HTTP smoke checks, not browser or security certification."
+}

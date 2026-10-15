@@ -1,6 +1,7 @@
 """Small Flask API used as the target of the DevSecOps pipeline."""
 
 import datetime
+import math
 import os
 import platform
 import sys
@@ -70,11 +71,11 @@ OPERATIONS = {
 @app.route("/api/calculate", methods=["POST"])
 def calculate():
     data = request.get_json(silent=True)
-    if not data:
-        return jsonify({"error": "JSON body required"}), 400
+    if not isinstance(data, dict) or not data:
+        return jsonify({"error": "JSON object body required"}), 400
 
     op = data.get("operation", "add")
-    if op not in OPERATIONS:
+    if not isinstance(op, str) or op not in OPERATIONS:
         return jsonify({"error": f"unknown operation '{op}'", "valid": sorted(OPERATIONS)}), 400
 
     try:
@@ -82,13 +83,19 @@ def calculate():
         b = float(data["b"])
     except KeyError:
         return jsonify({"error": "fields 'a' and 'b' are required"}), 400
-    except (TypeError, ValueError):
+    except (OverflowError, TypeError, ValueError):
         return jsonify({"error": "'a' and 'b' must be numbers"}), 400
+
+    if not math.isfinite(a) or not math.isfinite(b):
+        return jsonify({"error": "'a' and 'b' must be finite numbers"}), 400
 
     if op == "divide" and b == 0:
         return jsonify({"error": "division by zero"}), 400
 
-    return jsonify({"a": a, "b": b, "operation": op, "result": OPERATIONS[op](a, b)})
+    result = OPERATIONS[op](a, b)
+    if not math.isfinite(result):
+        return jsonify({"error": "result exceeds the supported numeric range"}), 400
+    return jsonify({"a": a, "b": b, "operation": op, "result": result})
 
 
 @app.errorhandler(404)

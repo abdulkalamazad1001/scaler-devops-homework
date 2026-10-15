@@ -1,0 +1,18 @@
+NAME                                   READY   STATUS    RESTARTS   AGE     IP             NODE                       NOMINATED NODE   READINESS GATES
+app-blue-67b4d7455c-j8j5v              1/1     Running   0          2m21s   10.244.0.92    campusdesk-control-plane   <none>           <none>
+app-blue-67b4d7455c-l6v75              1/1     Running   0          2m21s   10.244.0.93    campusdesk-control-plane   <none>           <none>
+app-blue-67b4d7455c-xvqrc              1/1     Running   0          2m21s   10.244.0.94    campusdesk-control-plane   <none>           <none>
+app-green-665dcc99bd-bn77v             1/1     Running   0          2m21s   10.244.0.95    campusdesk-control-plane   <none>           <none>
+app-green-665dcc99bd-w9h75             1/1     Running   0          2m21s   10.244.0.96    campusdesk-control-plane   <none>           <none>
+app-green-665dcc99bd-zm64b             1/1     Running   0          2m21s   10.244.0.97    campusdesk-control-plane   <none>           <none>
+config-demo                            1/1     Running   0          2m16s   10.244.0.98    campusdesk-control-plane   <none>           <none>
+dynamic-demo                           1/1     Running   0          87s     10.244.0.106   campusdesk-control-plane   <none>           <none>
+emptydir-demo                          2/2     Running   0          2m5s    10.244.0.103   campusdesk-control-plane   <none>           <none>
+fail-2-imagepull-pod                   1/1     Running   0          86s     10.244.0.107   campusdesk-control-plane   <none>           <none>
+image-demo                             1/1     Running   0          86s     10.244.0.108   campusdesk-control-plane   <none>           <none>
+nginx-pod                              1/1     Running   0          2m23s   10.244.0.91    campusdesk-control-plane   <none>           <none>
+review-notes-deploy-65658c4845-26kn6   1/1     Running   0          83s     10.244.0.109   campusdesk-control-plane   <none>           <none>
+secret-demo                            1/1     Running   0          2m8s    10.244.0.102   campusdesk-control-plane   <none>           <none>
+web-clusterip-7477759d58-75bff         1/1     Running   0          2m12s   10.244.0.99    campusdesk-control-plane   <none>           <none>
+web-clusterip-7477759d58-fsshw         1/1     Running   0          2m12s   10.244.0.101   campusdesk-control-plane   <none>           <none>
+web-clusterip-7477759d58-k4qzn         1/1     Running   0          2m12s   10.244.0.100   campusdesk-control-plane   <none>           <none>

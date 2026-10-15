@@ -1,0 +1,2 @@
+pod/fail-2-imagepull-pod created
+pod/image-demo created

@@ -1,0 +1,83 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 524B done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/node:24-alpine
+#2 DONE 1.8s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.1s
+
+#4 [internal] load build context
+#4 DONE 0.0s
+
+#5 [builder 1/5] FROM docker.io/library/node:24-alpine@sha256:44fce696f38ba8c987c4db89954051000bbd05ffd8d8659ba15ed4a8602e937f
+#5 resolve docker.io/library/node:24-alpine@sha256:44fce696f38ba8c987c4db89954051000bbd05ffd8d8659ba15ed4a8602e937f 0.0s done
+#5 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 1.06kB done
+#4 DONE 0.1s
+
+#6 [builder 2/5] WORKDIR /app
+#6 CACHED
+
+#7 [builder 3/5] COPY package*.json ./
+#7 DONE 0.1s
+
+#8 [builder 4/5] RUN npm install
+#8 8.357 
+#8 8.357 added 65 packages, and audited 66 packages in 7s
+#8 8.357 
+#8 8.358 28 packages are looking for funding
+#8 8.358   run `npm fund` for details
+#8 8.360 
+#8 8.360 found 0 vulnerabilities
+#8 8.379 npm notice
+#8 8.379 npm notice New major version of npm available! 11.19.1 -> 12.2.0
+#8 8.379 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+#8 8.379 npm notice To update run: npm install -g npm@12.2.0
+#8 8.379 npm notice
+#8 DONE 9.6s
+
+#9 [builder 5/5] COPY . .
+#9 DONE 1.4s
+
+#10 [production 3/5] COPY --from=builder /app/package*.json ./
+#10 DONE 0.1s
+
+#11 [production 4/5] RUN npm install --omit=dev
+#11 2.968 
+#11 2.968 added 65 packages, and audited 66 packages in 3s
+#11 2.968 
+#11 2.969 28 packages are looking for funding
+#11 2.969   run `npm fund` for details
+#11 2.971 
+#11 2.971 found 0 vulnerabilities
+#11 2.974 npm notice
+#11 2.974 npm notice New major version of npm available! 11.19.1 -> 12.2.0
+#11 2.974 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+#11 2.974 npm notice To update run: npm install -g npm@12.2.0
+#11 2.974 npm notice
+#11 DONE 3.3s
+
+#12 [production 5/5] COPY --from=builder /app/server.js ./
+#12 DONE 0.2s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 0.8s done
+#13 exporting manifest sha256:3bcf16bb538339b06f2195a23564371e89e35fd8695187a8c31897cc766c80c6 0.0s done
+#13 exporting config sha256:eacd4d791cb84f901291ff9512afa3c1697a719712b9ad0b283fc6f54c699bc1 0.0s done
+#13 exporting attestation manifest sha256:0073b52e66ab1047eed3e01dc889469f53bac5ce7f193aeebaa300c79dadd604 0.0s done
+#13 exporting manifest list sha256:4bf0ea7c874d059a3d56b801bd62cc7ac3d14faf46d198e6e5a7f3165a60fe57
+#13 exporting manifest list sha256:4bf0ea7c874d059a3d56b801bd62cc7ac3d14faf46d198e6e5a7f3165a60fe57 0.0s done
+#13 naming to docker.io/homework-review/task6-multistage:local done
+#13 unpacking to docker.io/homework-review/task6-multistage:local
+#13 unpacking to docker.io/homework-review/task6-multistage:local 1.0s done
+#13 DONE 2.0s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/qsakgwt7fspt94oumpyd4ih5u

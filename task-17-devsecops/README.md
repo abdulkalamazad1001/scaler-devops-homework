@@ -3,6 +3,12 @@
 A small Flask API with a complete CI/CD pipeline that has security checks built in.
 The full write-up with pipeline runs and tool output is in [`submission.md`](submission.md).
 
+The active workflow in this repository is
+[Task17 DevSecOps](../.github/workflows/task17-devsecops.yml). The nested workflow is
+a standalone teaching template, not the active configuration. Its expected-output
+screenshots are not execution proof. Actual checks are tracked in
+[the project review](../review/README.md).
+
 ## Pipeline
 
 ```
@@ -24,9 +30,9 @@ build ─► unit-test ─┬─► SAST (Bandit) ──────┐
 | Unit test | pytest + pytest-cov | a test fails or coverage drops below 90 % |
 | SAST | Bandit 1.9.4 | an issue with severity HIGH (confidence MEDIUM or HIGH) |
 | SCA | pip-audit 2.10.1 | any known vulnerability in a pinned runtime dependency |
-| Secret scan | Gitleaks 8.21.2 | any finding in any commit that touched this folder |
+| Secret scan | Gitleaks 8.30.1 | any finding in any commit that touched this folder |
 | Docker build | docker | build fails, or the image user is root |
-| Image scan | Trivy 0.58.1 | any HIGH or CRITICAL CVE that has a fix |
+| Image scan | Trivy 0.76.0 | any HIGH or CRITICAL CVE that has a fix |
 | Security gate | `scripts/security_gate.py` | any of the four scanner rules above |
 | Push | docker/login-action, GHCR | only runs on push to `main` after the gate passes |
 | Deploy | kind + kubectl | rollout does not finish in 120 s or smoke test fails |
@@ -52,10 +58,10 @@ task-17-devsecops/
 └── requirements-dev.txt              test dependencies
 ```
 
-## Enabling the workflow
+## Enabling the Template in Another Repository
 
 GitHub only runs workflow files that sit in `.github/workflows/` at the root of the
-repository. The copy inside this folder is the source of truth for the task; to run it:
+repository. The copy inside this folder is a template for a separate repository:
 
 ![$ mkdir -p .github/workflows](screenshots/readme-01.png)
 

@@ -1,0 +1,33 @@
+Initializing modules...
+
+Error: Error accessing remote module registry
+
+  on main.tf line 17:
+  17: module "vpc" {
+
+Failed to retrieve available versions for module "vpc" (main.tf:17) from
+registry.terraform.io: failed to request discovery document: Get
+"https://registry.terraform.io/.well-known/terraform.json": dial tcp: lookup
+registry.terraform.io: no such host.
+
+Error: Error accessing remote module registry
+
+  on main.tf line 47:
+  47: module "eks" {
+
+Failed to retrieve available versions for module "eks" (main.tf:47) from
+registry.terraform.io: failed to request discovery document: Get
+"https://registry.terraform.io/.well-known/terraform.json": dial tcp: lookup
+registry.terraform.io: no such host.
+
+Error: Error accessing remote module registry
+
+  on main.tf line 96:
+  96: module "ebs_csi_irsa" {
+
+Failed to retrieve available versions for module "ebs_csi_irsa" (main.tf:96)
+from registry.terraform.io: failed to request discovery document: Get
+"https://registry.terraform.io/.well-known/terraform.json": dial tcp: lookup
+registry.terraform.io: getaddrinfow: This is usually a temporary error during
+hostname resolution and means that the local server did not receive a
+response from an authoritative server..

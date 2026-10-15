@@ -67,3 +67,12 @@ def test_missing_parameter_returns_400(client):
 def test_non_numeric_parameter_returns_400(client):
     resp = client.get("/api/add?a=one&b=2")
     assert resp.status_code == 400
+
+
+@pytest.mark.parametrize("value", ["nan", "inf", "-inf", "1e999"])
+def test_non_finite_parameter_returns_400(client, value):
+    assert client.get(f"/api/add?a={value}&b=2").status_code == 400
+
+
+def test_overflow_returns_400(client):
+    assert client.get("/api/multiply?a=1e308&b=1e308").status_code == 400

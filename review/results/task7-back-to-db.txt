@@ -1,0 +1,6 @@
+PING homework-review-2e74e363-db (172.21.0.2): 56 data bytes
+64 bytes from 172.21.0.2: seq=0 ttl=64 time=44.240 ms
+
+--- homework-review-2e74e363-db ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 44.240/44.240/44.240 ms

@@ -6,6 +6,15 @@ workflows: CI (lint, security check, tests with coverage, Docker build, artifact
 test). The full write-up, including concepts and the pipeline run output, is in
 [`submission.md`](submission.md).
 
+## Current Repository Pipelines
+
+The active workflows are [Task16 CI](../.github/workflows/task16-ci.yml) and
+[Task16 CD](../.github/workflows/task16-cd.yml) at the repository root. The `staging`
+environment and its `APP_SECRET_KEY` have been configured without committing the
+secret. CD accepts only a successful CI push run on `main`; the nested files below
+remain standalone teaching templates. See [review results](../review/README.md)
+for actual runs, separate from the expected output in `submission.md`.
+
 ## Layout
 
 ```text
@@ -36,7 +45,7 @@ docker run --rm -p 8000:8000 cicd-demo:local
 curl "localhost:8000/api/add?a=2&b=3"
 ```
 
-## Enable the pipelines
+## Enable the Pipelines in Another Repository
 
 GitHub only runs workflows from `.github/workflows/` at the repository root, so:
 

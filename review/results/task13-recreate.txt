@@ -1,0 +1,2 @@
+persistentvolumeclaim/dynamic-pvc unchanged
+pod/dynamic-demo created

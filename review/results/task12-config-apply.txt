@@ -1,0 +1,3 @@
+configmap/app-config created
+configmap/app-config-files created
+pod/config-demo created

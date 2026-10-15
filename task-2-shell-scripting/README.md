@@ -32,9 +32,8 @@ variables, and > redirection.
     # Author : T. Abdul Kalam Azad
     # Roll no: 24BCS10053
 
-    # Treat the use of an unset variable as an error, so a typo in a variable
-    # name fails loudly instead of silently expanding to an empty string.
-    set -u
+    # Stop before reporting success if collecting or writing the report fails.
+    set -euo pipefail
 
     # Variables holding the system details
     CURRENT_DATE=$(date)
@@ -58,15 +57,15 @@ variables, and > redirection.
     echo ""
 
     echo "----- Running Processes (first 10) -----"
-    ps -eo pid,user,%cpu,%mem,comm | head -10
+    ps -eo pid,user,%cpu,%mem,comm | sed -n '1,10p'
     echo ""
 
     # Ask the user where to save the report.
     # Initialised first so that `set -u` is safe if read hits end of input.
     DIR_NAME=""
     FILE_NAME=""
-    read -p "Enter a directory name to create [sysreport]: " DIR_NAME
-    read -p "Enter a file name for the process list [processes.txt]: " FILE_NAME
+    read -r -p "Enter a directory name to create [sysreport]: " DIR_NAME || true
+    read -r -p "Enter a file name for the process list [processes.txt]: " FILE_NAME || true
 
     # Fall back to sensible defaults if the answer was left blank
     DIR_NAME=${DIR_NAME:-sysreport}
@@ -177,11 +176,12 @@ a directory already exists error.
 The variables are quoted, as in "$DIR_NAME/$FILE_NAME", so that names with spaces still
 work.
 
-set -u is at the top rather than set -euo pipefail on purpose. pipefail would break the
-ps ... | head -10 line, because head exits as soon as it has ten lines and ps is then
-killed by SIGPIPE, which pipefail would report as a failure and set -e would turn into an
-exit. set -u gives the useful half, catching misspelled variable names, without that side
-effect.
+The current script uses `set -euo pipefail` so failed writes cannot print a success
+message. `sed -n '1,10p'` consumes the full process stream while printing only ten
+lines, avoiding the SIGPIPE that `head` can cause. `read -r ... || true` preserves
+literal backslashes and accepts defaults when input reaches EOF. The historical
+output above is unchanged; current Linux regression checks live in
+[the project review](../review/README.md).
 
 wc -l < file is piped through tr -d " " because macOS pads the count with spaces, so the
 summary line would otherwise read "Lines saved :      707".

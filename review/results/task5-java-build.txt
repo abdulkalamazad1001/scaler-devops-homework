@@ -1,0 +1,58 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 408B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#3 DONE 2.2s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#2 DONE 2.3s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [build 1/4] FROM docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#5 resolve docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159 0.0s done
+#5 DONE 0.0s
+
+#6 [stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#6 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555 0.0s done
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 37B done
+#7 DONE 0.1s
+
+#8 [build 2/4] WORKDIR /src
+#8 CACHED
+
+#9 [build 3/4] COPY HelloWorld.java ./
+#9 CACHED
+
+#10 [build 4/4] RUN javac HelloWorld.java
+#10 CACHED
+
+#11 [stage-1 2/3] WORKDIR /app
+#11 CACHED
+
+#12 [stage-1 3/3] COPY --from=build /src/HelloWorld.class ./
+#12 CACHED
+
+#13 exporting to image
+#13 exporting layers done
+#13 exporting manifest sha256:e26098037e335f6917f6282a55ee3dd0eaccbe405ea8af718aeac8100d0bbc45 done
+#13 exporting config sha256:4bb078939abecf870b0e6019eaabc247a12b474ebdf409492958b87ad1da44b0 done
+#13 exporting attestation manifest sha256:07c40ff76907737c7403d01f8f770c42cf2ec44bc262db53fe15734e0adc09f5 0.1s done
+#13 exporting manifest list sha256:dd44b48a98b7cb7f7d817066464448b218bf10508f60daf80ed54afb4c39b8ac
+#13 exporting manifest list sha256:dd44b48a98b7cb7f7d817066464448b218bf10508f60daf80ed54afb4c39b8ac 0.0s done
+#13 naming to docker.io/homework-review/task5-java:local done
+#13 unpacking to docker.io/homework-review/task5-java:local 0.0s done
+#13 DONE 0.2s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/2h7c1uw9itp766tguiyzf0wj1

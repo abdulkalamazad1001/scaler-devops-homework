@@ -1,0 +1,45 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 536B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 5.8s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 69B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 63B done
+#4 DONE 0.0s
+
+#5 [1/5] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#5 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 0.1s done
+#5 DONE 0.1s
+
+#6 [4/5] RUN npm install --omit=dev
+#6 CACHED
+
+#7 [2/5] WORKDIR /app
+#7 CACHED
+
+#8 [3/5] COPY package.json ./
+#8 CACHED
+
+#9 [5/5] COPY server.js ./
+#9 CACHED
+
+#10 exporting to image
+#10 exporting layers done
+#10 exporting manifest sha256:c7fe793f964c327ae30c00b694e20c9922286eb274e5af380451e99a6842d0c5 done
+#10 exporting config sha256:4615d6f7a3b03620c22597b0149bc7ddf57517a2465d59947cf40397cd5ccfd7 done
+#10 exporting attestation manifest sha256:4851cd8f561e44335c37dd51f6618a30bf49bc274e41115fcd58ecbc843b1421 0.0s done
+#10 exporting manifest list sha256:0f171bbffdc95e5362572ec494d052ea79bdab078fe6d8515ba856b11a764cd9 0.0s done
+#10 naming to docker.io/homework-review/task5-node:local
+#10 naming to docker.io/homework-review/task5-node:local done
+#10 unpacking to docker.io/homework-review/task5-node:local 0.0s done
+#10 DONE 0.2s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/og18uogb4qo2aw02jos10wgl6

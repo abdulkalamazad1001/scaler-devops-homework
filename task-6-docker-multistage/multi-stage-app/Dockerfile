@@ -15,5 +15,7 @@ WORKDIR /app
 COPY --from=builder /app/package*.json ./
 RUN npm install --omit=dev
 COPY --from=builder /app/server.js ./
+ENV NODE_ENV=production
+USER node
 EXPOSE 3000
 CMD ["npm", "start"]
