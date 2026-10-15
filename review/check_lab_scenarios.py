@@ -182,9 +182,13 @@ def deployments(lab):
     lab.apply("canary-create", *(f"{folder}/{file}.yaml" for file in ["deployment-stable", "deployment-canary", "service"]))
     for name in ["app-stable", "app-canary"]:
         lab.rollout(f"deployment/{name}")
+    lab.observe("canary-ten-ready-endpoints", "endpoints", "myapp-canary-service", lambda o:
+                sum(len(subset.get("addresses", [])) for subset in o.get("subsets", [])) == 10)
     lab.check("canary-both-versions", "exec", "lab-client", "--", "sh", "-ec",
-              "i=0; while [ $i -lt 150 ]; do wget -T 5 -qO- http://myapp-canary-service; i=$((i+1)); done > /tmp/responses; "
-              "grep 'stable v1' /tmp/responses; grep 'canary v2' /tmp/responses")
+              "i=0; : > /tmp/responses; while [ $i -lt 120 ]; do "
+              "wget -T 5 -qO- http://myapp-canary-service >> /tmp/responses; "
+              "if grep -q 'stable v1' /tmp/responses && grep -q 'canary v2' /tmp/responses; "
+              "then cat /tmp/responses; exit 0; fi; i=$((i+1)); sleep 1; done; cat /tmp/responses; exit 1")
     lab.check("canary-remove", "delete", "deployment", "app-stable", "app-canary", "--wait=true")
 
     folder = f"{base}/pod-lifecycle"
