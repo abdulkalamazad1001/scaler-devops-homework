@@ -1,0 +1,6 @@
+PING homework-review-9101be34-backend (172.18.0.3): 56 data bytes
+64 bytes from 172.18.0.3: seq=0 ttl=64 time=0.106 ms
+
+--- homework-review-9101be34-backend ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 0.106/0.106/0.106 ms

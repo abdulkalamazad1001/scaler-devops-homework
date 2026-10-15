@@ -29,19 +29,50 @@ Fresh logs below are genuine local test output, with limited scope stated explic
 | [12 Config/Secrets/Ingress](../task-12-ingress-configmaps-secrets/README.md) | All manifests schema-validated; ConfigMap env/file and Secret env/file consumption passed without logging secret values | This task's Nginx Ingress controller setup not deployed |
 | [13 Storage/HPA/probes](../task-13-storage-hpa-probes/README.md) | Fixed read-only reader startup race; shared emptyDir and PVC survival after pod recreation passed | This task's full HPA, node-local retention and probe-failure exercises not replayed |
 | [14 Troubleshooting](../task-14-k8s-troubleshooting/README.md) | All manifests schema-validated; corrected image-pull pods reached Ready | Every intentionally broken/fixed scenario not run; broken fixtures deliberately retained |
-| [15 Helm](../task-15-helm/README.md) | Both value sets lint/render checked; live install and HTTP response passed | Complete upgrade/rollback exercise not yet captured |
-| [16 CI/CD](../task-16-cicd-github-actions/README.md) | 22 tests passed, 97.92% app coverage; non-finite input/overflow fixed; root CI/CD activated | First new GitHub run being verified; local success is not a remote-run claim |
-| [17 DevSecOps](../task-17-devsecops/README.md) | 46 tests passed, 98.25% app coverage; malformed API input fixed; security gate now rejects malformed/incomplete reports; root pipeline activated | First new scanner/publish/deploy run being verified; policy excludes unfixed CVEs |
+| [15 Helm](../task-15-helm/README.md) | Fixed malformed test-hook argument; both value sets lint/render checked; live install, Helm test, upgrade to two replicas, rollback, restored-content check and cleanup passed | Production operation and cloud deployment not claimed |
+| [16 CI/CD](../task-16-cicd-github-actions/README.md) | 22 tests passed, 97.92% app coverage; non-finite input/overflow fixed; GitHub CI and GHCR/Kind CD passed | Staging is an ephemeral runner cluster, not AWS |
+| [17 DevSecOps](../task-17-devsecops/README.md) | 46 tests passed, 98.25% app coverage; malformed API input fixed; security gate rejects malformed/incomplete reports; GitHub scan, gate, GHCR push and Kind deploy passed | Policy excludes unfixed image CVEs; not production security certification |
 | [18 Terraform S3](../task-18-terraform-aws/README.md) | Format, backend-disabled init and validate passed | No credentialed AWS plan/apply/destroy |
 | [19 Terraform cloud](../task-19-terraform-cloud-project/README.md) | Format, backend-disabled init and validate passed | No AWS provisioning, public endpoint or Console evidence captured |
 | [20 Monitoring/GitOps](../task-20-monitoring-gitops/README.md) | 17 app tests passed; invalid load inputs fixed; Argo repository URL corrected; 7 rules validated and rule unit tests passed | Full task-specific Prometheus/Loki/Grafana/Argo stack not replayed |
-| [21 TaskBoard reference](../task-21-final-devops-project/README.md) | 21 backend tests passed; explicit-null and blank-title updates fixed; Helm variants reviewed | Not a new AWS deployment; separate from original CampusDesk; Terraform registry DNS retry pending |
+| [21 TaskBoard reference](../task-21-final-devops-project/README.md) | 21 backend tests passed; explicit-null and blank-title updates fixed; frontend image built; Helm and Terraform format/init/validate passed in GitHub CI | Local Terraform retry hit registry DNS failures; no AWS plan/apply/destroy or full TaskBoard browser run; separate from original CampusDesk |
 
 Task 21's default Helm chart deliberately requires a database secret. Rendering
 uses `database.existingSecret=review-placeholder` only as a **non-deployed fixture**;
 no real secret is stored in the review. Dev/prod files retain their own settings.
 The first test harness attempted port 80 for task 11; the manifest correctly uses
 8080. The harness was corrected, not the valid service configuration.
+
+The live Helm test found that an unquoted colon caused the test hook's shell argument
+to render as a YAML mapping. A block scalar fixed it. Rendered command/argument type
+checks and the live Helm lifecycle now guard against that regression.
+
+## Verified GitHub Runs
+
+- [Task 16 CI: passed](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38778348181)
+- [Task 16 CD: passed](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38778505023)
+- [Task 17 DevSecOps: passed](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38778348129)
+- [Homework apps, shell, Docker and infrastructure validation: passed](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38779552339)
+- [Expanded homework pipeline including live Kubernetes and Helm lifecycle: passed](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38782743063)
+- [CampusDesk tests, scans, browser checks, deployment and guarded GitOps promotion: passed](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38782743221)
+
+Downloaded reports: [task 16](results/task16-ci-38778348181/),
+[task 17](results/task17-ci-38778348129/),
+[homework validation](results/ci-38779552339/) and
+[expanded validation with live Kubernetes](results/ci-38782743063/) and
+[CampusDesk verification](results/campusdesk-ci-38782743221/).
+[GitHub run metadata](results/github-runs.json) records exact source SHAs and job states.
+The expanded run reports 106 Python tests across four application projects, 26 Helm/
+Terraform/rule checks, 41 Kubernetes operations/checks and 11 Helm lifecycle operations,
+all successful. Operation totals include setup/cleanup; they are not counts of
+independent test cases. The promotion-fix CampusDesk run also completed successfully.
+
+An earlier CampusDesk rerun passed tests/scans/deployment but failed during GitOps
+promotion because concurrent runs edited the same release file. The promotion now
+fetches the current tip, rejects newer untested source, preserves unrelated changes
+and retries bounded push races instead of rebasing stale release values. Three local
+Git integration tests passed. Capstone-only path filters avoid rebuilding it for
+unrelated homework changes. The previous failed run remains visible in GitHub history.
 
 ## Repeat the Checks
 
@@ -54,6 +85,7 @@ python review/run_checks.py all
 python review/smoke_containers.py
 python review/check_networks.py
 python review/check_kubernetes.py --context kind-campusdesk
+python review/check_helm_lifecycle.py --context kind-campusdesk
 ```
 
 Windows tooling is also discovered in the ignored `tools/` folder. The review
@@ -66,10 +98,19 @@ Task 7 volume checks use disposable test data, not CampusDesk's database volumes
 - [Network isolation and volume results](results/networks.json)
 - [Linux, shell, networking and Git checks](results/shell.json)
 - [Kubernetes checks and cleanup](results/kubernetes.json)
+- [Helm lifecycle checks and cleanup](results/helm-lifecycle.json)
+- [Task 21 Terraform validation in CI](results/ci-38779552339/homework-infra/task21-terraform-validate.txt)
 - Raw command transcripts are under [results/](results/).
 - [Active repository validation workflow](../.github/workflows/homework-review.yml)
 - [Active task 16 CI](../.github/workflows/task16-ci.yml) and [CD](../.github/workflows/task16-cd.yml)
 - [Active task 17 DevSecOps pipeline](../.github/workflows/task17-devsecops.yml)
+
+`results/all.json` retains the first local suite attempt, including its failures.
+Subsequent shell/Helm checks passed after correcting LF line endings and supplying
+the chart's required secret fixture. `results/infra.json` retains the local provider
+DNS failure; the separate downloaded CI report records successful Terraform validation.
+Named local logs are overwritten on reruns; the downloaded CI artifact directories
+are run-specific snapshots. A passing CI check does not erase an earlier failed run.
 
 ## Authorship Correction
 
@@ -86,6 +127,15 @@ A verified pre-rewrite Git bundle is retained outside this repository in the loc
 credited shared AWS evidence have not been removed. No Claude author or co-author was
 found in this repository's current history; GitHub's contributor display can lag history
 updates. Other GitHub repositories were not rewritten in this task.
+
+## Evidence Secret Review
+
+Before publishing, Gitleaks scanned the review directory. Its two
+[redacted findings](results/gitleaks-review-findings.json) are the same **public Python
+release-signing key fingerprint** embedded in the task 17 Trivy image metadata, not
+an access token or private key. It matches the `GPG_KEY` used to verify Python releases
+in the [official Python image Dockerfile](https://raw.githubusercontent.com/docker-library/python/master/3.12/slim-trixie/Dockerfile).
+The downloaded scanner report was left unchanged; no broad scanner exclusion was added.
 
 ## Capstone and Submission Limits
 

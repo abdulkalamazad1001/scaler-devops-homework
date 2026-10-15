@@ -1,0 +1,42 @@
+[
+ {
+  "RuleID": "generic-api-key",
+  "Description": "Detected a Generic API Key, potentially exposing access to various services and sensitive operations.",
+  "StartLine": 60,
+  "EndLine": 60,
+  "StartColumn": 31,
+  "EndColumn": 79,
+  "Match": "GPG_KEY=REDACTED\"",
+  "Secret": "REDACTED",
+  "File": "/review/results/task17-ci-38778348129/report-trivy/trivy-image.json",
+  "SymlinkFile": "",
+  "Commit": "",
+  "Entropy": 3.63628,
+  "Author": "",
+  "Email": "",
+  "Date": "",
+  "Message": "",
+  "Tags": [],
+  "Fingerprint": "/review/results/task17-ci-38778348129/report-trivy/trivy-image.json:generic-api-key:60"
+ },
+ {
+  "RuleID": "generic-api-key",
+  "Description": "Detected a Generic API Key, potentially exposing access to various services and sensitive operations.",
+  "StartLine": 191,
+  "EndLine": 191,
+  "StartColumn": 13,
+  "EndColumn": 61,
+  "Match": "GPG_KEY=REDACTED\"",
+  "Secret": "REDACTED",
+  "File": "/review/results/task17-ci-38778348129/report-trivy/trivy-image.json",
+  "SymlinkFile": "",
+  "Commit": "",
+  "Entropy": 3.63628,
+  "Author": "",
+  "Email": "",
+  "Date": "",
+  "Message": "",
+  "Tags": [],
+  "Fingerprint": "/review/results/task17-ci-38778348129/report-trivy/trivy-image.json:generic-api-key:191"
+ }
+]

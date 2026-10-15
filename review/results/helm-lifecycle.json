@@ -1,0 +1,224 @@
+{
+  "captured_at": "2026-10-15T18:03:39.921950+00:00",
+  "context": "kind-campusdesk",
+  "checks": [
+    {
+      "check": "task15-lifecycle-namespace",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:03:04.495598+00:00",
+      "duration_seconds": 0.13,
+      "log": "task15-lifecycle-namespace.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-7204cf25",
+        "create",
+        "namespace",
+        "homework-helm-7204cf25"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-install",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:03:04.625587+00:00",
+      "duration_seconds": 8.53,
+      "log": "task15-lifecycle-install.txt",
+      "command": [
+        "C:\\Users\\abdul\\Downloads\\devops\\scaler-devops-homework\\tools\\helm\\windows-amd64\\helm.exe",
+        "--kube-context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-7204cf25",
+        "install",
+        "notes-review",
+        "task-15-helm/notes-chart",
+        "--set",
+        "service.type=ClusterIP",
+        "--wait",
+        "--timeout",
+        "3m"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-test",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:03:13.159196+00:00",
+      "duration_seconds": 3.28,
+      "log": "task15-lifecycle-test.txt",
+      "command": [
+        "C:\\Users\\abdul\\Downloads\\devops\\scaler-devops-homework\\tools\\helm\\windows-amd64\\helm.exe",
+        "--kube-context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-7204cf25",
+        "test",
+        "notes-review",
+        "--logs",
+        "--timeout",
+        "2m"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-upgrade",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:03:16.438802+00:00",
+      "duration_seconds": 8.81,
+      "log": "task15-lifecycle-upgrade.txt",
+      "command": [
+        "C:\\Users\\abdul\\Downloads\\devops\\scaler-devops-homework\\tools\\helm\\windows-amd64\\helm.exe",
+        "--kube-context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-7204cf25",
+        "upgrade",
+        "notes-review",
+        "task-15-helm/notes-chart",
+        "--set",
+        "service.type=ClusterIP",
+        "--set",
+        "replicaCount=2",
+        "--set",
+        "app.message=Updated review release",
+        "--wait",
+        "--timeout",
+        "3m"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-upgraded-content",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:03:25.247109+00:00",
+      "duration_seconds": 0.15,
+      "log": "task15-lifecycle-upgraded-content.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-7204cf25",
+        "exec",
+        "deploy/notes-review-deploy",
+        "--",
+        "sh",
+        "-ec",
+        "test \"$(cat /usr/share/nginx/html/index.html | grep -c \"Updated review release\")\" = 1"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-rollback",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:03:25.396761+00:00",
+      "duration_seconds": 4.37,
+      "log": "task15-lifecycle-rollback.txt",
+      "command": [
+        "C:\\Users\\abdul\\Downloads\\devops\\scaler-devops-homework\\tools\\helm\\windows-amd64\\helm.exe",
+        "--kube-context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-7204cf25",
+        "rollback",
+        "notes-review",
+        "1",
+        "--wait",
+        "--timeout",
+        "3m"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-rollback-test",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:03:29.764435+00:00",
+      "duration_seconds": 2.76,
+      "log": "task15-lifecycle-rollback-test.txt",
+      "command": [
+        "C:\\Users\\abdul\\Downloads\\devops\\scaler-devops-homework\\tools\\helm\\windows-amd64\\helm.exe",
+        "--kube-context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-7204cf25",
+        "test",
+        "notes-review",
+        "--logs",
+        "--timeout",
+        "2m"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-restored-content",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:03:32.519862+00:00",
+      "duration_seconds": 0.21,
+      "log": "task15-lifecycle-restored-content.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-7204cf25",
+        "exec",
+        "deploy/notes-review-deploy",
+        "--",
+        "grep",
+        "Welcome to the Notes app",
+        "/usr/share/nginx/html/index.html"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-history",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:03:32.728213+00:00",
+      "duration_seconds": 0.17,
+      "log": "task15-lifecycle-history.txt",
+      "command": [
+        "C:\\Users\\abdul\\Downloads\\devops\\scaler-devops-homework\\tools\\helm\\windows-amd64\\helm.exe",
+        "--kube-context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-7204cf25",
+        "history",
+        "notes-review"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-uninstall",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:03:32.901349+00:00",
+      "duration_seconds": 0.45,
+      "log": "task15-lifecycle-uninstall.txt",
+      "command": [
+        "C:\\Users\\abdul\\Downloads\\devops\\scaler-devops-homework\\tools\\helm\\windows-amd64\\helm.exe",
+        "--kube-context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-7204cf25",
+        "uninstall",
+        "notes-review",
+        "--wait",
+        "--timeout",
+        "2m"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:03:33.348984+00:00",
+      "duration_seconds": 6.57,
+      "log": "task15-lifecycle-cleanup.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-7204cf25",
+        "delete",
+        "namespace",
+        "homework-helm-7204cf25",
+        "--wait=true",
+        "--timeout=120s"
+      ]
+    }
+  ],
+  "scope": "Local Helm lifecycle; no AWS resources."
+}

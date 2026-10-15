@@ -1,0 +1,316 @@
+{
+  "captured_at": "2026-10-15T17:43:03.174447+00:00",
+  "checks": [
+    {
+      "check": "task15-helm-values",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:34.208069+00:00",
+      "duration_seconds": 0.04,
+      "log": "task15-helm-values.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "lint",
+        "task-15-helm/notes-chart",
+        "-f",
+        "task-15-helm/notes-chart/values.yaml"
+      ]
+    },
+    {
+      "check": "task15-render-values",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:34.250445+00:00",
+      "duration_seconds": 0.03,
+      "log": "task15-render-values.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "template",
+        "review",
+        "task-15-helm/notes-chart",
+        "-f",
+        "task-15-helm/notes-chart/values.yaml"
+      ]
+    },
+    {
+      "check": "task15-helm-values-prod",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:34.284334+00:00",
+      "duration_seconds": 0.04,
+      "log": "task15-helm-values-prod.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "lint",
+        "task-15-helm/notes-chart",
+        "-f",
+        "task-15-helm/notes-chart/values-prod.yaml"
+      ]
+    },
+    {
+      "check": "task15-render-values-prod",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:34.322978+00:00",
+      "duration_seconds": 0.03,
+      "log": "task15-render-values-prod.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "template",
+        "review",
+        "task-15-helm/notes-chart",
+        "-f",
+        "task-15-helm/notes-chart/values-prod.yaml"
+      ]
+    },
+    {
+      "check": "task21-helm-values",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:34.357833+00:00",
+      "duration_seconds": 0.06,
+      "log": "task21-helm-values.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "lint",
+        "task-21-final-devops-project/helm/taskboard",
+        "-f",
+        "task-21-final-devops-project/helm/taskboard/values.yaml",
+        "--set",
+        "database.existingSecret=review-placeholder"
+      ]
+    },
+    {
+      "check": "task21-render-values",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:34.422559+00:00",
+      "duration_seconds": 0.04,
+      "log": "task21-render-values.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "template",
+        "review",
+        "task-21-final-devops-project/helm/taskboard",
+        "-f",
+        "task-21-final-devops-project/helm/taskboard/values.yaml",
+        "--set",
+        "database.existingSecret=review-placeholder"
+      ]
+    },
+    {
+      "check": "task21-helm-values-dev",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:34.464356+00:00",
+      "duration_seconds": 0.05,
+      "log": "task21-helm-values-dev.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "lint",
+        "task-21-final-devops-project/helm/taskboard",
+        "-f",
+        "task-21-final-devops-project/helm/taskboard/values-dev.yaml"
+      ]
+    },
+    {
+      "check": "task21-render-values-dev",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:34.518752+00:00",
+      "duration_seconds": 0.04,
+      "log": "task21-render-values-dev.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "template",
+        "review",
+        "task-21-final-devops-project/helm/taskboard",
+        "-f",
+        "task-21-final-devops-project/helm/taskboard/values-dev.yaml"
+      ]
+    },
+    {
+      "check": "task21-helm-values-prod",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:34.557247+00:00",
+      "duration_seconds": 0.06,
+      "log": "task21-helm-values-prod.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "lint",
+        "task-21-final-devops-project/helm/taskboard",
+        "-f",
+        "task-21-final-devops-project/helm/taskboard/values-prod.yaml"
+      ]
+    },
+    {
+      "check": "task21-render-values-prod",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:34.613469+00:00",
+      "duration_seconds": 0.04,
+      "log": "task21-render-values-prod.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "template",
+        "review",
+        "task-21-final-devops-project/helm/taskboard",
+        "-f",
+        "task-21-final-devops-project/helm/taskboard/values-prod.yaml"
+      ]
+    },
+    {
+      "check": "task18-terraform-fmt",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:34.652280+00:00",
+      "duration_seconds": 0.08,
+      "log": "task18-terraform-fmt.txt",
+      "command": [
+        "/home/runner/work/_temp/55e42796-e810-4f1c-a35b-d07ec9988230/terraform",
+        "fmt",
+        "-check",
+        "-recursive"
+      ]
+    },
+    {
+      "check": "task18-terraform-init",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:34.735656+00:00",
+      "duration_seconds": 6.56,
+      "log": "task18-terraform-init.txt",
+      "command": [
+        "/home/runner/work/_temp/55e42796-e810-4f1c-a35b-d07ec9988230/terraform",
+        "init",
+        "-backend=false",
+        "-input=false",
+        "-no-color"
+      ]
+    },
+    {
+      "check": "task18-terraform-validate",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:41.297337+00:00",
+      "duration_seconds": 1.9,
+      "log": "task18-terraform-validate.txt",
+      "command": [
+        "/home/runner/work/_temp/55e42796-e810-4f1c-a35b-d07ec9988230/terraform",
+        "validate",
+        "-no-color"
+      ]
+    },
+    {
+      "check": "task19-terraform-fmt",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:43.200613+00:00",
+      "duration_seconds": 0.03,
+      "log": "task19-terraform-fmt.txt",
+      "command": [
+        "/home/runner/work/_temp/55e42796-e810-4f1c-a35b-d07ec9988230/terraform",
+        "fmt",
+        "-check",
+        "-recursive"
+      ]
+    },
+    {
+      "check": "task19-terraform-init",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:43.232839+00:00",
+      "duration_seconds": 1.48,
+      "log": "task19-terraform-init.txt",
+      "command": [
+        "/home/runner/work/_temp/55e42796-e810-4f1c-a35b-d07ec9988230/terraform",
+        "init",
+        "-backend=false",
+        "-input=false",
+        "-no-color"
+      ]
+    },
+    {
+      "check": "task19-terraform-validate",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:44.717657+00:00",
+      "duration_seconds": 1.85,
+      "log": "task19-terraform-validate.txt",
+      "command": [
+        "/home/runner/work/_temp/55e42796-e810-4f1c-a35b-d07ec9988230/terraform",
+        "validate",
+        "-no-color"
+      ]
+    },
+    {
+      "check": "task21-terraform-fmt",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:46.566719+00:00",
+      "duration_seconds": 0.03,
+      "log": "task21-terraform-fmt.txt",
+      "command": [
+        "/home/runner/work/_temp/55e42796-e810-4f1c-a35b-d07ec9988230/terraform",
+        "fmt",
+        "-check",
+        "-recursive"
+      ]
+    },
+    {
+      "check": "task21-terraform-init",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:46.595428+00:00",
+      "duration_seconds": 10.64,
+      "log": "task21-terraform-init.txt",
+      "command": [
+        "/home/runner/work/_temp/55e42796-e810-4f1c-a35b-d07ec9988230/terraform",
+        "init",
+        "-backend=false",
+        "-input=false",
+        "-no-color"
+      ]
+    },
+    {
+      "check": "task21-terraform-validate",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:57.240216+00:00",
+      "duration_seconds": 2.71,
+      "log": "task21-terraform-validate.txt",
+      "command": [
+        "/home/runner/work/_temp/55e42796-e810-4f1c-a35b-d07ec9988230/terraform",
+        "validate",
+        "-no-color"
+      ]
+    },
+    {
+      "check": "task20-rules",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:59.979356+00:00",
+      "duration_seconds": 2.94,
+      "log": "task20-rules.txt",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--mount",
+        "type=bind,source=/home/runner/work/scaler-devops-homework/scaler-devops-homework/task-20-monitoring-gitops/monitoring/rules,target=/rules,readonly",
+        "-w",
+        "/rules",
+        "--entrypoint",
+        "promtool",
+        "prom/prometheus:v3.2.1",
+        "check",
+        "rules",
+        "metrics-demo-rules.yaml"
+      ]
+    },
+    {
+      "check": "task20-rule-tests",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:43:02.918524+00:00",
+      "duration_seconds": 0.26,
+      "log": "task20-rule-tests.txt",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--mount",
+        "type=bind,source=/home/runner/work/scaler-devops-homework/scaler-devops-homework/task-20-monitoring-gitops/monitoring/rules,target=/rules,readonly",
+        "-w",
+        "/rules",
+        "--entrypoint",
+        "promtool",
+        "prom/prometheus:v3.2.1",
+        "test",
+        "rules",
+        "metrics-demo-rules.test.yaml"
+      ]
+    }
+  ],
+  "scope": "Local isolated tests and validation. No AWS deployment or grading guarantee."
+}

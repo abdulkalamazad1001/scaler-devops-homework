@@ -1,0 +1,29 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 176B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/nginx:1.27-alpine
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/2] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#4 CACHED
+
+#5 [internal] load build context
+#5 transferring context: 274B done
+#5 DONE 0.0s
+
+#6 [2/2] COPY index.html /usr/share/nginx/html/index.html
+#6 DONE 0.0s
+
+#7 exporting to image
+#7 exporting layers
+#7 exporting layers 0.5s done
+#7 writing image sha256:d8e163fddd851a576d38688d8b48a8bd6902ff5e6c329e544c7a38f32b56a10f done
+#7 naming to docker.io/homework-review/task5-nginx:local done
+#7 DONE 0.5s

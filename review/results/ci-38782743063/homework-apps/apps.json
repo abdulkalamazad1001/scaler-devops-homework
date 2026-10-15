@@ -1,0 +1,78 @@
+{
+  "captured_at": "2026-10-15T18:06:22.123738+00:00",
+  "checks": [
+    {
+      "check": "task16-tests",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:05:44.880774+00:00",
+      "duration_seconds": 13.93,
+      "log": "task16-tests.txt",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--mount",
+        "type=bind,source=/home/runner/work/scaler-devops-homework/scaler-devops-homework/task-16-cicd-github-actions,target=/src,readonly",
+        "python:3.12-slim",
+        "sh",
+        "-ec",
+        "cp -R /src /tmp/project; cd /tmp/project; python -m pip install --disable-pip-version-check -q -r requirements-dev.txt; python -m pip check; python -m flake8 app tests && python -m pytest --cov=app --cov-fail-under=90"
+      ]
+    },
+    {
+      "check": "task17-tests",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:05:58.812809+00:00",
+      "duration_seconds": 4.66,
+      "log": "task17-tests.txt",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--mount",
+        "type=bind,source=/home/runner/work/scaler-devops-homework/scaler-devops-homework/task-17-devsecops,target=/src,readonly",
+        "python:3.12-slim",
+        "sh",
+        "-ec",
+        "cp -R /src /tmp/project; cd /tmp/project; python -m pip install --disable-pip-version-check -q -r requirements-dev.txt; python -m pip check; python -m pytest --cov=app --cov-fail-under=90"
+      ]
+    },
+    {
+      "check": "task20-tests",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:03.468371+00:00",
+      "duration_seconds": 4.84,
+      "log": "task20-tests.txt",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--mount",
+        "type=bind,source=/home/runner/work/scaler-devops-homework/scaler-devops-homework/task-20-monitoring-gitops/monitoring/app,target=/src,readonly",
+        "python:3.12-slim",
+        "sh",
+        "-ec",
+        "cp -R /src /tmp/project; cd /tmp/project; python -m pip install --disable-pip-version-check -q -r requirements.txt; python -m pip check; python -m pip install pytest==9.1.1 && python -m pytest -q"
+      ]
+    },
+    {
+      "check": "task21-tests",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:08.311749+00:00",
+      "duration_seconds": 13.81,
+      "log": "task21-tests.txt",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--mount",
+        "type=bind,source=/home/runner/work/scaler-devops-homework/scaler-devops-homework/task-21-final-devops-project/application/backend,target=/src,readonly",
+        "python:3.12-slim",
+        "sh",
+        "-ec",
+        "cp -R /src /tmp/project; cd /tmp/project; python -m pip install --disable-pip-version-check -q -r requirements-dev.txt; python -m pip check; python -m pytest -q"
+      ]
+    }
+  ],
+  "scope": "Local isolated tests and validation. No AWS deployment or grading guarantee."
+}

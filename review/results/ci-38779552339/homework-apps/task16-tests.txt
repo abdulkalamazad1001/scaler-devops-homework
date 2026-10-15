@@ -1,0 +1,66 @@
+Unable to find image 'python:3.12-slim' locally
+3.12-slim: Pulling from library/python
+ecc510c1e359: Pulling fs layer
+75b6a36c64a1: Pulling fs layer
+6912e23eb445: Pulling fs layer
+bbc5a1223747: Pulling fs layer
+bbc5a1223747: Waiting
+75b6a36c64a1: Verifying Checksum
+75b6a36c64a1: Download complete
+bbc5a1223747: Verifying Checksum
+6912e23eb445: Verifying Checksum
+6912e23eb445: Download complete
+ecc510c1e359: Verifying Checksum
+ecc510c1e359: Download complete
+ecc510c1e359: Pull complete
+75b6a36c64a1: Pull complete
+6912e23eb445: Pull complete
+bbc5a1223747: Pull complete
+Digest: sha256:a6e34c598f2467ed0e9a8d349809fcd8b5c603269512df273a0bb1784edc11b1
+Status: Downloaded newer image for python:3.12-slim
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+No broken requirements found.
+============================= test session starts ==============================
+platform linux -- Python 3.12.15, pytest-8.3.3, pluggy-1.7.0 -- /usr/local/bin/python
+cachedir: .pytest_cache
+rootdir: /tmp/project
+configfile: setup.cfg
+testpaths: tests
+plugins: cov-5.0.0
+collecting ... collected 22 items
+
+tests/test_api.py::test_health PASSED                                    [  4%]
+tests/test_api.py::test_index_reports_version PASSED                     [  9%]
+tests/test_api.py::test_index_never_returns_secret_value PASSED          [ 13%]
+tests/test_api.py::test_operations[add-2-3-5] PASSED                     [ 18%]
+tests/test_api.py::test_operations[subtract-10-4-6] PASSED               [ 22%]
+tests/test_api.py::test_operations[multiply-6-7-42] PASSED               [ 27%]
+tests/test_api.py::test_operations[divide-10-4-2.5] PASSED               [ 31%]
+tests/test_api.py::test_divide_by_zero_returns_400 PASSED                [ 36%]
+tests/test_api.py::test_unknown_operation_returns_404 PASSED             [ 40%]
+tests/test_api.py::test_missing_parameter_returns_400 PASSED             [ 45%]
+tests/test_api.py::test_non_numeric_parameter_returns_400 PASSED         [ 50%]
+tests/test_api.py::test_non_finite_parameter_returns_400[nan] PASSED     [ 54%]
+tests/test_api.py::test_non_finite_parameter_returns_400[inf] PASSED     [ 59%]
+tests/test_api.py::test_non_finite_parameter_returns_400[-inf] PASSED    [ 63%]
+tests/test_api.py::test_non_finite_parameter_returns_400[1e999] PASSED   [ 68%]
+tests/test_api.py::test_overflow_returns_400 PASSED                      [ 72%]
+tests/test_calculator.py::test_add PASSED                                [ 77%]
+tests/test_calculator.py::test_add_negative PASSED                       [ 81%]
+tests/test_calculator.py::test_subtract PASSED                           [ 86%]
+tests/test_calculator.py::test_multiply PASSED                           [ 90%]
+tests/test_calculator.py::test_divide PASSED                             [ 95%]
+tests/test_calculator.py::test_divide_by_zero PASSED                     [100%]
+
+---------- coverage: platform linux, python 3.12.15-final-0 ----------
+Name                Stmts   Miss  Cover
+---------------------------------------
+app/__init__.py         0      0   100%
+app/calculator.py      11      0   100%
+app/main.py            37      1    97%
+---------------------------------------
+TOTAL                  48      1    98%
+
+Required test coverage of 90% reached. Total coverage: 97.92%
+
+============================== 22 passed in 0.43s ==============================

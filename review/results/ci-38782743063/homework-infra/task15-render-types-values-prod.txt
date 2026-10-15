@@ -1,0 +1,1 @@
+PASS: command/args types for 2 rendered containers, including test hooks

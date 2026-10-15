@@ -1,0 +1,14 @@
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+No broken requirements found.
+..............................................                           [100%]
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.12.15-final-0 _______________
+
+Name              Stmts   Miss  Cover
+-------------------------------------
+app/__init__.py       0      0   100%
+app/app.py           57      1    98%
+-------------------------------------
+TOTAL                57      1    98%
+Required test coverage of 90% reached. Total coverage: 98.25%
+46 passed in 0.47s

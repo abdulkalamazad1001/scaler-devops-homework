@@ -35,8 +35,9 @@ if the target is moved or deleted. Created with ln and ln -s.
 
 ## Task 2: adduser vs useradd
 
-useradd is the low level command, present on every distribution. It does exactly what
-you tell it, so by default no home directory, no password, no questions. adduser on
+useradd is a low-level account-management command, although minimal distributions
+may not install it. Home-directory defaults depend on system configuration; `-m`
+requests one explicitly. It does not interactively set a password. adduser on
 Ubuntu and Debian is a script that calls useradd underneath, and it is interactive,
 creates the home directory, copies files from /etc/skel, sets up the group and prompts
 for a password.

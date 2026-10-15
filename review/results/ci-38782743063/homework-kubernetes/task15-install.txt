@@ -1,0 +1,17 @@
+NAME: review-notes
+LAST DEPLOYED: Thu Oct 15 18:07:43 2026
+NAMESPACE: homework-review-32f62058
+STATUS: deployed
+REVISION: 1
+NOTES:
+notes-app (development) is running as release "review-notes" in namespace "homework-review-32f62058".
+
+  Replicas: 1
+  Image:    nginx:1.24
+
+Check the pods:
+  kubectl get pods -n homework-review-32f62058 -l app.kubernetes.io/instance=review-notes
+
+Open the app:
+  kubectl port-forward -n homework-review-32f62058 svc/review-notes-svc 8080:80
+  curl http://127.0.0.1:8080

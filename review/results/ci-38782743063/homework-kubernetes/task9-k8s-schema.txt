@@ -1,0 +1,3 @@
+deployment.apps/kubernetes-bootcamp created (dry run)
+service/kubernetes-bootcamp created (dry run)
+pod/nginx-pod created (dry run)

@@ -1,0 +1,24 @@
+{
+  "captured_at": "2026-10-15T17:42:47.779649+00:00",
+  "checks": [
+    {
+      "check": "shell-tests",
+      "exit_code": 0,
+      "started_at": "2026-10-15T17:42:32.473355+00:00",
+      "duration_seconds": 15.31,
+      "log": "shell-tests.txt",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--mount",
+        "type=bind,source=/home/runner/work/scaler-devops-homework/scaler-devops-homework,target=/src,readonly",
+        "ubuntu:24.04",
+        "bash",
+        "-ec",
+        "apt-get update -qq; apt-get install -y -qq procps iproute2 iputils-ping git; bash /src/review/test_shell.sh"
+      ]
+    }
+  ],
+  "scope": "Local isolated tests and validation. No AWS deployment or grading guarantee."
+}

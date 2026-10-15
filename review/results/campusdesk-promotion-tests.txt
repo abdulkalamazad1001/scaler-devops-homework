@@ -1,0 +1,50 @@
+Cloning into 'C:\Users\abdul\AppData\Local\Temp\tmppueffku8\writer'...
+warning: You appear to have cloned an empty repository.
+done.
+warning: in the working copy of 'capstone-campusdesk/scripts/promote.py', LF will be replaced by CRLF the next time Git touches it
+To C:\Users\abdul\AppData\Local\Temp\tmppueffku8\remote.git
+ * [new branch]      main -> main
+Cloning into 'C:\Users\abdul\AppData\Local\Temp\tmppueffku8\runner'...
+done.
+.Cloning into 'C:\Users\abdul\AppData\Local\Temp\tmpg9rn7ofu\writer'...
+warning: You appear to have cloned an empty repository.
+done.
+warning: in the working copy of 'capstone-campusdesk/scripts/promote.py', LF will be replaced by CRLF the next time Git touches it
+To C:\Users\abdul\AppData\Local\Temp\tmpg9rn7ofu\remote.git
+ * [new branch]      main -> main
+Cloning into 'C:\Users\abdul\AppData\Local\Temp\tmpg9rn7ofu\runner'...
+done.
+warning: in the working copy of 'capstone-campusdesk/scripts/promote.py', LF will be replaced by CRLF the next time Git touches it
+To C:\Users\abdul\AppData\Local\Temp\tmpg9rn7ofu\remote.git
+   e53985c..a766b8d  main -> main
+From C:\Users\abdul\AppData\Local\Temp\tmpg9rn7ofu\remote
+ * branch            main       -> FETCH_HEAD
+   e53985c..a766b8d  main       -> origin/main
+.Cloning into 'C:\Users\abdul\AppData\Local\Temp\tmpidzd6dwy\writer'...
+warning: You appear to have cloned an empty repository.
+done.
+warning: in the working copy of 'capstone-campusdesk/scripts/promote.py', LF will be replaced by CRLF the next time Git touches it
+To C:\Users\abdul\AppData\Local\Temp\tmpidzd6dwy\remote.git
+ * [new branch]      main -> main
+Cloning into 'C:\Users\abdul\AppData\Local\Temp\tmpidzd6dwy\runner'...
+done.
+warning: in the working copy of 'capstone-campusdesk/scripts/promote.py', LF will be replaced by CRLF the next time Git touches it
+To C:\Users\abdul\AppData\Local\Temp\tmpidzd6dwy\remote.git
+   abf4174..6c17471  main -> main
+From C:\Users\abdul\AppData\Local\Temp\tmpidzd6dwy\remote
+ * branch            main       -> FETCH_HEAD
+   abf4174..6c17471  main       -> origin/main
+HEAD is now at 6c17471 another promotion and homework update
+[detached HEAD 60bda4d] chore(gitops): promote verified CampusDesk images [skip ci]
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+To C:\Users\abdul\AppData\Local\Temp\tmpidzd6dwy\remote.git
+   6c17471..60bda4d  HEAD -> main
+From C:\Users\abdul\AppData\Local\Temp\tmpidzd6dwy\remote
+ * branch            main       -> FETCH_HEAD
+HEAD is now at 60bda4d chore(gitops): promote verified CampusDesk images [skip ci]
+.
+----------------------------------------------------------------------
+Ran 3 tests in 8.526s
+
+OK
+A newer capstone source revision exists; this run will not promote stale images.

@@ -1,0 +1,241 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from frontend.Dockerfile
+#1 transferring dockerfile:
+#1 transferring dockerfile: 1.19kB 0.2s done
+#1 DONE 1.6s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1
+#2 DONE 12.5s
+
+#3 docker-image://docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
+#3 resolve docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e 0.1s done
+#3 DONE 0.3s
+
+#3 docker-image://docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
+#3 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 0B / 14.28MB 0.2s
+#3 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 1.05MB / 14.28MB 2.4s
+#3 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 2.10MB / 14.28MB 3.6s
+#3 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 3.15MB / 14.28MB 4.5s
+#3 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 4.19MB / 14.28MB 5.4s
+#3 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 5.24MB / 14.28MB 6.2s
+#3 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 6.29MB / 14.28MB 6.8s
+#3 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 7.34MB / 14.28MB 7.4s
+#3 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 8.39MB / 14.28MB 8.0s
+#3 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 9.44MB / 14.28MB 8.3s
+#3 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 10.49MB / 14.28MB 8.9s
+#3 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 11.53MB / 14.28MB 9.2s
+#3 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 12.58MB / 14.28MB 9.8s
+#3 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 13.63MB / 14.28MB 10.2s
+#3 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 14.28MB / 14.28MB 10.5s done
+#3 extracting sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62
+#3 extracting sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 0.4s done
+#3 DONE 11.2s
+
+#4 [internal] load metadata for docker.io/library/node:22-alpine
+#4 DONE 9.5s
+
+#5 [internal] load metadata for docker.io/nginxinc/nginx-unprivileged:1.28-alpine
+#5 DONE 11.0s
+
+#6 [internal] load .dockerignore
+#6 transferring context: 392B 0.0s done
+#6 DONE 0.2s
+
+#7 [internal] load build context
+#7 DONE 0.0s
+
+#8 [runtime 1/3] FROM docker.io/nginxinc/nginx-unprivileged:1.28-alpine@sha256:7377697a821c131a924a7105fafbe7414db4e9fcc77a6f08f776f33f141ec3f8
+#8 resolve docker.io/nginxinc/nginx-unprivileged:1.28-alpine@sha256:7377697a821c131a924a7105fafbe7414db4e9fcc77a6f08f776f33f141ec3f8 0.1s done
+#8 ...
+
+#7 [internal] load build context
+#7 transferring context: 45.75kB 0.2s done
+#7 DONE 0.6s
+
+#9 [build 1/6] FROM docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
+#9 resolve docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402 0.1s done
+#9 DONE 1.2s
+
+#8 [runtime 1/3] FROM docker.io/nginxinc/nginx-unprivileged:1.28-alpine@sha256:7377697a821c131a924a7105fafbe7414db4e9fcc77a6f08f776f33f141ec3f8
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 0B / 17.32MB 0.2s
+#8 sha256:23989ee5bbc825a89e32baddeb2ef1f07f6bca3014c5fef477ad65148f00474b 0B / 1.40kB 0.2s
+#8 sha256:23989ee5bbc825a89e32baddeb2ef1f07f6bca3014c5fef477ad65148f00474b 1.40kB / 1.40kB 2.3s done
+#8 sha256:4b28009d642cf0330a6ad0efc0cd7f0133a6a163f4930ef4a34d214678d048c4 0B / 1.21kB 0.2s
+#8 sha256:4b28009d642cf0330a6ad0efc0cd7f0133a6a163f4930ef4a34d214678d048c4 1.21kB / 1.21kB 1.2s done
+#8 sha256:a56f67403765ad571c74c15b12a1f2397747eb57a3594d4f8caf0033a91b5603 0B / 405B 0.2s
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 0B / 17.32MB 5.3s
+#8 sha256:a56f67403765ad571c74c15b12a1f2397747eb57a3594d4f8caf0033a91b5603 405B / 405B 0.8s done
+#8 sha256:7bff903f3e4bc0e25a02c6866784427925a7756615e68029cd204b824be80ab9 0B / 957B 0.2s
+#8 sha256:7bff903f3e4bc0e25a02c6866784427925a7756615e68029cd204b824be80ab9 957B / 957B 0.9s
+#8 sha256:7bff903f3e4bc0e25a02c6866784427925a7756615e68029cd204b824be80ab9 957B / 957B 1.1s done
+#8 sha256:de3f5433cf840b73d7768877327223532b765f7c4a752829cd351a996c9da11d 0B / 627B 0.2s
+#8 sha256:de3f5433cf840b73d7768877327223532b765f7c4a752829cd351a996c9da11d 627B / 627B 1.1s done
+#8 sha256:22ee3e48cf91ed95688294499b3883f71b9938f44427e1491dcde5f6a35c5e3e 0B / 2.79kB 0.2s
+#8 sha256:7069fe5ce3c2902d9e0970472de149060a7674567435972445daeb9146d17926 0B / 1.83MB 0.2s
+#8 sha256:22ee3e48cf91ed95688294499b3883f71b9938f44427e1491dcde5f6a35c5e3e 2.79kB / 2.79kB 0.8s done
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 1.05MB / 17.32MB 8.4s
+#8 sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153 0B / 3.86MB 0.2s
+#8 ...
+
+#9 [build 1/6] FROM docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
+#9 sha256:d39db1cf9caa4f49c5a2e67111fbe6e0d5eea8ede550cb82f3dc2b79712688d6 447B / 447B 1.2s done
+#9 sha256:e554276b05e6306c5ad33cd85bfa7f0693083e21f6114db5abf60a20fb413039 1.26MB / 1.26MB 8.2s done
+#9 sha256:f7f2d304681aaa935c9cfd180850cf616ae843efce7682873d6521ded7268937 3.15MB / 55.59MB 9.9s
+#9 ...
+
+#8 [runtime 1/3] FROM docker.io/nginxinc/nginx-unprivileged:1.28-alpine@sha256:7377697a821c131a924a7105fafbe7414db4e9fcc77a6f08f776f33f141ec3f8
+#8 sha256:7069fe5ce3c2902d9e0970472de149060a7674567435972445daeb9146d17926 1.05MB / 1.83MB 4.7s
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 1.05MB / 17.32MB 13.5s
+#8 sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153 1.05MB / 3.86MB 5.3s
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 2.10MB / 17.32MB 15.0s
+#8 sha256:7069fe5ce3c2902d9e0970472de149060a7674567435972445daeb9146d17926 1.83MB / 1.83MB 7.8s
+#8 sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153 2.10MB / 3.86MB 7.8s
+#8 sha256:7069fe5ce3c2902d9e0970472de149060a7674567435972445daeb9146d17926 1.83MB / 1.83MB 8.0s done
+#8 sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153 3.15MB / 3.86MB 10.2s
+#8 sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153 3.86MB / 3.86MB 11.1s
+#8 sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153 3.86MB / 3.86MB 11.5s done
+#8 extracting sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153
+#8 ...
+
+#9 [build 1/6] FROM docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
+#9 sha256:f7f2d304681aaa935c9cfd180850cf616ae843efce7682873d6521ded7268937 11.53MB / 55.59MB 20.1s
+#9 ...
+
+#8 [runtime 1/3] FROM docker.io/nginxinc/nginx-unprivileged:1.28-alpine@sha256:7377697a821c131a924a7105fafbe7414db4e9fcc77a6f08f776f33f141ec3f8
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 2.10MB / 17.32MB 20.1s
+#8 extracting sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153 0.4s done
+#8 extracting sha256:7069fe5ce3c2902d9e0970472de149060a7674567435972445daeb9146d17926
+#8 extracting sha256:7069fe5ce3c2902d9e0970472de149060a7674567435972445daeb9146d17926 0.5s done
+#8 extracting sha256:22ee3e48cf91ed95688294499b3883f71b9938f44427e1491dcde5f6a35c5e3e
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 3.15MB / 17.32MB 21.0s
+#8 extracting sha256:22ee3e48cf91ed95688294499b3883f71b9938f44427e1491dcde5f6a35c5e3e 0.1s done
+#8 extracting sha256:de3f5433cf840b73d7768877327223532b765f7c4a752829cd351a996c9da11d 0.1s done
+#8 extracting sha256:7bff903f3e4bc0e25a02c6866784427925a7756615e68029cd204b824be80ab9
+#8 extracting sha256:7bff903f3e4bc0e25a02c6866784427925a7756615e68029cd204b824be80ab9 0.2s done
+#8 extracting sha256:a56f67403765ad571c74c15b12a1f2397747eb57a3594d4f8caf0033a91b5603
+#8 extracting sha256:a56f67403765ad571c74c15b12a1f2397747eb57a3594d4f8caf0033a91b5603 0.3s done
+#8 extracting sha256:4b28009d642cf0330a6ad0efc0cd7f0133a6a163f4930ef4a34d214678d048c4
+#8 extracting sha256:4b28009d642cf0330a6ad0efc0cd7f0133a6a163f4930ef4a34d214678d048c4 0.2s done
+#8 extracting sha256:23989ee5bbc825a89e32baddeb2ef1f07f6bca3014c5fef477ad65148f00474b 0.1s done
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 4.19MB / 17.32MB 24.3s
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 5.24MB / 17.32MB 26.7s
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 6.29MB / 17.32MB 28.8s
+#8 ...
+
+#9 [build 1/6] FROM docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
+#9 sha256:f7f2d304681aaa935c9cfd180850cf616ae843efce7682873d6521ded7268937 34.60MB / 55.59MB 30.6s
+#9 ...
+
+#8 [runtime 1/3] FROM docker.io/nginxinc/nginx-unprivileged:1.28-alpine@sha256:7377697a821c131a924a7105fafbe7414db4e9fcc77a6f08f776f33f141ec3f8
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 7.34MB / 17.32MB 30.5s
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 8.39MB / 17.32MB 32.8s
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 9.44MB / 17.32MB 35.5s
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 10.49MB / 17.32MB 37.6s
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 11.53MB / 17.32MB 39.6s
+#8 ...
+
+#9 [build 1/6] FROM docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
+#9 sha256:f7f2d304681aaa935c9cfd180850cf616ae843efce7682873d6521ded7268937 55.59MB / 55.59MB 40.0s done
+#9 extracting sha256:f7f2d304681aaa935c9cfd180850cf616ae843efce7682873d6521ded7268937
+#9 ...
+
+#8 [runtime 1/3] FROM docker.io/nginxinc/nginx-unprivileged:1.28-alpine@sha256:7377697a821c131a924a7105fafbe7414db4e9fcc77a6f08f776f33f141ec3f8
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 12.58MB / 17.32MB 41.3s
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 13.63MB / 17.32MB 42.5s
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 14.68MB / 17.32MB 43.5s
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 15.73MB / 17.32MB 44.2s
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 16.78MB / 17.32MB 45.2s
+#8 sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 17.32MB / 17.32MB 45.8s done
+#8 extracting sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1
+#8 ...
+
+#9 [build 1/6] FROM docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
+#9 extracting sha256:f7f2d304681aaa935c9cfd180850cf616ae843efce7682873d6521ded7268937 6.8s done
+#9 DONE 48.1s
+
+#9 [build 1/6] FROM docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
+#9 extracting sha256:e554276b05e6306c5ad33cd85bfa7f0693083e21f6114db5abf60a20fb413039
+#9 extracting sha256:e554276b05e6306c5ad33cd85bfa7f0693083e21f6114db5abf60a20fb413039 0.3s done
+#9 DONE 48.4s
+
+#8 [runtime 1/3] FROM docker.io/nginxinc/nginx-unprivileged:1.28-alpine@sha256:7377697a821c131a924a7105fafbe7414db4e9fcc77a6f08f776f33f141ec3f8
+#8 ...
+
+#9 [build 1/6] FROM docker.io/library/node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
+#9 extracting sha256:d39db1cf9caa4f49c5a2e67111fbe6e0d5eea8ede550cb82f3dc2b79712688d6
+#9 extracting sha256:d39db1cf9caa4f49c5a2e67111fbe6e0d5eea8ede550cb82f3dc2b79712688d6 0.4s done
+#9 DONE 48.8s
+
+#8 [runtime 1/3] FROM docker.io/nginxinc/nginx-unprivileged:1.28-alpine@sha256:7377697a821c131a924a7105fafbe7414db4e9fcc77a6f08f776f33f141ec3f8
+#8 ...
+
+#10 [build 2/6] WORKDIR /app
+#10 DONE 3.1s
+
+#8 [runtime 1/3] FROM docker.io/nginxinc/nginx-unprivileged:1.28-alpine@sha256:7377697a821c131a924a7105fafbe7414db4e9fcc77a6f08f776f33f141ec3f8
+#8 ...
+
+#11 [build 3/6] COPY application/frontend/package.json application/frontend/package-lock.json ./
+#11 DONE 0.4s
+
+#8 [runtime 1/3] FROM docker.io/nginxinc/nginx-unprivileged:1.28-alpine@sha256:7377697a821c131a924a7105fafbe7414db4e9fcc77a6f08f776f33f141ec3f8
+#8 ...
+
+#12 [build 4/6] RUN npm ci --no-audit --no-fund
+#12 ...
+
+#8 [runtime 1/3] FROM docker.io/nginxinc/nginx-unprivileged:1.28-alpine@sha256:7377697a821c131a924a7105fafbe7414db4e9fcc77a6f08f776f33f141ec3f8
+#8 extracting sha256:bc3bb88a6392fa99a47979885def71d61f8afd0cc9d132b887f6576512f73de1 6.1s done
+#8 DONE 53.5s
+
+#13 [runtime 2/3] COPY docker/nginx/default.conf.template /etc/nginx/templates/default.conf.template
+#13 DONE 0.4s
+
+#12 [build 4/6] RUN npm ci --no-audit --no-fund
+#12 31.49 
+#12 31.49 added 21 packages in 29s
+#12 31.49 npm notice
+#12 31.49 npm notice New major version of npm available! 10.9.9 -> 12.2.0
+#12 31.49 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+#12 31.49 npm notice To update run: npm install -g npm@12.2.0
+#12 31.49 npm notice
+#12 DONE 35.1s
+
+#14 [build 5/6] COPY application/frontend/ ./
+#14 DONE 0.7s
+
+#15 [build 6/6] RUN npm run build
+#15 1.203 
+#15 1.203 > taskboard-frontend@1.0.0 build
+#15 1.203 > vite build
+#15 1.203 
+#15 1.892 vite v8.3.3 building client environment for production...
+#15 1.916 transforming...
+#15 2.303 ✓ 15 modules transformed.
+#15 2.505 rendering chunks...
+#15 2.981 computing gzip size...
+#15 3.032 dist/index.html                   0.34 kB │ gzip:  0.25 kB
+#15 3.032 dist/assets/index-DkMuKOF6.css    6.40 kB │ gzip:  2.04 kB
+#15 3.032 dist/assets/index-tbEwA98f.js   227.24 kB │ gzip: 70.93 kB
+#15 3.032 
+#15 3.033 ✓ built in 1.14s
+#15 DONE 3.2s
+
+#16 [runtime 3/3] COPY --from=build /app/dist /usr/share/nginx/html
+#16 DONE 0.2s
+
+#17 exporting to image
+#17 exporting layers
+#17 exporting layers 0.5s done
+#17 exporting manifest sha256:16c6eab30ad62a5bf162425c9a264ad551f060076510bf73d9f91113b8059786 0.1s done
+#17 exporting config sha256:bfdf4f2dadcda9e55ab778d6f5508991ee6953ac05fc8bcfa3ba78bced23488f 0.0s done
+#17 exporting attestation manifest sha256:cd00d5c809d6eb3f0f064a8f0e02d2f22f18e3a2be435fded40cfa19417fe5ee
+#17 exporting attestation manifest sha256:cd00d5c809d6eb3f0f064a8f0e02d2f22f18e3a2be435fded40cfa19417fe5ee 0.1s done
+#17 exporting manifest list sha256:c4c6c91da4b32009abc5ac18575b32a36f0d67485ded307eb8cb4255e6bbdaff
+#17 exporting manifest list sha256:c4c6c91da4b32009abc5ac18575b32a36f0d67485ded307eb8cb4255e6bbdaff 0.0s done
+#17 naming to docker.io/homework-review/task21-frontend:local done
+#17 unpacking to docker.io/homework-review/task21-frontend:local 0.1s done
+#17 DONE 1.0s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/9bdwdn9ss6r718bphr3oqbru2

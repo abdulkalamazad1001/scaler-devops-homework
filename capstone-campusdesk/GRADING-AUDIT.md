@@ -5,6 +5,13 @@ Reviewed on **15 October 2026 (IST)** against the instructor's current
 [submission guide](https://github.com/Nency-Ravaliya/devsecops-python/blob/main/SUBMISSION.md).
 This is an evidence audit, not an awarded or predicted grade.
 
+Follow-up: the [project-by-project homework review](../review/README.md) records later
+fixes and [successful CampusDesk CI run 38782743221](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38782743221),
+including the guarded GitOps promotion. Historical evidence below retains its original
+execution SHAs; the [author-correction mapping](../review/results/authorship-correction.json)
+relates those commits to the corrected history. The remaining submission requirements
+below are unchanged.
+
 ## Verdict
 
 The implemented local application and delivery stack are verified. The submission

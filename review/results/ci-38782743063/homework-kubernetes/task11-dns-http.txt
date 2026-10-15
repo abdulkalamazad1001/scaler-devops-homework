@@ -1,0 +1,8 @@
+Server:		10.96.0.10
+Address:	10.96.0.10:53
+
+
+Name:	web-clusterip.homework-review-32f62058.svc.cluster.local
+Address: 10.96.178.46
+
+web-clusterip served by web-clusterip-7477759d58-gvbph

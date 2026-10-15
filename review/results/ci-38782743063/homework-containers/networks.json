@@ -1,0 +1,329 @@
+{
+  "captured_at": "2026-10-15T18:06:43.337731+00:00",
+  "checks": [
+    {
+      "check": "task7-pull",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:38.544488+00:00",
+      "duration_seconds": 1.05,
+      "log": "task7-pull.txt",
+      "command": [
+        "docker",
+        "pull",
+        "alpine:3.22"
+      ]
+    },
+    {
+      "check": "task7-network-0",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:39.596765+00:00",
+      "duration_seconds": 0.04,
+      "log": "task7-network-0.txt",
+      "command": [
+        "docker",
+        "network",
+        "create",
+        "homework-review-9101be34-front"
+      ]
+    },
+    {
+      "check": "task7-network-1",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:39.633753+00:00",
+      "duration_seconds": 0.04,
+      "log": "task7-network-1.txt",
+      "command": [
+        "docker",
+        "network",
+        "create",
+        "homework-review-9101be34-back"
+      ]
+    },
+    {
+      "check": "task7-network-2",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:39.670437+00:00",
+      "duration_seconds": 0.03,
+      "log": "task7-network-2.txt",
+      "command": [
+        "docker",
+        "network",
+        "create",
+        "homework-review-9101be34-database"
+      ]
+    },
+    {
+      "check": "task7-container-0",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:39.704629+00:00",
+      "duration_seconds": 0.16,
+      "log": "task7-container-0.txt",
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "homework-review-9101be34-frontend",
+        "--network",
+        "homework-review-9101be34-front",
+        "alpine:3.22",
+        "sleep",
+        "300"
+      ]
+    },
+    {
+      "check": "task7-container-1",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:39.865606+00:00",
+      "duration_seconds": 0.11,
+      "log": "task7-container-1.txt",
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "homework-review-9101be34-backend",
+        "--network",
+        "homework-review-9101be34-front",
+        "alpine:3.22",
+        "sleep",
+        "300"
+      ]
+    },
+    {
+      "check": "task7-container-2",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:39.977908+00:00",
+      "duration_seconds": 0.15,
+      "log": "task7-container-2.txt",
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "homework-review-9101be34-db",
+        "--network",
+        "homework-review-9101be34-back",
+        "alpine:3.22",
+        "sleep",
+        "300"
+      ]
+    },
+    {
+      "check": "task7-connect-backend",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:40.127655+00:00",
+      "duration_seconds": 0.03,
+      "log": "task7-connect-backend.txt",
+      "command": [
+        "docker",
+        "network",
+        "connect",
+        "homework-review-9101be34-back",
+        "homework-review-9101be34-backend"
+      ]
+    },
+    {
+      "check": "task7-connect-database",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:40.161172+00:00",
+      "duration_seconds": 0.03,
+      "log": "task7-connect-database.txt",
+      "command": [
+        "docker",
+        "network",
+        "connect",
+        "homework-review-9101be34-database",
+        "homework-review-9101be34-db"
+      ]
+    },
+    {
+      "check": "task7-front-to-back",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:40.193868+00:00",
+      "duration_seconds": 0.04,
+      "log": "task7-front-to-back.txt",
+      "command": [
+        "docker",
+        "exec",
+        "homework-review-9101be34-frontend",
+        "ping",
+        "-c",
+        "1",
+        "homework-review-9101be34-backend"
+      ]
+    },
+    {
+      "check": "task7-back-to-db",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:40.234841+00:00",
+      "duration_seconds": 0.04,
+      "log": "task7-back-to-db.txt",
+      "command": [
+        "docker",
+        "exec",
+        "homework-review-9101be34-backend",
+        "ping",
+        "-c",
+        "1",
+        "homework-review-9101be34-db"
+      ]
+    },
+    {
+      "check": "task7-front-isolated-from-db",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:40.288727+00:00",
+      "duration_seconds": 2.04,
+      "log": "task7-front-isolated-from-db.txt",
+      "command": [
+        "docker",
+        "exec",
+        "homework-review-9101be34-frontend",
+        "sh",
+        "-ec",
+        "if ping -c 1 -W 2 172.19.0.2; then exit 1; fi; echo PASS: separate networks block traffic"
+      ]
+    },
+    {
+      "check": "task7-volume-create",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:42.327841+00:00",
+      "duration_seconds": 0.01,
+      "log": "task7-volume-create.txt",
+      "command": [
+        "docker",
+        "volume",
+        "create",
+        "homework-review-9101be34-data"
+      ]
+    },
+    {
+      "check": "task7-volume-write",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:42.340889+00:00",
+      "duration_seconds": 0.19,
+      "log": "task7-volume-write.txt",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "-v",
+        "homework-review-9101be34-data:/data",
+        "alpine:3.22",
+        "sh",
+        "-ec",
+        "echo preserved-after-container-removal > /data/proof.txt"
+      ]
+    },
+    {
+      "check": "task7-volume-read-new-container",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:42.534037+00:00",
+      "duration_seconds": 0.17,
+      "log": "task7-volume-read-new-container.txt",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "-v",
+        "homework-review-9101be34-data:/data:ro",
+        "alpine:3.22",
+        "grep",
+        "preserved-after-container-removal",
+        "/data/proof.txt"
+      ]
+    },
+    {
+      "check": "task7-cleanup-homework-review-9101be34-frontend",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:42.702975+00:00",
+      "duration_seconds": 0.08,
+      "log": "task7-cleanup-homework-review-9101be34-frontend.txt",
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "homework-review-9101be34-frontend"
+      ]
+    },
+    {
+      "check": "task7-cleanup-homework-review-9101be34-backend",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:42.784224+00:00",
+      "duration_seconds": 0.16,
+      "log": "task7-cleanup-homework-review-9101be34-backend.txt",
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "homework-review-9101be34-backend"
+      ]
+    },
+    {
+      "check": "task7-cleanup-homework-review-9101be34-db",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:42.942519+00:00",
+      "duration_seconds": 0.11,
+      "log": "task7-cleanup-homework-review-9101be34-db.txt",
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "homework-review-9101be34-db"
+      ]
+    },
+    {
+      "check": "task7-cleanup-homework-review-9101be34-front",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:43.052730+00:00",
+      "duration_seconds": 0.09,
+      "log": "task7-cleanup-homework-review-9101be34-front.txt",
+      "command": [
+        "docker",
+        "network",
+        "rm",
+        "homework-review-9101be34-front"
+      ]
+    },
+    {
+      "check": "task7-cleanup-homework-review-9101be34-back",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:43.139695+00:00",
+      "duration_seconds": 0.09,
+      "log": "task7-cleanup-homework-review-9101be34-back.txt",
+      "command": [
+        "docker",
+        "network",
+        "rm",
+        "homework-review-9101be34-back"
+      ]
+    },
+    {
+      "check": "task7-cleanup-homework-review-9101be34-database",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:43.229890+00:00",
+      "duration_seconds": 0.1,
+      "log": "task7-cleanup-homework-review-9101be34-database.txt",
+      "command": [
+        "docker",
+        "network",
+        "rm",
+        "homework-review-9101be34-database"
+      ]
+    },
+    {
+      "check": "task7-cleanup-volume",
+      "exit_code": 0,
+      "started_at": "2026-10-15T18:06:43.324943+00:00",
+      "duration_seconds": 0.01,
+      "log": "task7-cleanup-volume.txt",
+      "command": [
+        "docker",
+        "volume",
+        "rm",
+        "homework-review-9101be34-data"
+      ]
+    }
+  ],
+  "scope": "Network reachability/isolation and named-volume persistence; not a MySQL application test."
+}

@@ -1,0 +1,74 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 516B done
+#1 DONE 0.0s
+
+#2 [auth] library/node:pull token for registry-1.docker.io
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:20-alpine
+#3 DONE 0.7s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 67B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 812B done
+#5 DONE 0.0s
+
+#6 [1/5] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#6 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 done
+#6 sha256:6a0ac1617861a677b045b7ff88545213ec31c0ff08763195a70a4a5adda577bb 0B / 3.86MB 0.1s
+#6 sha256:4feea04c154301db6f4a496efa397b3db96603b1c009c797cfdde77bea8b3287 0B / 43.23MB 0.1s
+#6 sha256:b2cbbfe903b0821005780971ddc5892edcc4ce74c5a48d82e1d2b382edac3122 0B / 1.26MB 0.1s
+#6 sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 7.67kB / 7.67kB done
+#6 sha256:afdf98210b07b586eb71fa22ba2e432e058e4cd1304d31ed60888755b8c865fb 1.72kB / 1.72kB done
+#6 sha256:11cedc39e663e7c5d5cb9cc77a461a0d2adc25537b94e6831a6108f09cb2001b 6.52kB / 6.52kB done
+#6 sha256:6a0ac1617861a677b045b7ff88545213ec31c0ff08763195a70a4a5adda577bb 3.86MB / 3.86MB 0.2s
+#6 sha256:4feea04c154301db6f4a496efa397b3db96603b1c009c797cfdde77bea8b3287 3.15MB / 43.23MB 0.2s
+#6 extracting sha256:6a0ac1617861a677b045b7ff88545213ec31c0ff08763195a70a4a5adda577bb
+#6 sha256:6a0ac1617861a677b045b7ff88545213ec31c0ff08763195a70a4a5adda577bb 3.86MB / 3.86MB 0.2s done
+#6 sha256:4feea04c154301db6f4a496efa397b3db96603b1c009c797cfdde77bea8b3287 43.23MB / 43.23MB 0.4s
+#6 sha256:b2cbbfe903b0821005780971ddc5892edcc4ce74c5a48d82e1d2b382edac3122 1.26MB / 1.26MB 0.2s done
+#6 extracting sha256:6a0ac1617861a677b045b7ff88545213ec31c0ff08763195a70a4a5adda577bb 0.1s done
+#6 sha256:fff4e2c1b189bf87d63ad8bd07f7f4eb288d6f2b6a07a8bb44c60e8c075d2096 445B / 445B 0.3s done
+#6 extracting sha256:4feea04c154301db6f4a496efa397b3db96603b1c009c797cfdde77bea8b3287
+#6 sha256:4feea04c154301db6f4a496efa397b3db96603b1c009c797cfdde77bea8b3287 43.23MB / 43.23MB 0.5s done
+#6 extracting sha256:4feea04c154301db6f4a496efa397b3db96603b1c009c797cfdde77bea8b3287 0.9s done
+#6 extracting sha256:b2cbbfe903b0821005780971ddc5892edcc4ce74c5a48d82e1d2b382edac3122
+#6 extracting sha256:b2cbbfe903b0821005780971ddc5892edcc4ce74c5a48d82e1d2b382edac3122 0.0s done
+#6 extracting sha256:fff4e2c1b189bf87d63ad8bd07f7f4eb288d6f2b6a07a8bb44c60e8c075d2096 done
+#6 DONE 7.9s
+
+#7 [2/5] WORKDIR /app
+#7 DONE 0.0s
+
+#8 [3/5] COPY package.json ./
+#8 DONE 0.0s
+
+#9 [4/5] RUN npm install --omit=dev
+#9 2.502 
+#9 2.502 added 68 packages, and audited 69 packages in 2s
+#9 2.502 
+#9 2.502 16 packages are looking for funding
+#9 2.502   run `npm fund` for details
+#9 2.503 
+#9 2.503 found 0 vulnerabilities
+#9 2.504 npm notice
+#9 2.504 npm notice New major version of npm available! 10.8.2 -> 12.2.0
+#9 2.504 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+#9 2.504 npm notice To update run: npm install -g npm@12.2.0
+#9 2.504 npm notice
+#9 DONE 2.6s
+
+#10 [5/5] COPY server.js ./
+#10 DONE 0.0s
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 0.3s done
+#11 writing image sha256:cbb9ec9a9fedfaadabe246636a0646645fbff29c79a93ba5625e899c3b139a36 done
+#11 naming to docker.io/homework-review/task5-node:local done
+#11 DONE 0.3s

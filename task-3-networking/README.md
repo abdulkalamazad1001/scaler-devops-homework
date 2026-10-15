@@ -32,8 +32,9 @@ command I run when I want to know the machine's IP.
         inet 172.17.0.3/16 brd 172.17.255.255 scope global eth0
            valid_lft forever preferred_lft forever
 
-What I understood: link/ether is the MAC address, which is the hardware address burned
-into the card. inet is the IPv4 address, and /16 is the subnet mask, meaning the first
+What I understood: link/ether is the interface's MAC address. It may be assigned by
+software, particularly for a virtual container interface, rather than burned into a
+physical card. inet is the IPv4 address, and /16 is the subnet prefix, meaning the first
 16 bits are the network part and the remaining 16 bits are for hosts. UP means the
 interface is enabled and LOWER_UP means the cable or virtual link is actually connected.
 

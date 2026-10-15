@@ -1,33 +1,37 @@
 Initializing modules...
+Downloading registry.terraform.io/terraform-aws-modules/iam/aws 5.46.0 for ebs_csi_irsa...
+- ebs_csi_irsa in .terraform\modules\ebs_csi_irsa\modules\iam-role-for-service-accounts-eks
+Downloading registry.terraform.io/terraform-aws-modules/eks/aws 20.26.0 for eks...
+- eks in .terraform\modules\eks
+- eks.eks_managed_node_group in .terraform\modules\eks\modules\eks-managed-node-group
+- eks.eks_managed_node_group.user_data in .terraform\modules\eks\modules\_user_data
+- eks.fargate_profile in .terraform\modules\eks\modules\fargate-profile
+Downloading registry.terraform.io/terraform-aws-modules/kms/aws 2.1.0 for eks.kms...
+- eks.kms in .terraform\modules\eks.kms
+- eks.self_managed_node_group in .terraform\modules\eks\modules\self-managed-node-group
+- eks.self_managed_node_group.user_data in .terraform\modules\eks\modules\_user_data
+Downloading registry.terraform.io/terraform-aws-modules/vpc/aws 5.13.0 for vpc...
+- vpc in .terraform\modules\vpc
+Initializing provider plugins...
+- Reusing previous version of hashicorp/aws from the dependency lock file
+- Reusing previous version of hashicorp/time from the dependency lock file
+- Reusing previous version of hashicorp/tls from the dependency lock file
+- Reusing previous version of hashicorp/cloudinit from the dependency lock file
+- Reusing previous version of hashicorp/null from the dependency lock file
+- Installing hashicorp/aws v5.74.0...
+- Installed hashicorp/aws v5.74.0 (signed by HashiCorp)
+- Installing hashicorp/tls v4.4.1...
+- Installed hashicorp/tls v4.4.1 (signed by HashiCorp)
+- Installing hashicorp/cloudinit v2.4.1...
+- Installed hashicorp/cloudinit v2.4.1 (signed by HashiCorp)
+- Installing hashicorp/null v3.3.2...
+- Installed hashicorp/null v3.3.2 (signed by HashiCorp)
 
-Error: Error accessing remote module registry
+Error: Failed to install provider
 
-  on main.tf line 17:
-  17: module "vpc" {
-
-Failed to retrieve available versions for module "vpc" (main.tf:17) from
-registry.terraform.io: failed to request discovery document: Get
-"https://registry.terraform.io/.well-known/terraform.json": dial tcp: lookup
-registry.terraform.io: no such host.
-
-Error: Error accessing remote module registry
-
-  on main.tf line 47:
-  47: module "eks" {
-
-Failed to retrieve available versions for module "eks" (main.tf:47) from
-registry.terraform.io: failed to request discovery document: Get
-"https://registry.terraform.io/.well-known/terraform.json": dial tcp: lookup
-registry.terraform.io: no such host.
-
-Error: Error accessing remote module registry
-
-  on main.tf line 96:
-  96: module "ebs_csi_irsa" {
-
-Failed to retrieve available versions for module "ebs_csi_irsa" (main.tf:96)
-from registry.terraform.io: failed to request discovery document: Get
-"https://registry.terraform.io/.well-known/terraform.json": dial tcp: lookup
-registry.terraform.io: getaddrinfow: This is usually a temporary error during
-hostname resolution and means that the local server did not receive a
-response from an authoritative server..
+Error while installing hashicorp/time v0.14.2: could not query provider
+registry for registry.terraform.io/hashicorp/time: failed to retrieve
+authentication checksums for provider: the request failed after 2 attempts,
+please try again later: Get
+"https://releases.hashicorp.com/terraform-provider-time/0.14.2/terraform-provider-time_0.14.2_SHA256SUMS":
+dial tcp: lookup releases.hashicorp.com: no such host
