@@ -7,7 +7,6 @@ import uuid
 from datetime import UTC, datetime
 
 import yaml
-
 from run_checks import RESULTS, ROOT, executable, run
 
 
@@ -74,8 +73,8 @@ def main():
         apply("task11-apply", [f"{folder}/app-deployment.yaml", f"{folder}/service.yaml"])
         check("task11-ready", [*kubectl, "rollout", "status", "deployment/web-clusterip", "--timeout=180s"])
         check("task11-dns-http", [*kubectl, "exec", "config-demo", "--", "sh", "-ec",
-              f"nslookup web-clusterip.{namespace}.svc.cluster.local; "
-              "for i in 1 2 3 4 5; do wget -qO- http://web-clusterip:8080 | grep web-clusterip && exit 0; sleep 2; done; exit 1"])
+              (f"nslookup web-clusterip.{namespace}.svc.cluster.local; "
+               "for i in 1 2 3 4 5; do wget -qO- http://web-clusterip:8080 | grep web-clusterip && exit 0; sleep 2; done; exit 1")])
 
         apply("task12-secret-apply", ["task-12-ingress-configmaps-secrets/02-secret/db-secret.yaml",
                                      "task-12-ingress-configmaps-secrets/02-secret/secret-demo-pod.yaml"])

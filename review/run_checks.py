@@ -20,7 +20,7 @@ def run(name, command, cwd=ROOT, timeout=900, stdin=None, env=None):
     print(f"Running {name} ...", flush=True)
     started = datetime.now(UTC)
     try:
-        result = subprocess.run(command, cwd=cwd, text=True, encoding="utf-8", errors="replace",
+        result = subprocess.run(command, check=False, cwd=cwd, text=True, encoding="utf-8", errors="replace",
                                 stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=timeout, input=stdin, env=env)
         output, code = result.stdout, result.returncode
     except (OSError, subprocess.TimeoutExpired) as error:
@@ -53,9 +53,9 @@ def application_checks():
         results.append(run(name, [
             "docker", "run", "--rm", "--mount", f"type=bind,source={ROOT / folder},target=/src,readonly",
             "python:3.12-slim", "sh", "-ec",
-            f"cp -R /src /tmp/project; cd /tmp/project; "
+            (f"cp -R /src /tmp/project; cd /tmp/project; "
             f"python -m pip install --disable-pip-version-check -q -r {requirements}; "
-            f"python -m pip check; {test}"
+             f"python -m pip check; {test}")
         ]))
     return results
 

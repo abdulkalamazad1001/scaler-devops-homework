@@ -9,7 +9,7 @@ import urllib.request
 import uuid
 from datetime import UTC, datetime
 
-from run_checks import RESULTS, ROOT, run
+from run_checks import RESULTS, run
 
 
 def main():
