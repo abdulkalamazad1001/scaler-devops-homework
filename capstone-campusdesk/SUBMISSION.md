@@ -50,8 +50,8 @@ reference folder is not this capstone's verification evidence.
 
 - Complete any AWS requirements not covered by the instructor-approved shared evidence.
   The supplied shared images show terminal output, not VPC/EKS Console screens;
-  CampusDesk's own Terraform has not been applied. Document the student's specific
-  contribution to the shared work before final submission.
+  CampusDesk's own Terraform has not been applied. The student's statement that he
+  performed all parts of the shared AWS work is recorded in the shared evidence appendix.
 - Record the final narrated walkthrough including the actual AWS work, CI/CD and GitOps.
 - Review the complete submission against the current instructor rubric.
 

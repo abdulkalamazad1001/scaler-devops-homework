@@ -6,7 +6,10 @@ Shaikh Suja Rahaman (24bcs10038).
 T. Abdul Kalam Azad reports that the work was collaborative and that the instructor
 permitted reuse of the shared screenshots on 15 October 2026. These images are
 included on that basis, with their source and original project identity preserved.
-The student's specific contribution has not yet been described in this document.
+**Contribution statement:** T. Abdul Kalam Azad states that he performed all parts
+of the shared AWS work. This is the student's own account of his contribution,
+not an independently verified activity record. Screenshot provenance remains
+Shaikh Suja Rahaman's repository and the original TaskBoard environment.
 
 ## Source And Scope
 
