@@ -1,11 +1,11 @@
 {
   "backend": {
     "repository": "ghcr.io/abdulkalamazad1001/campusdesk-backend",
-    "tag": "475f2ae689f673c6cb329e92145c3176e150ca39"
+    "tag": "a6e93611db267935157a22e566a422e8824249d0"
   },
   "frontend": {
     "repository": "ghcr.io/abdulkalamazad1001/campusdesk-frontend",
-    "tag": "475f2ae689f673c6cb329e92145c3176e150ca39"
+    "tag": "a6e93611db267935157a22e566a422e8824249d0"
   },
   "imagePullSecrets": []
 }
