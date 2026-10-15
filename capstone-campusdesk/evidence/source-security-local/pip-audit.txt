@@ -1,0 +1,6 @@
+Started: 2026-10-15T15:59:49.739773+00:00
+Command: ["C:\\Users\\abdul\\Downloads\\devops\\scaler-devops-homework\\capstone-campusdesk\\.venv\\Scripts\\python.exe", "-m", "pip_audit", "-r", "backend/requirements-dev.txt", "--strict", "--progress-spinner", "off", "-f", "json", "-o", "C:\\Users\\abdul\\Downloads\\devops\\scaler-devops-homework\\capstone-campusdesk\\evidence\\local\\security\\pip-audit.json"]
+
+No known vulnerabilities found
+
+Exit code: 0

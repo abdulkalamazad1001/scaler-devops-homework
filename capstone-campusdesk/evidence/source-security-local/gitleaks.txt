@@ -1,0 +1,8 @@
+Started: 2026-10-15T16:00:26.636090+00:00
+Command: ["docker", "run", "--rm", "-v", "C:\\Users\\abdul\\Downloads\\devops\\scaler-devops-homework:/repo:ro", "-v", "C:\\Users\\abdul\\Downloads\\devops\\scaler-devops-homework\\capstone-campusdesk\\evidence\\local\\security:/reports", "-w", "/repo", "zricethezav/gitleaks:v8.30.1", "git", "--redact", "--no-banner", "--config=/repo/capstone-campusdesk/security/gitleaks.toml", "--log-opts=--all -- capstone-campusdesk .github/workflows/campusdesk.yml", "--report-format=json", "--report-path=/reports/gitleaks.json"]
+
+[90m4:00PM[0m [32mINF[0m [1m20 commits scanned.[0m
+[90m4:00PM[0m [32mINF[0m [1mscanned ~1424776 bytes (1.42 MB) in 4.21s[0m
+[90m4:00PM[0m [32mINF[0m [1mno leaks found[0m
+
+Exit code: 0

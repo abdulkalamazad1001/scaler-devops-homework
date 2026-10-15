@@ -65,3 +65,14 @@ Use `collect-evidence.py --compose-build` to additionally capture a real rebuild
 For architecture rendering only, install Graphviz WASM in the ignored tools directory:
 `npm install --prefix ../tools/browser @hpcc-js/wasm-graphviz`.
 PDF/video build dependencies are `reportlab`, `pymupdf`, and `imageio-ffmpeg`.
+# Reference-Inspired Follow-Up
+
+- `source-security-local/`: actual local Bandit, pip-audit, npm audit and redacted
+  Gitleaks reports. All four exit codes were zero; see `summary.json`.
+- `source-security-initial-gitleaks.json`: original redacted public-fingerprint
+  false positives, with the exact-value exception explained in `../security/README.md`.
+- `readiness-troubleshooting.txt`: isolated Running/NotReady failure, repair,
+  successful Service request and namespace cleanup.
+- [Comparison and verification scope](../REFERENCE-COMPARISON.md), including the
+  revised CI run link. Local results do not claim the revised remote run passed.
+

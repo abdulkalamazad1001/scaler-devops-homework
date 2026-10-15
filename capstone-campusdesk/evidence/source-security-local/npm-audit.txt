@@ -1,0 +1,27 @@
+Started: 2026-10-15T16:00:25.055592+00:00
+Command: ["C:\\Program Files\\nodejs\\npm.CMD", "--prefix", "C:\\Users\\abdul\\Downloads\\devops\\scaler-devops-homework\\capstone-campusdesk\\frontend", "audit", "--audit-level=high", "--json"]
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {},
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "dependencies": {
+      "prod": 5,
+      "dev": 114,
+      "optional": 53,
+      "peer": 0,
+      "peerOptional": 0,
+      "total": 118
+    }
+  }
+}
+
+
+Exit code: 0

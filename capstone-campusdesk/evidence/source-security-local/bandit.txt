@@ -1,0 +1,10 @@
+Started: 2026-10-15T15:59:49.345830+00:00
+Command: ["C:\\Users\\abdul\\Downloads\\devops\\scaler-devops-homework\\capstone-campusdesk\\.venv\\Scripts\\python.exe", "-m", "bandit", "-r", "backend/app", "backend/alembic", "--severity-level", "medium", "--confidence-level", "all", "--ignore-nosec", "-f", "json", "-o", "C:\\Users\\abdul\\Downloads\\devops\\scaler-devops-homework\\capstone-campusdesk\\evidence\\local\\security\\bandit.json"]
+
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[json]	INFO	JSON output written to file: C:\Users\abdul\Downloads\devops\scaler-devops-homework\capstone-campusdesk\evidence\local\security\bandit.json
+
+Exit code: 0

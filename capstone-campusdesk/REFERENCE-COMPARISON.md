@@ -30,6 +30,22 @@ by GitHub Actions. Our existing workflow is already correctly located.
 
 ## Verification And Remaining Work
 
+The added checks were executed locally: Bandit, pip-audit, npm audit and Gitleaks
+all exited zero. [Saved scanner reports](evidence/source-security-local/summary.json)
+include the exact commands and timestamps. That local history scan covered the
+20 existing capstone commits before the additions were committed; the new CI run
+scans the pushed source commit as well. Four security-runner regression tests and
+the existing 20 API tests passed. Ruff passed for all three new scripts. Pytest
+still reports the previously documented upstream Starlette/httpx deprecation warning.
+
+The [readiness transcript](evidence/readiness-troubleshooting.txt) records the actual
+404 failure, successful repair and namespace deletion. The application workloads
+were not modified by this exercise.
+
+Source commit: `a6e9361`. [Revised GitHub Actions run](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38765329150)
+was still running when these local results were recorded; it is not yet claimed
+as a successful release. The previous green release remains linked in the README.
+
 Security report directories record each scanner's actual exit code and timestamp;
 they are not fabricated successful output. Local scans are not a substitute for a
 successful run of the revised GitHub workflow. See `security/README.md` for scope
