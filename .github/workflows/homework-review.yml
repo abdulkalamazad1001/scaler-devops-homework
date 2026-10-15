@@ -77,7 +77,7 @@ jobs:
 
   kubernetes:
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
@@ -92,6 +92,11 @@ jobs:
           cluster_name: homework-review
       - run: python review/check_kubernetes.py --context kind-homework-review
       - run: python review/check_helm_lifecycle.py --context kind-homework-review
+      - run: python -m pip install pytest==9.1.1
+      - run: python -m pytest -q review/test_lab_scenarios.py
+      - run: python review/check_lab_scenarios.py --context kind-homework-review --suite troubleshooting
+      - run: python review/check_lab_scenarios.py --context kind-homework-review --suite deployments
+      - run: python review/check_lab_scenarios.py --context kind-homework-review --suite dns
       - uses: actions/upload-artifact@v4
         if: always()
         with:

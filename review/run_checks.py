@@ -120,7 +120,7 @@ def main():
         results += infrastructure_checks()
     if args.suite in {"shell", "all"}:
         results.append(run("shell-tests", [
-            "docker", "run", "--rm", "--mount", f"type=bind,source={ROOT},target=/src,readonly",
+            "docker", "run", "--rm", "--cap-add=NET_ADMIN", "--mount", f"type=bind,source={ROOT},target=/src,readonly",
             "ubuntu:24.04", "bash", "-ec",
             "apt-get update -qq; apt-get install -y -qq procps iproute2 iputils-ping git; bash /src/review/test_shell.sh"
         ]))

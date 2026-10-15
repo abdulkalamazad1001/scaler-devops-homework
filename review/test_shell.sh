@@ -35,11 +35,28 @@ tar -czf archive.tar.gz hard.txt
 tar -tzf archive.tar.gz | grep -q hard.txt
 echo 'PASS task 1: hard links, broken symlink, permissions and archive'
 
+useradd -m -s /bin/bash homework-lab-user
+id homework-lab-user
+test -d /home/homework-lab-user
+test "$(getent passwd homework-lab-user | cut -d: -f7)" = /bin/bash
+userdel -r homework-lab-user
+echo 'PASS task 1: explicit useradd home/shell and account cleanup in disposable container'
+
 ip -brief address
 ip route
 ping -c 1 127.0.0.1
 ss -lnt
 echo 'PASS task 3: container interfaces, routes, loopback and socket inspection'
+
+ip link add homework0 type dummy
+ip address add 192.0.2.10/24 dev homework0
+ip link set homework0 up
+ip route add 198.51.100.0/24 via 192.0.2.1 dev homework0
+ip route get 198.51.100.5 | grep 'via 192.0.2.1 dev homework0'
+ip route del 198.51.100.0/24
+ip address del 192.0.2.10/24 dev homework0
+ip link delete homework0
+echo 'PASS task 3: interface/address/route creation and deletion in isolated container network'
 
 git init -q -b main git-lab
 cd git-lab
@@ -66,6 +83,22 @@ git switch -q main
 git merge --ff-only feature
 test -f untracked.txt
 echo 'PASS task 4: staged vs unstaged commits, untracked files, branch and merge'
+
+git switch -qc fixes
+printf 'feature-only\n' >feature-only.txt
+git add feature-only.txt
+git commit -qm unrelated-feature
+printf 'selected-fix\n' >fix.txt
+git add fix.txt
+git commit -qm selected-fix
+original_fix=$(git rev-parse HEAD)
+git switch -q main
+git cherry-pick "$original_fix"
+test -f fix.txt
+test ! -f feature-only.txt
+test "$(git rev-parse HEAD)" != "$original_fix"
+git log --oneline --graph --all
+echo 'PASS task 4: cherry-pick copies the selected change with a new parent/hash'
 
 while IFS= read -r -d '' script; do
     bash -n "$script"
