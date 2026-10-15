@@ -75,6 +75,10 @@ def infrastructure_checks():
                 options += ["--set", "database.existingSecret=review-placeholder"]
             results.append(run(f"task{task}-helm-{suffix}", [helm, "lint", chart, *options]))
             results.append(run(f"task{task}-render-{suffix}", [helm, "template", "review", chart, *options]))
+            if results[-1]["exit_code"] == 0:
+                results.append(run(f"task{task}-render-types-{suffix}", [
+                    sys.executable, str(ROOT / "review/check_rendered.py"), str(RESULTS / f"task{task}-render-{suffix}.txt")
+                ]))
 
     terraform = executable("terraform", "tools/terraform/terraform.exe")
     cache = ROOT / "tools/terraform-provider-cache"

@@ -74,3 +74,28 @@ jobs:
           path: review-run-results/
           if-no-files-found: error
           retention-days: 14
+
+  kubernetes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: python -m pip install PyYAML==6.0.3
+      - uses: azure/setup-helm@v4.3.1
+        with:
+          version: v3.17.4
+      - uses: helm/kind-action@v1.12.0
+        with:
+          cluster_name: homework-review
+      - run: python review/check_kubernetes.py --context kind-homework-review
+      - run: python review/check_helm_lifecycle.py --context kind-homework-review
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: homework-kubernetes
+          path: review-run-results/
+          if-no-files-found: error
+          retention-days: 14

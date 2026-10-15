@@ -13,5 +13,6 @@ spec:
       image: busybox:1.36
       command: ["sh", "-c"]
       args:
-        - wget -qO- http://{{ .Release.Name }}-svc:{{ .Values.service.port }} | grep -q "environment: {{ .Values.app.environment }}"
+        - |
+          wget -qO- http://{{ .Release.Name }}-svc:{{ .Values.service.port }} | grep -q "environment: {{ .Values.app.environment }}"
   restartPolicy: Never

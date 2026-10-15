@@ -2,6 +2,7 @@ name: CampusDesk CI/CD
 on:
   push:
     branches: [main]
+    paths: ['capstone-campusdesk/**', '.github/workflows/campusdesk.yml']
   pull_request:
     paths: ['capstone-campusdesk/**', '.github/workflows/campusdesk.yml']
   workflow_dispatch:
@@ -62,6 +63,8 @@ jobs:
           ruff check .
           alembic upgrade head
           pytest -v --junitxml=pytest-results.xml
+      - name: Test GitOps promotion concurrency guard
+        run: python "$PROJECT/scripts/test_publish_gitops.py"
       - uses: actions/setup-node@v4
         with: {node-version: '24', cache: npm, cache-dependency-path: capstone-campusdesk/frontend/package-lock.json}
       - name: Build the frontend
@@ -165,14 +168,9 @@ jobs:
       - name: Promote verified images to GitOps
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: |
-          python "$PROJECT/scripts/promote.py"
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add "$PROJECT/helm/campusdesk/values-release.json"
-          git diff --cached --quiet && exit 0
-          git commit -m 'chore(gitops): promote verified CampusDesk images [skip ci]'
-          git pull --rebase origin main
-          git push origin HEAD:main
+          python "$PROJECT/scripts/publish_gitops.py"
       - name: Collect cluster diagnostics
         if: always()
         run: |
