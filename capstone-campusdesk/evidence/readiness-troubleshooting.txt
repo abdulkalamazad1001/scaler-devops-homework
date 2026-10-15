@@ -1,0 +1,3693 @@
+Captured: 2026-10-15T15:57:56.762382+00:00
+Namespace: campusdesk-probe-815c7c52
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 create namespace campusdesk-probe-815c7c52
+namespace/campusdesk-probe-815c7c52 created
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 apply -f -
+deployment.apps/probe-demo created
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 apply -f -
+service/probe-demo created
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 get events -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11906",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Successfully assigned campusdesk-probe-815c7c52/probe-demo-5b589f86c4-8szgl to campusdesk-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2745ed0904",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11912",
+                "uid": "98b01f0e-7f46-4226-8c93-5a9d59bf0799"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "probe-demo-5b589f86c4",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11902",
+                "uid": "b16214c0-096d-4044-949b-d6624eb8abb7"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created pod: probe-demo-5b589f86c4-8szgl",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4.18debf2744ad12ef",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11907",
+                "uid": "ea852b7e-8407-4fef-9a87-c07fa9002367"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "probe-demo",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11901",
+                "uid": "5536164e-9f08-4ff2-99eb-3af9fa68ed55"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Scaled up replica set probe-demo-5b589f86c4 from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo.18debf274327469a",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11904",
+                "uid": "175eceac-6041-43ae-ae19-42f1a0dc2168"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 get events -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11906",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Successfully assigned campusdesk-probe-815c7c52/probe-demo-5b589f86c4-8szgl to campusdesk-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2745ed0904",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11912",
+                "uid": "98b01f0e-7f46-4226-8c93-5a9d59bf0799"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Container image \"ghcr.io/abdulkalamazad1001/campusdesk-backend:475f2ae689f673c6cb329e92145c3176e150ca39\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2775b345f5",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11920",
+                "uid": "28dfa0bd-b57b-4622-8a32-2ff132f89a66"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created container: api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf277882fb12",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11921",
+                "uid": "a08ad0fa-1588-444b-91e8-c25cf3ee77c5"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:59Z",
+            "message": "Started container api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27bc742a48",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11924",
+                "uid": "a67ca0e4-4f08-426c-8cb8-30f8e4e14fb9"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:59Z",
+            "message": "Readiness probe failed: Get \"http://10.244.0.62:8000/missing-probe\": dial tcp 10.244.0.62:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27e9146c92",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11927",
+                "uid": "b313e25f-83e8-4b10-a40f-b9367d24d0eb"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "probe-demo-5b589f86c4",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11902",
+                "uid": "b16214c0-096d-4044-949b-d6624eb8abb7"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created pod: probe-demo-5b589f86c4-8szgl",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4.18debf2744ad12ef",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11907",
+                "uid": "ea852b7e-8407-4fef-9a87-c07fa9002367"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "probe-demo",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11901",
+                "uid": "5536164e-9f08-4ff2-99eb-3af9fa68ed55"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Scaled up replica set probe-demo-5b589f86c4 from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo.18debf274327469a",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11904",
+                "uid": "175eceac-6041-43ae-ae19-42f1a0dc2168"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 get events -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11906",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Successfully assigned campusdesk-probe-815c7c52/probe-demo-5b589f86c4-8szgl to campusdesk-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2745ed0904",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11912",
+                "uid": "98b01f0e-7f46-4226-8c93-5a9d59bf0799"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Container image \"ghcr.io/abdulkalamazad1001/campusdesk-backend:475f2ae689f673c6cb329e92145c3176e150ca39\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2775b345f5",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11920",
+                "uid": "28dfa0bd-b57b-4622-8a32-2ff132f89a66"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created container: api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf277882fb12",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11921",
+                "uid": "a08ad0fa-1588-444b-91e8-c25cf3ee77c5"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:59Z",
+            "message": "Started container api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27bc742a48",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11924",
+                "uid": "a67ca0e4-4f08-426c-8cb8-30f8e4e14fb9"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 3,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:58:02Z",
+            "message": "Readiness probe failed: Get \"http://10.244.0.62:8000/missing-probe\": dial tcp 10.244.0.62:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27e9146c92",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11934",
+                "uid": "b313e25f-83e8-4b10-a40f-b9367d24d0eb"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "probe-demo-5b589f86c4",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11902",
+                "uid": "b16214c0-096d-4044-949b-d6624eb8abb7"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created pod: probe-demo-5b589f86c4-8szgl",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4.18debf2744ad12ef",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11907",
+                "uid": "ea852b7e-8407-4fef-9a87-c07fa9002367"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "probe-demo",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11901",
+                "uid": "5536164e-9f08-4ff2-99eb-3af9fa68ed55"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Scaled up replica set probe-demo-5b589f86c4 from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo.18debf274327469a",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11904",
+                "uid": "175eceac-6041-43ae-ae19-42f1a0dc2168"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 get events -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11906",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Successfully assigned campusdesk-probe-815c7c52/probe-demo-5b589f86c4-8szgl to campusdesk-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2745ed0904",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11912",
+                "uid": "98b01f0e-7f46-4226-8c93-5a9d59bf0799"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Container image \"ghcr.io/abdulkalamazad1001/campusdesk-backend:475f2ae689f673c6cb329e92145c3176e150ca39\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2775b345f5",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11920",
+                "uid": "28dfa0bd-b57b-4622-8a32-2ff132f89a66"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created container: api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf277882fb12",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11921",
+                "uid": "a08ad0fa-1588-444b-91e8-c25cf3ee77c5"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:59Z",
+            "message": "Started container api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27bc742a48",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11924",
+                "uid": "a67ca0e4-4f08-426c-8cb8-30f8e4e14fb9"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 4,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:58:04Z",
+            "message": "Readiness probe failed: Get \"http://10.244.0.62:8000/missing-probe\": dial tcp 10.244.0.62:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27e9146c92",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11939",
+                "uid": "b313e25f-83e8-4b10-a40f-b9367d24d0eb"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "probe-demo-5b589f86c4",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11902",
+                "uid": "b16214c0-096d-4044-949b-d6624eb8abb7"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created pod: probe-demo-5b589f86c4-8szgl",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4.18debf2744ad12ef",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11907",
+                "uid": "ea852b7e-8407-4fef-9a87-c07fa9002367"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "probe-demo",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11901",
+                "uid": "5536164e-9f08-4ff2-99eb-3af9fa68ed55"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Scaled up replica set probe-demo-5b589f86c4 from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo.18debf274327469a",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11904",
+                "uid": "175eceac-6041-43ae-ae19-42f1a0dc2168"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 get events -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11906",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Successfully assigned campusdesk-probe-815c7c52/probe-demo-5b589f86c4-8szgl to campusdesk-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2745ed0904",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11912",
+                "uid": "98b01f0e-7f46-4226-8c93-5a9d59bf0799"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Container image \"ghcr.io/abdulkalamazad1001/campusdesk-backend:475f2ae689f673c6cb329e92145c3176e150ca39\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2775b345f5",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11920",
+                "uid": "28dfa0bd-b57b-4622-8a32-2ff132f89a66"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created container: api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf277882fb12",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11921",
+                "uid": "a08ad0fa-1588-444b-91e8-c25cf3ee77c5"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:59Z",
+            "message": "Started container api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27bc742a48",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11924",
+                "uid": "a67ca0e4-4f08-426c-8cb8-30f8e4e14fb9"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 6,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:58:08Z",
+            "message": "Readiness probe failed: Get \"http://10.244.0.62:8000/missing-probe\": dial tcp 10.244.0.62:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27e9146c92",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11946",
+                "uid": "b313e25f-83e8-4b10-a40f-b9367d24d0eb"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "probe-demo-5b589f86c4",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11902",
+                "uid": "b16214c0-096d-4044-949b-d6624eb8abb7"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created pod: probe-demo-5b589f86c4-8szgl",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4.18debf2744ad12ef",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11907",
+                "uid": "ea852b7e-8407-4fef-9a87-c07fa9002367"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "probe-demo",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11901",
+                "uid": "5536164e-9f08-4ff2-99eb-3af9fa68ed55"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Scaled up replica set probe-demo-5b589f86c4 from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo.18debf274327469a",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11904",
+                "uid": "175eceac-6041-43ae-ae19-42f1a0dc2168"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 get events -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11906",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Successfully assigned campusdesk-probe-815c7c52/probe-demo-5b589f86c4-8szgl to campusdesk-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2745ed0904",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11912",
+                "uid": "98b01f0e-7f46-4226-8c93-5a9d59bf0799"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Container image \"ghcr.io/abdulkalamazad1001/campusdesk-backend:475f2ae689f673c6cb329e92145c3176e150ca39\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2775b345f5",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11920",
+                "uid": "28dfa0bd-b57b-4622-8a32-2ff132f89a66"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created container: api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf277882fb12",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11921",
+                "uid": "a08ad0fa-1588-444b-91e8-c25cf3ee77c5"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:59Z",
+            "message": "Started container api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27bc742a48",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11924",
+                "uid": "a67ca0e4-4f08-426c-8cb8-30f8e4e14fb9"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 8,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:58:12Z",
+            "message": "Readiness probe failed: Get \"http://10.244.0.62:8000/missing-probe\": dial tcp 10.244.0.62:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27e9146c92",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11954",
+                "uid": "b313e25f-83e8-4b10-a40f-b9367d24d0eb"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "probe-demo-5b589f86c4",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11902",
+                "uid": "b16214c0-096d-4044-949b-d6624eb8abb7"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created pod: probe-demo-5b589f86c4-8szgl",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4.18debf2744ad12ef",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11907",
+                "uid": "ea852b7e-8407-4fef-9a87-c07fa9002367"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "probe-demo",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11901",
+                "uid": "5536164e-9f08-4ff2-99eb-3af9fa68ed55"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Scaled up replica set probe-demo-5b589f86c4 from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo.18debf274327469a",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11904",
+                "uid": "175eceac-6041-43ae-ae19-42f1a0dc2168"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 get events -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11906",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Successfully assigned campusdesk-probe-815c7c52/probe-demo-5b589f86c4-8szgl to campusdesk-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2745ed0904",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11912",
+                "uid": "98b01f0e-7f46-4226-8c93-5a9d59bf0799"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Container image \"ghcr.io/abdulkalamazad1001/campusdesk-backend:475f2ae689f673c6cb329e92145c3176e150ca39\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2775b345f5",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11920",
+                "uid": "28dfa0bd-b57b-4622-8a32-2ff132f89a66"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created container: api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf277882fb12",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11921",
+                "uid": "a08ad0fa-1588-444b-91e8-c25cf3ee77c5"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:59Z",
+            "message": "Started container api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27bc742a48",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11924",
+                "uid": "a67ca0e4-4f08-426c-8cb8-30f8e4e14fb9"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 9,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:58:14Z",
+            "message": "Readiness probe failed: Get \"http://10.244.0.62:8000/missing-probe\": dial tcp 10.244.0.62:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27e9146c92",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11957",
+                "uid": "b313e25f-83e8-4b10-a40f-b9367d24d0eb"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "probe-demo-5b589f86c4",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11902",
+                "uid": "b16214c0-096d-4044-949b-d6624eb8abb7"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created pod: probe-demo-5b589f86c4-8szgl",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4.18debf2744ad12ef",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11907",
+                "uid": "ea852b7e-8407-4fef-9a87-c07fa9002367"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "probe-demo",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11901",
+                "uid": "5536164e-9f08-4ff2-99eb-3af9fa68ed55"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Scaled up replica set probe-demo-5b589f86c4 from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo.18debf274327469a",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11904",
+                "uid": "175eceac-6041-43ae-ae19-42f1a0dc2168"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 get events -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11906",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Successfully assigned campusdesk-probe-815c7c52/probe-demo-5b589f86c4-8szgl to campusdesk-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2745ed0904",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11912",
+                "uid": "98b01f0e-7f46-4226-8c93-5a9d59bf0799"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Container image \"ghcr.io/abdulkalamazad1001/campusdesk-backend:475f2ae689f673c6cb329e92145c3176e150ca39\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2775b345f5",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11920",
+                "uid": "28dfa0bd-b57b-4622-8a32-2ff132f89a66"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created container: api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf277882fb12",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11921",
+                "uid": "a08ad0fa-1588-444b-91e8-c25cf3ee77c5"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:59Z",
+            "message": "Started container api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27bc742a48",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11924",
+                "uid": "a67ca0e4-4f08-426c-8cb8-30f8e4e14fb9"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 11,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:58:18Z",
+            "message": "Readiness probe failed: Get \"http://10.244.0.62:8000/missing-probe\": dial tcp 10.244.0.62:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27e9146c92",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11965",
+                "uid": "b313e25f-83e8-4b10-a40f-b9367d24d0eb"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "probe-demo-5b589f86c4",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11902",
+                "uid": "b16214c0-096d-4044-949b-d6624eb8abb7"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created pod: probe-demo-5b589f86c4-8szgl",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4.18debf2744ad12ef",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11907",
+                "uid": "ea852b7e-8407-4fef-9a87-c07fa9002367"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "probe-demo",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11901",
+                "uid": "5536164e-9f08-4ff2-99eb-3af9fa68ed55"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Scaled up replica set probe-demo-5b589f86c4 from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo.18debf274327469a",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11904",
+                "uid": "175eceac-6041-43ae-ae19-42f1a0dc2168"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 get events -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11906",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Successfully assigned campusdesk-probe-815c7c52/probe-demo-5b589f86c4-8szgl to campusdesk-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2745ed0904",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11912",
+                "uid": "98b01f0e-7f46-4226-8c93-5a9d59bf0799"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Container image \"ghcr.io/abdulkalamazad1001/campusdesk-backend:475f2ae689f673c6cb329e92145c3176e150ca39\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2775b345f5",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11920",
+                "uid": "28dfa0bd-b57b-4622-8a32-2ff132f89a66"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created container: api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf277882fb12",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11921",
+                "uid": "a08ad0fa-1588-444b-91e8-c25cf3ee77c5"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:59Z",
+            "message": "Started container api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27bc742a48",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11924",
+                "uid": "a67ca0e4-4f08-426c-8cb8-30f8e4e14fb9"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 12,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:58:20Z",
+            "message": "Readiness probe failed: Get \"http://10.244.0.62:8000/missing-probe\": dial tcp 10.244.0.62:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27e9146c92",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11971",
+                "uid": "b313e25f-83e8-4b10-a40f-b9367d24d0eb"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "probe-demo-5b589f86c4",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11902",
+                "uid": "b16214c0-096d-4044-949b-d6624eb8abb7"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created pod: probe-demo-5b589f86c4-8szgl",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4.18debf2744ad12ef",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11907",
+                "uid": "ea852b7e-8407-4fef-9a87-c07fa9002367"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "probe-demo",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11901",
+                "uid": "5536164e-9f08-4ff2-99eb-3af9fa68ed55"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Scaled up replica set probe-demo-5b589f86c4 from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo.18debf274327469a",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11904",
+                "uid": "175eceac-6041-43ae-ae19-42f1a0dc2168"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 get events -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11906",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Successfully assigned campusdesk-probe-815c7c52/probe-demo-5b589f86c4-8szgl to campusdesk-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2745ed0904",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11912",
+                "uid": "98b01f0e-7f46-4226-8c93-5a9d59bf0799"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Container image \"ghcr.io/abdulkalamazad1001/campusdesk-backend:475f2ae689f673c6cb329e92145c3176e150ca39\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2775b345f5",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11920",
+                "uid": "28dfa0bd-b57b-4622-8a32-2ff132f89a66"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created container: api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf277882fb12",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11921",
+                "uid": "a08ad0fa-1588-444b-91e8-c25cf3ee77c5"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:59Z",
+            "message": "Started container api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27bc742a48",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11924",
+                "uid": "a67ca0e4-4f08-426c-8cb8-30f8e4e14fb9"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 14,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:58:24Z",
+            "message": "Readiness probe failed: Get \"http://10.244.0.62:8000/missing-probe\": dial tcp 10.244.0.62:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27e9146c92",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11977",
+                "uid": "b313e25f-83e8-4b10-a40f-b9367d24d0eb"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "probe-demo-5b589f86c4",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11902",
+                "uid": "b16214c0-096d-4044-949b-d6624eb8abb7"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created pod: probe-demo-5b589f86c4-8szgl",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4.18debf2744ad12ef",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11907",
+                "uid": "ea852b7e-8407-4fef-9a87-c07fa9002367"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "probe-demo",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11901",
+                "uid": "5536164e-9f08-4ff2-99eb-3af9fa68ed55"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Scaled up replica set probe-demo-5b589f86c4 from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo.18debf274327469a",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11904",
+                "uid": "175eceac-6041-43ae-ae19-42f1a0dc2168"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 get events -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11906",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Successfully assigned campusdesk-probe-815c7c52/probe-demo-5b589f86c4-8szgl to campusdesk-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2745ed0904",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11912",
+                "uid": "98b01f0e-7f46-4226-8c93-5a9d59bf0799"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Container image \"ghcr.io/abdulkalamazad1001/campusdesk-backend:475f2ae689f673c6cb329e92145c3176e150ca39\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2775b345f5",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11920",
+                "uid": "28dfa0bd-b57b-4622-8a32-2ff132f89a66"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created container: api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf277882fb12",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11921",
+                "uid": "a08ad0fa-1588-444b-91e8-c25cf3ee77c5"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:59Z",
+            "message": "Started container api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27bc742a48",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11924",
+                "uid": "a67ca0e4-4f08-426c-8cb8-30f8e4e14fb9"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 15,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:58:26Z",
+            "message": "Readiness probe failed: Get \"http://10.244.0.62:8000/missing-probe\": dial tcp 10.244.0.62:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27e9146c92",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11981",
+                "uid": "b313e25f-83e8-4b10-a40f-b9367d24d0eb"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "probe-demo-5b589f86c4",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11902",
+                "uid": "b16214c0-096d-4044-949b-d6624eb8abb7"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created pod: probe-demo-5b589f86c4-8szgl",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4.18debf2744ad12ef",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11907",
+                "uid": "ea852b7e-8407-4fef-9a87-c07fa9002367"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "probe-demo",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11901",
+                "uid": "5536164e-9f08-4ff2-99eb-3af9fa68ed55"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Scaled up replica set probe-demo-5b589f86c4 from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo.18debf274327469a",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11904",
+                "uid": "175eceac-6041-43ae-ae19-42f1a0dc2168"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 get events -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11906",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Successfully assigned campusdesk-probe-815c7c52/probe-demo-5b589f86c4-8szgl to campusdesk-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2745ed0904",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11912",
+                "uid": "98b01f0e-7f46-4226-8c93-5a9d59bf0799"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Container image \"ghcr.io/abdulkalamazad1001/campusdesk-backend:475f2ae689f673c6cb329e92145c3176e150ca39\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2775b345f5",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11920",
+                "uid": "28dfa0bd-b57b-4622-8a32-2ff132f89a66"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created container: api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf277882fb12",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11921",
+                "uid": "a08ad0fa-1588-444b-91e8-c25cf3ee77c5"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:59Z",
+            "message": "Started container api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27bc742a48",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11924",
+                "uid": "a67ca0e4-4f08-426c-8cb8-30f8e4e14fb9"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 17,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:58:30Z",
+            "message": "Readiness probe failed: Get \"http://10.244.0.62:8000/missing-probe\": dial tcp 10.244.0.62:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27e9146c92",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11990",
+                "uid": "b313e25f-83e8-4b10-a40f-b9367d24d0eb"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "probe-demo-5b589f86c4",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11902",
+                "uid": "b16214c0-096d-4044-949b-d6624eb8abb7"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created pod: probe-demo-5b589f86c4-8szgl",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4.18debf2744ad12ef",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11907",
+                "uid": "ea852b7e-8407-4fef-9a87-c07fa9002367"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "probe-demo",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11901",
+                "uid": "5536164e-9f08-4ff2-99eb-3af9fa68ed55"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Scaled up replica set probe-demo-5b589f86c4 from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo.18debf274327469a",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11904",
+                "uid": "175eceac-6041-43ae-ae19-42f1a0dc2168"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 get events -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11906",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Successfully assigned campusdesk-probe-815c7c52/probe-demo-5b589f86c4-8szgl to campusdesk-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2745ed0904",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11912",
+                "uid": "98b01f0e-7f46-4226-8c93-5a9d59bf0799"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Container image \"ghcr.io/abdulkalamazad1001/campusdesk-backend:475f2ae689f673c6cb329e92145c3176e150ca39\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2775b345f5",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11920",
+                "uid": "28dfa0bd-b57b-4622-8a32-2ff132f89a66"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created container: api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf277882fb12",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11921",
+                "uid": "a08ad0fa-1588-444b-91e8-c25cf3ee77c5"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:59Z",
+            "message": "Started container api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27bc742a48",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11924",
+                "uid": "a67ca0e4-4f08-426c-8cb8-30f8e4e14fb9"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 18,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:58:32Z",
+            "message": "Readiness probe failed: Get \"http://10.244.0.62:8000/missing-probe\": dial tcp 10.244.0.62:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27e9146c92",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11993",
+                "uid": "b313e25f-83e8-4b10-a40f-b9367d24d0eb"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "probe-demo-5b589f86c4",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11902",
+                "uid": "b16214c0-096d-4044-949b-d6624eb8abb7"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created pod: probe-demo-5b589f86c4-8szgl",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4.18debf2744ad12ef",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11907",
+                "uid": "ea852b7e-8407-4fef-9a87-c07fa9002367"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "probe-demo",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11901",
+                "uid": "5536164e-9f08-4ff2-99eb-3af9fa68ed55"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Scaled up replica set probe-demo-5b589f86c4 from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo.18debf274327469a",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11904",
+                "uid": "175eceac-6041-43ae-ae19-42f1a0dc2168"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 get events -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11906",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Successfully assigned campusdesk-probe-815c7c52/probe-demo-5b589f86c4-8szgl to campusdesk-control-plane",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2745ed0904",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11912",
+                "uid": "98b01f0e-7f46-4226-8c93-5a9d59bf0799"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Container image \"ghcr.io/abdulkalamazad1001/campusdesk-backend:475f2ae689f673c6cb329e92145c3176e150ca39\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf2775b345f5",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11920",
+                "uid": "28dfa0bd-b57b-4622-8a32-2ff132f89a66"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created container: api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf277882fb12",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11921",
+                "uid": "a08ad0fa-1588-444b-91e8-c25cf3ee77c5"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:59Z",
+            "message": "Started container api",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27bc742a48",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11924",
+                "uid": "a67ca0e4-4f08-426c-8cb8-30f8e4e14fb9"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 18,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:58:32Z",
+            "message": "Readiness probe failed: Get \"http://10.244.0.62:8000/missing-probe\": dial tcp 10.244.0.62:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:59Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf27e9146c92",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11993",
+                "uid": "b313e25f-83e8-4b10-a40f-b9367d24d0eb"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 2,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:58:35Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{api}",
+                "kind": "Pod",
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11910",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:58:36Z",
+            "message": "Readiness probe failed: HTTP probe failed with statuscode: 404",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:58:35Z",
+                "name": "probe-demo-5b589f86c4-8szgl.18debf301fd7cd3f",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "12001",
+                "uid": "d467eaf3-c9ec-4dd9-b27b-ae892331073a"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "campusdesk-control-plane",
+            "source": {
+                "component": "kubelet",
+                "host": "campusdesk-control-plane"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "probe-demo-5b589f86c4",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11902",
+                "uid": "b16214c0-096d-4044-949b-d6624eb8abb7"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Created pod: probe-demo-5b589f86c4-8szgl",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo-5b589f86c4.18debf2744ad12ef",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11907",
+                "uid": "ea852b7e-8407-4fef-9a87-c07fa9002367"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-15T15:57:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "probe-demo",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11901",
+                "uid": "5536164e-9f08-4ff2-99eb-3af9fa68ed55"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-15T15:57:57Z",
+            "message": "Scaled up replica set probe-demo-5b589f86c4 from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "name": "probe-demo.18debf274327469a",
+                "namespace": "campusdesk-probe-815c7c52",
+                "resourceVersion": "11904",
+                "uid": "175eceac-6041-43ae-ae19-42f1a0dc2168"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 get pods -l app=probe-demo -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "generateName": "probe-demo-5b589f86c4-",
+                "labels": {
+                    "app": "probe-demo",
+                    "pod-template-hash": "5b589f86c4"
+                },
+                "name": "probe-demo-5b589f86c4-8szgl",
+                "namespace": "campusdesk-probe-815c7c52",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "probe-demo-5b589f86c4",
+                        "uid": "b16214c0-096d-4044-949b-d6624eb8abb7"
+                    }
+                ],
+                "resourceVersion": "11928",
+                "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+            },
+            "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                    {
+                        "image": "ghcr.io/abdulkalamazad1001/campusdesk-backend:475f2ae689f673c6cb329e92145c3176e150ca39",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "api",
+                        "ports": [
+                            {
+                                "containerPort": 8000,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 1,
+                            "httpGet": {
+                                "path": "/missing-probe",
+                                "port": 8000,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 2,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "100m",
+                                "memory": "128Mi"
+                            },
+                            "requests": {
+                                "cpu": "10m",
+                                "memory": "64Mi"
+                            }
+                        },
+                        "securityContext": {
+                            "allowPrivilegeEscalation": false,
+                            "capabilities": {
+                                "drop": [
+                                    "ALL"
+                                ]
+                            },
+                            "runAsNonRoot": true,
+                            "runAsUser": 10001
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File"
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "campusdesk-control-plane",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-15T15:57:59Z",
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-15T15:57:57Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-15T15:57:57Z",
+                        "message": "containers with unready status: [api]",
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-15T15:57:57Z",
+                        "message": "containers with unready status: [api]",
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-15T15:57:57Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://664d1770a78219c68c842af5c9a5d5b66613f734c8588cf7217313230e8e1d17",
+                        "image": "ghcr.io/abdulkalamazad1001/campusdesk-backend:475f2ae689f673c6cb329e92145c3176e150ca39",
+                        "imageID": "ghcr.io/abdulkalamazad1001/campusdesk-backend@sha256:d50d979687927ce79cc55e79d432af05dab076db529bd9efd5fc0fb1d4b6fa61",
+                        "lastState": {},
+                        "name": "api",
+                        "ready": false,
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-10-15T15:57:59Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "172.18.0.2",
+                "hostIPs": [
+                    {
+                        "ip": "172.18.0.2"
+                    }
+                ],
+                "phase": "Running",
+                "podIP": "10.244.0.62",
+                "podIPs": [
+                    {
+                        "ip": "10.244.0.62"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-10-15T15:57:57Z"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 describe pods -l app=probe-demo
+Name:             probe-demo-5b589f86c4-8szgl
+Namespace:        campusdesk-probe-815c7c52
+Priority:         0
+Service Account:  default
+Node:             campusdesk-control-plane/172.18.0.2
+Start Time:       Thu, 15 Oct 2026 21:27:57 +0530
+Labels:           app=probe-demo
+                  pod-template-hash=5b589f86c4
+Annotations:      <none>
+Status:           Running
+IP:               10.244.0.62
+IPs:
+  IP:           10.244.0.62
+Controlled By:  ReplicaSet/probe-demo-5b589f86c4
+Containers:
+  api:
+    Container ID:   containerd://664d1770a78219c68c842af5c9a5d5b66613f734c8588cf7217313230e8e1d17
+    Image:          ghcr.io/abdulkalamazad1001/campusdesk-backend:475f2ae689f673c6cb329e92145c3176e150ca39
+    Image ID:       ghcr.io/abdulkalamazad1001/campusdesk-backend@sha256:d50d979687927ce79cc55e79d432af05dab076db529bd9efd5fc0fb1d4b6fa61
+    Port:           8000/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Thu, 15 Oct 2026 21:27:59 +0530
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     100m
+      memory:  128Mi
+    Requests:
+      cpu:        10m
+      memory:     64Mi
+    Readiness:    http-get http://:8000/missing-probe delay=0s timeout=1s period=2s #success=1 #failure=1
+    Environment:  <none>
+    Mounts:       <none>
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:                      <none>
+QoS Class:                    Burstable
+Node-Selectors:               <none>
+Tolerations:                  node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                              node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                From               Message
+  ----     ------     ----               ----               -------
+  Normal   Scheduled  41s                default-scheduler  Successfully assigned campusdesk-probe-815c7c52/probe-demo-5b589f86c4-8szgl to campusdesk-control-plane
+  Normal   Pulled     41s                kubelet            Container image "ghcr.io/abdulkalamazad1001/campusdesk-backend:475f2ae689f673c6cb329e92145c3176e150ca39" already present on machine
+  Normal   Created    41s                kubelet            Created container: api
+  Normal   Started    39s                kubelet            Started container api
+  Warning  Unhealthy  6s (x18 over 39s)  kubelet            Readiness probe failed: Get "http://10.244.0.62:8000/missing-probe": dial tcp 10.244.0.62:8000: connect: connection refused
+  Warning  Unhealthy  2s (x2 over 3s)    kubelet            Readiness probe failed: HTTP probe failed with statuscode: 404
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 logs deployment/probe-demo --tail=15
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     10.244.0.1:39748 - "GET /missing-probe HTTP/1.1" 404 Not Found
+INFO:     10.244.0.1:39758 - "GET /missing-probe HTTP/1.1" 404 Not Found
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 get endpointslices -l kubernetes.io/service-name=probe-demo -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "addressType": "IPv4",
+            "apiVersion": "discovery.k8s.io/v1",
+            "endpoints": [
+                {
+                    "addresses": [
+                        "10.244.0.62"
+                    ],
+                    "conditions": {
+                        "ready": false,
+                        "serving": false,
+                        "terminating": false
+                    },
+                    "nodeName": "campusdesk-control-plane",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "probe-demo-5b589f86c4-8szgl",
+                        "namespace": "campusdesk-probe-815c7c52",
+                        "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+                    }
+                }
+            ],
+            "kind": "EndpointSlice",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "generateName": "probe-demo-",
+                "generation": 2,
+                "labels": {
+                    "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+                    "kubernetes.io/service-name": "probe-demo"
+                },
+                "name": "probe-demo-vcgfk",
+                "namespace": "campusdesk-probe-815c7c52",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Service",
+                        "name": "probe-demo",
+                        "uid": "faacfffa-8de6-4506-bbe5-5acda697eb19"
+                    }
+                ],
+                "resourceVersion": "11930",
+                "uid": "a05a466c-48ba-4135-87b1-6637219439fd"
+            },
+            "ports": [
+                {
+                    "name": "",
+                    "port": 8000,
+                    "protocol": "TCP"
+                }
+            ]
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 exec deployment/probe-demo -- python -c import urllib.request; print(urllib.request.urlopen('http://127.0.0.1:8000/health').read().decode())
+{"status":"healthy","service":"campusdesk"}
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 apply -f -
+deployment.apps/probe-demo configured
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 rollout status deployment/probe-demo --timeout=150s
+Waiting for deployment "probe-demo" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "probe-demo" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "probe-demo" rollout to finish: 1 old replicas are pending termination...
+deployment "probe-demo" successfully rolled out
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 get endpointslices -l kubernetes.io/service-name=probe-demo -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "addressType": "IPv4",
+            "apiVersion": "discovery.k8s.io/v1",
+            "endpoints": [
+                {
+                    "addresses": [
+                        "10.244.0.62"
+                    ],
+                    "conditions": {
+                        "ready": false,
+                        "serving": false,
+                        "terminating": true
+                    },
+                    "nodeName": "campusdesk-control-plane",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "probe-demo-5b589f86c4-8szgl",
+                        "namespace": "campusdesk-probe-815c7c52",
+                        "uid": "787799d5-60cb-4b7b-be14-7b67af92c9de"
+                    }
+                },
+                {
+                    "addresses": [
+                        "10.244.0.63"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "campusdesk-control-plane",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "probe-demo-574d44998c-nwwh2",
+                        "namespace": "campusdesk-probe-815c7c52",
+                        "uid": "fb8be689-da7e-47c9-bef7-806a9ddad58d"
+                    }
+                }
+            ],
+            "kind": "EndpointSlice",
+            "metadata": {
+                "creationTimestamp": "2026-10-15T15:57:57Z",
+                "generateName": "probe-demo-",
+                "generation": 5,
+                "labels": {
+                    "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+                    "kubernetes.io/service-name": "probe-demo"
+                },
+                "name": "probe-demo-vcgfk",
+                "namespace": "campusdesk-probe-815c7c52",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Service",
+                        "name": "probe-demo",
+                        "uid": "faacfffa-8de6-4506-bbe5-5acda697eb19"
+                    }
+                ],
+                "resourceVersion": "12107",
+                "uid": "a05a466c-48ba-4135-87b1-6637219439fd"
+            },
+            "ports": [
+                {
+                    "name": "",
+                    "port": 8000,
+                    "protocol": "TCP"
+                }
+            ]
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 exec deployment/probe-demo -- python -c import urllib.request; print(urllib.request.urlopen('http://probe-demo:8000/health').read().decode())
+{"status":"healthy","service":"campusdesk"}
+
+Exit code: 0
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 get pods,svc
+NAME                              READY   STATUS    RESTARTS   AGE
+pod/probe-demo-574d44998c-nwwh2   1/1     Running   0          38s
+
+NAME                 TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
+service/probe-demo   ClusterIP   10.96.7.216   <none>        8000/TCP   87s
+
+Exit code: 0
+
+PASS: observed Running/NotReady, 404 probe, healthy process, then repaired ready Service traffic.
+
+$ kubectl --context kind-campusdesk -n campusdesk-probe-815c7c52 delete namespace campusdesk-probe-815c7c52 --wait=true --timeout=120s
+namespace "campusdesk-probe-815c7c52" deleted
+Warning: deleting cluster-scoped resources, not scoped to the provided namespace
+
+Exit code: 0

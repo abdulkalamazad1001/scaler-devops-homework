@@ -45,6 +45,29 @@ Use `kubectl logs job/campusdesk-migrate-<revision> -n campusdesk`, PostgreSQL p
 logs and PVC events. A healthy process is insufficient: `/ready` returns 503 when
 the database or schema is unavailable, preventing traffic to an unready backend.
 
+## Running But Not Ready
+
+```powershell
+.venv/Scripts/python scripts/readiness-check.py
+```
+
+This exercise creates a uniquely named disposable namespace in `kind-campusdesk`,
+using the published backend image without database credentials. It changes only
+the demo Deployment, not the real CampusDesk services or Argo-managed workloads.
+
+1. An intentionally wrong `/missing-probe` readiness path returns HTTP 404.
+2. The script inspects pod status, events, logs and EndpointSlices. The process is
+   Running but NotReady; no ready endpoint can receive Service traffic.
+3. A direct `/health` request succeeds, isolating the problem to probe configuration.
+4. Correcting the demo probe to `/health` makes the new pod Ready. A request through
+   its Service then succeeds, and the script deletes its own namespace.
+
+Real command output is saved in `evidence/readiness-troubleshooting.txt`, including
+cleanup. This tests process readiness routing only; the real application continues
+to use `/ready` with database/schema checks. Do not replace that production probe
+with `/health`. A failed readiness check removes traffic; it does not itself restart
+a container, unlike a failed liveness check.
+
 ## Helm Recovery
 
 Inspect `helm history campusdesk -n campusdesk` and `kubectl rollout status`.

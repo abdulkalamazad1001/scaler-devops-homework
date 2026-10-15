@@ -13,6 +13,29 @@ concurrency:
 env:
   PROJECT: capstone-campusdesk
 jobs:
+  source-security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.13'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '24', cache: npm, cache-dependency-path: capstone-campusdesk/frontend/package-lock.json}
+      - name: Install pinned source security tools
+        run: |
+          pip install -r "$PROJECT/security/requirements.txt"
+          npm --prefix "$PROJECT/frontend" ci
+      - name: Gate source, dependencies and capstone Git history
+        run: |
+          python "$PROJECT/scripts/test_security_check.py"
+          python "$PROJECT/scripts/security-check.py"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: source-security-reports
+          path: capstone-campusdesk/evidence/local/security/
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -64,7 +87,7 @@ jobs:
           name: test-results
           path: capstone-campusdesk/backend/pytest-results.xml
   build-scan-deploy:
-    needs: test
+    needs: [test, source-security]
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:

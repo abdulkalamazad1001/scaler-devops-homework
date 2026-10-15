@@ -10,6 +10,8 @@ implementation for the DevOps capstone, using the course architecture.
 **Start here:** [Submission status](SUBMISSION.md) | [Local quality review](LOCAL-REVIEW.md) | [Demo guide](demo/WALKTHROUGH.md) |
 [AWS deployment](terraform/README.md) | [Troubleshooting](troubleshooting/README.md)
 
+[Reference comparison](REFERENCE-COMPARISON.md) | [Source security gates](security/README.md)
+
 **Verified locally:** 20 API tests, browser CRUD checks, healthy Compose and Kind
 deployments, live monitoring, and Argo CD GitOps. The
 [successful CI/CD run](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38644518494)
@@ -145,6 +147,8 @@ It triggers on pushes to `main`, capstone pull requests, and manual runs. GitOps
 promotion and evidence-only snapshot commits use `[skip ci]` to avoid redundant builds.
 
 1. Ruff, Alembic, pytest against PostgreSQL, and the frontend production build run.
+   A separate security job gates Bandit source analysis, pip-audit, npm audit and
+   redacted Gitleaks scanning of capstone/workflow history before image builds.
 2. Helm and Terraform are validated without creating cloud resources.
 3. Both Docker images are built and tagged with the full Git commit SHA.
 4. Trivy scans both images and blocks the pipeline on any HIGH or CRITICAL finding.
@@ -157,6 +161,9 @@ Test and scan reports are uploaded as workflow artifacts. There is no `continue-
 on quality/security gates and no fabricated successful scan output. A failed scan must
 be resolved before release. Trivy covers installed OS and application packages; it
 does not establish that application authorization or business logic is secure.
+See [security scopes, thresholds and local commands](security/README.md). The
+source-security addition has separate reports; the earlier successful run linked
+above predates that addition.
 
 Registry names:
 

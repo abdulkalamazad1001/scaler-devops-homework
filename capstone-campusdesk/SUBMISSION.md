@@ -23,6 +23,8 @@ screenshots as substitutes for operations that were not executed.
 
 ## Verified Deliverables
 
+- [Reference comparison and added safeguards](REFERENCE-COMPARISON.md); source-security gates and an additional readiness exercise supplement the previous release below.
+
 - [Latest successful CI/CD, browser tests and automated promotion](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38644518494)
 - [Local quality review and fixes](LOCAL-REVIEW.md)
 - [Earlier successful independent run](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38638277372)
