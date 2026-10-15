@@ -76,3 +76,10 @@ PDF/video build dependencies are `reportlab`, `pymupdf`, and `imageio-ffmpeg`.
 - [Comparison and verification scope](../REFERENCE-COMPARISON.md), including the
   revised CI run link. Local results do not claim the revised remote run passed.
 
+# Shared AWS Material
+
+[Shared AWS screenshots and attribution](shared-aws/README.md) contain unchanged
+files from Shaikh Suja Rahaman's repository. The student reports instructor permission
+for shared-work evidence. These are separate from this workspace's independently
+executed CampusDesk evidence and do not claim a CampusDesk AWS deployment.
+

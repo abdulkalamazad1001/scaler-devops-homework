@@ -4,8 +4,11 @@ Compared the owner's suggested [Session 21 example](https://github.com/Shaikh-Su
 and its `MyReadme.md`, workflow and security configuration with CampusDesk and the
 [instructor rubric](https://github.com/Nency-Ravaliya/devsecops-python/blob/main/GRADING.md).
 The example is inspiration for coverage, not independent proof that its claimed
-deployments occurred. No application code, screenshots, identities or deployment
-results were copied. CampusDesk remains an original campus IT helpdesk.
+deployments occurred. No application code or identity was copied. After this
+comparison, the student reported instructor permission to use collaborative AWS
+screenshots; three unchanged images are now included in the separately credited
+[shared evidence appendix](evidence/shared-aws/README.md). They are not CampusDesk
+deployment results. CampusDesk remains an original campus IT helpdesk.
 
 | Area in the example | CampusDesk comparison and action |
 |---|---|
@@ -43,8 +46,9 @@ The [readiness transcript](evidence/readiness-troubleshooting.txt) records the a
 were not modified by this exercise.
 
 Source commit: `a6e9361`. [Revised GitHub Actions run](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38765329150)
-was still running when these local results were recorded; it is not yet claimed
-as a successful release. The previous green release remains linked in the README.
+was still running when these local results were recorded. Follow-up verification
+confirmed that run completed successfully, including source-security gates, tests,
+image scans, Kubernetes/browser checks, publication and GitOps promotion.
 
 Security report directories record each scanner's actual exit code and timestamp;
 they are not fabricated successful output. Local scans are not a substitute for a

@@ -20,6 +20,12 @@ passed 17 browser checks, published images and promoted their SHA tags. See [rea
 [slides](demo/slides.pdf) and the [silent local walkthrough](demo/local-walkthrough.mp4).
 AWS deployment and the complete student-narrated AWS video remain pending.
 
+[Shared AWS screenshots](evidence/shared-aws/README.md) are now included with
+collaborator attribution under the student's reported instructor permission. They
+depict the shared TaskBoard infrastructure, not a CampusDesk AWS deployment.
+The [source-security follow-up pipeline](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38765329150)
+also completed successfully.
+
 ![CampusDesk running through local Kubernetes Ingress](evidence/application-ingress.png)
 
 ## Architecture
