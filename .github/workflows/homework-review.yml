@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 env:
-  HOMEWORK_RESULTS_DIR: .review-run-results
+  HOMEWORK_RESULTS_DIR: review-run-results
 
 concurrency:
   group: homework-review-${{ github.ref }}
@@ -53,7 +53,8 @@ jobs:
         if: always()
         with:
           name: homework-${{ matrix.suite }}
-          path: .review-run-results/
+          path: review-run-results/
+          if-no-files-found: error
           retention-days: 14
 
   containers:
@@ -70,5 +71,6 @@ jobs:
         if: always()
         with:
           name: homework-containers
-          path: .review-run-results/
+          path: review-run-results/
+          if-no-files-found: error
           retention-days: 14
