@@ -316,6 +316,82 @@ first, so `terraform destroy` cannot hang on them. The full step-by-step
 [AWS runbook](terraform/README.md) covers prerequisites, cost, deploying the app to
 EKS, screenshots and cleanup checks.
 
+### Terraform Screenshots
+
+These were captured from my ShelfWise EKS Terraform configuration (cluster
+`shelfwise-eks`), a separate hand-written VPC/EKS setup, not the module-based
+CampusDesk [`terraform/`](terraform/) folder above.
+
+`terraform init`, `terraform fmt -check -recursive` and `terraform validate`:
+
+![Terraform init and validate](evidence/aws/00-terraform-init-validate.png)
+
+`terraform plan`: 22 resources to add (VPC, subnets, NAT, EKS cluster, node group, IAM):
+
+![Terraform plan](evidence/aws/01-terraform-plan.png)
+
+`terraform apply`: `Apply complete! Resources: 22 added, 0 changed, 0 destroyed.`
+
+![Terraform apply](evidence/aws/02-terraform-apply.png)
+
+AWS Console, VPC resource map: `shelfwise-vpc` (`10.40.0.0/16`) with public and
+private subnets in `ap-south-1a` and `ap-south-1b`, public/private route tables,
+internet gateway and NAT gateway:
+
+![VPC resource map](evidence/aws/03-vpc.png)
+
+AWS Console, NAT gateway: `shelfwise-nat` is `Available`, public connectivity,
+placed in the public subnet `shelfwise-public-ap-south-1a`:
+
+![NAT gateway](evidence/aws/04-nat-gateway.png)
+
+AWS Console, Elastic IPs: `shelfwise-nat-eip` (`3.7.130.177`), the public IP
+used by the NAT gateway:
+
+![Elastic IP](evidence/aws/05-elastic-ip.png)
+
+AWS Console, IAM: `shelfwise-eks-node-role` with the three worker-node policies
+(`AmazonEKSWorkerNodePolicy`, `AmazonEKS_CNI_Policy`,
+`AmazonEC2ContainerRegistryReadOnly`):
+
+![IAM node role](evidence/aws/06-iam-node-role.png)
+
+AWS Console, EKS: cluster `shelfwise-eks` is `Active` on Kubernetes 1.36 in
+`ap-south-1` with one managed node group:
+
+![EKS cluster](evidence/aws/07-eks-cluster.png)
+
+AWS Console, EKS Compute: managed node group `shelfwise-workers` is `Active`
+with desired size 2 and no node health issues:
+
+![EKS node group](evidence/aws/08-eks-nodegroup.png)
+
+AWS Console, EC2: the two `t3.medium` worker instances are `Running`, one in
+`ap-south-1a` and one in `ap-south-1b`, with no public IPs (private subnets):
+
+![EC2 worker nodes](evidence/aws/09-ec2-worker-nodes.png)
+
+`aws eks update-kubeconfig`, `kubectl cluster-info`, `kubectl get nodes -o wide`
+and `kubectl get pods -A`: both worker nodes are `Ready` on v1.36.4 with private
+IPs only, and the `aws-node`, `coredns` and `kube-proxy` system pods are `Running`:
+
+![kubectl get nodes](evidence/aws/10-kubectl-get-nodes.png)
+
+`terraform destroy`: `Destroy complete! Resources: 22 destroyed.`, followed by AWS
+CLI checks in `ap-south-1` showing no remaining EKS clusters, running instances,
+available NAT gateways, Elastic IPs, `shelfwise` VPCs or EBS volumes:
+
+![Terraform destroy and cleanup checks](evidence/aws/11-terraform-destroy.png)
+
+AWS Console, EKS Clusters after destroy: `Clusters (0)`, no clusters remain:
+
+![EKS clusters empty after destroy](evidence/aws/12-eks-clusters-empty.png)
+
+AWS Budgets: cost guardrails for the run, including the `shelfwise-eks-run-1usd`
+budget; all three budgets are `OK` and `Healthy`:
+
+![AWS Budgets](evidence/aws/13-aws-budgets.png)
+
 ## Known Limits
 
 - This is a classroom helpdesk with no authentication/RBAC; keep it local or add
