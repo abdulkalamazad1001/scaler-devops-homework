@@ -21,7 +21,7 @@ Terraform configuration for AWS VPC/EKS.
 | Detailed requirements and evidence | [Grading audit](capstone-campusdesk/GRADING-AUDIT.md) |
 | Screenshots and test reports | [Evidence inventory](capstone-campusdesk/evidence/README.md) |
 | AWS provisioning and cleanup instructions | [Terraform runbook](capstone-campusdesk/terraform/README.md) |
-| Slides and local rehearsal video | [Presentation](demo/README.md) |
+| Presentation (18 slides) | [PowerPoint](capstone-campusdesk/demo/presentation.pptx) · [PDF](capstone-campusdesk/demo/slides.pdf) · [all demo files](demo/README.md) |
 
 ### Run Locally
 

@@ -97,7 +97,7 @@ whose grading acceptance belongs to the instructor. **Open** needs completion.
 | M9 / 3 | Populated application panel | Existing genuine dashboard screenshot and live nonzero metrics |
 | M10 / 2 | Technical README | Present: root overview and linked comprehensive project documentation |
 | M10 / 2 | Complete presentation video | **Open:** committed MP4 is a silent local rehearsal, not the full required walkthrough |
-| M10 / 1 | Slide deck | Present: 12-slide PDF, above the eight-slide minimum |
+| M10 / 1 | Slide deck | Present: 18-slide PowerPoint and PDF, above the eight-slide minimum |
 
 ## Evidence And Video Gaps
 

@@ -20,6 +20,16 @@ Developer → Git/GitHub → GitHub Actions (security gates · pytest · build �
 
 ![CampusDesk running through the local Kubernetes Ingress](evidence/application-ingress.png)
 
+### Presentation
+
+18 slides covering the project end to end, from the application to CI/CD, security, Kubernetes,
+GitOps, Terraform, observability, autoscaling and troubleshooting. Each slide has speaker notes.
+
+**[Download the PowerPoint (presentation.pptx)](demo/presentation.pptx)** ·
+**[View the PDF (slides.pdf)](demo/slides.pdf)**
+
+[![Slide 3: one commit travels the whole delivery path](evidence/presentation-preview.png)](demo/slides.pdf)
+
 ---
 
 ## Contents
@@ -522,7 +532,7 @@ Captured output: [troubleshooting.txt](evidence/troubleshooting.txt) and
 | M7 Terraform | VPC, 2 public + 2 private subnets, NAT, EKS + node group, `tfvars.example`; my AWS run with the ShelfWise configuration | [validate](evidence/terraform-validate-output.png), [plan](evidence/aws/01-terraform-plan.png), [apply](evidence/aws/02-terraform-apply.png), [VPC](evidence/aws/03-vpc.png), [EKS](evidence/aws/07-eks-cluster.png), [nodes](evidence/aws/10-kubectl-get-nodes.png), [destroy](evidence/aws/11-terraform-destroy.png), [all 14](#module-7-evidence) |
 | M8 Kubernetes + Helm | namespace, chart, 2+ replicas each, ClusterIP services, Ingress `/` and `/api`, HPA, Argo CD | [helm](evidence/helm-output.png), [pods/svc](evidence/kubernetes-output.png), [HPA](evidence/autoscaling-output.png), [Argo CD](evidence/argocd-application.png), [labs](evidence/troubleshooting.txt) |
 | M9 Observability | `/metrics`, per-pod Prometheus scraping, Grafana dashboard, alert rules | [metrics](evidence/metrics-output.png), [targets UP](evidence/prometheus-targets.png), [Grafana](evidence/grafana-dashboard.png) |
-| M10 Docs + demo | this README, slides, walkthrough | [slides](demo/slides.pdf), [walkthrough](demo/WALKTHROUGH.md), [video script](demo/VIDEO-SCRIPT.md), [recording](demo/local-walkthrough.mp4) |
+| M10 Docs + demo | this README, 18-slide deck, walkthrough | [PowerPoint](demo/presentation.pptx), [PDF slides](demo/slides.pdf), [walkthrough](demo/WALKTHROUGH.md), [video script](demo/VIDEO-SCRIPT.md), [recording](demo/local-walkthrough.mp4) |
 
 More detail: [evidence inventory](evidence/README.md) · [submission checklist](SUBMISSION.md) ·
 [grading audit](GRADING-AUDIT.md).

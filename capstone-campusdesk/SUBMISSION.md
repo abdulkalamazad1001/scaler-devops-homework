@@ -21,7 +21,7 @@ screenshots as substitutes for operations that were not executed.
 | M7 Terraform | CampusDesk VPC/EKS code and validation; [credited shared AWS screenshots](evidence/shared-aws/README.md) | Shared evidence included under student-reported instructor permission; CampusDesk AWS apply not performed |
 | M8 Kubernetes | Helm chart, Ingress, HPA, StatefulSet/PVC, Argo CD | Local Helm deployment and GitOps verified; scale-out to four observed |
 | M9 Observability | Prometheus scrape config, Grafana dashboard, alert rules | Live targets and populated dashboard captured |
-| M10 Presentation | `demo/slides.pdf` (12 slides), walkthrough guide, `demo/local-walkthrough.mp4` | Silent local rehearsal recorded; student-narrated AWS walkthrough pending |
+| M10 Presentation | `demo/presentation.pptx` + `demo/slides.pdf` (18 slides), walkthrough guide, `demo/local-walkthrough.mp4` | Silent local rehearsal recorded; student-narrated AWS walkthrough pending |
 
 ## Verified Deliverables
 
@@ -34,7 +34,7 @@ screenshots as substitutes for operations that were not executed.
 - [Local quality review and fixes](LOCAL-REVIEW.md)
 - [Earlier successful independent run](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38638277372)
 - [Evidence inventory](evidence/README.md), including actual test and scan artifacts
-- [12-slide presentation](demo/slides.pdf)
+- [18-slide presentation](demo/presentation.pptx) ([PDF](demo/slides.pdf))
 - [Local walkthrough recording](demo/local-walkthrough.mp4), an automated silent rehearsal, not the final narrated AWS video
 - [Backend image](https://github.com/users/abdulkalamazad1001/packages/container/package/campusdesk-backend) and [frontend image](https://github.com/users/abdulkalamazad1001/packages/container/package/campusdesk-frontend)
 

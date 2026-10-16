@@ -19,7 +19,7 @@ deployment results. CampusDesk remains an original campus IT helpdesk.
 | Troubleshooting | Existing image-pull and Service-selector exercises; added isolated readiness failure, diagnosis, repair and cleanup |
 | Deliverable navigation | Submission checklist and evidence inventory already exist; linked this comparison and security instructions |
 | Terraform cloud infrastructure | Prepared and validated, but actual AWS plan/apply/destroy and console proof remain pending |
-| Presentation | Existing 12-slide PDF and silent local recording; final complete narrated walkthrough remains pending |
+| Presentation | 18-slide PowerPoint and PDF and silent local recording; final complete narrated walkthrough remains pending |
 
 The reference uses different tools in places (Minikube, ingress-nginx,
 kube-prometheus-stack). Those are alternatives, not additional rubric requirements;
