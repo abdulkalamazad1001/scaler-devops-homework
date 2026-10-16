@@ -1,0 +1,5 @@
+# App-chart overlay when Prometheus and Grafana come from the community charts
+# (prometheus-values.yaml, grafana-values.yaml). Keeps the backend-metrics Service and
+# removes the built-in Prometheus/Grafana Deployments.
+monitoring:
+  enabled: false

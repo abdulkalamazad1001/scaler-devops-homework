@@ -12,6 +12,10 @@ spec:
     helm:
       releaseName: campusdesk
       valueFiles: [values-local.yaml, values-release.json]
+      # The Secrets live outside Git. Argo CD renders without lookup, so never generate them.
+      parameters:
+        - name: secrets.create
+          value: "false"
   destination:
     server: https://kubernetes.default.svc
     namespace: campusdesk

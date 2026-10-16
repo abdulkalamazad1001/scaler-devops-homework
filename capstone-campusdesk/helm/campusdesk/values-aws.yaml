@@ -1,5 +1,8 @@
 database:
   storageClass: gp3
+# terraform/README.md creates campusdesk-db and campusdesk-grafana with kubectl first.
+secrets:
+  create: false
 monitoring:
   nodePorts: false
 # Override ingress.host and TLS secret with your domain/certificate at deployment.

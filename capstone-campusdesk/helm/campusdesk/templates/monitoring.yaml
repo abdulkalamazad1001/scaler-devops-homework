@@ -1,4 +1,4 @@
-{{- if .Values.monitoring.enabled }}
+# Headless Service for per-replica discovery by the built-in or community Prometheus.
 apiVersion: v1
 kind: Service
 metadata:
@@ -10,6 +10,7 @@ spec:
     - name: http
       port: 8000
       targetPort: http
+{{- if .Values.monitoring.enabled }}
 ---
 apiVersion: v1
 kind: ConfigMap

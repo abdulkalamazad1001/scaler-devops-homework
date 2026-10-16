@@ -1,16 +1,27 @@
+# Defaults deploy the latest promoted GHCR images. CI promotion (scripts/promote.py)
+# rewrites values-release.json only, so pass `-f values-release.json` for the newest tag;
+# this default may lag behind it.
 backend:
   repository: ghcr.io/abdulkalamazad1001/campusdesk-backend
-  tag: local
+  tag: 455907c58b08b4866101a29a573e4f73982a82a6
   replicas: 2
 frontend:
   repository: ghcr.io/abdulkalamazad1001/campusdesk-frontend
-  tag: local
+  tag: 455907c58b08b4866101a29a573e4f73982a82a6
   replicas: 2
 imagePullPolicy: IfNotPresent
 imagePullSecrets: []
+# Generate campusdesk-db and campusdesk-grafana with random passwords. Existing values are
+# reused on upgrade (lookup) and the Secrets are kept on uninstall so the PostgreSQL volume
+# stays readable. Set false when the Secrets are created outside Helm, and for Argo CD:
+# it renders without cluster access, so lookup cannot preserve the passwords.
+secrets:
+  create: true
 database:
   image: postgres:17-alpine
   existingSecret: campusdesk-db
+  name: campusdesk
+  user: campusdesk
   storageClass: ""
   size: 2Gi
 ingress:
@@ -18,11 +29,16 @@ ingress:
   className: traefik
   host: campusdesk.localhost
   tlsSecret: ""
+  # Route the exact /metrics path to the backend for course verification. Metrics hold no
+  # ticket data; disable this where scrape endpoints must stay cluster-internal.
+  exposeMetrics: true
 autoscaling:
   enabled: true
   minReplicas: 2
   maxReplicas: 4
   targetCPU: 70
+# Built-in Prometheus and Grafana. Set enabled=false when the community charts in
+# monitoring/ are installed instead; the backend-metrics Service is always rendered.
 monitoring:
   enabled: true
   prometheusImage: prom/prometheus:v3.2.1

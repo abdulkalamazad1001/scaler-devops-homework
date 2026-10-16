@@ -1,0 +1,68 @@
+# Values for the community chart prometheus-community/prometheus (tested with 29.37.0).
+# Install as release "prometheus" in namespace "monitoring"; see README.md.
+# Only the Prometheus server is deployed: no CRDs, Operator or Alertmanager.
+alertmanager:
+  enabled: false
+prometheus-pushgateway:
+  enabled: false
+prometheus-node-exporter:
+  enabled: false
+kube-state-metrics:
+  enabled: false
+
+server:
+  retention: 24h
+  # Course-sized local cluster: keep history on an emptyDir, like the built-in stack.
+  persistentVolume:
+    enabled: false
+  resources:
+    requests: {cpu: 100m, memory: 256Mi}
+    limits: {cpu: 500m, memory: 768Mi}
+  # In-cluster URL used by Grafana: http://prometheus-server.monitoring.svc.cluster.local
+  # From a workstation: kubectl -n monitoring port-forward svc/prometheus-server 9091:80
+  service:
+    type: ClusterIP
+
+# The pushgateway job would only find nothing once the pushgateway is disabled.
+scrapeConfigs:
+  prometheus-pushgateway:
+    enabled: false
+
+# CampusDesk backend replicas, discovered through the headless backend-metrics Service
+# rendered by helm/campusdesk. One target per backend pod; the chart's ClusterRole lets
+# Prometheus read endpoints in the campusdesk namespace.
+extraScrapeConfigs: |
+  - job_name: campusdesk
+    scrape_interval: 15s
+    metrics_path: /metrics
+    kubernetes_sd_configs:
+      - role: endpoints
+        namespaces:
+          names: [campusdesk]
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_service_name]
+        regex: backend-metrics
+        action: keep
+      - source_labels: [__meta_kubernetes_endpoint_port_name]
+        regex: http
+        action: keep
+      - source_labels: [__meta_kubernetes_namespace]
+        target_label: namespace
+      - source_labels: [__meta_kubernetes_pod_name]
+        target_label: pod
+
+serverFiles:
+  alerting_rules.yml:
+    groups:
+      - name: campusdesk
+        rules:
+          - alert: CampusDeskBackendUnavailable
+            expr: absent(up{job="campusdesk"}) or max(up{job="campusdesk"}) == 0
+            for: 2m
+            labels: {severity: critical}
+            annotations: {summary: "No CampusDesk backend is available"}
+          - alert: CampusDeskHighErrorRate
+            expr: sum(rate(campusdesk_http_requests_total{status=~"5.."}[5m])) / clamp_min(sum(rate(campusdesk_http_requests_total[5m])), 0.001) > 0.05
+            for: 5m
+            labels: {severity: warning}
+            annotations: {summary: "Backend error ratio exceeds five percent"}

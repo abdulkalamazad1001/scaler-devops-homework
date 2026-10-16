@@ -1,6 +1,12 @@
 backend:
   repository: campusdesk-backend
+  tag: local
 frontend:
   repository: campusdesk-frontend
+  tag: local
+# scripts/local-k8s.ps1 creates the Secrets, and Argo CD (which uses this file) cannot
+# preserve generated passwords, so the chart must not manage them here.
+secrets:
+  create: false
 monitoring:
   nodePorts: true

@@ -1,0 +1,60 @@
+# Values for the Grafana chart grafana-community/grafana (tested with 14.0.0). The same values
+# also render with the deprecated grafana/grafana chart (10.5.15).
+# Install as release "grafana" in namespace "monitoring"; see README.md for the two
+# objects to create first: the admin Secret and the dashboard ConfigMap.
+
+# Admin credentials come from a Secret, never from values. Keys match the chart-generated
+# campusdesk-grafana Secret (user, password).
+admin:
+  existingSecret: campusdesk-grafana
+  userKey: user
+  passwordKey: password
+
+# The kind cluster maps only NodePorts 30300/30900 to the host (used by the built-in
+# stack), so use: kubectl -n monitoring port-forward svc/grafana 3002:80
+service:
+  type: NodePort
+  port: 80
+  nodePort: 30301
+
+persistence:
+  enabled: false
+testFramework:
+  enabled: false
+
+resources:
+  requests: {cpu: 100m, memory: 128Mi}
+  limits: {cpu: 500m, memory: 512Mi}
+
+grafana.ini:
+  users:
+    allow_sign_up: false
+
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        # The dashboard JSON references this uid.
+        uid: prometheus
+        type: prometheus
+        access: proxy
+        url: http://prometheus-server.monitoring.svc.cluster.local
+        isDefault: true
+
+dashboardProviders:
+  dashboardproviders.yaml:
+    apiVersion: 1
+    providers:
+      - name: campusdesk
+        orgId: 1
+        folder: CampusDesk
+        type: file
+        disableDeletion: true
+        editable: false
+        options:
+          path: /var/lib/grafana/dashboards/campusdesk
+
+# ConfigMap created from helm/campusdesk/dashboards/campusdesk.json (single source of truth).
+dashboardsConfigMaps:
+  campusdesk: campusdesk-dashboard

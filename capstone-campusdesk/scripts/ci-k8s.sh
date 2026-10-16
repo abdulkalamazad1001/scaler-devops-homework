@@ -3,12 +3,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 kind load docker-image "ghcr.io/abdulkalamazad1001/campusdesk-backend:$IMAGE_TAG" "ghcr.io/abdulkalamazad1001/campusdesk-frontend:$IMAGE_TAG" --name campusdesk-ci
 kubectl apply -f k8s/namespace.yaml
-password="$(openssl rand -hex 20)"
-kubectl -n campusdesk create secret generic campusdesk-db \
-  --from-literal=POSTGRES_DB=campusdesk --from-literal=POSTGRES_USER=campusdesk \
-  --from-literal="POSTGRES_PASSWORD=$password" \
-  --from-literal="DATABASE_URL=postgresql+psycopg://campusdesk:$password@postgres:5432/campusdesk"
-kubectl -n campusdesk create secret generic campusdesk-grafana --from-literal="password=$(openssl rand -hex 20)"
+# The chart generates campusdesk-db and campusdesk-grafana (secrets.create defaults to true).
 helm upgrade --install campusdesk helm/campusdesk -n campusdesk \
   --set backend.tag="$IMAGE_TAG" --set frontend.tag="$IMAGE_TAG" \
   --set autoscaling.enabled=false --set ingress.enabled=false \

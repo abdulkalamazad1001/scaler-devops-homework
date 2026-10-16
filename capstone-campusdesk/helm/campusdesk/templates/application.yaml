@@ -10,9 +10,12 @@ metadata:
   labels:
     app: {{ $component }}
 spec:
-  {{- if or (eq $component "frontend") (not $.Values.autoscaling.enabled) }}
-  replicas: {{ $config.replicas }}
+  {{- /* Always set replicas (minimum 2). With the HPA enabled the backend starts at its minimum. */}}
+  {{- $replicas := $config.replicas }}
+  {{- if and (eq $component "backend") $.Values.autoscaling.enabled }}
+  {{- $replicas = $.Values.autoscaling.minReplicas }}
   {{- end }}
+  replicas: {{ max 2 (int $replicas) }}
   selector:
     matchLabels:
       app: {{ $component }}
