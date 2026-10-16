@@ -1,5 +1,7 @@
 terraform {
-  required_version = ">= 1.11, < 2.0"
+  # terraform-aws-modules/eks 20.37.0 needs >= 1.3.2 (vpc 5.21.0, kms 2.1.0 and
+  # iam 5.60.0 need >= 1.0); nothing in this root module needs a newer release.
+  required_version = ">= 1.3.2, < 2.0"
   required_providers {
     aws = {
       source  = "hashicorp/aws"

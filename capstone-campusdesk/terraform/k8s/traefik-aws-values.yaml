@@ -1,0 +1,27 @@
+# Traefik values for the EKS cluster created by this Terraform configuration.
+# Used with chart traefik/traefik 34.4.1 (same chart version as the local Kind setup).
+# The Service is type LoadBalancer, so AWS creates a Network Load Balancer in the
+# public subnets. scripts/pre-destroy.* must remove it before `terraform destroy`.
+service:
+  type: LoadBalancer
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb
+ports:
+  web:
+    expose:
+      default: true
+  websecure:
+    # No certificate is configured in this runbook; serve plain HTTP only.
+    expose:
+      default: false
+providers:
+  kubernetesCRD:
+    enabled: false
+  kubernetesIngress:
+    enabled: true
+    publishedService:
+      # Copy the load balancer hostname into Ingress status.
+      enabled: true
+ingressClass:
+  enabled: true
+  isDefaultClass: false
