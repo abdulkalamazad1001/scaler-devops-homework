@@ -113,11 +113,11 @@ bullets(["Prometheus discovers and scrapes each backend replica.",
          "Backend availability and error-ratio alert rules detect service problems."])
 c.showPage()
 
-start("AWS infrastructure is prepared in code", "Terraform - deployment deferred")
+start("AWS infrastructure is defined in code", "Terraform - AWS VPC + EKS")
 bullets(["Two public subnets and two private subnets span availability zones.",
          "A NAT gateway connects private worker nodes to external registries.",
          "EKS, a managed node group and EBS CSI provide the deployment foundation.",
-         "Cloud plan, apply, console evidence and destroy remain pending AWS access."])
+         "AWS run: plan, apply, VPC, EKS, nodes and destroy captured from my ShelfWise configuration."])
 c.showPage()
 
 start("Failures become evidence for diagnosis", "Troubleshooting")
@@ -127,11 +127,11 @@ bullets(["A nonexistent image tag demonstrates ImagePullBackOff and pod events."
          "Image scans guide remediation; successful deployment alone is not security proof."])
 c.showPage()
 
-start("Verification is part of the deliverable", "Learnings and remaining work")
+start("Verification is part of the deliverable", "Key learnings")
 bullets(["A working app needs tests, repeatable deployment and observable behavior.",
          "Screenshots and reports should show actual runs and identify their environment.",
-         "Complete the deferred AWS deployment and record its real evidence.",
-         "Use the repository submission checklist before presenting the final walkthrough."])
+         "Security gates only help when a failing scan really blocks publication.",
+         "Git as the record of deployment makes every release traceable to a commit."])
 text("Brief, rubric and submission guide: github.com/Nency-Ravaliya/devsecops-python", 60, 95, 815, small)
 c.showPage()
 c.save()
