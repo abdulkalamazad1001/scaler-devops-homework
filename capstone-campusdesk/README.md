@@ -7,24 +7,23 @@ software and account-access issues. The support team assigns tickets, sets prior
 tracks progress, searches requests and resolves them. The application is an original
 implementation for the DevOps capstone, using the course architecture.
 
-**Start here:** [Submission status](SUBMISSION.md) | [Local quality review](LOCAL-REVIEW.md) | [Demo guide](demo/WALKTHROUGH.md) |
-[AWS deployment](terraform/README.md) | [Troubleshooting](troubleshooting/README.md)
+## Where Each Requirement Lives
 
-[Reference comparison](REFERENCE-COMPARISON.md) | [Source security gates](security/README.md)
+| Module | What | Files |
+|---|---|---|
+| M1 Application | FastAPI REST API, PostgreSQL, Alembic, React UI | [`backend/app/`](backend/app/), [`backend/alembic/versions/`](backend/alembic/versions/), [`backend/requirements.txt`](backend/requirements.txt), [`frontend/`](frontend/), [`docker-compose.yml`](docker-compose.yml) |
+| M2 Testing | 40 pytest cases on an isolated test database | [`backend/tests/`](backend/tests/), [`backend/pytest.ini`](backend/pytest.ini), [`backend/tests/conftest.py`](backend/tests/conftest.py) |
+| M3 Git | Public repository, scoped commits, ignore rules | [`.gitignore`](.gitignore) |
+| M4 Docker | Non-root images, multi-stage frontend, Compose stack | [`backend/Dockerfile`](backend/Dockerfile), [`frontend/Dockerfile`](frontend/Dockerfile), [`docker-compose.yml`](docker-compose.yml) |
+| M5 CI/CD | Test, build, scan, publish SHA-tagged images to GHCR | [`../.github/workflows/campusdesk.yml`](../.github/workflows/campusdesk.yml) |
+| M6 DevSecOps | Trivy gate on HIGH/CRITICAL for both images | [CI/CD And Security](#cicd-and-security) |
+| M7 Terraform | VPC with public/private subnets, NAT, EKS, node group | [`terraform/`](terraform/), [runbook](terraform/README.md) |
+| M8 Kubernetes + Helm | Namespace, Helm chart, 2+ replicas, ClusterIP, Ingress | [`k8s/`](k8s/), [`helm/campusdesk/`](helm/campusdesk/) |
+| M9 Observability | `/metrics`, Prometheus and Grafana Helm values, dashboard | [`monitoring/`](monitoring/), [`helm/campusdesk/dashboards/`](helm/campusdesk/dashboards/) |
+| M10 Presentation | Slides, video, this README | [`demo/`](demo/) |
 
-**Verified locally:** 20 API tests, browser CRUD checks, healthy Compose and Kind
-deployments, live monitoring, and Argo CD GitOps. The
-[successful CI/CD run](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38644518494)
-tested PostgreSQL, passed both application-image security gates, deployed to Kubernetes,
-passed 17 browser checks, published images and promoted their SHA tags. See [real evidence](evidence/README.md),
-[slides](demo/slides.pdf) and the [silent local walkthrough](demo/local-walkthrough.mp4).
-AWS deployment and the complete student-narrated AWS video remain pending.
-
-[Shared AWS screenshots](evidence/shared-aws/README.md) are now included with
-collaborator attribution under the student's reported instructor permission. They
-depict the shared TaskBoard infrastructure, not a CampusDesk AWS deployment.
-The [source-security follow-up pipeline](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/38765329150)
-also completed successfully.
+Other guides: [demo script](demo/VIDEO-SCRIPT.md) | [evidence](evidence/README.md) |
+[troubleshooting exercises](troubleshooting/README.md) | [security gates](security/README.md)
 
 ![CampusDesk running through local Kubernetes Ingress](evidence/application-ingress.png)
 
@@ -48,9 +47,9 @@ flowchart LR
   Terraform --> AWS[AWS VPC / EKS / Nodes]
 ```
 
-Local Kubernetes uses Kind on Docker Desktop. AWS infrastructure is a separate,
-deliberately deferred deployment. Application data in Compose and Kubernetes lives
-in separate PostgreSQL volumes.
+Local Kubernetes uses Kind on Docker Desktop; the same Helm chart deploys to the
+Terraform-provisioned EKS cluster with `values-aws.yaml`. Application data in Compose
+and Kubernetes lives in separate PostgreSQL volumes.
 
 ## Stack
 
@@ -65,7 +64,7 @@ in separate PostgreSQL volumes.
 | Infrastructure | Terraform VPC, public/private subnets, NAT, EKS, EBS CSI |
 | Deployment | Kubernetes, Helm, Traefik, HPA, readiness/liveness probes |
 | GitOps | Argo CD application pointed at this repository |
-| Monitoring | Prometheus per-pod scraping, Grafana provisioned dashboard |
+| Monitoring | Prometheus and Grafana (community Helm charts or built-in), per-pod scraping, provisioned dashboard |
 
 ## Local Setup
 
@@ -109,7 +108,9 @@ docker compose down
 | GET | `/api/stats` | Counts by status and unresolved urgent tickets |
 | GET | `/health`, `/ready`, `/metrics` | Operational endpoints |
 
-Invalid inputs return 422. Search escapes SQL wildcard characters. Request metrics
+Invalid inputs return 422, including out-of-range IDs and NUL characters that
+PostgreSQL cannot store. A failed database write is rolled back and returns 503.
+Search escapes SQL wildcard characters. Request metrics
 use route templates rather than ticket IDs to avoid unbounded label cardinality.
 
 ## Tests And Development
@@ -122,10 +123,13 @@ cd backend
 ../.venv/Scripts/python -m ruff check .
 ```
 
-Tests cover CRUD, filters, counts, pagination, wildcard escaping, invalid input,
-missing IDs and readiness failure. Local unit tests use isolated in-memory SQLite.
-CI additionally runs them against a dedicated PostgreSQL database, with each test
-inside a rolled-back transaction. No test touches application data.
+40 tests cover CRUD, filters, counts, pagination, wildcard escaping, invalid input,
+out-of-range IDs, missing IDs, database write failure and readiness failure. The
+schema is built by the real Alembic migration. Locally the tests use an isolated
+in-memory SQLite database; CI sets `TEST_DATABASE_URL` to a dedicated PostgreSQL
+service. Each test runs inside a rolled-back transaction, and the suite refuses to
+start if `TEST_DATABASE_URL` equals the application's `DATABASE_URL`. CI then checks
+that the migration upgrades, matches the models (`alembic check`) and downgrades.
 
 Browser regression checks exercise the running application, including real CRUD,
 validation, keyboard dismissal, narrow-screen layout and mocked failure/pagination
@@ -140,10 +144,10 @@ node scripts/browser-check.mjs
 No seed data is required. Only the browser test's uniquely named ticket is created
 and deleted. Use `APP_URL` to target a different local deployment.
 
-For a lightweight development server, run `alembic upgrade head` and
-`uvicorn app.main:app --port 8000` inside `backend`, then `npm ci` and `npm run dev`
-inside `frontend`. SQLite is the development fallback when `DATABASE_URL` is unset;
-both deployment paths use PostgreSQL.
+For a lightweight development server, set `DATABASE_URL` (for example to the Compose
+PostgreSQL), run `alembic upgrade head` and `uvicorn app.main:app --port 8000` inside
+`backend`, then `npm ci` and `npm run dev` inside `frontend`. The backend refuses to
+start without `DATABASE_URL` rather than silently using a local file database.
 
 ## CI/CD And Security
 
@@ -159,9 +163,26 @@ promotion and evidence-only snapshot commits use `[skip ci]` to avoid redundant 
 3. Both Docker images are built and tagged with the full Git commit SHA.
 4. Trivy scans both images and blocks the pipeline on any HIGH or CRITICAL finding.
 5. An ephemeral Kind cluster deploys the Helm chart and runs smoke and browser tests.
-6. A successful main-branch run publishes both images to GHCR.
+6. A separate `publish` job, the only job with write permissions, pushes the exact
+   scanned and tested images to GHCR. Main-branch runs are never cancelled midway.
 7. CI commits those verified SHA tags to `helm/campusdesk/values-release.json`.
    Argo CD automatically reconciles that release into the local cluster.
+
+### Trivy Result Explained
+
+Trivy scans each built image for known CVEs in its operating-system packages
+(Alpine `apk`) and application libraries (Python wheels; the frontend runtime is
+Nginx serving static files). The first Debian-based backend image failed the gate
+with 48 findings, including **CVE-2025-47273** (HIGH): a path-traversal flaw in old
+setuptools' package-index code that could let a crafted package name write files
+outside the intended directory. The fix was to rebuild on a patched Alpine base and
+remove pip/setuptools after installing dependencies, since the running service never
+installs packages. Both images now scan with **0 HIGH/CRITICAL** findings, which means
+no known fixed-or-unfixed HIGH/CRITICAL CVE exists in their packages according to
+Trivy's database at scan time. It does not prove the application logic is secure,
+and new CVEs can appear later, which is why every build rescans.
+See [the original report](evidence/trivy-backend-initial.json) and
+[the resolution notes](evidence/README.md#security-findings-and-resolution).
 
 Test and scan reports are uploaded as workflow artifacts. There is no `continue-on-error`
 on quality/security gates and no fabricated successful scan output. A failed scan must
@@ -213,7 +234,17 @@ If your system does not resolve `campusdesk.localhost`, use `curl.exe -H
 
 ## Observability And Autoscaling
 
-The chart provisions Prometheus and Grafana. Prometheus discovers every backend
+`/metrics` is served by the backend and, through the Ingress, at
+<http://campusdesk.localhost:8088/metrics>.
+
+**Community Helm charts (submission path).** [`monitoring/`](monitoring/) holds
+values files for `prometheus-community/prometheus` and the Grafana chart. They
+install into the `monitoring` namespace, scrape the backend pods and provision the
+CampusDesk dashboard. Exact install and verification commands are in
+[monitoring/README.md](monitoring/README.md).
+
+**Built-in option.** The app chart can also provision a small Prometheus and Grafana
+itself (`monitoring.enabled`, used by the local Argo CD deployment). Prometheus discovers every backend
 replica through a headless Service, so one replica's request counters cannot hide
 another's. The Grafana dashboard `CampusDesk / Service Health` displays healthy
 replicas, request rate, p95 latency, per-route traffic and status codes.
@@ -260,10 +291,30 @@ networking values with `values-aws.yaml` and configure the cloud cluster destina
 
 ## AWS Infrastructure
 
-[`terraform/`](terraform/) provisions two public and two private subnets, one NAT
-gateway, an EKS cluster, a managed node group and an EBS CSI IAM role. EKS API access
-is limited to supplied CIDRs. AWS is **prepared but deferred**, per the project owner's
-choice. See [the AWS runbook](terraform/README.md) for plan, deployment and cleanup.
+[`terraform/`](terraform/) provisions, in `ap-south-1`:
+
+- a VPC with two public and two private subnets across two availability zones,
+  an internet gateway and one NAT gateway;
+- an EKS cluster with a managed node group (2 x `t3.medium`, scaling 1-3) in the
+  private subnets, and the EBS CSI driver with its IAM role.
+
+EKS API access is limited to the CIDRs in `terraform.tfvars`; only
+`terraform.tfvars.example` is committed, never credentials or state.
+
+```powershell
+cd terraform
+terraform init
+terraform plan -out campusdesk.tfplan
+terraform apply campusdesk.tfplan
+# ... deploy and capture evidence ...
+powershell -ExecutionPolicy Bypass -File scripts/pre-destroy.ps1
+terraform destroy
+```
+
+`scripts/pre-destroy.ps1` removes Kubernetes-created load balancers and volumes
+first, so `terraform destroy` cannot hang on them. The full step-by-step
+[AWS runbook](terraform/README.md) covers prerequisites, cost, deploying the app to
+EKS, screenshots and cleanup checks.
 
 ## Known Limits
 
@@ -272,8 +323,11 @@ choice. See [the AWS runbook](terraform/README.md) for plan, deployment and clea
 - PostgreSQL is a single instance. A production service needs backups, recovery
   tests, encryption policy and preferably a managed database.
 - Local Prometheus and Grafana storage is ephemeral; PostgreSQL data is persistent.
-- AWS plan/apply/destroy proof and a complete AWS walkthrough require a real account.
-- Local screenshots cannot stand in for a successful GitHub Actions run.
+- The EKS cluster is created for demonstration and destroyed afterwards to avoid
+  cost; the always-on environment is the local Kind cluster.
+- The Helm release in the local cluster is owned by Argo CD after bootstrap; run
+  `helm upgrade --install` against a fresh namespace or cluster, not alongside Argo CD.
+- Ingress is plain HTTP; production would add TLS (cert-manager) and authentication.
 
 ## Sources
 
@@ -281,6 +335,3 @@ choice. See [the AWS runbook](terraform/README.md) for plan, deployment and clea
 - [Grading rubric](https://github.com/Nency-Ravaliya/devsecops-python/blob/main/GRADING.md)
 - [Submission instructions](https://github.com/Nency-Ravaliya/devsecops-python/blob/main/SUBMISSION.md)
 - Campus photograph: [Unsplash source image](https://images.unsplash.com/photo-1523240795612-9a054b0db644), used as illustrative campus imagery.
-
-The supplied repository contains `SUBMISSION.md`; no `student-guide.md` was present
-when inspected. See `SUBMISSION.md` here for the evidence inventory and open items.
