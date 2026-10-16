@@ -9,6 +9,11 @@ __pycache__/
 .terraform/
 *.tfstate
 *.tfstate.*
+# Local credentials; keep example templates versioned.
+.env
+.env.*
+!.env.example
+!.env.*.example
 
 
 task-2-shell-scripting/sysreport/
