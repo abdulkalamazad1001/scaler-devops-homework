@@ -1,8 +1,8 @@
 import logging
 import time
-from typing import Literal
+from typing import Annotated, Literal
 
-from fastapi import Depends, FastAPI, HTTPException, Query, Response
+from fastapi import Depends, FastAPI, HTTPException, Path, Query, Response
 from prometheus_client import CONTENT_TYPE_LATEST, Counter, Histogram, generate_latest
 from sqlalchemy import func, or_, select, text
 from sqlalchemy.exc import SQLAlchemyError
@@ -10,12 +10,15 @@ from sqlalchemy.orm import Session
 
 from .db import get_db
 from .models import Ticket
-from .schemas import TicketInput, TicketOutput
+from .schemas import SafeStr, TicketInput, TicketOutput
 
 app = FastAPI(title="CampusDesk API", version="1.0.0")
 requests = Counter("campusdesk_http_requests_total", "HTTP requests", ["method", "route", "status"])
 latency = Histogram("campusdesk_http_request_duration_seconds", "HTTP latency", ["method", "route"])
 logger = logging.getLogger("uvicorn.error")
+# PostgreSQL integer columns are int4; larger values would fail in the database rather than validate.
+INT4_MAX = 2_147_483_647
+TicketId = Annotated[int, Path(ge=1, le=INT4_MAX)]
 
 
 @app.middleware("http")
@@ -75,9 +78,9 @@ def stats(db: Session = Depends(get_db)):
 @app.get("/api/tickets", response_model=list[TicketOutput])
 def list_tickets(
     status: Literal["open", "in_progress", "resolved"] | None = None,
-    q: str = Query(default="", max_length=120),
+    q: Annotated[SafeStr, Query(max_length=120)] = "",
     limit: int = Query(default=100, ge=1, le=100),
-    offset: int = Query(default=0, ge=0),
+    offset: int = Query(default=0, ge=0, le=INT4_MAX),
     db: Session = Depends(get_db),
 ):
     query = select(Ticket)
@@ -96,6 +99,15 @@ def list_tickets(
     ).all()
 
 
+def commit(db: Session) -> None:
+    try:
+        db.commit()
+    except SQLAlchemyError:
+        db.rollback()
+        logger.exception("Database write failed")
+        raise HTTPException(503, "Database unavailable; the change was not saved. Please retry.") from None
+
+
 def find_ticket(ticket_id: int, db: Session) -> Ticket:
     ticket = db.get(Ticket, ticket_id)
     if ticket is None:
@@ -104,7 +116,7 @@ def find_ticket(ticket_id: int, db: Session) -> Ticket:
 
 
 @app.get("/api/tickets/{ticket_id}", response_model=TicketOutput)
-def get_ticket(ticket_id: int, db: Session = Depends(get_db)):
+def get_ticket(ticket_id: TicketId, db: Session = Depends(get_db)):
     return find_ticket(ticket_id, db)
 
 
@@ -112,23 +124,23 @@ def get_ticket(ticket_id: int, db: Session = Depends(get_db)):
 def create_ticket(payload: TicketInput, db: Session = Depends(get_db)):
     ticket = Ticket(**payload.model_dump())
     db.add(ticket)
-    db.commit()
+    commit(db)
     db.refresh(ticket)
     return ticket
 
 
 @app.put("/api/tickets/{ticket_id}", response_model=TicketOutput)
-def update_ticket(ticket_id: int, payload: TicketInput, db: Session = Depends(get_db)):
+def update_ticket(ticket_id: TicketId, payload: TicketInput, db: Session = Depends(get_db)):
     ticket = find_ticket(ticket_id, db)
     for key, value in payload.model_dump().items():
         setattr(ticket, key, value)
-    db.commit()
+    commit(db)
     db.refresh(ticket)
     return ticket
 
 
 @app.delete("/api/tickets/{ticket_id}", status_code=204)
-def delete_ticket(ticket_id: int, db: Session = Depends(get_db)):
+def delete_ticket(ticket_id: TicketId, db: Session = Depends(get_db)):
     db.delete(find_ticket(ticket_id, db))
-    db.commit()
+    commit(db)
     return Response(status_code=204)

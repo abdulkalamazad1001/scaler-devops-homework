@@ -1,7 +1,8 @@
 import pytest
 from sqlalchemy.exc import OperationalError
+from sqlalchemy.orm import Session
 
-from app.db import get_db
+from app.db import database_url, get_db
 from app.main import app, latency, requests
 
 
@@ -118,3 +119,41 @@ def test_pagination_has_stable_order(client, payload):
     first = client.get("/api/tickets?limit=13").json()
     second = client.get("/api/tickets?limit=13&offset=12").json()
     assert [row["id"] for row in first[:12]] + [row["id"] for row in second] == ids[::-1]
+
+
+@pytest.mark.parametrize("ticket_id", [0, -1, 2_147_483_648, 10**20])
+@pytest.mark.parametrize("method", ["get", "put", "delete"])
+def test_out_of_range_ticket_id(client, payload, method, ticket_id):
+    kwargs = {"json": payload} if method == "put" else {}
+    assert getattr(client, method)(f"/api/tickets/{ticket_id}", **kwargs).status_code == 422
+
+
+@pytest.mark.parametrize("field", ["title", "description", "requester", "location", "assignee"])
+def test_nul_in_body_is_rejected(client, payload, field):
+    response = client.post("/api/tickets", json={**payload, field: "Bad\x00value"})
+    assert response.status_code == 422
+    assert response.json()["detail"][0]["loc"] == ["body", field]
+
+
+def test_nul_in_search_and_large_offset_are_rejected(client):
+    assert client.get("/api/tickets", params={"q": "a\x00b"}).status_code == 422
+    assert client.get("/api/tickets?offset=2147483648").status_code == 422
+    assert client.get("/api/tickets?offset=2147483647").status_code == 200
+
+
+def test_write_failure_returns_503_and_rolls_back(client, payload, monkeypatch):
+    def fail(self):
+        raise OperationalError("COMMIT", {}, Exception("offline"))
+
+    monkeypatch.setattr(Session, "commit", fail)
+    response = client.post("/api/tickets", json=payload)
+    assert response.status_code == 503
+    assert "not saved" in response.json()["detail"]
+    monkeypatch.undo()
+    assert client.get("/api/tickets").json() == []
+
+
+def test_missing_database_url_fails_clearly(monkeypatch):
+    monkeypatch.delenv("DATABASE_URL", raising=False)
+    with pytest.raises(RuntimeError, match="DATABASE_URL is not set"):
+        database_url()
