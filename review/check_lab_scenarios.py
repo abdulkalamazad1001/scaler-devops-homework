@@ -265,6 +265,12 @@ def probes(lab):
                   "timeout 150 sh -c 'while :; do :; done' >/dev/null 2>&1 </dev/null &")
     lab.observe("hpa-scale-out", "deployment", "web-app", lambda o: o["status"].get("readyReplicas", 0) > 2, timeout=180)
     lab.check("hpa-final", "get", "hpa", "web-app-hpa", "-o", "json")
+    lab.check("cpu-memory", "top", "pods")
+    lab.check("hpa-description", "describe", "hpa", "web-app-hpa")
+    # The bounded CPU workers stop after 150 seconds. Keep the real stabilization window.
+    lab.observe("hpa-scale-down", "deployment", "web-app",
+                lambda o: o["spec"]["replicas"] == 2 and o["status"].get("readyReplicas") == 2, timeout=540)
+    lab.check("hpa-after-load", "get", "hpa", "web-app-hpa", "-o", "json")
 
 
 def main():

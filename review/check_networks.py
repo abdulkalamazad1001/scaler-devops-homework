@@ -58,8 +58,11 @@ def main():
         check("volume-read-new-container", ["run", "--rm", "-v", f"{volume}:/data:ro", "alpine:3.22",
                                             "grep", "preserved-after-container-removal", "/data/proof.txt"])
         with tempfile.TemporaryDirectory(prefix="homework-bind-") as folder:
+            # TemporaryDirectory uses 0700; Nginx's unprivileged worker must be able to traverse it.
+            Path(folder).chmod(0o755)
             page = Path(folder) / "index.html"
             page.write_text("Hello students\n")
+            page.chmod(0o644)
             web = prefix + "-bind"
             check("bind-start", ["run", "-d", "--name", web, "--network", networks[0],
                   "--mount", f"type=bind,source={folder},target=/usr/share/nginx/html,readonly", "nginx:1.27-alpine"])
@@ -67,7 +70,7 @@ def main():
             for label, expected in [("initial", "Hello students"), ("updated", "Hello students updated live")]:
                 page.write_text(expected + "\n")
                 check("bind-" + label, ["exec", containers[0], "sh", "-ec",
-                      f"wget -qO- http://{web} | grep '{expected}'"])
+                      f"for i in 1 2 3 4 5; do wget -qO- http://{web} | grep '{expected}' && exit 0; sleep 1; done; exit 1"])
         host = prefix + "-host"
         check("host-start", ["run", "-d", "--name", host, "--network", "host", "httpd:2.4-alpine"])
         created_containers.append(host)

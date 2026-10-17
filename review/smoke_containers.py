@@ -1,6 +1,7 @@
 """Build Docker homework apps, check HTTP, then remove only our test containers."""
 
 import json
+import os
 import subprocess
 import sys
 import time
@@ -31,8 +32,9 @@ def main():
             continue
         container = f"{name}-review-{uuid.uuid4().hex[:8]}"
         try:
+            binding = f"127.0.0.1:8080:{port}" if name == "task6-multistage" else f"127.0.0.1::{port}"
             launch = run(f"{name}-start", ["docker", "run", "-d", "--name", container,
-                                          "-p", f"127.0.0.1::{port}", tag])
+                                          "-p", binding, tag])
             checks.append(launch)
             if launch["exit_code"]:
                 continue
@@ -50,6 +52,11 @@ def main():
                     last_error = str(error)
                     time.sleep(1)
             checks.append({"check": f"{name}-http", "exit_code": int(bool(last_error)), "error": last_error})
+            checks.append(run(f"{name}-docker-ps", ["docker", "ps", "--filter", f"name={container}", "--format",
+                                                      "table {{.Names}}\t{{.Image}}\t{{.Ports}}\t{{.Status}} "]))
+            if not last_error and os.environ.get("HOMEWORK_BROWSER_CHECKS") == "1":
+                checks.append(run(f"{name}-browser", ["node", "review/check_demo_browser.mjs", f"http://{address}/",
+                                                     str((RESULTS / "screenshots" / f"{name}.png").resolve())]))
             if name == "task6-multistage":
                 checks.append(run(f"{name}-nonroot", ["docker", "exec", container, "sh", "-ec", 'test "$(id -u)" != 0; id']))
             checks.append(run(f"{name}-logs", ["docker", "logs", container]))

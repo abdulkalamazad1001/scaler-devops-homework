@@ -111,16 +111,54 @@ def storage(lab):
         lab.check("static-pv-cleanup", "delete", "pv", name, "--ignore-not-found")
 
 
+def loadbalancer(lab):
+    base = "task-11-k8s-services-dns/services/03-loadbalancer"
+    lab.apply("service", f"{base}/app-deployment.yaml", f"{base}/service.yaml")
+    lab.rollout("deploy/web-lb")
+    obj = lab.observe("external-address", "service", "web-lb",
+                      lambda o: bool(o.get("status", {}).get("loadBalancer", {}).get("ingress")))
+    address = obj["status"]["loadBalancer"]["ingress"][0]["ip"]
+    result = run("loadbalancer-external-http", ["docker", "run", "--rm", "--network", "homework-review",
+                 "alpine:3.22", "sh", "-ec",
+                 f"for i in $(seq 1 20); do wget -T 3 -qO- http://{address} && exit 0; sleep 2; done; exit 1"])
+    lab.checks.append(result)
+    if result["exit_code"]:
+        raise RuntimeError("external LoadBalancer HTTP failed")
+
+
+def basics(lab):
+    lab.client()
+    lab.apply("bootcamp", "task-9-kubernetes-fundamentals/manifests/kubernetes-bootcamp.yaml")
+    lab.rollout("deploy/kubernetes-bootcamp")
+    lab.http("bootcamp-http", "http://kubernetes-bootcamp:8080", "Hello")
+    lab.check("explore", "get", "deploy,rs,pods,svc", "-o", "wide")
+    lab.check("logs", "logs", "deploy/kubernetes-bootcamp")
+    lab.check("exec", "exec", "deploy/kubernetes-bootcamp", "--", "env")
+    lab.check("scale", "scale", "deployment", "kubernetes-bootcamp", "--replicas=4")
+    lab.rollout("deploy/kubernetes-bootcamp")
+    lab.check("scale-down", "scale", "deployment", "kubernetes-bootcamp", "--replicas=2")
+    lab.rollout("deploy/kubernetes-bootcamp")
+    lab.check("update-v2", "set", "image", "deployment/kubernetes-bootcamp", "kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v2")
+    lab.rollout("deploy/kubernetes-bootcamp")
+    lab.http("updated-http", "http://kubernetes-bootcamp:8080", "v=2")
+    lab.check("broken-update", "set", "image", "deployment/kubernetes-bootcamp", "kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v10")
+    lab.observe("broken-image-observed", "pods", "", lambda o: any(reason(p, {"ErrImagePull", "ImagePullBackOff"}) for p in o['items']))
+    lab.check("rollback", "rollout", "undo", "deployment/kubernetes-bootcamp")
+    lab.rollout("deploy/kubernetes-bootcamp")
+    lab.http("rollback-http", "http://kubernetes-bootcamp:8080", "v=2")
+    lab.check("history", "rollout", "history", "deployment/kubernetes-bootcamp")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--context", required=True)
-    parser.add_argument("--suite", choices=["ingress", "mini", "storage"], required=True)
+    parser.add_argument("--suite", choices=["ingress", "mini", "storage", "loadbalancer", "basics"], required=True)
     args = parser.parse_args()
     lab = Lab(args.context, args.suite)
     error = None
     try:
         lab.check("namespace", "create", "namespace", lab.namespace)
-        {"ingress": ingress, "mini": mini, "storage": storage}[args.suite](lab)
+        {"ingress": ingress, "mini": mini, "storage": storage, "loadbalancer": loadbalancer, "basics": basics}[args.suite](lab)
     except Exception as exc:
         error = str(exc)
         print(error, file=sys.stderr)

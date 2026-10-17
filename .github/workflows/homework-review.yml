@@ -104,3 +104,33 @@ jobs:
           path: review-run-results/
           if-no-files-found: error
           retention-days: 14
+
+  autoscaling:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: python -m pip install PyYAML==6.0.3
+      - uses: helm/kind-action@v1.12.0
+        with:
+          cluster_name: homework-hpa
+      - name: Enable metrics in the disposable Kind cluster
+        run: |
+          kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.8.1/components.yaml
+          kubectl -n kube-system patch deployment metrics-server --type=json \
+            -p='[{"op":"add","path":"/spec/template/spec/containers/0/args/-","value":"--kubelet-insecure-tls"}]'
+          kubectl -n kube-system rollout status deployment/metrics-server --timeout=180s
+      - name: PHP Apache scale out and scale down
+        run: python review/check_hpa.py --context kind-homework-hpa
+      - name: Mini-project probes and autoscaling recovery
+        run: python review/check_lab_scenarios.py --context kind-homework-hpa --suite probes
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: homework-autoscaling
+          path: review-run-results/
+          if-no-files-found: error
+          retention-days: 14
