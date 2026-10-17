@@ -55,3 +55,11 @@ Ran chart creation and repository commands, install, test, two upgrades, rollbac
 ![Helm: saved execution log view](../review/results/2026-10-18/screenshots/task15-helm.png)
 
 *Saved execution log view from the verified rerun; complete results are linked above.*
+
+### Broken-upgrade recovery verified
+
+The actual production values produced three replicas. An invalid image then caused ErrImagePull; rollback to revision 2 restored three healthy replicas and passed the Helm HTTP test.
+
+[Supplemental result](../review/results/2026-10-18/project-followup/helm-project.json) · [Project review](../review/LAB-PROJECT-REVIEW.md). These checks ran locally after the earlier green CI run.
+
+![Saved execution logs for the mini-project](../review/results/2026-10-18/screenshots/task15-project-rollback.png)

@@ -1,0 +1,312 @@
+{
+  "captured_at": "2026-10-17T19:18:17.473514+00:00",
+  "context": "kind-campusdesk",
+  "namespace": "homework-storage-project-789f4f2b",
+  "error": null,
+  "checks": [
+    {
+      "check": "storage-project-namespace",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:16:47.629689+00:00",
+      "duration_seconds": 0.18,
+      "log": "storage-project-namespace.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-storage-project-789f4f2b",
+        "create",
+        "namespace",
+        "homework-storage-project-789f4f2b"
+      ]
+    },
+    {
+      "check": "storage-project-client-create",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:16:47.805030+00:00",
+      "duration_seconds": 0.04,
+      "log": "storage-project-client-create.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-storage-project-789f4f2b",
+        "run",
+        "lab-client",
+        "--image=busybox:1.36",
+        "--restart=Never",
+        "--",
+        "sleep",
+        "3600"
+      ]
+    },
+    {
+      "check": "storage-project-lab-client-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:16:47.846419+00:00",
+      "duration_seconds": 5.2,
+      "log": "storage-project-lab-client-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-storage-project-789f4f2b",
+        "wait",
+        "--for=condition=Ready",
+        "pod/lab-client",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "storage-project-application",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:16:53.058018+00:00",
+      "duration_seconds": 0.1,
+      "log": "storage-project-application.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-storage-project-789f4f2b",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "storage-project-deployment-web-app-rollout-4",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:16:53.159439+00:00",
+      "duration_seconds": 27.72,
+      "log": "storage-project-deployment-web-app-rollout-4.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-storage-project-789f4f2b",
+        "rollout",
+        "status",
+        "deployment/web-app",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "storage-project-service-before",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:17:20.880076+00:00",
+      "duration_seconds": 0.09,
+      "log": "storage-project-service-before.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-storage-project-789f4f2b",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in 1 2 3 4 5; do wget -T 5 -qO- http://web-service | grep 'Welcome to nginx' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "storage-project-original-pods",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:17:20.972458+00:00",
+      "duration_seconds": 0.04,
+      "log": "storage-project-original-pods.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-storage-project-789f4f2b",
+        "get",
+        "pods",
+        "-l",
+        "app=web-app",
+        "-o",
+        "json"
+      ]
+    },
+    {
+      "check": "storage-project-write-student",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:17:21.008142+00:00",
+      "duration_seconds": 0.06,
+      "log": "storage-project-write-student.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-storage-project-789f4f2b",
+        "exec",
+        "web-app-d45775485-rs9v4",
+        "--",
+        "sh",
+        "-ec",
+        "printf '%s\\n' 'Student: T. Abdul Kalam Azad, 24BCS10053' > /data/student.txt"
+      ]
+    },
+    {
+      "check": "storage-project-read-before",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:17:21.063483+00:00",
+      "duration_seconds": 0.05,
+      "log": "storage-project-read-before.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-storage-project-789f4f2b",
+        "exec",
+        "web-app-d45775485-rs9v4",
+        "--",
+        "cat",
+        "/data/student.txt"
+      ]
+    },
+    {
+      "check": "storage-project-web-app-d45775485-rs9v4-delete",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:17:21.112346+00:00",
+      "duration_seconds": 0.76,
+      "log": "storage-project-web-app-d45775485-rs9v4-delete.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-storage-project-789f4f2b",
+        "delete",
+        "pod",
+        "web-app-d45775485-rs9v4",
+        "--wait=true",
+        "--timeout=90s"
+      ]
+    },
+    {
+      "check": "storage-project-replacement-created",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-storage-project-789f4f2b",
+        "get",
+        "pods",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.04,
+      "log": "storage-project-replacement-created.txt"
+    },
+    {
+      "check": "storage-project-web-app-d45775485-hsfg8-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:17:21.908552+00:00",
+      "duration_seconds": 7.99,
+      "log": "storage-project-web-app-d45775485-hsfg8-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-storage-project-789f4f2b",
+        "wait",
+        "--for=condition=Ready",
+        "pod/web-app-d45775485-hsfg8",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "storage-project-read-after-replacement",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:17:29.897081+00:00",
+      "duration_seconds": 0.07,
+      "log": "storage-project-read-after-replacement.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-storage-project-789f4f2b",
+        "exec",
+        "web-app-d45775485-hsfg8",
+        "--",
+        "grep",
+        "24BCS10053",
+        "/data/student.txt"
+      ]
+    },
+    {
+      "check": "storage-project-bound-claim",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:17:29.967278+00:00",
+      "duration_seconds": 0.04,
+      "log": "storage-project-bound-claim.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-storage-project-789f4f2b",
+        "get",
+        "pvc",
+        "web-data",
+        "-o",
+        "wide"
+      ]
+    },
+    {
+      "check": "storage-project-service-after",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:17:30.004944+00:00",
+      "duration_seconds": 0.05,
+      "log": "storage-project-service-after.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-storage-project-789f4f2b",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in 1 2 3 4 5; do wget -T 5 -qO- http://web-service | grep 'Welcome to nginx' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "storage-project-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:17:30.059143+00:00",
+      "duration_seconds": 47.41,
+      "log": "storage-project-cleanup.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-storage-project-789f4f2b",
+        "delete",
+        "namespace",
+        "homework-storage-project-789f4f2b",
+        "--ignore-not-found",
+        "--wait=true",
+        "--timeout=120s"
+      ]
+    }
+  ],
+  "scope": "Namespaced mini-project scenarios; existing cluster and other applications preserved."
+}

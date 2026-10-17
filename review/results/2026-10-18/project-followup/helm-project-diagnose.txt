@@ -1,0 +1,258 @@
+Name:             notes-project-deploy-6b886cfcb7-nqdq7
+Namespace:        homework-helm-project-13746f77
+Priority:         0
+Service Account:  default
+Node:             campusdesk-control-plane/172.30.0.2
+Start Time:       Sun, 18 Oct 2026 00:49:35 +0530
+Labels:           app.kubernetes.io/instance=notes-project
+                  app.kubernetes.io/name=notes-chart
+                  environment=production
+                  pod-template-hash=6b886cfcb7
+Annotations:      checksum/config: e74c770653ef5dcac880e062dd57a4126325a4958429fca338b5c57c82186619
+Status:           Running
+IP:               10.244.0.65
+IPs:
+  IP:           10.244.0.65
+Controlled By:  ReplicaSet/notes-project-deploy-6b886cfcb7
+Containers:
+  notes:
+    Container ID:   containerd://97b69592749d7c57ee9bcd10b0448f72b99e11c10961dff48bf5d15c3afcffa2
+    Image:          nginx:1.25
+    Image ID:       docker.io/library/nginx@sha256:a484819eb60211f5299034ac80f6a681b06f89e65866ce91f356ed7c72af059c
+    Port:           80/TCP (http)
+    Host Port:      0/TCP (http)
+    State:          Running
+      Started:      Sun, 18 Oct 2026 00:49:36 +0530
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     500m
+      memory:  256Mi
+    Requests:
+      cpu:      100m
+      memory:   64Mi
+    Liveness:   http-get http://:http/ delay=10s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  http-get http://:http/ delay=2s timeout=1s period=5s #success=1 #failure=3
+    Environment Variables from:
+      notes-project-config  ConfigMap  Optional: false
+    Environment:            <none>
+    Mounts:
+      /usr/share/nginx/html/index.html from html (ro,path="index.html")
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-fzzx8 (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  html:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      notes-project-config
+    Optional:  false
+  kube-api-access-fzzx8:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+
+
+Name:             notes-project-deploy-6b886cfcb7-qrnkw
+Namespace:        homework-helm-project-13746f77
+Priority:         0
+Service Account:  default
+Node:             campusdesk-control-plane/172.30.0.2
+Start Time:       Sun, 18 Oct 2026 00:49:47 +0530
+Labels:           app.kubernetes.io/instance=notes-project
+                  app.kubernetes.io/name=notes-chart
+                  environment=production
+                  pod-template-hash=6b886cfcb7
+Annotations:      checksum/config: e74c770653ef5dcac880e062dd57a4126325a4958429fca338b5c57c82186619
+Status:           Running
+IP:               10.244.0.67
+IPs:
+  IP:           10.244.0.67
+Controlled By:  ReplicaSet/notes-project-deploy-6b886cfcb7
+Containers:
+  notes:
+    Container ID:   containerd://3c5d3880254424fbe4844c622df5715ef3175dfa98477cd77103fea824ddfed5
+    Image:          nginx:1.25
+    Image ID:       docker.io/library/nginx@sha256:a484819eb60211f5299034ac80f6a681b06f89e65866ce91f356ed7c72af059c
+    Port:           80/TCP (http)
+    Host Port:      0/TCP (http)
+    State:          Running
+      Started:      Sun, 18 Oct 2026 00:49:47 +0530
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     500m
+      memory:  256Mi
+    Requests:
+      cpu:      100m
+      memory:   64Mi
+    Liveness:   http-get http://:http/ delay=10s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  http-get http://:http/ delay=2s timeout=1s period=5s #success=1 #failure=3
+    Environment Variables from:
+      notes-project-config  ConfigMap  Optional: false
+    Environment:            <none>
+    Mounts:
+      /usr/share/nginx/html/index.html from html (ro,path="index.html")
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-5jglg (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  html:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      notes-project-config
+    Optional:  false
+  kube-api-access-5jglg:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+
+
+Name:             notes-project-deploy-6b886cfcb7-rxkf7
+Namespace:        homework-helm-project-13746f77
+Priority:         0
+Service Account:  default
+Node:             campusdesk-control-plane/172.30.0.2
+Start Time:       Sun, 18 Oct 2026 00:49:41 +0530
+Labels:           app.kubernetes.io/instance=notes-project
+                  app.kubernetes.io/name=notes-chart
+                  environment=production
+                  pod-template-hash=6b886cfcb7
+Annotations:      checksum/config: e74c770653ef5dcac880e062dd57a4126325a4958429fca338b5c57c82186619
+Status:           Running
+IP:               10.244.0.66
+IPs:
+  IP:           10.244.0.66
+Controlled By:  ReplicaSet/notes-project-deploy-6b886cfcb7
+Containers:
+  notes:
+    Container ID:   containerd://03bbbfd9292b3a0ef46712e973b551d9c0fd452a3ceb0429b350c7b9cbf5cb21
+    Image:          nginx:1.25
+    Image ID:       docker.io/library/nginx@sha256:a484819eb60211f5299034ac80f6a681b06f89e65866ce91f356ed7c72af059c
+    Port:           80/TCP (http)
+    Host Port:      0/TCP (http)
+    State:          Running
+      Started:      Sun, 18 Oct 2026 00:49:41 +0530
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     500m
+      memory:  256Mi
+    Requests:
+      cpu:      100m
+      memory:   64Mi
+    Liveness:   http-get http://:http/ delay=10s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  http-get http://:http/ delay=2s timeout=1s period=5s #success=1 #failure=3
+    Environment Variables from:
+      notes-project-config  ConfigMap  Optional: false
+    Environment:            <none>
+    Mounts:
+      /usr/share/nginx/html/index.html from html (ro,path="index.html")
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-fwwgb (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  html:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      notes-project-config
+    Optional:  false
+  kube-api-access-fwwgb:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+
+
+Name:             notes-project-deploy-85f666bc78-cbwpr
+Namespace:        homework-helm-project-13746f77
+Priority:         0
+Service Account:  default
+Node:             campusdesk-control-plane/172.30.0.2
+Start Time:       Sun, 18 Oct 2026 00:49:54 +0530
+Labels:           app.kubernetes.io/instance=notes-project
+                  app.kubernetes.io/name=notes-chart
+                  environment=production
+                  pod-template-hash=85f666bc78
+Annotations:      checksum/config: bba5cfa7230b6b13a40b8419e5ccfa5c6b665de91cd9360c7de7cc8183590959
+Status:           Pending
+IP:               10.244.0.68
+IPs:
+  IP:           10.244.0.68
+Controlled By:  ReplicaSet/notes-project-deploy-85f666bc78
+Containers:
+  notes:
+    Container ID:   
+    Image:          nginx:broken-tag-does-not-exist
+    Image ID:       
+    Port:           80/TCP (http)
+    Host Port:      0/TCP (http)
+    State:          Waiting
+      Reason:       ErrImagePull
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     500m
+      memory:  256Mi
+    Requests:
+      cpu:      100m
+      memory:   64Mi
+    Liveness:   http-get http://:http/ delay=10s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  http-get http://:http/ delay=2s timeout=1s period=5s #success=1 #failure=3
+    Environment Variables from:
+      notes-project-config  ConfigMap  Optional: false
+    Environment:            <none>
+    Mounts:
+      /usr/share/nginx/html/index.html from html (ro,path="index.html")
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-b25ks (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  html:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      notes-project-config
+    Optional:  false
+  kube-api-access-b25ks:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s

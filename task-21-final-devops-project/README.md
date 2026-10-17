@@ -1,5 +1,7 @@
 # Final DevOps Project: TaskBoard from commit to monitored Kubernetes
 
+**Capstone submission:** [CampusDesk](https://github.com/abdulkalamazad1001/campusdesk-devops-capstone). This TaskBoard folder is reference material; its nested workflow is not active in this repository. See the [lab project review](../review/LAB-PROJECT-REVIEW.md) for verified scope.
+
 > **Note:** Command output in this file is representative expected output for the lab environment
 > below, written as a learning reference. It was not captured from a live run, so IDs, timestamps
 > and pod name hashes will differ when you run it yourself.

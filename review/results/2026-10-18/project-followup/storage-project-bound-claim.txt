@@ -1,0 +1,2 @@
+NAME       STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE   VOLUMEMODE
+web-data   Bound    pvc-e0bafed7-d128-4328-88bb-0c7b2e2348b6   500Mi      RWO            standard       <unset>                 37s   Filesystem

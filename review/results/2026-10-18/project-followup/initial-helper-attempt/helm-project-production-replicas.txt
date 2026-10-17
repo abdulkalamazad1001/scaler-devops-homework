@@ -1,0 +1,26 @@
+{
+  "availableReplicas": 3,
+  "conditions": [
+    {
+      "lastTransitionTime": "2026-10-17T19:18:44Z",
+      "lastUpdateTime": "2026-10-17T19:18:44Z",
+      "message": "Deployment has minimum availability.",
+      "reason": "MinimumReplicasAvailable",
+      "status": "True",
+      "type": "Available"
+    },
+    {
+      "lastTransitionTime": "2026-10-17T19:18:17Z",
+      "lastUpdateTime": "2026-10-17T19:19:13Z",
+      "message": "ReplicaSet \"notes-project-deploy-6b886cfcb7\" has successfully progressed.",
+      "reason": "NewReplicaSetAvailable",
+      "status": "True",
+      "type": "Progressing"
+    }
+  ],
+  "observedGeneration": 2,
+  "readyReplicas": 3,
+  "replicas": 3,
+  "terminatingReplicas": 0,
+  "updatedReplicas": 3
+}

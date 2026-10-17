@@ -1,0 +1,149 @@
+{
+  "captured_at": "2026-10-17T19:19:19.442460+00:00",
+  "context": "kind-campusdesk",
+  "namespace": "homework-helm-project-e977de3f",
+  "error": "production-environment: see helm-project-production-environment.txt",
+  "checks": [
+    {
+      "check": "helm-project-namespace",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:18:17.474060+00:00",
+      "duration_seconds": 0.04,
+      "log": "helm-project-namespace.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-e977de3f",
+        "create",
+        "namespace",
+        "homework-helm-project-e977de3f"
+      ]
+    },
+    {
+      "check": "helm-project-install",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:18:17.510722+00:00",
+      "duration_seconds": 20.26,
+      "log": "helm-project-install.txt",
+      "command": [
+        "helm",
+        "--kube-context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-e977de3f",
+        "install",
+        "notes-project",
+        "task-15-helm/notes-chart",
+        "--set",
+        "service.type=ClusterIP",
+        "--wait",
+        "--timeout",
+        "3m"
+      ]
+    },
+    {
+      "check": "helm-project-upgrade-production",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:18:37.771425+00:00",
+      "duration_seconds": 36.19,
+      "log": "helm-project-upgrade-production.txt",
+      "command": [
+        "helm",
+        "--kube-context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-e977de3f",
+        "upgrade",
+        "notes-project",
+        "task-15-helm/notes-chart",
+        "-f",
+        "task-15-helm/notes-chart/values-prod.yaml",
+        "--set",
+        "service.type=ClusterIP",
+        "--wait",
+        "--timeout",
+        "3m"
+      ]
+    },
+    {
+      "check": "helm-project-production-replicas",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-e977de3f",
+        "get",
+        "deployment",
+        "notes-project-deploy",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.14,
+      "log": "helm-project-production-replicas.txt"
+    },
+    {
+      "check": "helm-project-production-environment",
+      "exit_code": 1,
+      "started_at": "2026-10-17T19:19:14.098475+00:00",
+      "duration_seconds": 0.06,
+      "log": "helm-project-production-environment.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-e977de3f",
+        "exec",
+        "deploy/notes-project-deploy",
+        "--",
+        "printenv",
+        "APP_ENV"
+      ]
+    },
+    {
+      "check": "helm-project-uninstall",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:19:14.159215+00:00",
+      "duration_seconds": 0.06,
+      "log": "helm-project-uninstall.txt",
+      "command": [
+        "helm",
+        "--kube-context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-e977de3f",
+        "uninstall",
+        "notes-project",
+        "--ignore-not-found",
+        "--wait",
+        "--timeout",
+        "2m"
+      ]
+    },
+    {
+      "check": "helm-project-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:19:14.223148+00:00",
+      "duration_seconds": 5.22,
+      "log": "helm-project-cleanup.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-e977de3f",
+        "delete",
+        "namespace",
+        "homework-helm-project-e977de3f",
+        "--ignore-not-found",
+        "--wait=true",
+        "--timeout=120s"
+      ]
+    }
+  ],
+  "scope": "Namespaced mini-project scenarios; existing cluster and other applications preserved."
+}

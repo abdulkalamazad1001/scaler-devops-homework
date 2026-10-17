@@ -16,6 +16,10 @@ The [reference comparison](instructor-comparison.json) records the exact revisio
 file differ. The exam-practice questions are reference material, not additional
 deployment assignments. Session 8's networking and volumes work is in task 7.
 
+## Mini-project follow-up
+
+A [closer project review](../../LAB-PROJECT-REVIEW.md) added successful checks for Task 13's own PVC after Pod replacement and Task 15's invalid-image upgrade/rollback. These local results are in [project-followup/](project-followup/); they supplement the earlier CI run. The TaskBoard reference scope is explained in the same review.
+
 ## Task-by-task evidence
 
 The result files identify commands, exit codes and raw logs. Kubernetes operation

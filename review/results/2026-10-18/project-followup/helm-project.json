@@ -1,0 +1,311 @@
+{
+  "captured_at": "2026-10-17T19:20:07.721776+00:00",
+  "context": "kind-campusdesk",
+  "namespace": "homework-helm-project-13746f77",
+  "error": null,
+  "checks": [
+    {
+      "check": "helm-project-namespace",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:19:29.369251+00:00",
+      "duration_seconds": 0.03,
+      "log": "helm-project-namespace.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-13746f77",
+        "create",
+        "namespace",
+        "homework-helm-project-13746f77"
+      ]
+    },
+    {
+      "check": "helm-project-install",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:19:29.402915+00:00",
+      "duration_seconds": 6.28,
+      "log": "helm-project-install.txt",
+      "command": [
+        "helm",
+        "--kube-context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-13746f77",
+        "install",
+        "notes-project",
+        "task-15-helm/notes-chart",
+        "--set",
+        "service.type=ClusterIP",
+        "--wait",
+        "--timeout",
+        "3m"
+      ]
+    },
+    {
+      "check": "helm-project-upgrade-production",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:19:35.681436+00:00",
+      "duration_seconds": 18.19,
+      "log": "helm-project-upgrade-production.txt",
+      "command": [
+        "helm",
+        "--kube-context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-13746f77",
+        "upgrade",
+        "notes-project",
+        "task-15-helm/notes-chart",
+        "-f",
+        "task-15-helm/notes-chart/values-prod.yaml",
+        "--set",
+        "service.type=ClusterIP",
+        "--wait",
+        "--timeout",
+        "3m"
+      ]
+    },
+    {
+      "check": "helm-project-production-replicas",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-13746f77",
+        "get",
+        "deployment",
+        "notes-project-deploy",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.13,
+      "log": "helm-project-production-replicas.txt"
+    },
+    {
+      "check": "helm-project-production-environment",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:19:54.003707+00:00",
+      "duration_seconds": 0.07,
+      "log": "helm-project-production-environment.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-13746f77",
+        "exec",
+        "deploy/notes-project-deploy",
+        "--",
+        "sh",
+        "-ec",
+        "test \"$(printenv ENVIRONMENT)\" = production && printenv ENVIRONMENT"
+      ]
+    },
+    {
+      "check": "helm-project-broken-upgrade",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:19:54.069894+00:00",
+      "duration_seconds": 0.15,
+      "log": "helm-project-broken-upgrade.txt",
+      "command": [
+        "helm",
+        "--kube-context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-13746f77",
+        "upgrade",
+        "notes-project",
+        "task-15-helm/notes-chart",
+        "--reuse-values",
+        "--set",
+        "image.tag=broken-tag-does-not-exist"
+      ]
+    },
+    {
+      "check": "helm-project-image-failure-observed",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-13746f77",
+        "get",
+        "pods",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 4.16,
+      "log": "helm-project-image-failure-observed.txt"
+    },
+    {
+      "check": "helm-project-broken-pods",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:19:58.375652+00:00",
+      "duration_seconds": 0.04,
+      "log": "helm-project-broken-pods.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-13746f77",
+        "get",
+        "pods",
+        "-o",
+        "wide"
+      ]
+    },
+    {
+      "check": "helm-project-diagnose",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:19:58.412524+00:00",
+      "duration_seconds": 0.04,
+      "log": "helm-project-diagnose.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-13746f77",
+        "describe",
+        "pods"
+      ]
+    },
+    {
+      "check": "helm-project-events",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:19:58.453165+00:00",
+      "duration_seconds": 0.03,
+      "log": "helm-project-events.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-13746f77",
+        "get",
+        "events",
+        "--sort-by=.lastTimestamp"
+      ]
+    },
+    {
+      "check": "helm-project-rollback",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:19:58.487568+00:00",
+      "duration_seconds": 2.09,
+      "log": "helm-project-rollback.txt",
+      "command": [
+        "helm",
+        "--kube-context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-13746f77",
+        "rollback",
+        "notes-project",
+        "2",
+        "--wait",
+        "--timeout",
+        "3m"
+      ]
+    },
+    {
+      "check": "helm-project-restored-three-replicas",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-13746f77",
+        "get",
+        "deployment",
+        "notes-project-deploy",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.05,
+      "log": "helm-project-restored-three-replicas.txt"
+    },
+    {
+      "check": "helm-project-restored-http",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:20:00.623782+00:00",
+      "duration_seconds": 1.83,
+      "log": "helm-project-restored-http.txt",
+      "command": [
+        "helm",
+        "--kube-context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-13746f77",
+        "test",
+        "notes-project",
+        "--logs",
+        "--timeout",
+        "2m"
+      ]
+    },
+    {
+      "check": "helm-project-history",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:20:02.451499+00:00",
+      "duration_seconds": 0.03,
+      "log": "helm-project-history.txt",
+      "command": [
+        "helm",
+        "--kube-context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-13746f77",
+        "history",
+        "notes-project"
+      ]
+    },
+    {
+      "check": "helm-project-uninstall",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:20:02.485297+00:00",
+      "duration_seconds": 0.08,
+      "log": "helm-project-uninstall.txt",
+      "command": [
+        "helm",
+        "--kube-context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-13746f77",
+        "uninstall",
+        "notes-project",
+        "--ignore-not-found",
+        "--wait",
+        "--timeout",
+        "2m"
+      ]
+    },
+    {
+      "check": "helm-project-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:20:02.561169+00:00",
+      "duration_seconds": 5.16,
+      "log": "helm-project-cleanup.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-campusdesk",
+        "-n",
+        "homework-helm-project-13746f77",
+        "delete",
+        "namespace",
+        "homework-helm-project-13746f77",
+        "--ignore-not-found",
+        "--wait=true",
+        "--timeout=120s"
+      ]
+    }
+  ],
+  "scope": "Namespaced mini-project scenarios; existing cluster and other applications preserved."
+}

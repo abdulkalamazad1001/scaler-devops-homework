@@ -1,0 +1,6 @@
+{
+  "secret_scan": "Gitleaks 8.30.1: no findings in supplemental evidence",
+  "source_checks": "20 assignment source/link checks passed",
+  "readme_links": "All changed README/review relative links resolve",
+  "scope": "Local supplemental checks. Earlier GitHub workflow results are retained with their original tested revision."
+}

@@ -1,0 +1,3 @@
+persistentvolumeclaim/web-data created
+deployment.apps/web-app created
+service/web-service created

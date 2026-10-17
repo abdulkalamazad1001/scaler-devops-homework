@@ -1,0 +1,1 @@
+pod "web-app-d45775485-rs9v4" deleted from homework-storage-project-789f4f2b namespace

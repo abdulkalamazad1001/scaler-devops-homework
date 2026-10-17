@@ -56,3 +56,11 @@ Both exercises passed in the final CI run: PHP/Apache returned to one ready repl
 ![Recorded scale-out and scale-down observations](../review/results/2026-10-18/screenshots/task13-autoscaling.png)
 
 [PHP/Apache report](../review/results/2026-10-18/ci-homework-39060263538/homework-autoscaling/hpa-walkthrough.json) · [Mini-project report](../review/results/2026-10-18/ci-homework-39060263538/homework-autoscaling/probes.json).
+
+### Mini-project persistence verified
+
+The project's own PVC retained the student record after Pod replacement, and its Service returned HTTP successfully before and after replacement.
+
+[Supplemental result](../review/results/2026-10-18/project-followup/storage-project.json) · [Project review](../review/LAB-PROJECT-REVIEW.md). These checks ran locally after the earlier green CI run.
+
+![Saved execution logs for the mini-project](../review/results/2026-10-18/screenshots/task13-project-persistence.png)

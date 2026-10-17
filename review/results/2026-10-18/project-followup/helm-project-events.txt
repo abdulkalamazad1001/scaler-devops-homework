@@ -1,0 +1,53 @@
+LAST SEEN   TYPE      REASON              OBJECT                                       MESSAGE
+29s         Normal    SuccessfulCreate    replicaset/notes-project-deploy-5f5f65856f   Created pod: notes-project-deploy-5f5f65856f-frsth
+29s         Normal    ScalingReplicaSet   deployment/notes-project-deploy              Scaled up replica set notes-project-deploy-5f5f65856f from 0 to 1
+29s         Normal    Scheduled           pod/notes-project-deploy-5f5f65856f-frsth    Successfully assigned homework-helm-project-13746f77/notes-project-deploy-5f5f65856f-frsth to campusdesk-control-plane
+28s         Normal    Pulled              pod/notes-project-deploy-5f5f65856f-frsth    Container image "nginx:1.24" already present on machine and can be accessed by the pod
+28s         Normal    Created             pod/notes-project-deploy-5f5f65856f-frsth    Container created
+28s         Normal    Started             pod/notes-project-deploy-5f5f65856f-frsth    Container started
+23s         Normal    SuccessfulCreate    replicaset/notes-project-deploy-6b886cfcb7   Created pod: notes-project-deploy-6b886cfcb7-nqdq7
+23s         Normal    Scheduled           pod/notes-project-deploy-5f5f65856f-ckv4q    Successfully assigned homework-helm-project-13746f77/notes-project-deploy-5f5f65856f-ckv4q to campusdesk-control-plane
+23s         Normal    Scheduled           pod/notes-project-deploy-5f5f65856f-9jqql    Successfully assigned homework-helm-project-13746f77/notes-project-deploy-5f5f65856f-9jqql to campusdesk-control-plane
+23s         Normal    Scheduled           pod/notes-project-deploy-6b886cfcb7-nqdq7    Successfully assigned homework-helm-project-13746f77/notes-project-deploy-6b886cfcb7-nqdq7 to campusdesk-control-plane
+23s         Normal    ScalingReplicaSet   deployment/notes-project-deploy              Scaled up replica set notes-project-deploy-5f5f65856f from 1 to 3
+23s         Normal    ScalingReplicaSet   deployment/notes-project-deploy              Scaled up replica set notes-project-deploy-6b886cfcb7 from 0 to 1
+23s         Normal    SuccessfulCreate    replicaset/notes-project-deploy-5f5f65856f   Created pod: notes-project-deploy-5f5f65856f-ckv4q
+23s         Normal    SuccessfulCreate    replicaset/notes-project-deploy-5f5f65856f   Created pod: notes-project-deploy-5f5f65856f-9jqql
+22s         Normal    Started             pod/notes-project-deploy-5f5f65856f-9jqql    Container started
+22s         Normal    Created             pod/notes-project-deploy-6b886cfcb7-nqdq7    Container created
+22s         Normal    Pulled              pod/notes-project-deploy-5f5f65856f-9jqql    Container image "nginx:1.24" already present on machine and can be accessed by the pod
+22s         Normal    Created             pod/notes-project-deploy-5f5f65856f-9jqql    Container created
+22s         Normal    Started             pod/notes-project-deploy-6b886cfcb7-nqdq7    Container started
+22s         Normal    Started             pod/notes-project-deploy-5f5f65856f-ckv4q    Container started
+22s         Normal    Created             pod/notes-project-deploy-5f5f65856f-ckv4q    Container created
+22s         Normal    Pulled              pod/notes-project-deploy-5f5f65856f-ckv4q    Container image "nginx:1.24" already present on machine and can be accessed by the pod
+22s         Normal    Pulled              pod/notes-project-deploy-6b886cfcb7-nqdq7    Container image "nginx:1.25" already present on machine and can be accessed by the pod
+17s         Normal    ScalingReplicaSet   deployment/notes-project-deploy              Scaled down replica set notes-project-deploy-5f5f65856f from 3 to 2
+17s         Normal    SuccessfulDelete    replicaset/notes-project-deploy-5f5f65856f   Deleted pod: notes-project-deploy-5f5f65856f-9jqql
+17s         Normal    Started             pod/notes-project-deploy-6b886cfcb7-rxkf7    Container started
+17s         Normal    Killing             pod/notes-project-deploy-5f5f65856f-9jqql    Stopping container notes
+17s         Normal    SuccessfulCreate    replicaset/notes-project-deploy-6b886cfcb7   Created pod: notes-project-deploy-6b886cfcb7-rxkf7
+17s         Normal    ScalingReplicaSet   deployment/notes-project-deploy              Scaled up replica set notes-project-deploy-6b886cfcb7 from 1 to 2
+17s         Normal    Scheduled           pod/notes-project-deploy-6b886cfcb7-rxkf7    Successfully assigned homework-helm-project-13746f77/notes-project-deploy-6b886cfcb7-rxkf7 to campusdesk-control-plane
+17s         Normal    Pulled              pod/notes-project-deploy-6b886cfcb7-rxkf7    Container image "nginx:1.25" already present on machine and can be accessed by the pod
+17s         Normal    Created             pod/notes-project-deploy-6b886cfcb7-rxkf7    Container created
+11s         Normal    Pulled              pod/notes-project-deploy-6b886cfcb7-qrnkw    Container image "nginx:1.25" already present on machine and can be accessed by the pod
+11s         Normal    Created             pod/notes-project-deploy-6b886cfcb7-qrnkw    Container created
+11s         Normal    SuccessfulCreate    replicaset/notes-project-deploy-6b886cfcb7   Created pod: notes-project-deploy-6b886cfcb7-qrnkw
+11s         Normal    Started             pod/notes-project-deploy-6b886cfcb7-qrnkw    Container started
+11s         Normal    ScalingReplicaSet   deployment/notes-project-deploy              Scaled up replica set notes-project-deploy-6b886cfcb7 from 2 to 3
+11s         Normal    ScalingReplicaSet   deployment/notes-project-deploy              Scaled down replica set notes-project-deploy-5f5f65856f from 2 to 1
+11s         Normal    Killing             pod/notes-project-deploy-5f5f65856f-ckv4q    Stopping container notes
+11s         Normal    SuccessfulDelete    replicaset/notes-project-deploy-5f5f65856f   Deleted pod: notes-project-deploy-5f5f65856f-ckv4q
+11s         Normal    Scheduled           pod/notes-project-deploy-6b886cfcb7-qrnkw    Successfully assigned homework-helm-project-13746f77/notes-project-deploy-6b886cfcb7-qrnkw to campusdesk-control-plane
+5s          Normal    SuccessfulDelete    replicaset/notes-project-deploy-5f5f65856f   Deleted pod: notes-project-deploy-5f5f65856f-frsth
+5s          Normal    ScalingReplicaSet   deployment/notes-project-deploy              Scaled down replica set notes-project-deploy-5f5f65856f from 1 to 0
+5s          Normal    Killing             pod/notes-project-deploy-5f5f65856f-frsth    Stopping container notes
+4s          Normal    Pulling             pod/notes-project-deploy-85f666bc78-cbwpr    Pulling image "nginx:broken-tag-does-not-exist"
+4s          Normal    SuccessfulCreate    replicaset/notes-project-deploy-85f666bc78   Created pod: notes-project-deploy-85f666bc78-cbwpr
+4s          Normal    Scheduled           pod/notes-project-deploy-85f666bc78-cbwpr    Successfully assigned homework-helm-project-13746f77/notes-project-deploy-85f666bc78-cbwpr to campusdesk-control-plane
+4s          Normal    ScalingReplicaSet   deployment/notes-project-deploy              Scaled up replica set notes-project-deploy-85f666bc78 from 0 to 1
+3s          Warning   Failed              pod/notes-project-deploy-85f666bc78-cbwpr    Error: ErrImagePull
+3s          Warning   Failed              pod/notes-project-deploy-85f666bc78-cbwpr    Failed to pull image "nginx:broken-tag-does-not-exist": rpc error: code = NotFound desc = failed to pull and unpack image "docker.io/library/nginx:broken-tag-does-not-exist": failed to resolve reference "docker.io/library/nginx:broken-tag-does-not-exist": docker.io/library/nginx:broken-tag-does-not-exist: not found
+2s          Warning   Failed              pod/notes-project-deploy-85f666bc78-cbwpr    Error: ImagePullBackOff
+2s          Normal    BackOff             pod/notes-project-deploy-85f666bc78-cbwpr    Back-off pulling image "nginx:broken-tag-does-not-exist"

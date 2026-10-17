@@ -1,0 +1,17 @@
+NAME: notes-project
+LAST DEPLOYED: Sun Oct 18 00:48:17 2026
+NAMESPACE: homework-helm-project-e977de3f
+STATUS: deployed
+REVISION: 1
+NOTES:
+notes-app (development) is running as release "notes-project" in namespace "homework-helm-project-e977de3f".
+
+  Replicas: 1
+  Image:    nginx:1.24
+
+Check the pods:
+  kubectl get pods -n homework-helm-project-e977de3f -l app.kubernetes.io/instance=notes-project
+
+Open the app:
+  kubectl port-forward -n homework-helm-project-e977de3f svc/notes-project-svc 8080:80
+  curl http://127.0.0.1:8080

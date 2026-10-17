@@ -1,0 +1,2 @@
+<title>Welcome to nginx!</title>
+<h1>Welcome to nginx!</h1>

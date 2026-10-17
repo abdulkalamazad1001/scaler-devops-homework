@@ -134,5 +134,26 @@
       "ci-homework-39060263538/homework-autoscaling/probes-hpa-scale-down.txt"
     ],
     "type": "Browser screenshot of a saved-run-log viewer; excerpts, not simulated output"
+  },
+  {
+    "image": "task13-project-persistence.png",
+    "sources": [
+      "project-followup/storage-project-read-before.txt",
+      "project-followup/storage-project-web-app-d45775485-rs9v4-delete.txt",
+      "project-followup/storage-project-read-after-replacement.txt",
+      "project-followup/storage-project-service-after.txt"
+    ],
+    "type": "Browser screenshot of a saved-run-log viewer; excerpts, not simulated output"
+  },
+  {
+    "image": "task15-project-rollback.png",
+    "sources": [
+      "project-followup/helm-project-production-environment.txt",
+      "project-followup/helm-project-broken-pods.txt",
+      "project-followup/helm-project-history.txt",
+      "project-followup/helm-project-restored-http.txt",
+      "project-followup/cleanup.json"
+    ],
+    "type": "Browser screenshot of a saved-run-log viewer; excerpts, not simulated output"
   }
 ]
