@@ -3,6 +3,7 @@
 import argparse
 import json
 import sys
+import tempfile
 import uuid
 from datetime import UTC, datetime
 
@@ -26,16 +27,29 @@ def main():
             raise RuntimeError(name)
 
     try:
+        with tempfile.TemporaryDirectory(prefix="homework-helm-create-") as temp:
+            check("create-chart", [helm[0], "create", temp + "/practice"])
+        check("repo-add", [helm[0], "repo", "add", "prometheus-community", "https://prometheus-community.github.io/helm-charts"])
+        check("repo-list", [helm[0], "repo", "list"])
+        check("search-repo", [helm[0], "search", "repo", "prometheus-community/prometheus", "--max-col-width", "80"])
         check("lifecycle-namespace", [*kubectl, "create", "namespace", namespace])
         created = True
         check("lifecycle-install", [*helm, "install", "notes-review", "task-15-helm/notes-chart",
                                     "--set", "service.type=ClusterIP", "--wait", "--timeout", "3m"])
         check("lifecycle-test", [*helm, "test", "notes-review", "--logs", "--timeout", "2m"])
+        check("lifecycle-list", [*helm, "list"])
+        check("lifecycle-status", [*helm, "status", "notes-review"])
+        check("lifecycle-get", [*helm, "get", "all", "notes-review"])
         check("lifecycle-upgrade", [*helm, "upgrade", "notes-review", "task-15-helm/notes-chart",
                                     "--set", "service.type=ClusterIP", "--set", "replicaCount=2",
                                     "--set", "app.message=Updated review release", "--wait", "--timeout", "3m"])
         check("lifecycle-upgraded-content", [*kubectl, "exec", "deploy/notes-review-deploy", "--", "sh", "-ec",
               'test "$(cat /usr/share/nginx/html/index.html | grep -c "Updated review release")" = 1'])
+        check("lifecycle-upgrade-again", [*helm, "upgrade", "notes-review", "task-15-helm/notes-chart",
+                                    "--set", "service.type=ClusterIP", "--set", "replicaCount=3",
+                                    "--set", "app.message=Third review release", "--wait", "--timeout", "3m"])
+        check("lifecycle-third-content", [*kubectl, "exec", "deploy/notes-review-deploy", "--", "grep",
+              "Third review release", "/usr/share/nginx/html/index.html"])
         check("lifecycle-rollback", [*helm, "rollback", "notes-review", "1", "--wait", "--timeout", "3m"])
         check("lifecycle-rollback-test", [*helm, "test", "notes-review", "--logs", "--timeout", "2m"])
         check("lifecycle-restored-content", [*kubectl, "exec", "deploy/notes-review-deploy", "--", "grep",

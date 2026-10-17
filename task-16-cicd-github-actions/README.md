@@ -59,3 +59,10 @@ GitHub only runs workflows from `.github/workflows/` at the repository root, so:
 3. Push to `main`. CI runs first; when it succeeds, CD builds and pushes
    `ghcr.io/<owner>/cicd-demo:sha-<short-sha>` using the built-in `GITHUB_TOKEN` and
    deploys it.
+
+## Repeating the complete pipeline
+
+A push to `main` that changes this task starts the complete pipeline. Manual
+workflow runs validate the code and security checks; publishing and deployment
+are restricted to successful runs triggered by a push to `main`. Review the
+individual job results, since a green manual run can contain skipped deployment jobs.

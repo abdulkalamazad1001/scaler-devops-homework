@@ -156,3 +156,10 @@ the image work but throws the cluster away afterwards. For a long-lived cluster:
 | Pod Security Admission `restricted` enforced on the namespace | `k8s/namespace.yaml` |
 | Least-privilege `GITHUB_TOKEN` (`contents: read` by default) | workflow `permissions:` |
 | Scanner binaries pinned and verified against release checksums | workflow install steps |
+
+## Repeating the complete pipeline
+
+A push to `main` that changes this task starts the complete pipeline. Manual
+workflow runs validate the code and security checks; publishing and deployment
+are restricted to successful runs triggered by a push to `main`. Review the
+individual job results, since a green manual run can contain skipped deployment jobs.

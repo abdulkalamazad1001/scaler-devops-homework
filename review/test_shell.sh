@@ -8,6 +8,8 @@ cd "$work"
 bash -n /src/task-2-shell-scripting/sysinfo.sh
 bash /src/task-2-shell-scripting/sysinfo.sh </dev/null >default.log
 test -s sysreport/processes.txt
+cat default.log
+head -5 sysreport/processes.txt
 grep -q 'Done.' default.log
 printf 'folder with spaces\nreport.txt\n' | bash /src/task-2-shell-scripting/sysinfo.sh >spaces.log
 test -s 'folder with spaces/report.txt'
@@ -40,6 +42,11 @@ id homework-lab-user
 test -d /home/homework-lab-user
 test "$(getent passwd homework-lab-user | cut -d: -f7)" = /bin/bash
 userdel -r homework-lab-user
+adduser --disabled-password --gecos 'Homework test account' homework-adduser
+id homework-adduser
+test -d /home/homework-adduser
+deluser --remove-home homework-adduser
+echo 'PASS task 1: adduser creates an Ubuntu account and home directory'
 echo 'PASS task 1: explicit useradd home/shell and account cleanup in disposable container'
 
 ip -brief address
