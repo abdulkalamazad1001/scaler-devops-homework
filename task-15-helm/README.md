@@ -45,3 +45,13 @@ helm uninstall notes
    `helm history` and `kubectl` checks of image and replica count
 3. Task 3: the notes-chart mini project (lint, template, dev and prod installs, `helm test`,
    rollback, clean up)
+
+## Verified rerun — 18 October 2026
+
+Ran chart creation and repository commands, install, test, two upgrades, rollback, restored-content verification, history and uninstall.
+
+[Recorded results](../review/results/2026-10-18/helm-lifecycle.json) · [Screenshot](../review/results/2026-10-18/screenshots/task15-helm.png) · [Complete evidence index and environment notes](../review/results/2026-10-18/README.md).
+
+![Helm: saved execution log view](../review/results/2026-10-18/screenshots/task15-helm.png)
+
+*Saved execution log view from the verified rerun; complete results are linked above.*

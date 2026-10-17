@@ -1,0 +1,7 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "status": 200,
+  "text": "Hello World from Docker Multi-Stage Build!",
+  "javascriptErrors": [],
+  "screenshot": "/Users/abdulkalamazad/Documents/scaler-devops-homework/review/results/2026-10-18/screenshots/task6-multistage.png"
+}

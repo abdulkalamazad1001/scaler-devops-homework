@@ -1,0 +1,14 @@
+data.aws_ami.al2023
+aws_instance.web
+aws_internet_gateway.main
+aws_route_table.public
+aws_route_table_association.public
+aws_s3_bucket.assets
+aws_s3_bucket_public_access_block.assets
+aws_s3_bucket_versioning.assets
+aws_security_group.web
+aws_subnet.public
+aws_vpc.main
+aws_vpc_security_group_egress_rule.all
+aws_vpc_security_group_ingress_rule.http["0.0.0.0/0"]
+random_id.suffix

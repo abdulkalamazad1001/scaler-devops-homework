@@ -1,0 +1,445 @@
+{
+  "captured_at": "2026-10-17T18:54:39.293103+00:00",
+  "context": "homework-review",
+  "error": null,
+  "checks": [
+    {
+      "check": "storage-namespace",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:51:55.262168+00:00",
+      "duration_seconds": 0.03,
+      "log": "storage-namespace.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "create",
+        "namespace",
+        "homework-storage-b6673792"
+      ]
+    },
+    {
+      "check": "storage-hostpath",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:51:55.293452+00:00",
+      "duration_seconds": 0.05,
+      "log": "storage-hostpath.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "storage-hostpath-demo-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:51:55.344225+00:00",
+      "duration_seconds": 1.28,
+      "log": "storage-hostpath-demo-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "wait",
+        "--for=condition=Ready",
+        "pod/hostpath-demo",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "storage-hostpath-write",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:51:56.623221+00:00",
+      "duration_seconds": 0.08,
+      "log": "storage-hostpath-write.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "exec",
+        "hostpath-demo",
+        "--",
+        "sh",
+        "-ec",
+        "echo retained-homework-data > /data/proof.txt"
+      ]
+    },
+    {
+      "check": "storage-hostpath-demo-delete",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:51:56.702222+00:00",
+      "duration_seconds": 32.03,
+      "log": "storage-hostpath-demo-delete.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "delete",
+        "pod",
+        "hostpath-demo",
+        "--wait=true",
+        "--timeout=90s"
+      ]
+    },
+    {
+      "check": "storage-hostpath-recreate",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:52:28.730205+00:00",
+      "duration_seconds": 0.06,
+      "log": "storage-hostpath-recreate.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "storage-hostpath-demo-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:52:28.786755+00:00",
+      "duration_seconds": 0.94,
+      "log": "storage-hostpath-demo-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "wait",
+        "--for=condition=Ready",
+        "pod/hostpath-demo",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "storage-hostpath-persisted",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:52:29.728959+00:00",
+      "duration_seconds": 0.05,
+      "log": "storage-hostpath-persisted.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "exec",
+        "hostpath-demo",
+        "--",
+        "grep",
+        "retained-homework-data",
+        "/data/proof.txt"
+      ]
+    },
+    {
+      "check": "storage-static-volume",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:52:29.780057+00:00",
+      "duration_seconds": 0.06,
+      "log": "storage-static-volume.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "storage-static-consumer",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:52:29.845853+00:00",
+      "duration_seconds": 0.05,
+      "log": "storage-static-consumer.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "storage-pvc-demo-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:52:29.897682+00:00",
+      "duration_seconds": 9.9,
+      "log": "storage-pvc-demo-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "wait",
+        "--for=condition=Ready",
+        "pod/pvc-demo",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "storage-static-write",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:52:39.802742+00:00",
+      "duration_seconds": 0.06,
+      "log": "storage-static-write.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "exec",
+        "pvc-demo",
+        "--",
+        "sh",
+        "-ec",
+        "echo static-retained-data > /data/proof.txt"
+      ]
+    },
+    {
+      "check": "storage-pvc-demo-delete",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:52:39.864399+00:00",
+      "duration_seconds": 32.37,
+      "log": "storage-pvc-demo-delete.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "delete",
+        "pod",
+        "pvc-demo",
+        "--wait=true",
+        "--timeout=90s"
+      ]
+    },
+    {
+      "check": "storage-release-claim",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:53:12.230814+00:00",
+      "duration_seconds": 0.18,
+      "log": "storage-release-claim.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "delete",
+        "pvc",
+        "manual-pvc"
+      ]
+    },
+    {
+      "check": "storage-retained-volume",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "get",
+        "pv",
+        "homework-storage-b6673792-pv",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.04,
+      "log": "storage-retained-volume.txt"
+    },
+    {
+      "check": "storage-clear-old-claim",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:53:12.443160+00:00",
+      "duration_seconds": 0.03,
+      "log": "storage-clear-old-claim.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "patch",
+        "pv",
+        "homework-storage-b6673792-pv",
+        "--type=json",
+        "-p",
+        "[{\"op\":\"remove\",\"path\":\"/spec/claimRef\"}]"
+      ]
+    },
+    {
+      "check": "storage-rebind-claim",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:53:12.476947+00:00",
+      "duration_seconds": 0.07,
+      "log": "storage-rebind-claim.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "storage-static-recreate",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:53:12.545947+00:00",
+      "duration_seconds": 0.07,
+      "log": "storage-static-recreate.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "storage-pvc-demo-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:53:12.616154+00:00",
+      "duration_seconds": 12.74,
+      "log": "storage-pvc-demo-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "wait",
+        "--for=condition=Ready",
+        "pod/pvc-demo",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "storage-static-persisted",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:53:25.361583+00:00",
+      "duration_seconds": 0.08,
+      "log": "storage-static-persisted.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "exec",
+        "pvc-demo",
+        "--",
+        "grep",
+        "static-retained-data",
+        "/data/proof.txt"
+      ]
+    },
+    {
+      "check": "storage-static-pod-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:53:25.443749+00:00",
+      "duration_seconds": 31.19,
+      "log": "storage-static-pod-cleanup.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "delete",
+        "pod",
+        "pvc-demo",
+        "--ignore-not-found"
+      ]
+    },
+    {
+      "check": "storage-static-claim-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:53:56.632748+00:00",
+      "duration_seconds": 0.14,
+      "log": "storage-static-claim-cleanup.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "delete",
+        "pvc",
+        "manual-pvc",
+        "--ignore-not-found"
+      ]
+    },
+    {
+      "check": "storage-static-pv-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:53:56.774709+00:00",
+      "duration_seconds": 0.14,
+      "log": "storage-static-pv-cleanup.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "delete",
+        "pv",
+        "homework-storage-b6673792-pv",
+        "--ignore-not-found"
+      ]
+    },
+    {
+      "check": "storage-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:53:56.911480+00:00",
+      "duration_seconds": 42.38,
+      "log": "storage-cleanup.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-storage-b6673792",
+        "delete",
+        "namespace",
+        "homework-storage-b6673792",
+        "--ignore-not-found",
+        "--wait=true",
+        "--timeout=180s"
+      ]
+    }
+  ]
+}

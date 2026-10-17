@@ -1,0 +1,2 @@
+wget: bad address 'kubernetes-bootcamp:8080'
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-6ccf69454d-lsjqg | v=2

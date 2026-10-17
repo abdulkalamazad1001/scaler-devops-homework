@@ -1,0 +1,8 @@
+database_version
+8.4.11
+Database
+homework
+information_schema
+mysql
+performance_schema
+sys

@@ -1,0 +1,81 @@
+{
+  "conditions": [
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:00:24Z",
+      "status": "False",
+      "type": "PodReadyToStartContainers"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:00:22Z",
+      "reason": "PodCompleted",
+      "status": "True",
+      "type": "Initialized"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:00:22Z",
+      "reason": "PodCompleted",
+      "status": "False",
+      "type": "Ready"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:00:22Z",
+      "reason": "PodCompleted",
+      "status": "False",
+      "type": "ContainersReady"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:00:22Z",
+      "status": "True",
+      "type": "PodScheduled"
+    }
+  ],
+  "containerStatuses": [
+    {
+      "containerID": "containerd://6c6a20e9d2240b7621fb1baf08fdae4c82ba517f5fec3c7e3fc6831a76541f5a",
+      "image": "docker.io/library/python:3.11-alpine",
+      "imageID": "docker.io/library/python@sha256:d9368b3a5ac59afea7b5d4f2e2aea0941dbf9fdee9c369c5bec00b98244bc929",
+      "lastState": {},
+      "name": "memory-leaker",
+      "ready": false,
+      "restartCount": 0,
+      "started": false,
+      "state": {
+        "terminated": {
+          "containerID": "containerd://6c6a20e9d2240b7621fb1baf08fdae4c82ba517f5fec3c7e3fc6831a76541f5a",
+          "exitCode": 0,
+          "finishedAt": "2026-10-17T19:00:22Z",
+          "reason": "Completed",
+          "startedAt": "2026-10-17T19:00:22Z"
+        }
+      },
+      "volumeMounts": [
+        {
+          "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+          "name": "kube-api-access-7bhj2",
+          "readOnly": true,
+          "recursiveReadOnly": "Disabled"
+        }
+      ]
+    }
+  ],
+  "hostIP": "172.18.0.2",
+  "hostIPs": [
+    {
+      "ip": "172.18.0.2"
+    }
+  ],
+  "phase": "Succeeded",
+  "podIP": "10.244.0.65",
+  "podIPs": [
+    {
+      "ip": "10.244.0.65"
+    }
+  ],
+  "qosClass": "Burstable",
+  "startTime": "2026-10-17T19:00:22Z"
+}

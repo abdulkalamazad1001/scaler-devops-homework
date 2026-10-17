@@ -1,0 +1,504 @@
+{
+  "captured_at": "2026-10-17T18:51:55.216525+00:00",
+  "context": "homework-review",
+  "error": null,
+  "checks": [
+    {
+      "check": "ingress-namespace",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:49:20.956889+00:00",
+      "duration_seconds": 0.03,
+      "log": "ingress-namespace.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "create",
+        "namespace",
+        "homework-ingress-83f6d755"
+      ]
+    },
+    {
+      "check": "ingress-client-create",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:49:20.987998+00:00",
+      "duration_seconds": 0.03,
+      "log": "ingress-client-create.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "run",
+        "lab-client",
+        "--image=busybox:1.36",
+        "--restart=Never",
+        "--",
+        "sleep",
+        "3600"
+      ]
+    },
+    {
+      "check": "ingress-lab-client-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:49:21.022121+00:00",
+      "duration_seconds": 0.98,
+      "log": "ingress-lab-client-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "wait",
+        "--for=condition=Ready",
+        "pod/lab-client",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "ingress-apps",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:49:22.013224+00:00",
+      "duration_seconds": 0.11,
+      "log": "ingress-apps.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "ingress-deploy-web-rollout-4",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:49:22.119121+00:00",
+      "duration_seconds": 88.19,
+      "log": "ingress-deploy-web-rollout-4.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "rollout",
+        "status",
+        "deploy/web",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "ingress-deploy-api-rollout-5",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:50:50.308452+00:00",
+      "duration_seconds": 1.0,
+      "log": "ingress-deploy-api-rollout-5.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "rollout",
+        "status",
+        "deploy/api",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "ingress-routes",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:50:51.314920+00:00",
+      "duration_seconds": 0.06,
+      "log": "ingress-routes.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "ingress-host-web",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:50:51.375168+00:00",
+      "duration_seconds": 4.16,
+      "log": "ingress-host-web.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in $(seq 1 30); do wget -T 3 -qO- --header='Host: demo.local' 'http://ingress-nginx-controller.ingress-nginx.svc/' | grep 'WEB app' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "ingress-path-api",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:50:55.538563+00:00",
+      "duration_seconds": 0.12,
+      "log": "ingress-path-api.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in $(seq 1 30); do wget -T 3 -qO- --header='Host: demo.local' 'http://ingress-nginx-controller.ingress-nginx.svc/api' | grep 'API app' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "ingress-host-api",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:50:55.659646+00:00",
+      "duration_seconds": 0.07,
+      "log": "ingress-host-api.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in $(seq 1 30); do wget -T 3 -qO- --header='Host: api.demo.local' 'http://ingress-nginx-controller.ingress-nginx.svc/' | grep 'API app' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "ingress-wrong-backend-service",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:50:55.728909+00:00",
+      "duration_seconds": 0.05,
+      "log": "ingress-wrong-backend-service.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "ingress-wrong-backend-service-observed",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:50:55.775327+00:00",
+      "duration_seconds": 2.06,
+      "log": "ingress-wrong-backend-service-observed.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in $(seq 1 30); do wget -T 3 -S -O /dev/null --header='Host: demo.local' 'http://ingress-nginx-controller.ingress-nginx.svc/api' 2>&1 | grep 'HTTP/1.1 503' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "ingress-wrong-backend-service-repair",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:50:57.838439+00:00",
+      "duration_seconds": 0.07,
+      "log": "ingress-wrong-backend-service-repair.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "ingress-wrong-backend-service-recovered",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:50:57.913075+00:00",
+      "duration_seconds": 4.07,
+      "log": "ingress-wrong-backend-service-recovered.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in $(seq 1 30); do wget -T 3 -qO- --header='Host: demo.local' 'http://ingress-nginx-controller.ingress-nginx.svc/api' | grep 'API app' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "ingress-wrong-ingressclass",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:51:01.980568+00:00",
+      "duration_seconds": 0.06,
+      "log": "ingress-wrong-ingressclass.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "ingress-wrong-ingressclass-observed",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:51:02.039923+00:00",
+      "duration_seconds": 2.06,
+      "log": "ingress-wrong-ingressclass-observed.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in $(seq 1 30); do wget -T 3 -S -O /dev/null --header='Host: demo.local' 'http://ingress-nginx-controller.ingress-nginx.svc/api' 2>&1 | grep 'HTTP/1.1 404' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "ingress-wrong-ingressclass-repair",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:51:04.104058+00:00",
+      "duration_seconds": 0.06,
+      "log": "ingress-wrong-ingressclass-repair.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "ingress-wrong-ingressclass-recovered",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:51:04.161283+00:00",
+      "duration_seconds": 4.06,
+      "log": "ingress-wrong-ingressclass-recovered.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in $(seq 1 30); do wget -T 3 -qO- --header='Host: demo.local' 'http://ingress-nginx-controller.ingress-nginx.svc/api' | grep 'API app' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "ingress-configmap",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:51:08.229883+00:00",
+      "duration_seconds": 0.07,
+      "log": "ingress-configmap.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "ingress-missing-config-observed",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "get",
+        "pod",
+        "typo-demo",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 2.08,
+      "log": "ingress-missing-config-observed.txt"
+    },
+    {
+      "check": "ingress-typo-demo-delete",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:51:10.379340+00:00",
+      "duration_seconds": 1.03,
+      "log": "ingress-typo-demo-delete.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "delete",
+        "pod",
+        "typo-demo",
+        "--wait=true",
+        "--timeout=90s"
+      ]
+    },
+    {
+      "check": "ingress-configmap-repaired",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:51:11.409931+00:00",
+      "duration_seconds": 0.09,
+      "log": "ingress-configmap-repaired.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "ingress-typo-demo-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:51:11.500246+00:00",
+      "duration_seconds": 0.91,
+      "log": "ingress-typo-demo-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "wait",
+        "--for=condition=Ready",
+        "pod/typo-demo",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "ingress-secret-fixture",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:51:12.407554+00:00",
+      "duration_seconds": 0.06,
+      "log": "ingress-secret-fixture.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "ingress-secret-newline-true",
+      "exit_code": 0,
+      "command": [
+        "compare",
+        "decoded-secret-trailing-newline"
+      ],
+      "duration_seconds": 0.0,
+      "log": "ingress-secret-newline-true.txt"
+    },
+    {
+      "check": "ingress-secret-fixture",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:51:12.497664+00:00",
+      "duration_seconds": 0.19,
+      "log": "ingress-secret-fixture.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "ingress-secret-newline-false",
+      "exit_code": 0,
+      "command": [
+        "compare",
+        "decoded-secret-trailing-newline"
+      ],
+      "duration_seconds": 0.0,
+      "log": "ingress-secret-newline-false.txt"
+    },
+    {
+      "check": "ingress-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:51:12.784492+00:00",
+      "duration_seconds": 42.43,
+      "log": "ingress-cleanup.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-ingress-83f6d755",
+        "delete",
+        "namespace",
+        "homework-ingress-83f6d755",
+        "--ignore-not-found",
+        "--wait=true",
+        "--timeout=180s"
+      ]
+    }
+  ]
+}

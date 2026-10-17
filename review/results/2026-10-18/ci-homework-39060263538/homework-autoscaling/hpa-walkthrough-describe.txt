@@ -1,0 +1,37 @@
+Name:                                                  php-apache
+Namespace:                                             homework-hpa-walkthrough-5c3e980a
+Labels:                                                app=php-apache
+Annotations:                                           <none>
+CreationTimestamp:                                     Sat, 17 Oct 2026 18:57:20 +0000
+Reference:                                             Deployment/php-apache
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  245% (491m) / 50%
+Min replicas:                                          1
+Max replicas:                                          10
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 300 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 15 seconds
+Deployment pods:       1 current / 5 desired
+Conditions:
+  Type            Status  Reason              Message
+  ----            ------  ------              -------
+  AbleToScale     True    SucceededRescale    the HPA controller was able to update the target scale to 5
+  ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+Events:
+  Type     Reason                        Age   From                       Message
+  ----     ------                        ----  ----                       -------
+  Warning  FailedGetResourceMetric       32s   horizontal-pod-autoscaler  failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+  Warning  FailedComputeMetricsReplicas  32s   horizontal-pod-autoscaler  invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+  Warning  FailedGetResourceMetric       17s   horizontal-pod-autoscaler  failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)
+  Warning  FailedComputeMetricsReplicas  17s   horizontal-pod-autoscaler  invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)
+  Normal   SuccessfulRescale             2s    horizontal-pod-autoscaler  New size: 5; reason: cpu resource utilization (percentage of request) above target

@@ -210,3 +210,13 @@ Useful extras I noted:
     git cherry-pick -n <hash>       apply the change but do not commit yet
     git cherry-pick --abort         back out if there is a conflict
     git cherry-pick --continue      carry on after fixing a conflict
+
+## Verified rerun — 18 October 2026
+
+Verified staging, tracked-file commit behavior, branch/merge and selective cherry-pick into main with a new commit hash.
+
+[Recorded results](../review/results/2026-10-18/shell-tests.txt) · [Screenshot](../review/results/2026-10-18/screenshots/task4-git.png) · [Complete evidence index and environment notes](../review/results/2026-10-18/README.md).
+
+![Git: saved execution log view](../review/results/2026-10-18/screenshots/task4-git.png)
+
+*Saved execution log view from the verified rerun; complete results are linked above.*

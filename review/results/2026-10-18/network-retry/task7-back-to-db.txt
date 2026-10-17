@@ -1,0 +1,6 @@
+PING homework-review-8b5f44d2-db (192.168.16.2): 56 data bytes
+64 bytes from 192.168.16.2: seq=0 ttl=64 time=0.073 ms
+
+--- homework-review-8b5f44d2-db ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 0.073/0.073/0.073 ms

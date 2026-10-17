@@ -1,0 +1,2 @@
+HTTP 200
+<h1>Hello World from Docker Multi-Stage Build!</h1>

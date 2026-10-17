@@ -1,0 +1,36 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 174B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/httpd:2.4-alpine
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/2] FROM docker.io/library/httpd:2.4-alpine@sha256:3440c39d8d6f54fa9ad2549e5a60c19ddd435faadc29c1ad28aa795f71888889
+#4 resolve docker.io/library/httpd:2.4-alpine@sha256:3440c39d8d6f54fa9ad2549e5a60c19ddd435faadc29c1ad28aa795f71888889
+#4 resolve docker.io/library/httpd:2.4-alpine@sha256:3440c39d8d6f54fa9ad2549e5a60c19ddd435faadc29c1ad28aa795f71888889 done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 292B done
+#5 DONE 0.0s
+
+#6 [2/2] COPY index.html /usr/local/apache2/htdocs/index.html
+#6 DONE 0.0s
+
+#7 exporting to image
+#7 exporting layers 0.0s done
+#7 exporting manifest sha256:efa7438d73b71b670bfead2263a205e0d4864dc4bb1d5b5e643d21f7d2473cf7 done
+#7 exporting config sha256:de6e2331190d381c228e4ba407dd387d215cc4ca245d7f72bb9d86d287f5eb3d done
+#7 exporting attestation manifest sha256:a4814aba809c950baa08a9533e0aa1a9e6738e7d981d96d4d854421855b4e29a done
+#7 exporting manifest list sha256:eb4e0d1d81b2e69ac261b08a191925cb2879cb145021891418e802e3b94d1090 done
+#7 naming to docker.io/homework-review/task5-apache:local done
+#7 unpacking to docker.io/homework-review/task5-apache:local done
+#7 DONE 0.1s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/pqm5fm3ru07yta3df5f8gkrr5

@@ -1,0 +1,20 @@
+random_id.suffix: Creating...
+random_id.suffix: Creation complete after 0s [id=Bu2wMw]
+aws_s3_bucket.demo: Creating...
+aws_s3_bucket.demo: Creation complete after 7s [id=scaler-homework-24bcs10053-06edb033]
+aws_s3_bucket_public_access_block.demo: Creating...
+aws_s3_bucket_server_side_encryption_configuration.demo: Creating...
+aws_s3_bucket_versioning.demo: Creating...
+aws_s3_bucket_public_access_block.demo: Creation complete after 0s [id=scaler-homework-24bcs10053-06edb033]
+aws_s3_bucket_server_side_encryption_configuration.demo: Creation complete after 0s [id=scaler-homework-24bcs10053-06edb033]
+aws_s3_bucket_versioning.demo: Creation complete after 1s [id=scaler-homework-24bcs10053-06edb033]
+
+Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+bucket_arn = "arn:aws:s3:::scaler-homework-24bcs10053-06edb033"
+bucket_name = "scaler-homework-24bcs10053-06edb033"
+bucket_region = "ap-south-1"
+bucket_regional_domain_name = "scaler-homework-24bcs10053-06edb033.s3.ap-south-1.amazonaws.com"
+versioning_status = "Enabled"

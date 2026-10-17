@@ -1,0 +1,80 @@
+{
+  "conditions": [
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:02:17Z",
+      "status": "False",
+      "type": "PodReadyToStartContainers"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:02:15Z",
+      "status": "True",
+      "type": "Initialized"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:02:15Z",
+      "reason": "PodFailed",
+      "status": "False",
+      "type": "Ready"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:02:15Z",
+      "reason": "PodFailed",
+      "status": "False",
+      "type": "ContainersReady"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:02:15Z",
+      "status": "True",
+      "type": "PodScheduled"
+    }
+  ],
+  "containerStatuses": [
+    {
+      "containerID": "containerd://6b89feb8df4d746e4992ec5e104bf521e04b772ad79880a4a11d59d784bb77f4",
+      "image": "docker.io/library/busybox:1.36",
+      "imageID": "docker.io/library/busybox@sha256:73aaf090f3d85aa34ee199857f03fa3a95c8ede2ffd4cc2cdb5b94e566b11662",
+      "lastState": {},
+      "name": "task",
+      "ready": false,
+      "restartCount": 0,
+      "started": false,
+      "state": {
+        "terminated": {
+          "containerID": "containerd://6b89feb8df4d746e4992ec5e104bf521e04b772ad79880a4a11d59d784bb77f4",
+          "exitCode": 1,
+          "finishedAt": "2026-10-17T19:02:16Z",
+          "reason": "Error",
+          "startedAt": "2026-10-17T19:02:16Z"
+        }
+      },
+      "volumeMounts": [
+        {
+          "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+          "name": "kube-api-access-cmmhr",
+          "readOnly": true,
+          "recursiveReadOnly": "Disabled"
+        }
+      ]
+    }
+  ],
+  "hostIP": "172.18.0.2",
+  "hostIPs": [
+    {
+      "ip": "172.18.0.2"
+    }
+  ],
+  "phase": "Failed",
+  "podIP": "10.244.0.107",
+  "podIPs": [
+    {
+      "ip": "10.244.0.107"
+    }
+  ],
+  "qosClass": "BestEffort",
+  "startTime": "2026-10-17T19:02:15Z"
+}

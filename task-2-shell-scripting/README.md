@@ -185,3 +185,13 @@ output above is unchanged; current Linux regression checks live in
 
 wc -l < file is piped through tr -d " " because macOS pads the count with spaces, so the
 summary line would otherwise read "Lines saved :      707".
+
+## Verified rerun — 18 October 2026
+
+Ran the system-information script with default input and paths containing spaces; verified process-file creation and failure handling.
+
+[Recorded results](../review/results/2026-10-18/shell-tests.txt) · [Screenshot](../review/results/2026-10-18/screenshots/task2-shell.png) · [Complete evidence index and environment notes](../review/results/2026-10-18/README.md).
+
+![Shell scripting: saved execution log view](../review/results/2026-10-18/screenshots/task2-shell.png)
+
+*Saved execution log view from the verified rerun; complete results are linked above.*

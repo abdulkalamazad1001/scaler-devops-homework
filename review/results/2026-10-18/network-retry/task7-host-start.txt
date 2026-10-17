@@ -1,0 +1,25 @@
+Unable to find image 'httpd:2.4-alpine' locally
+2.4-alpine: Pulling from library/httpd
+c6e2904ac185: Pulling fs layer
+9b7d232c6e6d: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+a507aa80ad00: Pulling fs layer
+5039119939d5: Pulling fs layer
+98b3bd652a0c: Pulling fs layer
+4f4fb700ef54: Download complete
+c6e2904ac185: Download complete
+a507aa80ad00: Download complete
+5039119939d5: Download complete
+98b3bd652a0c: Download complete
+4f4fb700ef54: Pull complete
+a507aa80ad00: Pull complete
+5039119939d5: Pull complete
+bd25f633d976: Download complete
+6c5941cad9ef: Download complete
+9b7d232c6e6d: Download complete
+9b7d232c6e6d: Pull complete
+98b3bd652a0c: Pull complete
+c6e2904ac185: Pull complete
+Digest: sha256:3440c39d8d6f54fa9ad2549e5a60c19ddd435faadc29c1ad28aa795f71888889
+Status: Downloaded newer image for httpd:2.4-alpine
+0ea1263fc9fa2fd6499820c861a444b2add2193803e75f7bbb067aa45940e9f9

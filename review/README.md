@@ -2,6 +2,10 @@
 
 Student: **T. Abdul Kalam Azad, 24BCS10053**. Review date: **15 October 2026**.
 
+## Latest verification: 18 October 2026
+
+The [dated evidence index](results/2026-10-18/README.md) records the expanded live rerun, browser screenshots, AWS apply/destroy, monitoring and GitOps checks. Read that index for the current status. The reviews below are retained as dated history; their remaining-work columns describe what was unverified on those earlier dates.
+
 ## Follow-up: 16 October 2026
 
 The second review adds task-specific README instructions for sessions 9-14 and 18,

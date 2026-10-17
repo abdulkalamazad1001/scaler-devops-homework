@@ -1,0 +1,3 @@
+service/web-headless created
+statefulset.apps/web created
+service/external-api created

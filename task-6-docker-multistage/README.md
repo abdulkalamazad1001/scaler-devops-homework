@@ -199,3 +199,13 @@ and gives an attacker more to work with.
 EXPOSE in the Dockerfile is only documentation. What actually made the app reachable on
 port 8080 was -p 8080:3000 on docker run, which reads as host port colon container port.
 That is also why the app can listen on 3000 internally and still be served on 8080.
+
+## Verified rerun — 18 October 2026
+
+Built and ran the multi-stage application on host port 8080; checked its browser page, docker ps port mapping and non-root runtime.
+
+[Recorded results](../review/results/2026-10-18/task6-multistage-docker-ps.txt) · [Screenshot](../review/results/2026-10-18/screenshots/task6-multistage.png) · [Complete evidence index and environment notes](../review/results/2026-10-18/README.md).
+
+![Multi-stage Docker: live browser capture](../review/results/2026-10-18/screenshots/task6-multistage.png)
+
+*Live browser capture from the verified rerun; complete results are linked above.*

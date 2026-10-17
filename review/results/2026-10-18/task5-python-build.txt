@@ -1,0 +1,74 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 601B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.12-slim
+#2 DONE 1.2s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 64B done
+#3 DONE 0.0s
+
+#4 [1/6] FROM docker.io/library/python:3.12-slim@sha256:a6e34c598f2467ed0e9a8d349809fcd8b5c603269512df273a0bb1784edc11b1
+#4 resolve docker.io/library/python:3.12-slim@sha256:a6e34c598f2467ed0e9a8d349809fcd8b5c603269512df273a0bb1784edc11b1 done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 521B done
+#5 DONE 0.0s
+
+#6 [2/6] WORKDIR /app
+#6 CACHED
+
+#7 [3/6] COPY requirements.txt ./
+#7 DONE 0.0s
+
+#8 [4/6] RUN pip install --no-cache-dir -r requirements.txt
+#8 4.082 Collecting flask==3.0.3 (from -r requirements.txt (line 1))
+#8 4.225   Downloading flask-3.0.3-py3-none-any.whl.metadata (3.2 kB)
+#8 4.276 Collecting Werkzeug>=3.0.0 (from flask==3.0.3->-r requirements.txt (line 1))
+#8 4.295   Downloading werkzeug-3.1.9-py3-none-any.whl.metadata (4.1 kB)
+#8 4.328 Collecting Jinja2>=3.1.2 (from flask==3.0.3->-r requirements.txt (line 1))
+#8 4.378   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+#8 4.406 Collecting itsdangerous>=2.1.2 (from flask==3.0.3->-r requirements.txt (line 1))
+#8 4.422   Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+#8 4.465 Collecting click>=8.1.3 (from flask==3.0.3->-r requirements.txt (line 1))
+#8 4.482   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+#8 4.508 Collecting blinker>=1.6.2 (from flask==3.0.3->-r requirements.txt (line 1))
+#8 4.524   Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+#8 4.614 Collecting MarkupSafe>=2.0 (from Jinja2>=3.1.2->flask==3.0.3->-r requirements.txt (line 1))
+#8 4.631   Downloading markupsafe-3.0.4-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (2.7 kB)
+#8 4.694 Downloading flask-3.0.3-py3-none-any.whl (101 kB)
+#8 4.738 Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+#8 4.793 Downloading click-8.5.0-py3-none-any.whl (125 kB)
+#8 4.827 Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+#8 4.845 Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+#8 4.885 Downloading werkzeug-3.1.9-py3-none-any.whl (228 kB)
+#8 4.913 Downloading markupsafe-3.0.4-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (24 kB)
+#8 4.922 Installing collected packages: MarkupSafe, itsdangerous, click, blinker, Werkzeug, Jinja2, flask
+#8 5.093 Successfully installed Jinja2-3.1.6 MarkupSafe-3.0.4 Werkzeug-3.1.9 blinker-1.9.0 click-8.5.0 flask-3.0.3 itsdangerous-2.2.0
+#8 5.093 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#8 5.228 
+#8 5.228 [notice] A new release of pip is available: 25.0.1 -> 26.2.1
+#8 5.228 [notice] To update, run: pip install --upgrade pip
+#8 DONE 5.3s
+
+#9 [5/6] COPY app.py ./
+#9 DONE 0.0s
+
+#10 [6/6] RUN useradd --create-home appuser
+#10 DONE 0.1s
+
+#11 exporting to image
+#11 exporting layers 0.1s done
+#11 exporting manifest sha256:0df690b2f850351422f78c201cf24125a00d9130e9e854124d78ecd9cd5bd787 done
+#11 exporting config sha256:4ec5e7a0ff135c65db25b05bf2694c54be6b1e2781f206bdca1144e07391607f done
+#11 exporting attestation manifest sha256:8d5af07a2889eb4c5c698a2ff11c990c6237d352af0b448fa0e92697eab595a8 done
+#11 exporting manifest list sha256:928bb805b84c6da4ff691adcfa856831eed6f10eaf13312285e9d30495717d15 done
+#11 naming to docker.io/homework-review/task5-python:local done
+#11 unpacking to docker.io/homework-review/task5-python:local 0.0s done
+#11 DONE 0.2s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/4umu88el55s5ohtif4xzguts5

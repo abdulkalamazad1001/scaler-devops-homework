@@ -1,0 +1,2 @@
+deployment.apps/app-rolling configured
+service/app-rolling-service unchanged

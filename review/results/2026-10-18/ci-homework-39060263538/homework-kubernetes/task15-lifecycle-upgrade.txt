@@ -1,0 +1,18 @@
+Release "notes-review" has been upgraded. Happy Helming!
+NAME: notes-review
+LAST DEPLOYED: Sat Oct 17 18:58:42 2026
+NAMESPACE: homework-helm-67a5ec7c
+STATUS: deployed
+REVISION: 2
+NOTES:
+notes-app (development) is running as release "notes-review" in namespace "homework-helm-67a5ec7c".
+
+  Replicas: 2
+  Image:    nginx:1.24
+
+Check the pods:
+  kubectl get pods -n homework-helm-67a5ec7c -l app.kubernetes.io/instance=notes-review
+
+Open the app:
+  kubectl port-forward -n homework-helm-67a5ec7c svc/notes-review-svc 8080:80
+  curl http://127.0.0.1:8080

@@ -1,0 +1,1 @@
+pod "project-broken-pod" deleted from homework-mini-c7ab0cb9 namespace

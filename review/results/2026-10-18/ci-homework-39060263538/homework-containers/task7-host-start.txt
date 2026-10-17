@@ -1,0 +1,12 @@
+Unable to find image 'httpd:2.4-alpine' locally
+2.4-alpine: Pulling from library/httpd
+e2de96513ba9: Already exists
+269898e769d0: Already exists
+3c7c286fbbd5: Already exists
+4f4fb700ef54: Already exists
+db577887d90f: Already exists
+a61ab206ac8a: Already exists
+8e97dd6176d7: Already exists
+Digest: sha256:3440c39d8d6f54fa9ad2549e5a60c19ddd435faadc29c1ad28aa795f71888889
+Status: Downloaded newer image for httpd:2.4-alpine
+724cd1dedde3330596df9d6175c499b3fc5bf8ee0341ea9896983fcb4a12639c

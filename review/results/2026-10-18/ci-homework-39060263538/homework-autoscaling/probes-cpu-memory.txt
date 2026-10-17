@@ -1,0 +1,3 @@
+NAME                      CPU(cores)   MEMORY(bytes)   
+web-app-69856bc4d-dpgvj   200m         4Mi             
+web-app-69856bc4d-x45mf   201m         4Mi             

@@ -1,0 +1,13 @@
+Unable to find image 'nginx:1.27-alpine' locally
+1.27-alpine: Pulling from library/nginx
+f18232174bc9: Already exists
+61ca4f733c80: Already exists
+b464cfdf2a63: Already exists
+d7e507024086: Already exists
+81bd8ed7ec67: Already exists
+197eb75867ef: Already exists
+34a64644b756: Already exists
+39c2ddfd6010: Already exists
+Digest: sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+Status: Downloaded newer image for nginx:1.27-alpine
+ce32c9667ecbe2d3ba671821eec352365c19d6955f979738c8c18a1a7091b990

@@ -1,0 +1,84 @@
+{
+  "conditions": [
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:48:46Z",
+      "observedGeneration": 1,
+      "status": "True",
+      "type": "PodReadyToStartContainers"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:47:44Z",
+      "observedGeneration": 1,
+      "status": "True",
+      "type": "Initialized"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:47:44Z",
+      "message": "containers with unready status: [app]",
+      "observedGeneration": 1,
+      "reason": "ContainersNotReady",
+      "status": "False",
+      "type": "Ready"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:47:44Z",
+      "message": "containers with unready status: [app]",
+      "observedGeneration": 1,
+      "reason": "ContainersNotReady",
+      "status": "False",
+      "type": "ContainersReady"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:47:44Z",
+      "observedGeneration": 1,
+      "status": "True",
+      "type": "PodScheduled"
+    }
+  ],
+  "containerStatuses": [
+    {
+      "image": "nginx:this-tag-does-not-exist",
+      "imageID": "",
+      "lastState": {},
+      "name": "app",
+      "ready": false,
+      "restartCount": 0,
+      "started": false,
+      "state": {
+        "waiting": {
+          "message": "rpc error: code = NotFound desc = failed to pull and unpack image \"docker.io/library/nginx:this-tag-does-not-exist\": failed to resolve reference \"docker.io/library/nginx:this-tag-does-not-exist\": docker.io/library/nginx:this-tag-does-not-exist: not found",
+          "reason": "ErrImagePull"
+        }
+      },
+      "volumeMounts": [
+        {
+          "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+          "name": "kube-api-access-2nr68",
+          "readOnly": true,
+          "recursiveReadOnly": "Disabled"
+        }
+      ]
+    }
+  ],
+  "hostIP": "192.168.49.2",
+  "hostIPs": [
+    {
+      "ip": "192.168.49.2"
+    }
+  ],
+  "observedGeneration": 1,
+  "phase": "Pending",
+  "podIP": "10.244.0.18",
+  "podIPs": [
+    {
+      "ip": "10.244.0.18"
+    }
+  ],
+  "qosClass": "BestEffort",
+  "startTime": "2026-10-17T18:47:44Z"
+}

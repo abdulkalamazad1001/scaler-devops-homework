@@ -1,0 +1,2 @@
+NAME        	NAMESPACE             	REVISION	UPDATED                             	STATUS  	CHART            	APP VERSION
+notes-review	homework-helm-99fc4f08	1       	2026-10-18 00:22:33.944895 +0530 IST	deployed	notes-chart-0.1.0	1.0        

@@ -1,0 +1,1080 @@
+{
+  "captured_at": "2026-10-17T19:03:43.892695+00:00",
+  "context": "kind-homework-review",
+  "namespace": "homework-deployments-75fb4add",
+  "error": null,
+  "checks": [
+    {
+      "check": "deployments-namespace",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:06.045649+00:00",
+      "duration_seconds": 0.04,
+      "log": "deployments-namespace.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "create",
+        "namespace",
+        "homework-deployments-75fb4add"
+      ]
+    },
+    {
+      "check": "deployments-client-create",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:06.081947+00:00",
+      "duration_seconds": 0.04,
+      "log": "deployments-client-create.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "run",
+        "lab-client",
+        "--image=busybox:1.36",
+        "--restart=Never",
+        "--",
+        "sleep",
+        "3600"
+      ]
+    },
+    {
+      "check": "deployments-lab-client-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:06.125376+00:00",
+      "duration_seconds": 1.08,
+      "log": "deployments-lab-client-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "wait",
+        "--for=condition=Ready",
+        "pod/lab-client",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "deployments-app-rolling-v1",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:07.210463+00:00",
+      "duration_seconds": 0.09,
+      "log": "deployments-app-rolling-v1.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "deployments-deployment-app-rolling-rollout-4",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:07.305448+00:00",
+      "duration_seconds": 3.95,
+      "log": "deployments-deployment-app-rolling-rollout-4.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "rollout",
+        "status",
+        "deployment/app-rolling",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "deployments-app-rolling-v1-traffic",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:11.259376+00:00",
+      "duration_seconds": 0.06,
+      "log": "deployments-app-rolling-v1-traffic.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in 1 2 3 4 5; do wget -T 5 -qO- http://app-rolling-service | grep 'app-rolling v1' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "deployments-app-rolling-v2",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:11.325393+00:00",
+      "duration_seconds": 0.13,
+      "log": "deployments-app-rolling-v2.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "deployments-deployment-app-rolling-rollout-7",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:11.456882+00:00",
+      "duration_seconds": 15.81,
+      "log": "deployments-deployment-app-rolling-rollout-7.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "rollout",
+        "status",
+        "deployment/app-rolling",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "deployments-app-rolling-v2-traffic",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:27.268457+00:00",
+      "duration_seconds": 0.07,
+      "log": "deployments-app-rolling-v2-traffic.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in 1 2 3 4 5; do wget -T 5 -qO- http://app-rolling-service | grep 'app-rolling v2' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "deployments-app-rolling-undo",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:27.342873+00:00",
+      "duration_seconds": 0.05,
+      "log": "deployments-app-rolling-undo.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "rollout",
+        "undo",
+        "deployment/app-rolling"
+      ]
+    },
+    {
+      "check": "deployments-deployment-app-rolling-rollout-10",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:27.393981+00:00",
+      "duration_seconds": 15.91,
+      "log": "deployments-deployment-app-rolling-rollout-10.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "rollout",
+        "status",
+        "deployment/app-rolling",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "deployments-app-rolling-rollback-traffic",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:43.302511+00:00",
+      "duration_seconds": 0.07,
+      "log": "deployments-app-rolling-rollback-traffic.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in 1 2 3 4 5; do wget -T 5 -qO- http://app-rolling-service | grep 'app-rolling v1' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "deployments-app-rolling-service",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:43.373830+00:00",
+      "duration_seconds": 0.04,
+      "log": "deployments-app-rolling-service.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "get",
+        "service",
+        "app-rolling-service",
+        "-o",
+        "json"
+      ]
+    },
+    {
+      "check": "deployments-app-rolling-node",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:43.413129+00:00",
+      "duration_seconds": 0.03,
+      "log": "deployments-app-rolling-node.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "get",
+        "nodes",
+        "-o",
+        "json"
+      ]
+    },
+    {
+      "check": "deployments-app-rolling-nodeport-traffic",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:43.447116+00:00",
+      "duration_seconds": 0.06,
+      "log": "deployments-app-rolling-nodeport-traffic.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in 1 2 3 4 5; do wget -T 5 -qO- http://172.18.0.2:30572 | grep 'app-rolling v1' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "deployments-app-rolling-remove",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:43.508453+00:00",
+      "duration_seconds": 0.03,
+      "log": "deployments-app-rolling-remove.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "delete",
+        "deployment",
+        "app-rolling",
+        "--wait=true"
+      ]
+    },
+    {
+      "check": "deployments-app-recreate-v1",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:43.546969+00:00",
+      "duration_seconds": 0.16,
+      "log": "deployments-app-recreate-v1.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "deployments-deployment-app-recreate-rollout-17",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:43.706544+00:00",
+      "duration_seconds": 4.64,
+      "log": "deployments-deployment-app-recreate-rollout-17.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "rollout",
+        "status",
+        "deployment/app-recreate",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "deployments-app-recreate-v1-traffic",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:48.342028+00:00",
+      "duration_seconds": 0.06,
+      "log": "deployments-app-recreate-v1-traffic.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in 1 2 3 4 5; do wget -T 5 -qO- http://app-recreate-service | grep 'recreate v1' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "deployments-app-recreate-v2",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:48.407460+00:00",
+      "duration_seconds": 0.16,
+      "log": "deployments-app-recreate-v2.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "deployments-deployment-app-recreate-rollout-20",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:48.566896+00:00",
+      "duration_seconds": 4.79,
+      "log": "deployments-deployment-app-recreate-rollout-20.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "rollout",
+        "status",
+        "deployment/app-recreate",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "deployments-app-recreate-v2-traffic",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:53.359311+00:00",
+      "duration_seconds": 0.06,
+      "log": "deployments-app-recreate-v2-traffic.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in 1 2 3 4 5; do wget -T 5 -qO- http://app-recreate-service | grep 'recreate v2' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "deployments-app-recreate-undo",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:53.423072+00:00",
+      "duration_seconds": 0.04,
+      "log": "deployments-app-recreate-undo.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "rollout",
+        "undo",
+        "deployment/app-recreate"
+      ]
+    },
+    {
+      "check": "deployments-deployment-app-recreate-rollout-23",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:53.463395+00:00",
+      "duration_seconds": 5.92,
+      "log": "deployments-deployment-app-recreate-rollout-23.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "rollout",
+        "status",
+        "deployment/app-recreate",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "deployments-app-recreate-rollback-traffic",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:59.378558+00:00",
+      "duration_seconds": 0.06,
+      "log": "deployments-app-recreate-rollback-traffic.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in 1 2 3 4 5; do wget -T 5 -qO- http://app-recreate-service | grep 'recreate v1' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "deployments-app-recreate-service",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:59.439024+00:00",
+      "duration_seconds": 0.03,
+      "log": "deployments-app-recreate-service.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "get",
+        "service",
+        "app-recreate-service",
+        "-o",
+        "json"
+      ]
+    },
+    {
+      "check": "deployments-app-recreate-node",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:59.471474+00:00",
+      "duration_seconds": 0.04,
+      "log": "deployments-app-recreate-node.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "get",
+        "nodes",
+        "-o",
+        "json"
+      ]
+    },
+    {
+      "check": "deployments-app-recreate-nodeport-traffic",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:59.508236+00:00",
+      "duration_seconds": 0.06,
+      "log": "deployments-app-recreate-nodeport-traffic.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in 1 2 3 4 5; do wget -T 5 -qO- http://172.18.0.2:30555 | grep 'recreate v1' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "deployments-app-recreate-remove",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:59.568268+00:00",
+      "duration_seconds": 0.04,
+      "log": "deployments-app-recreate-remove.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "delete",
+        "deployment",
+        "app-recreate",
+        "--wait=true"
+      ]
+    },
+    {
+      "check": "deployments-canary-create",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:59.612193+00:00",
+      "duration_seconds": 0.18,
+      "log": "deployments-canary-create.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "deployments-deployment-app-stable-rollout-30",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:01:59.795068+00:00",
+      "duration_seconds": 4.73,
+      "log": "deployments-deployment-app-stable-rollout-30.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "rollout",
+        "status",
+        "deployment/app-stable",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "deployments-deployment-app-canary-rollout-31",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:02:04.528896+00:00",
+      "duration_seconds": 0.04,
+      "log": "deployments-deployment-app-canary-rollout-31.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "rollout",
+        "status",
+        "deployment/app-canary",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "deployments-canary-ten-ready-endpoints",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "get",
+        "endpoints",
+        "myapp-canary-service",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.03,
+      "log": "deployments-canary-ten-ready-endpoints.txt"
+    },
+    {
+      "check": "deployments-canary-both-versions",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:02:04.597602+00:00",
+      "duration_seconds": 10.1,
+      "log": "deployments-canary-both-versions.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "i=0; : > /tmp/responses; while [ $i -lt 120 ]; do wget -T 5 -qO- http://myapp-canary-service >> /tmp/responses; if grep -q 'stable v1' /tmp/responses && grep -q 'canary v2' /tmp/responses; then cat /tmp/responses; exit 0; fi; i=$((i+1)); sleep 1; done; cat /tmp/responses; exit 1"
+      ]
+    },
+    {
+      "check": "deployments-canary-remove",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:02:14.695163+00:00",
+      "duration_seconds": 0.04,
+      "log": "deployments-canary-remove.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "delete",
+        "deployment",
+        "app-stable",
+        "app-canary",
+        "--wait=true"
+      ]
+    },
+    {
+      "check": "deployments-lifecycle-create",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:02:14.757222+00:00",
+      "duration_seconds": 0.71,
+      "log": "deployments-lifecycle-create.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "deployments-lifecycle-succeeded-phase",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "get",
+        "pod",
+        "lifecycle-succeeded",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 8.26,
+      "log": "deployments-lifecycle-succeeded-phase.txt"
+    },
+    {
+      "check": "deployments-lifecycle-failed-phase",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "get",
+        "pod",
+        "lifecycle-failed",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.03,
+      "log": "deployments-lifecycle-failed-phase.txt"
+    },
+    {
+      "check": "deployments-rp-onfailure-exit0-phase",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "get",
+        "pod",
+        "rp-onfailure-exit0",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.03,
+      "log": "deployments-rp-onfailure-exit0-phase.txt"
+    },
+    {
+      "check": "deployments-rp-never-exit1-phase",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "get",
+        "pod",
+        "rp-never-exit1",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.03,
+      "log": "deployments-rp-never-exit1-phase.txt"
+    },
+    {
+      "check": "deployments-lifecycle-unschedulable",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "get",
+        "pod",
+        "lifecycle-pending",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.03,
+      "log": "deployments-lifecycle-unschedulable.txt"
+    },
+    {
+      "check": "deployments-lifecycle-crashloop-reason",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "get",
+        "pod",
+        "lifecycle-crashloop",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 32.62,
+      "log": "deployments-lifecycle-crashloop-reason.txt"
+    },
+    {
+      "check": "deployments-lifecycle-image-error-reason",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "get",
+        "pod",
+        "lifecycle-image-error",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.03,
+      "log": "deployments-lifecycle-image-error-reason.txt"
+    },
+    {
+      "check": "deployments-rp-always-exit0-restarted",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "get",
+        "pod",
+        "rp-always-exit0",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.03,
+      "log": "deployments-rp-always-exit0-restarted.txt"
+    },
+    {
+      "check": "deployments-rp-onfailure-exit1-restarted",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "get",
+        "pod",
+        "rp-onfailure-exit1",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.03,
+      "log": "deployments-rp-onfailure-exit1-restarted.txt"
+    },
+    {
+      "check": "deployments-lifecycle-liveness-restarted",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "get",
+        "pod",
+        "lifecycle-liveness",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.03,
+      "log": "deployments-lifecycle-liveness-restarted.txt"
+    },
+    {
+      "check": "deployments-lifecycle-running-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:02:56.606325+00:00",
+      "duration_seconds": 0.13,
+      "log": "deployments-lifecycle-running-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "wait",
+        "--for=condition=Ready",
+        "pod/lifecycle-running",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "deployments-lifecycle-init-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:02:56.739332+00:00",
+      "duration_seconds": 0.14,
+      "log": "deployments-lifecycle-init-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "wait",
+        "--for=condition=Ready",
+        "pod/lifecycle-init",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "deployments-lifecycle-hooks-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:02:56.875860+00:00",
+      "duration_seconds": 0.13,
+      "log": "deployments-lifecycle-hooks-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "wait",
+        "--for=condition=Ready",
+        "pod/lifecycle-hooks",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "deployments-init-content",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:02:57.008593+00:00",
+      "duration_seconds": 0.06,
+      "log": "deployments-init-content.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "exec",
+        "lifecycle-init",
+        "--",
+        "grep",
+        "page written by init",
+        "/usr/share/nginx/html/index.html"
+      ]
+    },
+    {
+      "check": "deployments-poststart-hook",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:02:57.066508+00:00",
+      "duration_seconds": 0.06,
+      "log": "deployments-poststart-hook.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "exec",
+        "lifecycle-hooks",
+        "--",
+        "grep",
+        "postStart ran",
+        "/tmp/poststart.txt"
+      ]
+    },
+    {
+      "check": "deployments-headless-create",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:02:57.132495+00:00",
+      "duration_seconds": 0.09,
+      "log": "deployments-headless-create.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "deployments-statefulset-web-rollout-52",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:02:57.226561+00:00",
+      "duration_seconds": 8.45,
+      "log": "deployments-statefulset-web-rollout-52.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "rollout",
+        "status",
+        "statefulset/web",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "deployments-headless-pod-0",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:03:05.679375+00:00",
+      "duration_seconds": 0.06,
+      "log": "deployments-headless-pod-0.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in 1 2 3 4 5; do wget -T 5 -qO- http://web-0.web-headless.homework-deployments-75fb4add.svc.cluster.local | grep 'web-0' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "deployments-headless-pod-1",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:03:05.739369+00:00",
+      "duration_seconds": 0.06,
+      "log": "deployments-headless-pod-1.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in 1 2 3 4 5; do wget -T 5 -qO- http://web-1.web-headless.homework-deployments-75fb4add.svc.cluster.local | grep 'web-1' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "deployments-headless-pod-2",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:03:05.798823+00:00",
+      "duration_seconds": 0.06,
+      "log": "deployments-headless-pod-2.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in 1 2 3 4 5; do wget -T 5 -qO- http://web-2.web-headless.homework-deployments-75fb4add.svc.cluster.local | grep 'web-2' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "deployments-externalname-dns",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:03:05.856954+00:00",
+      "duration_seconds": 0.08,
+      "log": "deployments-externalname-dns.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "nslookup external-api.homework-deployments-75fb4add.svc.cluster.local | grep 'canonical name = example.com'"
+      ]
+    },
+    {
+      "check": "deployments-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:03:05.933644+00:00",
+      "duration_seconds": 37.96,
+      "log": "deployments-cleanup.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-deployments-75fb4add",
+        "delete",
+        "namespace",
+        "homework-deployments-75fb4add",
+        "--wait=true",
+        "--timeout=180s"
+      ]
+    }
+  ],
+  "scope": "Disposable local lab. Namespaces isolated; NodePort values dynamically assigned. No cloud deployment."
+}

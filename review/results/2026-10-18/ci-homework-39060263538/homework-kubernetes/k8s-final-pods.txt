@@ -1,0 +1,18 @@
+NAME                                   READY   STATUS    RESTARTS   AGE   IP            NODE                            NOMINATED NODE   READINESS GATES
+app-blue-67b4d7455c-mlfh5              1/1     Running   0          67s   10.244.0.6    homework-review-control-plane   <none>           <none>
+app-blue-67b4d7455c-prcv9              1/1     Running   0          67s   10.244.0.8    homework-review-control-plane   <none>           <none>
+app-blue-67b4d7455c-qc767              1/1     Running   0          67s   10.244.0.7    homework-review-control-plane   <none>           <none>
+app-green-665dcc99bd-fvbl2             1/1     Running   0          67s   10.244.0.10   homework-review-control-plane   <none>           <none>
+app-green-665dcc99bd-vvqcq             1/1     Running   0          67s   10.244.0.11   homework-review-control-plane   <none>           <none>
+app-green-665dcc99bd-xtkn2             1/1     Running   0          67s   10.244.0.9    homework-review-control-plane   <none>           <none>
+config-demo                            1/1     Running   0          57s   10.244.0.12   homework-review-control-plane   <none>           <none>
+dynamic-demo                           1/1     Running   0          8s    10.244.0.20   homework-review-control-plane   <none>           <none>
+emptydir-demo                          2/2     Running   0          47s   10.244.0.17   homework-review-control-plane   <none>           <none>
+fail-2-imagepull-pod                   1/1     Running   0          7s    10.244.0.21   homework-review-control-plane   <none>           <none>
+image-demo                             1/1     Running   0          7s    10.244.0.22   homework-review-control-plane   <none>           <none>
+nginx-pod                              1/1     Running   0          71s   10.244.0.5    homework-review-control-plane   <none>           <none>
+review-notes-deploy-85df775ffc-7g559   1/1     Running   0          6s    10.244.0.23   homework-review-control-plane   <none>           <none>
+secret-demo                            1/1     Running   0          49s   10.244.0.16   homework-review-control-plane   <none>           <none>
+web-clusterip-7477759d58-946dm         1/1     Running   0          53s   10.244.0.15   homework-review-control-plane   <none>           <none>
+web-clusterip-7477759d58-qtcsv         1/1     Running   0          53s   10.244.0.14   homework-review-control-plane   <none>           <none>
+web-clusterip-7477759d58-sbn5q         1/1     Running   0          53s   10.244.0.13   homework-review-control-plane   <none>           <none>

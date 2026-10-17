@@ -1,0 +1,10 @@
+Release "loki" does not exist. Installing it now.
+NAME: loki
+LAST DEPLOYED: Sun Oct 18 00:19:47 2026
+NAMESPACE: monitoring
+STATUS: deployed
+REVISION: 1
+NOTES:
+The Loki stack has been deployed to your cluster. Loki can now be added as a datasource in Grafana.
+
+See http://docs.grafana.org/features/datasources/loki/ for more detail.

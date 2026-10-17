@@ -360,3 +360,15 @@ the finished static files were kept, while the Node image that still needs a run
 The two static apps, Apache and Nginx, need no CMD at all, since their base images
 already start the server. The three application images need a CMD because nothing would
 run otherwise.
+
+## Verified rerun — 18 October 2026
+
+Built all six images and verified HTTP responses and rendered Hello World pages in a real browser, including the React JavaScript application.
+
+[Recorded results](../review/results/2026-10-18/containers.json) · [Screenshot](../review/results/2026-10-18/screenshots/task5-react.png) · [Complete evidence index and environment notes](../review/results/2026-10-18/README.md).
+
+Browser captures: [Node](../review/results/2026-10-18/screenshots/task5-node.png) · [Python](../review/results/2026-10-18/screenshots/task5-python.png) · [Java](../review/results/2026-10-18/screenshots/task5-java.png) · [Apache](../review/results/2026-10-18/screenshots/task5-apache.png) · [React](../review/results/2026-10-18/screenshots/task5-react.png) · [Nginx](../review/results/2026-10-18/screenshots/task5-nginx.png).
+
+![Docker applications: live browser capture](../review/results/2026-10-18/screenshots/task5-react.png)
+
+*Live browser capture from the verified rerun; complete results are linked above.*

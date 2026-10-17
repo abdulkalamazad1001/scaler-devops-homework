@@ -1,0 +1,2 @@
+deployment.apps/inventory configured
+service/inventory unchanged

@@ -1,0 +1,207 @@
+{
+  "captured_at": "2026-10-17T18:56:14.029859+00:00",
+  "tasks": [
+    {
+      "task": "task-1-linux-basics",
+      "checked": {
+        ".md": 1
+      },
+      "issues": [],
+      "template_files": []
+    },
+    {
+      "task": "task-2-shell-scripting",
+      "checked": {
+        ".md": 1
+      },
+      "issues": [],
+      "template_files": []
+    },
+    {
+      "task": "task-3-networking",
+      "checked": {
+        ".md": 1
+      },
+      "issues": [],
+      "template_files": []
+    },
+    {
+      "task": "task-4-git",
+      "checked": {
+        ".md": 1
+      },
+      "issues": [],
+      "template_files": []
+    },
+    {
+      "task": "task-5-docker",
+      "checked": {
+        ".md": 1,
+        ".json": 2,
+        ".py": 1
+      },
+      "issues": [],
+      "template_files": []
+    },
+    {
+      "task": "task-6-docker-multistage",
+      "checked": {
+        ".md": 1,
+        ".json": 1
+      },
+      "issues": [],
+      "template_files": []
+    },
+    {
+      "task": "task-7-docker-networking-volume",
+      "checked": {
+        ".md": 1
+      },
+      "issues": [],
+      "template_files": []
+    },
+    {
+      "task": "task-9-kubernetes-fundamentals",
+      "checked": {
+        ".md": 2,
+        ".yaml": 2
+      },
+      "issues": [],
+      "template_files": []
+    },
+    {
+      "task": "task-10-k8s-deployments-pod-lifecycle",
+      "checked": {
+        ".md": 2,
+        ".yaml": 22
+      },
+      "issues": [],
+      "template_files": []
+    },
+    {
+      "task": "task-11-k8s-services-dns",
+      "checked": {
+        ".md": 5,
+        ".yaml": 11
+      },
+      "issues": [],
+      "template_files": []
+    },
+    {
+      "task": "task-12-ingress-configmaps-secrets",
+      "checked": {
+        ".yaml": 10,
+        ".md": 4
+      },
+      "issues": [],
+      "template_files": []
+    },
+    {
+      "task": "task-13-storage-hpa-probes",
+      "checked": {
+        ".md": 3,
+        ".yaml": 13,
+        ".yml": 1
+      },
+      "issues": [],
+      "template_files": []
+    },
+    {
+      "task": "task-14-k8s-troubleshooting",
+      "checked": {
+        ".yaml": 29,
+        ".md": 2
+      },
+      "issues": [],
+      "template_files": []
+    },
+    {
+      "task": "task-15-helm",
+      "checked": {
+        ".md": 2,
+        ".yaml": 3
+      },
+      "issues": [],
+      "template_files": [
+        "task-15-helm/notes-chart/templates/configmap.yaml",
+        "task-15-helm/notes-chart/templates/deployment.yaml",
+        "task-15-helm/notes-chart/templates/service.yaml",
+        "task-15-helm/notes-chart/templates/tests/test-connection.yaml"
+      ]
+    },
+    {
+      "task": "task-16-cicd-github-actions",
+      "checked": {
+        ".yml": 2,
+        ".md": 2,
+        ".py": 6,
+        ".yaml": 2
+      },
+      "issues": [],
+      "template_files": []
+    },
+    {
+      "task": "task-17-devsecops",
+      "checked": {
+        ".yml": 1,
+        ".md": 2,
+        ".py": 6,
+        ".yaml": 3
+      },
+      "issues": [],
+      "template_files": []
+    },
+    {
+      "task": "task-18-terraform-aws",
+      "checked": {
+        ".md": 8
+      },
+      "issues": [],
+      "template_files": []
+    },
+    {
+      "task": "task-19-terraform-cloud-project",
+      "checked": {
+        ".md": 2
+      },
+      "issues": [],
+      "template_files": []
+    },
+    {
+      "task": "task-20-monitoring-gitops",
+      "checked": {
+        ".md": 2,
+        ".yaml": 15,
+        ".py": 2
+      },
+      "issues": [],
+      "template_files": []
+    },
+    {
+      "task": "task-21-final-devops-project",
+      "checked": {
+        ".yml": 2,
+        ".md": 3,
+        ".py": 11,
+        ".json": 5,
+        ".yaml": 27
+      },
+      "issues": [],
+      "template_files": [
+        "task-21-final-devops-project/helm/taskboard/templates/backend.yaml",
+        "task-21-final-devops-project/helm/taskboard/templates/configmap.yaml",
+        "task-21-final-devops-project/helm/taskboard/templates/frontend.yaml",
+        "task-21-final-devops-project/helm/taskboard/templates/grafana-dashboard.yaml",
+        "task-21-final-devops-project/helm/taskboard/templates/hpa.yaml",
+        "task-21-final-devops-project/helm/taskboard/templates/ingress.yaml",
+        "task-21-final-devops-project/helm/taskboard/templates/networkpolicy.yaml",
+        "task-21-final-devops-project/helm/taskboard/templates/postgres.yaml",
+        "task-21-final-devops-project/helm/taskboard/templates/prometheusrule.yaml",
+        "task-21-final-devops-project/helm/taskboard/templates/secret.yaml",
+        "task-21-final-devops-project/helm/taskboard/templates/servicemonitor.yaml",
+        "task-21-final-devops-project/helm/taskboard/templates/tests/test-connection.yaml"
+      ]
+    }
+  ],
+  "scope": "Syntax and relative file links only; not deployment or screenshot authenticity."
+}

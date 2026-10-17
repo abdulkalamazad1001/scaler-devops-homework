@@ -2065,3 +2065,7 @@ stays `Synced`. The ReplicaSets at 0 are the broken revisions from the troublesh
   database lock. A Kubernetes Job or Argo CD PreSync hook would be the next step.
 - **Clean up the cloud.** EKS + NAT gateway cost money every hour. Applying and destroying in the
   same session, with all of it in Terraform, made that easy.
+
+## Verified project and reference scope — 18 October 2026
+
+The original capstone submission is [CampusDesk](https://github.com/abdulkalamazad1001/campusdesk-devops-capstone), with its [final audit](https://github.com/abdulkalamazad1001/campusdesk-devops-capstone/blob/main/FINAL-AUDIT.md), cloud deployment/cleanup evidence and demonstration videos. This TaskBoard directory is the course reference implementation and retains its labelled expected-output walkthrough. Its application tests, frontend build, chart rendering and Terraform validation are included in the [homework review](../review/results/2026-10-18/README.md); those checks do not represent a separate full TaskBoard cloud deployment.

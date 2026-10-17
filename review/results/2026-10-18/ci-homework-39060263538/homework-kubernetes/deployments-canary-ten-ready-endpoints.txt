@@ -1,0 +1,113 @@
+[
+  {
+    "addresses": [
+      {
+        "ip": "10.244.0.88",
+        "nodeName": "homework-review-control-plane",
+        "targetRef": {
+          "kind": "Pod",
+          "name": "app-stable-6b9778ff79-gfr4r",
+          "namespace": "homework-deployments-75fb4add",
+          "uid": "d89f9244-cd40-4048-a458-90ecddd646e1"
+        }
+      },
+      {
+        "ip": "10.244.0.89",
+        "nodeName": "homework-review-control-plane",
+        "targetRef": {
+          "kind": "Pod",
+          "name": "app-stable-6b9778ff79-v4xr5",
+          "namespace": "homework-deployments-75fb4add",
+          "uid": "79f8d0d3-01fc-4b04-b543-ae114b51a7b7"
+        }
+      },
+      {
+        "ip": "10.244.0.90",
+        "nodeName": "homework-review-control-plane",
+        "targetRef": {
+          "kind": "Pod",
+          "name": "app-stable-6b9778ff79-r5g7c",
+          "namespace": "homework-deployments-75fb4add",
+          "uid": "da8a61e4-b621-4a44-8a6e-0803ef591da7"
+        }
+      },
+      {
+        "ip": "10.244.0.91",
+        "nodeName": "homework-review-control-plane",
+        "targetRef": {
+          "kind": "Pod",
+          "name": "app-stable-6b9778ff79-rr7vp",
+          "namespace": "homework-deployments-75fb4add",
+          "uid": "de83c84f-f3f6-4f7d-9afa-f77ae7fcffcf"
+        }
+      },
+      {
+        "ip": "10.244.0.92",
+        "nodeName": "homework-review-control-plane",
+        "targetRef": {
+          "kind": "Pod",
+          "name": "app-stable-6b9778ff79-kndqw",
+          "namespace": "homework-deployments-75fb4add",
+          "uid": "3629c45f-c271-460e-91c9-7f51d7bb75dd"
+        }
+      },
+      {
+        "ip": "10.244.0.93",
+        "nodeName": "homework-review-control-plane",
+        "targetRef": {
+          "kind": "Pod",
+          "name": "app-stable-6b9778ff79-26fvw",
+          "namespace": "homework-deployments-75fb4add",
+          "uid": "c4fd0d4f-67ce-4baa-ba58-46a0b774ef6d"
+        }
+      },
+      {
+        "ip": "10.244.0.94",
+        "nodeName": "homework-review-control-plane",
+        "targetRef": {
+          "kind": "Pod",
+          "name": "app-canary-dc4ffc8f6-266w7",
+          "namespace": "homework-deployments-75fb4add",
+          "uid": "0202b6c5-33b8-40ed-b382-55103729fcfa"
+        }
+      },
+      {
+        "ip": "10.244.0.95",
+        "nodeName": "homework-review-control-plane",
+        "targetRef": {
+          "kind": "Pod",
+          "name": "app-stable-6b9778ff79-qfsq9",
+          "namespace": "homework-deployments-75fb4add",
+          "uid": "f20e1bdf-5252-476b-901e-545102eb5163"
+        }
+      },
+      {
+        "ip": "10.244.0.96",
+        "nodeName": "homework-review-control-plane",
+        "targetRef": {
+          "kind": "Pod",
+          "name": "app-stable-6b9778ff79-6jd5m",
+          "namespace": "homework-deployments-75fb4add",
+          "uid": "2d255dd3-3db3-42d0-ad3e-35d32d6e30b6"
+        }
+      },
+      {
+        "ip": "10.244.0.97",
+        "nodeName": "homework-review-control-plane",
+        "targetRef": {
+          "kind": "Pod",
+          "name": "app-stable-6b9778ff79-s8njp",
+          "namespace": "homework-deployments-75fb4add",
+          "uid": "98f63a24-8ebd-4a14-a08c-92921fade7e8"
+        }
+      }
+    ],
+    "ports": [
+      {
+        "name": "http",
+        "port": 80,
+        "protocol": "TCP"
+      }
+    ]
+  }
+]

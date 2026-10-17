@@ -1,0 +1,45 @@
+{
+  "docker_containers": {
+    "command": [
+      "docker",
+      "ps",
+      "--format",
+      "{{.Names}}"
+    ],
+    "exit_code": 0,
+    "output": "campusdesk-frontend-1\ncampusdesk-backend-1\ncampusdesk-postgres-1\ncampusdesk-control-plane\nbuildx_buildkit_multiplatform-builder0\n"
+  },
+  "kubectl_context": {
+    "command": [
+      "kubectl",
+      "config",
+      "current-context"
+    ],
+    "exit_code": 0,
+    "output": "kind-campusdesk\n"
+  },
+  "argocd_applications": {
+    "command": [
+      "kubectl",
+      "--context",
+      "kind-campusdesk",
+      "-n",
+      "argocd",
+      "get",
+      "applications"
+    ],
+    "exit_code": 0,
+    "output": "NAME         SYNC STATUS   HEALTH STATUS\ncampusdesk   Synced        Healthy\n"
+  },
+  "minikube_profiles": {
+    "command": [
+      "tools/bin/minikube",
+      "profile",
+      "list",
+      "-o",
+      "json"
+    ],
+    "exit_code": 0,
+    "output": "{\"invalid\":[],\"valid\":[]}"
+  }
+}

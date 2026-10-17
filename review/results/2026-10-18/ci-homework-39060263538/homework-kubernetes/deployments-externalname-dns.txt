@@ -1,0 +1,2 @@
+external-api.homework-deployments-75fb4add.svc.cluster.local	canonical name = example.com
+external-api.homework-deployments-75fb4add.svc.cluster.local	canonical name = example.com

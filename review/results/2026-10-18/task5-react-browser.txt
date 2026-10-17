@@ -1,0 +1,7 @@
+{
+  "url": "http://127.0.0.1:52211/",
+  "status": 200,
+  "text": "Hello World\n\nServed by a React app built with Vite and served by Nginx inside Docker",
+  "javascriptErrors": [],
+  "screenshot": "/Users/abdulkalamazad/Documents/scaler-devops-homework/review/results/2026-10-18/screenshots/task5-react.png"
+}

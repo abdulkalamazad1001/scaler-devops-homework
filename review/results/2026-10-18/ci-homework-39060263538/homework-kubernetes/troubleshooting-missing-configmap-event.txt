@@ -1,0 +1,1561 @@
+[
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:55Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "name": "configvol-demo",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2118",
+      "uid": "b1af4eee-9e96-48ea-a248-00c7857f7fb0"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:55Z",
+    "message": "Successfully assigned homework-troubleshooting-f8ed5f2f/configvol-demo to homework-review-control-plane",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:55Z",
+      "name": "configvol-demo.18df663e7ac0623e",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2120",
+      "uid": "7bb4b1f1-47b3-46b9-8eee-deef1537e92d"
+    },
+    "reason": "Scheduled",
+    "reportingComponent": "default-scheduler",
+    "reportingInstance": "",
+    "source": {
+      "component": "default-scheduler"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 3,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:55Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "name": "configvol-demo",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2119",
+      "uid": "b1af4eee-9e96-48ea-a248-00c7857f7fb0"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:56Z",
+    "message": "MountVolume.SetUp failed for volume \"app-settings\" : configmap \"app-settings\" not found",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:55Z",
+      "name": "configvol-demo.18df663e86eae8f4",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2127",
+      "uid": "fde8df92-fe06-437b-93e0-652752b8e212"
+    },
+    "reason": "FailedMount",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Warning"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:37Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "name": "fail-1-crashloop-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "1988",
+      "uid": "65cd4665-bfce-40c1-bca5-27e692d216df"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:37Z",
+    "message": "Successfully assigned homework-troubleshooting-f8ed5f2f/fail-1-crashloop-pod to homework-review-control-plane",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:37Z",
+      "name": "fail-1-crashloop-pod.18df663a3fd5566f",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "1990",
+      "uid": "da0ff12f-cf63-4e17-bcfd-ef0f49b9d127"
+    },
+    "reason": "Scheduled",
+    "reportingComponent": "default-scheduler",
+    "reportingInstance": "",
+    "source": {
+      "component": "default-scheduler"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:37Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{python-app}",
+      "kind": "Pod",
+      "name": "fail-1-crashloop-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "1989",
+      "uid": "65cd4665-bfce-40c1-bca5-27e692d216df"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:37Z",
+    "message": "Pulling image \"python:3.11-alpine\"",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:37Z",
+      "name": "fail-1-crashloop-pod.18df663a565ff1da",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "1993",
+      "uid": "ace10701-748c-48f0-af85-edc293795afd"
+    },
+    "reason": "Pulling",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:39Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{python-app}",
+      "kind": "Pod",
+      "name": "fail-1-crashloop-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "1989",
+      "uid": "65cd4665-bfce-40c1-bca5-27e692d216df"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:39Z",
+    "message": "Successfully pulled image \"python:3.11-alpine\" in 2.233s (2.233s including waiting). Image size: 23003038 bytes.",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:39Z",
+      "name": "fail-1-crashloop-pod.18df663adb84c684",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "1996",
+      "uid": "919cfd8c-aa0c-4e1a-b544-0a8e93228e96"
+    },
+    "reason": "Pulled",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 2,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:39Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{python-app}",
+      "kind": "Pod",
+      "name": "fail-1-crashloop-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "1989",
+      "uid": "65cd4665-bfce-40c1-bca5-27e692d216df"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:41Z",
+    "message": "Created container: python-app",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:39Z",
+      "name": "fail-1-crashloop-pod.18df663adbe6fa0e",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2004",
+      "uid": "d5d768e4-ca44-4127-be24-778201881fa3"
+    },
+    "reason": "Created",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 2,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:39Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{python-app}",
+      "kind": "Pod",
+      "name": "fail-1-crashloop-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "1989",
+      "uid": "65cd4665-bfce-40c1-bca5-27e692d216df"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:41Z",
+    "message": "Started container python-app",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:39Z",
+      "name": "fail-1-crashloop-pod.18df663adf077f02",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2005",
+      "uid": "6ad1718b-5b22-4de5-9c69-7a257f41f75c"
+    },
+    "reason": "Started",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:41Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{python-app}",
+      "kind": "Pod",
+      "name": "fail-1-crashloop-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "1989",
+      "uid": "65cd4665-bfce-40c1-bca5-27e692d216df"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:41Z",
+    "message": "Container image \"python:3.11-alpine\" already present on machine",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:41Z",
+      "name": "fail-1-crashloop-pod.18df663b2a7eff47",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2002",
+      "uid": "41eeaed4-6518-43f0-9124-00c89c52a74b"
+    },
+    "reason": "Pulled",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 2,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:42Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{python-app}",
+      "kind": "Pod",
+      "name": "fail-1-crashloop-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "1989",
+      "uid": "65cd4665-bfce-40c1-bca5-27e692d216df"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:43Z",
+    "message": "Back-off restarting failed container python-app in pod fail-1-crashloop-pod_homework-troubleshooting-f8ed5f2f(65cd4665-bfce-40c1-bca5-27e692d216df)",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:42Z",
+      "name": "fail-1-crashloop-pod.18df663b663946a3",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2010",
+      "uid": "85043584-c7bf-4030-b8aa-09e15b93b638"
+    },
+    "reason": "BackOff",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Warning"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:45Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "name": "fail-1-crashloop-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2021",
+      "uid": "f2e4e7e8-93f5-45ef-a898-40933db050f2"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:45Z",
+    "message": "Successfully assigned homework-troubleshooting-f8ed5f2f/fail-1-crashloop-pod to homework-review-control-plane",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:45Z",
+      "name": "fail-1-crashloop-pod.18df663c1eb893f5",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2023",
+      "uid": "ce5545a6-4504-4414-8efd-4cdea27f5887"
+    },
+    "reason": "Scheduled",
+    "reportingComponent": "default-scheduler",
+    "reportingInstance": "",
+    "source": {
+      "component": "default-scheduler"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:45Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{python-app}",
+      "kind": "Pod",
+      "name": "fail-1-crashloop-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2022",
+      "uid": "f2e4e7e8-93f5-45ef-a898-40933db050f2"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:45Z",
+    "message": "Container image \"python:3.11-alpine\" already present on machine",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:45Z",
+      "name": "fail-1-crashloop-pod.18df663c3928b124",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2028",
+      "uid": "e50f69b4-495f-4c2c-85bb-4dcf721cc794"
+    },
+    "reason": "Pulled",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:45Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{python-app}",
+      "kind": "Pod",
+      "name": "fail-1-crashloop-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2022",
+      "uid": "f2e4e7e8-93f5-45ef-a898-40933db050f2"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:45Z",
+    "message": "Created container: python-app",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:45Z",
+      "name": "fail-1-crashloop-pod.18df663c396ec177",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2029",
+      "uid": "4baea7c5-ed51-47e3-affe-f767cf567ff6"
+    },
+    "reason": "Created",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:45Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{python-app}",
+      "kind": "Pod",
+      "name": "fail-1-crashloop-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2022",
+      "uid": "f2e4e7e8-93f5-45ef-a898-40933db050f2"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:45Z",
+    "message": "Started container python-app",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:45Z",
+      "name": "fail-1-crashloop-pod.18df663c4ad60565",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2030",
+      "uid": "5efacf85-ab3a-4ee2-aef1-538d6ec7d1cf"
+    },
+    "reason": "Started",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:46Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "name": "fail-2-imagepull-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2033",
+      "uid": "c7cf734b-bb46-414e-92e7-c4f16b370ec0"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:46Z",
+    "message": "Successfully assigned homework-troubleshooting-f8ed5f2f/fail-2-imagepull-pod to homework-review-control-plane",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:46Z",
+      "name": "fail-2-imagepull-pod.18df663c5a0a803d",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2035",
+      "uid": "d6c8499d-623b-489f-861b-665400333a5b"
+    },
+    "reason": "Scheduled",
+    "reportingComponent": "default-scheduler",
+    "reportingInstance": "",
+    "source": {
+      "component": "default-scheduler"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:46Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{web-app}",
+      "kind": "Pod",
+      "name": "fail-2-imagepull-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2034",
+      "uid": "c7cf734b-bb46-414e-92e7-c4f16b370ec0"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:46Z",
+    "message": "Pulling image \"yatri-api-service:v999-invalid-tag-does-not-exist\"",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:46Z",
+      "name": "fail-2-imagepull-pod.18df663c70c1a01f",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2041",
+      "uid": "442b244c-6b3c-4873-8f67-561f2c76d9af"
+    },
+    "reason": "Pulling",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:46Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{web-app}",
+      "kind": "Pod",
+      "name": "fail-2-imagepull-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2034",
+      "uid": "c7cf734b-bb46-414e-92e7-c4f16b370ec0"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:46Z",
+    "message": "Failed to pull image \"yatri-api-service:v999-invalid-tag-does-not-exist\": failed to pull and unpack image \"docker.io/library/yatri-api-service:v999-invalid-tag-does-not-exist\": failed to resolve reference \"docker.io/library/yatri-api-service:v999-invalid-tag-does-not-exist\": pull access denied, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:46Z",
+      "name": "fail-2-imagepull-pod.18df663c884dbf7d",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2043",
+      "uid": "9a9deec7-1967-4e70-a4f4-7f856fb4295b"
+    },
+    "reason": "Failed",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Warning"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:46Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{web-app}",
+      "kind": "Pod",
+      "name": "fail-2-imagepull-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2034",
+      "uid": "c7cf734b-bb46-414e-92e7-c4f16b370ec0"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:46Z",
+    "message": "Error: ErrImagePull",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:46Z",
+      "name": "fail-2-imagepull-pod.18df663c884e0303",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2044",
+      "uid": "1bf467a0-af9a-4641-94d1-c36ae940daa2"
+    },
+    "reason": "Failed",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Warning"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:47Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{web-app}",
+      "kind": "Pod",
+      "name": "fail-2-imagepull-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2034",
+      "uid": "c7cf734b-bb46-414e-92e7-c4f16b370ec0"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:47Z",
+    "message": "Back-off pulling image \"yatri-api-service:v999-invalid-tag-does-not-exist\"",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:47Z",
+      "name": "fail-2-imagepull-pod.18df663c90bc42ec",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2045",
+      "uid": "5954b94b-c40a-4b61-b4d6-4f438955595f"
+    },
+    "reason": "BackOff",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:47Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{web-app}",
+      "kind": "Pod",
+      "name": "fail-2-imagepull-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2034",
+      "uid": "c7cf734b-bb46-414e-92e7-c4f16b370ec0"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:47Z",
+    "message": "Error: ImagePullBackOff",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:47Z",
+      "name": "fail-2-imagepull-pod.18df663c90c25bbe",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2046",
+      "uid": "12e1f784-92e0-4a83-9d89-3f921a27e3db"
+    },
+    "reason": "Failed",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Warning"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:51Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "name": "fail-2-imagepull-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2070",
+      "uid": "0e4d5151-7506-46ef-bb4c-31e8592f5e2e"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:51Z",
+    "message": "Successfully assigned homework-troubleshooting-f8ed5f2f/fail-2-imagepull-pod to homework-review-control-plane",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:51Z",
+      "name": "fail-2-imagepull-pod.18df663d853fd021",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2072",
+      "uid": "ae9d3844-a40a-4916-830c-f96ad96b883d"
+    },
+    "reason": "Scheduled",
+    "reportingComponent": "default-scheduler",
+    "reportingInstance": "",
+    "source": {
+      "component": "default-scheduler"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:51Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{web-app}",
+      "kind": "Pod",
+      "name": "fail-2-imagepull-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2071",
+      "uid": "0e4d5151-7506-46ef-bb4c-31e8592f5e2e"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:51Z",
+    "message": "Container image \"nginx:1.27\" already present on machine",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:51Z",
+      "name": "fail-2-imagepull-pod.18df663d9c448566",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2079",
+      "uid": "756d8396-cf17-4ddf-ad70-cdd3e68f4de4"
+    },
+    "reason": "Pulled",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:51Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{web-app}",
+      "kind": "Pod",
+      "name": "fail-2-imagepull-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2071",
+      "uid": "0e4d5151-7506-46ef-bb4c-31e8592f5e2e"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:51Z",
+    "message": "Created container: web-app",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:51Z",
+      "name": "fail-2-imagepull-pod.18df663d9cccf834",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2081",
+      "uid": "a38e6e9e-192f-4ed2-994c-9b0139b4d66a"
+    },
+    "reason": "Created",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:51Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{web-app}",
+      "kind": "Pod",
+      "name": "fail-2-imagepull-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2071",
+      "uid": "0e4d5151-7506-46ef-bb4c-31e8592f5e2e"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:51Z",
+    "message": "Started container web-app",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:51Z",
+      "name": "fail-2-imagepull-pod.18df663da0d5c521",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2084",
+      "uid": "f2b547f4-e741-4382-93c5-0771522a7fc8"
+    },
+    "reason": "Started",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:52Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "name": "fail-3-pending-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2088",
+      "uid": "01db90d0-d167-4160-9f4f-28e7ebea20f3"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:52Z",
+    "message": "0/1 nodes are available: 1 Insufficient cpu, 1 Insufficient memory. preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:52Z",
+      "name": "fail-3-pending-pod.18df663dc78c4238",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2089",
+      "uid": "8a57d8b6-89a0-4394-b7bb-8890b56a72df"
+    },
+    "reason": "FailedScheduling",
+    "reportingComponent": "default-scheduler",
+    "reportingInstance": "",
+    "source": {
+      "component": "default-scheduler"
+    },
+    "type": "Warning"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:52Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "name": "fail-3-pending-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2098",
+      "uid": "cb24d8b9-cd07-403e-b7a4-ae52e74a523a"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:52Z",
+    "message": "Successfully assigned homework-troubleshooting-f8ed5f2f/fail-3-pending-pod to homework-review-control-plane",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:52Z",
+      "name": "fail-3-pending-pod.18df663dd840f056",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2101",
+      "uid": "adfd2378-5b94-4b30-97db-5f2a563759af"
+    },
+    "reason": "Scheduled",
+    "reportingComponent": "default-scheduler",
+    "reportingInstance": "",
+    "source": {
+      "component": "default-scheduler"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:52Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{hungry-app}",
+      "kind": "Pod",
+      "name": "fail-3-pending-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2099",
+      "uid": "cb24d8b9-cd07-403e-b7a4-ae52e74a523a"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:52Z",
+    "message": "Pulling image \"nginx:alpine\"",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:52Z",
+      "name": "fail-3-pending-pod.18df663defc9cddf",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2106",
+      "uid": "d75c8099-0488-4b0e-9dde-f92a79794bd9"
+    },
+    "reason": "Pulling",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:54Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{hungry-app}",
+      "kind": "Pod",
+      "name": "fail-3-pending-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2099",
+      "uid": "cb24d8b9-cd07-403e-b7a4-ae52e74a523a"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:54Z",
+    "message": "Successfully pulled image \"nginx:alpine\" in 2.016s (2.016s including waiting). Image size: 28826677 bytes.",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:54Z",
+      "name": "fail-3-pending-pod.18df663e680242c9",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2114",
+      "uid": "0980d5f5-df38-4832-9468-331a7777996e"
+    },
+    "reason": "Pulled",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:54Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{hungry-app}",
+      "kind": "Pod",
+      "name": "fail-3-pending-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2099",
+      "uid": "cb24d8b9-cd07-403e-b7a4-ae52e74a523a"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:54Z",
+    "message": "Created container: hungry-app",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:54Z",
+      "name": "fail-3-pending-pod.18df663e68544634",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2115",
+      "uid": "04520d19-aeac-4f87-abc0-cdc337d7ba6b"
+    },
+    "reason": "Created",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:54Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{hungry-app}",
+      "kind": "Pod",
+      "name": "fail-3-pending-pod",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2099",
+      "uid": "cb24d8b9-cd07-403e-b7a4-ae52e74a523a"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:54Z",
+    "message": "Started container hungry-app",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:55Z",
+      "name": "fail-3-pending-pod.18df663e6bc91dac",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2116",
+      "uid": "60f0595d-4ccb-459e-8784-e967efc1f84a"
+    },
+    "reason": "Started",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:46Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "name": "image-demo",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2036",
+      "uid": "27dd4865-d0f0-4555-af89-2a0e7f98e9b4"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:46Z",
+    "message": "Successfully assigned homework-troubleshooting-f8ed5f2f/image-demo to homework-review-control-plane",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:46Z",
+      "name": "image-demo.18df663c5a4f5436",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2039",
+      "uid": "98db0817-3866-4605-a4ab-56cda5dd4fa0"
+    },
+    "reason": "Scheduled",
+    "reportingComponent": "default-scheduler",
+    "reportingInstance": "",
+    "source": {
+      "component": "default-scheduler"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:46Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{app}",
+      "kind": "Pod",
+      "name": "image-demo",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2037",
+      "uid": "27dd4865-d0f0-4555-af89-2a0e7f98e9b4"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:46Z",
+    "message": "Pulling image \"nginx:this-image-does-not-exist\"",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:46Z",
+      "name": "image-demo.18df663c70efd0a2",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2042",
+      "uid": "944fca75-515e-47a2-bcf6-bf39743a3e9b"
+    },
+    "reason": "Pulling",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:47Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{app}",
+      "kind": "Pod",
+      "name": "image-demo",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2037",
+      "uid": "27dd4865-d0f0-4555-af89-2a0e7f98e9b4"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:47Z",
+    "message": "Failed to pull image \"nginx:this-image-does-not-exist\": rpc error: code = NotFound desc = failed to pull and unpack image \"docker.io/library/nginx:this-image-does-not-exist\": failed to resolve reference \"docker.io/library/nginx:this-image-does-not-exist\": docker.io/library/nginx:this-image-does-not-exist: not found",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:47Z",
+      "name": "image-demo.18df663ca924c817",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2049",
+      "uid": "cb20f6cd-0da7-4f44-a6de-1d49ec5ea047"
+    },
+    "reason": "Failed",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Warning"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:47Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{app}",
+      "kind": "Pod",
+      "name": "image-demo",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2037",
+      "uid": "27dd4865-d0f0-4555-af89-2a0e7f98e9b4"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:47Z",
+    "message": "Error: ErrImagePull",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:47Z",
+      "name": "image-demo.18df663ca925173c",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2050",
+      "uid": "83d56d6b-bdef-4a2c-8d18-5db788695745"
+    },
+    "reason": "Failed",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Warning"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:48Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{app}",
+      "kind": "Pod",
+      "name": "image-demo",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2037",
+      "uid": "27dd4865-d0f0-4555-af89-2a0e7f98e9b4"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:48Z",
+    "message": "Back-off pulling image \"nginx:this-image-does-not-exist\"",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:48Z",
+      "name": "image-demo.18df663ccc775286",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2051",
+      "uid": "5dc3c909-9d8b-40ac-b7a5-dfe53f3721fc"
+    },
+    "reason": "BackOff",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:48Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{app}",
+      "kind": "Pod",
+      "name": "image-demo",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2037",
+      "uid": "27dd4865-d0f0-4555-af89-2a0e7f98e9b4"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:48Z",
+    "message": "Error: ImagePullBackOff",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:48Z",
+      "name": "image-demo.18df663ccc77b969",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2052",
+      "uid": "6a5a4bbd-dae2-4d07-a966-35f8eb58c3a8"
+    },
+    "reason": "Failed",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Warning"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:51Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "name": "image-demo",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2073",
+      "uid": "e14a7888-2647-4d05-a807-342b3392ee4c"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:51Z",
+    "message": "Successfully assigned homework-troubleshooting-f8ed5f2f/image-demo to homework-review-control-plane",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:51Z",
+      "name": "image-demo.18df663d857d9077",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2075",
+      "uid": "b999211c-4c6d-44d1-ae01-02a55f953d3b"
+    },
+    "reason": "Scheduled",
+    "reportingComponent": "default-scheduler",
+    "reportingInstance": "",
+    "source": {
+      "component": "default-scheduler"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:51Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{app}",
+      "kind": "Pod",
+      "name": "image-demo",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2074",
+      "uid": "e14a7888-2647-4d05-a807-342b3392ee4c"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:51Z",
+    "message": "Container image \"nginx:1.27\" already present on machine",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:51Z",
+      "name": "image-demo.18df663d9c8bcc91",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2080",
+      "uid": "20cb483a-4962-49af-8ab8-ca139af4fd05"
+    },
+    "reason": "Pulled",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:51Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{app}",
+      "kind": "Pod",
+      "name": "image-demo",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2074",
+      "uid": "e14a7888-2647-4d05-a807-342b3392ee4c"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:51Z",
+    "message": "Created container: app",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:51Z",
+      "name": "image-demo.18df663d9ce40468",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2082",
+      "uid": "18b86b0c-3daa-4266-8445-4ba54c8d9b0e"
+    },
+    "reason": "Created",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:51Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{app}",
+      "kind": "Pod",
+      "name": "image-demo",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2074",
+      "uid": "e14a7888-2647-4d05-a807-342b3392ee4c"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:51Z",
+    "message": "Started container app",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:51Z",
+      "name": "image-demo.18df663da0cd44ef",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2083",
+      "uid": "617f9fef-c6ed-4fdd-8c5f-0b40e453ce64"
+    },
+    "reason": "Started",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:36Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "name": "lab-client",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "1979",
+      "uid": "b7141b58-6a12-44d3-ba0e-a68eccd36c7a"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:36Z",
+    "message": "Successfully assigned homework-troubleshooting-f8ed5f2f/lab-client to homework-review-control-plane",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:36Z",
+      "name": "lab-client.18df6639ffdd85f7",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "1981",
+      "uid": "af47411a-db00-4206-9f88-e767801265ef"
+    },
+    "reason": "Scheduled",
+    "reportingComponent": "default-scheduler",
+    "reportingInstance": "",
+    "source": {
+      "component": "default-scheduler"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:36Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{lab-client}",
+      "kind": "Pod",
+      "name": "lab-client",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "1980",
+      "uid": "b7141b58-6a12-44d3-ba0e-a68eccd36c7a"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:36Z",
+    "message": "Container image \"busybox:1.36\" already present on machine",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:36Z",
+      "name": "lab-client.18df663a15b67c97",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "1984",
+      "uid": "8470b60a-e582-4280-b9b2-14fbd5a659f5"
+    },
+    "reason": "Pulled",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:36Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{lab-client}",
+      "kind": "Pod",
+      "name": "lab-client",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "1980",
+      "uid": "b7141b58-6a12-44d3-ba0e-a68eccd36c7a"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:36Z",
+    "message": "Created container: lab-client",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:36Z",
+      "name": "lab-client.18df663a1602eff3",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "1985",
+      "uid": "ed8e033f-980f-4715-8b9d-ce063f618ea1"
+    },
+    "reason": "Created",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:36Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{lab-client}",
+      "kind": "Pod",
+      "name": "lab-client",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "1980",
+      "uid": "b7141b58-6a12-44d3-ba0e-a68eccd36c7a"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:36Z",
+    "message": "Started container lab-client",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:36Z",
+      "name": "lab-client.18df663a19438a5c",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "1986",
+      "uid": "81136cda-3603-431c-9861-6c199b941b0c"
+    },
+    "reason": "Started",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:52Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "name": "pending-demo",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2091",
+      "uid": "389fc664-441d-4bec-81bb-c6158967312a"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:52Z",
+    "message": "0/1 nodes are available: 1 node(s) didn't match Pod's node affinity/selector. preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:52Z",
+      "name": "pending-demo.18df663dcb2418f9",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2092",
+      "uid": "8e8f637a-978c-47d9-8493-cfb059158448"
+    },
+    "reason": "FailedScheduling",
+    "reportingComponent": "default-scheduler",
+    "reportingInstance": "",
+    "source": {
+      "component": "default-scheduler"
+    },
+    "type": "Warning"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:52Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "name": "pending-demo",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2100",
+      "uid": "3deb8d76-9217-4e44-a271-f4f9ffdefb57"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:52Z",
+    "message": "Successfully assigned homework-troubleshooting-f8ed5f2f/pending-demo to homework-review-control-plane",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:52Z",
+      "name": "pending-demo.18df663dd88ec5e9",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2104",
+      "uid": "0c615754-8741-4660-81e1-00202c7bdc7c"
+    },
+    "reason": "Scheduled",
+    "reportingComponent": "default-scheduler",
+    "reportingInstance": "",
+    "source": {
+      "component": "default-scheduler"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:52Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{nginx}",
+      "kind": "Pod",
+      "name": "pending-demo",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2102",
+      "uid": "3deb8d76-9217-4e44-a271-f4f9ffdefb57"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:52Z",
+    "message": "Container image \"nginx:1.27\" already present on machine",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:52Z",
+      "name": "pending-demo.18df663df014f97f",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2107",
+      "uid": "e116f126-0ffc-45a5-80fe-70757fab86c1"
+    },
+    "reason": "Pulled",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:52Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{nginx}",
+      "kind": "Pod",
+      "name": "pending-demo",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2102",
+      "uid": "3deb8d76-9217-4e44-a271-f4f9ffdefb57"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:52Z",
+    "message": "Created container: nginx",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:52Z",
+      "name": "pending-demo.18df663df05c8ebc",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2108",
+      "uid": "fb46c863-90b3-4365-bbac-683f6d998b96"
+    },
+    "reason": "Created",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  },
+  {
+    "apiVersion": "v1",
+    "count": 1,
+    "eventTime": null,
+    "firstTimestamp": "2026-10-17T18:59:52Z",
+    "involvedObject": {
+      "apiVersion": "v1",
+      "fieldPath": "spec.containers{nginx}",
+      "kind": "Pod",
+      "name": "pending-demo",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2102",
+      "uid": "3deb8d76-9217-4e44-a271-f4f9ffdefb57"
+    },
+    "kind": "Event",
+    "lastTimestamp": "2026-10-17T18:59:52Z",
+    "message": "Started container nginx",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:59:52Z",
+      "name": "pending-demo.18df663df3e37e15",
+      "namespace": "homework-troubleshooting-f8ed5f2f",
+      "resourceVersion": "2109",
+      "uid": "eeed1bdd-d99c-41cd-b952-aa1bea3169fe"
+    },
+    "reason": "Started",
+    "reportingComponent": "kubelet",
+    "reportingInstance": "homework-review-control-plane",
+    "source": {
+      "component": "kubelet",
+      "host": "homework-review-control-plane"
+    },
+    "type": "Normal"
+  }
+]

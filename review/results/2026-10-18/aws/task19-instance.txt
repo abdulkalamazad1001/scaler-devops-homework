@@ -1,0 +1,17 @@
+[
+    {
+        "ID": "i-082156859f1453d40",
+        "State": "running",
+        "Type": "t3.micro",
+        "VPC": "vpc-09c8ec25f59d416dc",
+        "IP": "13.206.222.74",
+        "Metadata": {
+            "State": "applied",
+            "HttpTokens": "required",
+            "HttpPutResponseHopLimit": 2,
+            "HttpEndpoint": "enabled",
+            "HttpProtocolIpv6": "disabled",
+            "InstanceMetadataTags": "disabled"
+        }
+    }
+]

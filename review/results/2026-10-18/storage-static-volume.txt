@@ -1,0 +1,2 @@
+persistentvolume/homework-storage-b6673792-pv created
+persistentvolumeclaim/manual-pvc created

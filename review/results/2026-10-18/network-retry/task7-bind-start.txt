@@ -1,0 +1,7 @@
+Unable to find image 'nginx:1.27-alpine' locally
+1.27-alpine: Pulling from library/nginx
+5988adaa992c: Download complete
+707735927b67: Download complete
+Digest: sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+Status: Downloaded newer image for nginx:1.27-alpine
+6b7ee6b1124619c6ada513b71342c59675c41a765c1cb3406fee0e393a58b2e8

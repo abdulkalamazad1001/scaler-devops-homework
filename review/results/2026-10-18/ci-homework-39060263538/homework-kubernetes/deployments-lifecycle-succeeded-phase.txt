@@ -1,0 +1,81 @@
+{
+  "conditions": [
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:02:22Z",
+      "status": "False",
+      "type": "PodReadyToStartContainers"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:02:15Z",
+      "reason": "PodCompleted",
+      "status": "True",
+      "type": "Initialized"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:02:21Z",
+      "reason": "PodCompleted",
+      "status": "False",
+      "type": "Ready"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:02:21Z",
+      "reason": "PodCompleted",
+      "status": "False",
+      "type": "ContainersReady"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:02:15Z",
+      "status": "True",
+      "type": "PodScheduled"
+    }
+  ],
+  "containerStatuses": [
+    {
+      "containerID": "containerd://e770585c34c3c0726c4ead51abf1930142b063bfac0e7c4dda488749811e9460",
+      "image": "docker.io/library/busybox:1.36",
+      "imageID": "docker.io/library/busybox@sha256:73aaf090f3d85aa34ee199857f03fa3a95c8ede2ffd4cc2cdb5b94e566b11662",
+      "lastState": {},
+      "name": "task",
+      "ready": false,
+      "restartCount": 0,
+      "started": false,
+      "state": {
+        "terminated": {
+          "containerID": "containerd://e770585c34c3c0726c4ead51abf1930142b063bfac0e7c4dda488749811e9460",
+          "exitCode": 0,
+          "finishedAt": "2026-10-17T19:02:21Z",
+          "reason": "Completed",
+          "startedAt": "2026-10-17T19:02:16Z"
+        }
+      },
+      "volumeMounts": [
+        {
+          "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+          "name": "kube-api-access-5nbqh",
+          "readOnly": true,
+          "recursiveReadOnly": "Disabled"
+        }
+      ]
+    }
+  ],
+  "hostIP": "172.18.0.2",
+  "hostIPs": [
+    {
+      "ip": "172.18.0.2"
+    }
+  ],
+  "phase": "Succeeded",
+  "podIP": "10.244.0.99",
+  "podIPs": [
+    {
+      "ip": "10.244.0.99"
+    }
+  ],
+  "qosClass": "BestEffort",
+  "startTime": "2026-10-17T19:02:15Z"
+}

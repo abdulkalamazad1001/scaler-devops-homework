@@ -33,3 +33,13 @@ Terraform state out of Git. AWS execution is not claimed by the validation repor
 The output and terminal-style images in the original write-up are labelled expected
 output, not captures from a live deployment. Current test logs are kept separately
 under the project review. Validation alone does not prove every exercise was run.
+
+## Verified rerun — 18 October 2026
+
+Applied the private versioned S3 configuration in AWS, checked public-access blocking and a no-change plan, then destroyed the bucket and verified cleanup.
+
+[Recorded results](../review/results/2026-10-18/aws/results.json) · [Screenshot](../review/results/2026-10-18/screenshots/task18-terraform.png) · [Complete evidence index and environment notes](../review/results/2026-10-18/README.md).
+
+![Terraform S3: saved execution log view](../review/results/2026-10-18/screenshots/task18-terraform.png)
+
+*Saved execution log view from the verified rerun; complete results are linked above.*

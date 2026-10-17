@@ -1,0 +1,1020 @@
+[
+  {
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:57:57Z",
+      "generateName": "kubernetes-bootcamp-547bc569dc-",
+      "generation": 1,
+      "labels": {
+        "app": "kubernetes-bootcamp",
+        "pod-template-hash": "547bc569dc"
+      },
+      "name": "kubernetes-bootcamp-547bc569dc-zjblb",
+      "namespace": "homework-basics-489b6324",
+      "ownerReferences": [
+        {
+          "apiVersion": "apps/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "ReplicaSet",
+          "name": "kubernetes-bootcamp-547bc569dc",
+          "uid": "c20888db-1d46-4668-8ff0-539b5214ae4f"
+        }
+      ],
+      "resourceVersion": "4897",
+      "uid": "58f442cf-57f9-4819-bd74-68799da471fc"
+    },
+    "spec": {
+      "containers": [
+        {
+          "image": "jocatalin/kubernetes-bootcamp:v10",
+          "imagePullPolicy": "IfNotPresent",
+          "name": "kubernetes-bootcamp",
+          "ports": [
+            {
+              "containerPort": 8080,
+              "protocol": "TCP"
+            }
+          ],
+          "resources": {},
+          "terminationMessagePath": "/dev/termination-log",
+          "terminationMessagePolicy": "File",
+          "volumeMounts": [
+            {
+              "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+              "name": "kube-api-access-gnkf7",
+              "readOnly": true
+            }
+          ]
+        }
+      ],
+      "dnsPolicy": "ClusterFirst",
+      "enableServiceLinks": true,
+      "nodeName": "homework-review",
+      "preemptionPolicy": "PreemptLowerPriority",
+      "priority": 0,
+      "restartPolicy": "Always",
+      "schedulerName": "default-scheduler",
+      "securityContext": {},
+      "serviceAccount": "default",
+      "serviceAccountName": "default",
+      "terminationGracePeriodSeconds": 30,
+      "tolerations": [
+        {
+          "effect": "NoExecute",
+          "key": "node.kubernetes.io/not-ready",
+          "operator": "Exists",
+          "tolerationSeconds": 300
+        },
+        {
+          "effect": "NoExecute",
+          "key": "node.kubernetes.io/unreachable",
+          "operator": "Exists",
+          "tolerationSeconds": 300
+        }
+      ],
+      "volumes": [
+        {
+          "name": "kube-api-access-gnkf7",
+          "projected": {
+            "defaultMode": 420,
+            "sources": [
+              {
+                "serviceAccountToken": {
+                  "expirationSeconds": 3607,
+                  "path": "token"
+                }
+              },
+              {
+                "configMap": {
+                  "items": [
+                    {
+                      "key": "ca.crt",
+                      "path": "ca.crt"
+                    }
+                  ],
+                  "name": "kube-root-ca.crt"
+                }
+              },
+              {
+                "downwardAPI": {
+                  "items": [
+                    {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.namespace"
+                      },
+                      "path": "namespace"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "status": {
+      "conditions": [
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:58:13Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "PodReadyToStartContainers"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:58:02Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "Initialized"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:58:02Z",
+          "message": "containers with unready status: [kubernetes-bootcamp]",
+          "observedGeneration": 1,
+          "reason": "ContainersNotReady",
+          "status": "False",
+          "type": "Ready"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:58:02Z",
+          "message": "containers with unready status: [kubernetes-bootcamp]",
+          "observedGeneration": 1,
+          "reason": "ContainersNotReady",
+          "status": "False",
+          "type": "ContainersReady"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:58:02Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "PodScheduled"
+        }
+      ],
+      "containerStatuses": [
+        {
+          "image": "jocatalin/kubernetes-bootcamp:v10",
+          "imageID": "",
+          "lastState": {},
+          "name": "kubernetes-bootcamp",
+          "ready": false,
+          "restartCount": 0,
+          "started": false,
+          "state": {
+            "waiting": {
+              "message": "rpc error: code = NotFound desc = failed to pull and unpack image \"docker.io/jocatalin/kubernetes-bootcamp:v10\": failed to resolve reference \"docker.io/jocatalin/kubernetes-bootcamp:v10\": docker.io/jocatalin/kubernetes-bootcamp:v10: not found",
+              "reason": "ErrImagePull"
+            }
+          },
+          "volumeMounts": [
+            {
+              "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+              "name": "kube-api-access-gnkf7",
+              "readOnly": true,
+              "recursiveReadOnly": "Disabled"
+            }
+          ]
+        }
+      ],
+      "hostIP": "192.168.49.2",
+      "hostIPs": [
+        {
+          "ip": "192.168.49.2"
+        }
+      ],
+      "observedGeneration": 1,
+      "phase": "Pending",
+      "podIP": "10.244.0.89",
+      "podIPs": [
+        {
+          "ip": "10.244.0.89"
+        }
+      ],
+      "qosClass": "BestEffort",
+      "startTime": "2026-10-17T18:58:02Z"
+    }
+  },
+  {
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:55:33Z",
+      "deletionGracePeriodSeconds": 30,
+      "deletionTimestamp": "2026-10-17T18:58:24Z",
+      "generateName": "kubernetes-bootcamp-6b8bd7c8db-",
+      "generation": 2,
+      "labels": {
+        "app": "kubernetes-bootcamp",
+        "pod-template-hash": "6b8bd7c8db"
+      },
+      "name": "kubernetes-bootcamp-6b8bd7c8db-d7cwc",
+      "namespace": "homework-basics-489b6324",
+      "ownerReferences": [
+        {
+          "apiVersion": "apps/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "ReplicaSet",
+          "name": "kubernetes-bootcamp-6b8bd7c8db",
+          "uid": "296ada77-c87f-4630-9fb6-cd89a3f3353a"
+        }
+      ],
+      "resourceVersion": "4829",
+      "uid": "4625f4eb-aed8-445f-9e20-fd25bcf2b71a"
+    },
+    "spec": {
+      "containers": [
+        {
+          "image": "gcr.io/google-samples/kubernetes-bootcamp:v1",
+          "imagePullPolicy": "IfNotPresent",
+          "name": "kubernetes-bootcamp",
+          "ports": [
+            {
+              "containerPort": 8080,
+              "protocol": "TCP"
+            }
+          ],
+          "resources": {},
+          "terminationMessagePath": "/dev/termination-log",
+          "terminationMessagePolicy": "File",
+          "volumeMounts": [
+            {
+              "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+              "name": "kube-api-access-sftrz",
+              "readOnly": true
+            }
+          ]
+        }
+      ],
+      "dnsPolicy": "ClusterFirst",
+      "enableServiceLinks": true,
+      "nodeName": "homework-review",
+      "preemptionPolicy": "PreemptLowerPriority",
+      "priority": 0,
+      "restartPolicy": "Always",
+      "schedulerName": "default-scheduler",
+      "securityContext": {},
+      "serviceAccount": "default",
+      "serviceAccountName": "default",
+      "terminationGracePeriodSeconds": 30,
+      "tolerations": [
+        {
+          "effect": "NoExecute",
+          "key": "node.kubernetes.io/not-ready",
+          "operator": "Exists",
+          "tolerationSeconds": 300
+        },
+        {
+          "effect": "NoExecute",
+          "key": "node.kubernetes.io/unreachable",
+          "operator": "Exists",
+          "tolerationSeconds": 300
+        }
+      ],
+      "volumes": [
+        {
+          "name": "kube-api-access-sftrz",
+          "projected": {
+            "defaultMode": 420,
+            "sources": [
+              {
+                "serviceAccountToken": {
+                  "expirationSeconds": 3607,
+                  "path": "token"
+                }
+              },
+              {
+                "configMap": {
+                  "items": [
+                    {
+                      "key": "ca.crt",
+                      "path": "ca.crt"
+                    }
+                  ],
+                  "name": "kube-root-ca.crt"
+                }
+              },
+              {
+                "downwardAPI": {
+                  "items": [
+                    {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.namespace"
+                      },
+                      "path": "namespace"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "status": {
+      "conditions": [
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:56:12Z",
+          "observedGeneration": 2,
+          "status": "True",
+          "type": "PodReadyToStartContainers"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:55:34Z",
+          "observedGeneration": 2,
+          "status": "True",
+          "type": "Initialized"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:56:12Z",
+          "observedGeneration": 2,
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:56:12Z",
+          "observedGeneration": 2,
+          "status": "True",
+          "type": "ContainersReady"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:55:33Z",
+          "observedGeneration": 2,
+          "status": "True",
+          "type": "PodScheduled"
+        }
+      ],
+      "containerStatuses": [
+        {
+          "containerID": "containerd://03bd858e98456e1686fd82c48e892c6bb65deb9d3058a1381f8e735726977874",
+          "image": "gcr.io/google-samples/kubernetes-bootcamp:v1",
+          "imageID": "gcr.io/google-samples/kubernetes-bootcamp@sha256:0d6b8ee63bb57c5f5b6156f446b3bc3b3c143d233037f3a2f00e279c8fcc64af",
+          "lastState": {},
+          "name": "kubernetes-bootcamp",
+          "ready": true,
+          "resources": {},
+          "restartCount": 0,
+          "started": true,
+          "state": {
+            "running": {
+              "startedAt": "2026-10-17T18:56:11Z"
+            }
+          },
+          "user": {
+            "linux": {
+              "gid": 0,
+              "supplementalGroups": [
+                0
+              ],
+              "uid": 0
+            }
+          },
+          "volumeMounts": [
+            {
+              "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+              "name": "kube-api-access-sftrz",
+              "readOnly": true,
+              "recursiveReadOnly": "Disabled"
+            }
+          ]
+        }
+      ],
+      "hostIP": "192.168.49.2",
+      "hostIPs": [
+        {
+          "ip": "192.168.49.2"
+        }
+      ],
+      "observedGeneration": 2,
+      "phase": "Running",
+      "podIP": "10.244.0.83",
+      "podIPs": [
+        {
+          "ip": "10.244.0.83"
+        }
+      ],
+      "qosClass": "BestEffort",
+      "startTime": "2026-10-17T18:55:34Z"
+    }
+  },
+  {
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:56:18Z",
+      "generateName": "kubernetes-bootcamp-6ccf69454d-",
+      "generation": 1,
+      "labels": {
+        "app": "kubernetes-bootcamp",
+        "pod-template-hash": "6ccf69454d"
+      },
+      "name": "kubernetes-bootcamp-6ccf69454d-lsjqg",
+      "namespace": "homework-basics-489b6324",
+      "ownerReferences": [
+        {
+          "apiVersion": "apps/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "ReplicaSet",
+          "name": "kubernetes-bootcamp-6ccf69454d",
+          "uid": "22f41afa-2827-4946-83fd-ca1cf788a27d"
+        }
+      ],
+      "resourceVersion": "4791",
+      "uid": "02e8e6b7-674f-4e93-b97b-c8a195ac872f"
+    },
+    "spec": {
+      "containers": [
+        {
+          "image": "jocatalin/kubernetes-bootcamp:v2",
+          "imagePullPolicy": "IfNotPresent",
+          "name": "kubernetes-bootcamp",
+          "ports": [
+            {
+              "containerPort": 8080,
+              "protocol": "TCP"
+            }
+          ],
+          "resources": {},
+          "terminationMessagePath": "/dev/termination-log",
+          "terminationMessagePolicy": "File",
+          "volumeMounts": [
+            {
+              "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+              "name": "kube-api-access-gph47",
+              "readOnly": true
+            }
+          ]
+        }
+      ],
+      "dnsPolicy": "ClusterFirst",
+      "enableServiceLinks": true,
+      "nodeName": "homework-review",
+      "preemptionPolicy": "PreemptLowerPriority",
+      "priority": 0,
+      "restartPolicy": "Always",
+      "schedulerName": "default-scheduler",
+      "securityContext": {},
+      "serviceAccount": "default",
+      "serviceAccountName": "default",
+      "terminationGracePeriodSeconds": 30,
+      "tolerations": [
+        {
+          "effect": "NoExecute",
+          "key": "node.kubernetes.io/not-ready",
+          "operator": "Exists",
+          "tolerationSeconds": 300
+        },
+        {
+          "effect": "NoExecute",
+          "key": "node.kubernetes.io/unreachable",
+          "operator": "Exists",
+          "tolerationSeconds": 300
+        }
+      ],
+      "volumes": [
+        {
+          "name": "kube-api-access-gph47",
+          "projected": {
+            "defaultMode": 420,
+            "sources": [
+              {
+                "serviceAccountToken": {
+                  "expirationSeconds": 3607,
+                  "path": "token"
+                }
+              },
+              {
+                "configMap": {
+                  "items": [
+                    {
+                      "key": "ca.crt",
+                      "path": "ca.crt"
+                    }
+                  ],
+                  "name": "kube-root-ca.crt"
+                }
+              },
+              {
+                "downwardAPI": {
+                  "items": [
+                    {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.namespace"
+                      },
+                      "path": "namespace"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "status": {
+      "conditions": [
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:56:30Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "PodReadyToStartContainers"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:56:18Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "Initialized"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:56:30Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:56:30Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "ContainersReady"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:56:18Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "PodScheduled"
+        }
+      ],
+      "containerStatuses": [
+        {
+          "containerID": "containerd://2560c534b1cbf151aa818cc20d088ef768613390e6b05f28b9ae22a03ee3872e",
+          "image": "docker.io/jocatalin/kubernetes-bootcamp:v2",
+          "imageID": "docker.io/jocatalin/kubernetes-bootcamp@sha256:fb1a3ced00cecfc1f83f18ab5cd14199e30adc1b49aa4244f5d65ad3f5feb2a5",
+          "lastState": {},
+          "name": "kubernetes-bootcamp",
+          "ready": true,
+          "resources": {},
+          "restartCount": 0,
+          "started": true,
+          "state": {
+            "running": {
+              "startedAt": "2026-10-17T18:56:30Z"
+            }
+          },
+          "user": {
+            "linux": {
+              "gid": 0,
+              "supplementalGroups": [
+                0
+              ],
+              "uid": 0
+            }
+          },
+          "volumeMounts": [
+            {
+              "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+              "name": "kube-api-access-gph47",
+              "readOnly": true,
+              "recursiveReadOnly": "Disabled"
+            }
+          ]
+        }
+      ],
+      "hostIP": "192.168.49.2",
+      "hostIPs": [
+        {
+          "ip": "192.168.49.2"
+        }
+      ],
+      "observedGeneration": 1,
+      "phase": "Running",
+      "podIP": "10.244.0.87",
+      "podIPs": [
+        {
+          "ip": "10.244.0.87"
+        }
+      ],
+      "qosClass": "BestEffort",
+      "startTime": "2026-10-17T18:56:18Z"
+    }
+  },
+  {
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:56:32Z",
+      "generateName": "kubernetes-bootcamp-6ccf69454d-",
+      "generation": 1,
+      "labels": {
+        "app": "kubernetes-bootcamp",
+        "pod-template-hash": "6ccf69454d"
+      },
+      "name": "kubernetes-bootcamp-6ccf69454d-nsmc2",
+      "namespace": "homework-basics-489b6324",
+      "ownerReferences": [
+        {
+          "apiVersion": "apps/v1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "ReplicaSet",
+          "name": "kubernetes-bootcamp-6ccf69454d",
+          "uid": "22f41afa-2827-4946-83fd-ca1cf788a27d"
+        }
+      ],
+      "resourceVersion": "4774",
+      "uid": "cd0a3bc5-7584-4765-93be-02d1b63ba7e2"
+    },
+    "spec": {
+      "containers": [
+        {
+          "image": "jocatalin/kubernetes-bootcamp:v2",
+          "imagePullPolicy": "IfNotPresent",
+          "name": "kubernetes-bootcamp",
+          "ports": [
+            {
+              "containerPort": 8080,
+              "protocol": "TCP"
+            }
+          ],
+          "resources": {},
+          "terminationMessagePath": "/dev/termination-log",
+          "terminationMessagePolicy": "File",
+          "volumeMounts": [
+            {
+              "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+              "name": "kube-api-access-dssnj",
+              "readOnly": true
+            }
+          ]
+        }
+      ],
+      "dnsPolicy": "ClusterFirst",
+      "enableServiceLinks": true,
+      "nodeName": "homework-review",
+      "preemptionPolicy": "PreemptLowerPriority",
+      "priority": 0,
+      "restartPolicy": "Always",
+      "schedulerName": "default-scheduler",
+      "securityContext": {},
+      "serviceAccount": "default",
+      "serviceAccountName": "default",
+      "terminationGracePeriodSeconds": 30,
+      "tolerations": [
+        {
+          "effect": "NoExecute",
+          "key": "node.kubernetes.io/not-ready",
+          "operator": "Exists",
+          "tolerationSeconds": 300
+        },
+        {
+          "effect": "NoExecute",
+          "key": "node.kubernetes.io/unreachable",
+          "operator": "Exists",
+          "tolerationSeconds": 300
+        }
+      ],
+      "volumes": [
+        {
+          "name": "kube-api-access-dssnj",
+          "projected": {
+            "defaultMode": 420,
+            "sources": [
+              {
+                "serviceAccountToken": {
+                  "expirationSeconds": 3607,
+                  "path": "token"
+                }
+              },
+              {
+                "configMap": {
+                  "items": [
+                    {
+                      "key": "ca.crt",
+                      "path": "ca.crt"
+                    }
+                  ],
+                  "name": "kube-root-ca.crt"
+                }
+              },
+              {
+                "downwardAPI": {
+                  "items": [
+                    {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.namespace"
+                      },
+                      "path": "namespace"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "status": {
+      "conditions": [
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:57:53Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "PodReadyToStartContainers"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:56:33Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "Initialized"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:57:53Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:57:53Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "ContainersReady"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:56:33Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "PodScheduled"
+        }
+      ],
+      "containerStatuses": [
+        {
+          "containerID": "containerd://ff0f94c0b7e3cf673822b94ba42b10b2e50682848fe43b14b68f96349bf1ffa7",
+          "image": "docker.io/jocatalin/kubernetes-bootcamp:v2",
+          "imageID": "docker.io/jocatalin/kubernetes-bootcamp@sha256:fb1a3ced00cecfc1f83f18ab5cd14199e30adc1b49aa4244f5d65ad3f5feb2a5",
+          "lastState": {},
+          "name": "kubernetes-bootcamp",
+          "ready": true,
+          "resources": {},
+          "restartCount": 0,
+          "started": true,
+          "state": {
+            "running": {
+              "startedAt": "2026-10-17T18:57:52Z"
+            }
+          },
+          "user": {
+            "linux": {
+              "gid": 0,
+              "supplementalGroups": [
+                0
+              ],
+              "uid": 0
+            }
+          },
+          "volumeMounts": [
+            {
+              "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+              "name": "kube-api-access-dssnj",
+              "readOnly": true,
+              "recursiveReadOnly": "Disabled"
+            }
+          ]
+        }
+      ],
+      "hostIP": "192.168.49.2",
+      "hostIPs": [
+        {
+          "ip": "192.168.49.2"
+        }
+      ],
+      "observedGeneration": 1,
+      "phase": "Running",
+      "podIP": "10.244.0.88",
+      "podIPs": [
+        {
+          "ip": "10.244.0.88"
+        }
+      ],
+      "qosClass": "BestEffort",
+      "startTime": "2026-10-17T18:56:33Z"
+    }
+  },
+  {
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+      "creationTimestamp": "2026-10-17T18:55:32Z",
+      "generation": 1,
+      "labels": {
+        "run": "lab-client"
+      },
+      "name": "lab-client",
+      "namespace": "homework-basics-489b6324",
+      "resourceVersion": "4779",
+      "uid": "3bfd60f2-a828-4989-aa41-434e5d4abbf9"
+    },
+    "spec": {
+      "containers": [
+        {
+          "args": [
+            "sleep",
+            "3600"
+          ],
+          "image": "busybox:1.36",
+          "imagePullPolicy": "IfNotPresent",
+          "name": "lab-client",
+          "resources": {},
+          "terminationMessagePath": "/dev/termination-log",
+          "terminationMessagePolicy": "File",
+          "volumeMounts": [
+            {
+              "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+              "name": "kube-api-access-f8vz9",
+              "readOnly": true
+            }
+          ]
+        }
+      ],
+      "dnsPolicy": "ClusterFirst",
+      "enableServiceLinks": true,
+      "nodeName": "homework-review",
+      "preemptionPolicy": "PreemptLowerPriority",
+      "priority": 0,
+      "restartPolicy": "Never",
+      "schedulerName": "default-scheduler",
+      "securityContext": {},
+      "serviceAccount": "default",
+      "serviceAccountName": "default",
+      "terminationGracePeriodSeconds": 30,
+      "tolerations": [
+        {
+          "effect": "NoExecute",
+          "key": "node.kubernetes.io/not-ready",
+          "operator": "Exists",
+          "tolerationSeconds": 300
+        },
+        {
+          "effect": "NoExecute",
+          "key": "node.kubernetes.io/unreachable",
+          "operator": "Exists",
+          "tolerationSeconds": 300
+        }
+      ],
+      "volumes": [
+        {
+          "name": "kube-api-access-f8vz9",
+          "projected": {
+            "defaultMode": 420,
+            "sources": [
+              {
+                "serviceAccountToken": {
+                  "expirationSeconds": 3607,
+                  "path": "token"
+                }
+              },
+              {
+                "configMap": {
+                  "items": [
+                    {
+                      "key": "ca.crt",
+                      "path": "ca.crt"
+                    }
+                  ],
+                  "name": "kube-root-ca.crt"
+                }
+              },
+              {
+                "downwardAPI": {
+                  "items": [
+                    {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.namespace"
+                      },
+                      "path": "namespace"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "status": {
+      "conditions": [
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:55:33Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "PodReadyToStartContainers"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:55:33Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "Initialized"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:55:33Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:55:33Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "ContainersReady"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-17T18:55:33Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "PodScheduled"
+        }
+      ],
+      "containerStatuses": [
+        {
+          "containerID": "containerd://d27b6b6dce33ba450ba0432bd88a548a9099b119d6c8c295326e42f7b304250a",
+          "image": "docker.io/library/busybox:1.36",
+          "imageID": "docker.io/library/busybox@sha256:73aaf090f3d85aa34ee199857f03fa3a95c8ede2ffd4cc2cdb5b94e566b11662",
+          "lastState": {},
+          "name": "lab-client",
+          "ready": true,
+          "resources": {},
+          "restartCount": 0,
+          "started": true,
+          "state": {
+            "running": {
+              "startedAt": "2026-10-17T18:55:33Z"
+            }
+          },
+          "user": {
+            "linux": {
+              "gid": 0,
+              "supplementalGroups": [
+                0,
+                10
+              ],
+              "uid": 0
+            }
+          },
+          "volumeMounts": [
+            {
+              "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+              "name": "kube-api-access-f8vz9",
+              "readOnly": true,
+              "recursiveReadOnly": "Disabled"
+            }
+          ]
+        }
+      ],
+      "hostIP": "192.168.49.2",
+      "hostIPs": [
+        {
+          "ip": "192.168.49.2"
+        }
+      ],
+      "observedGeneration": 1,
+      "phase": "Running",
+      "podIP": "10.244.0.82",
+      "podIPs": [
+        {
+          "ip": "10.244.0.82"
+        }
+      ],
+      "qosClass": "BestEffort",
+      "startTime": "2026-10-17T18:55:33Z"
+    }
+  }
+]

@@ -163,3 +163,13 @@ A push to `main` that changes this task starts the complete pipeline. Manual
 workflow runs validate the code and security checks; publishing and deployment
 are restricted to successful runs triggered by a push to `main`. Review the
 individual job results, since a green manual run can contain skipped deployment jobs.
+
+## Verified rerun — 18 October 2026
+
+Completed the full test, SAST, SCA, secret scan, image scan, security gate, registry publication and Kubernetes deployment workflow.
+
+[Recorded results](../review/results/2026-10-18/ci-task17-39059479655/) · [Screenshot](../review/results/2026-10-18/screenshots/task17-github-devsecops.png) · [Complete evidence index and environment notes](../review/results/2026-10-18/README.md).
+
+![DevSecOps: live browser capture](../review/results/2026-10-18/screenshots/task17-github-devsecops.png)
+
+*Live browser capture from the verified rerun; complete results are linked above.*

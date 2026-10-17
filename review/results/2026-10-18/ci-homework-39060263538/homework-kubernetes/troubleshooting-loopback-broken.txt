@@ -1,0 +1,2 @@
+deployment.apps/inventory created
+service/inventory created

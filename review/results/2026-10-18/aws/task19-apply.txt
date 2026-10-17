@@ -1,0 +1,43 @@
+random_id.suffix: Creating...
+random_id.suffix: Creation complete after 0s [id=14UdiA]
+aws_vpc.main: Creating...
+aws_s3_bucket.assets: Creating...
+aws_s3_bucket.assets: Creation complete after 5s [id=scaler-homework-24bcs10053-assets-d7851d88]
+aws_s3_bucket_public_access_block.assets: Creating...
+aws_s3_bucket_versioning.assets: Creating...
+aws_s3_bucket_public_access_block.assets: Creation complete after 0s [id=scaler-homework-24bcs10053-assets-d7851d88]
+aws_s3_bucket_versioning.assets: Creation complete after 2s [id=scaler-homework-24bcs10053-assets-d7851d88]
+aws_vpc.main: Still creating... [10s elapsed]
+aws_vpc.main: Still creating... [20s elapsed]
+aws_vpc.main: Creation complete after 21s [id=vpc-09c8ec25f59d416dc]
+aws_internet_gateway.main: Creating...
+aws_subnet.public: Creating...
+aws_security_group.web: Creating...
+aws_internet_gateway.main: Creation complete after 0s [id=igw-06a72fc306ad28fa2]
+aws_route_table.public: Creating...
+aws_route_table.public: Creation complete after 1s [id=rtb-00f969fd9ad6dfc79]
+aws_security_group.web: Creation complete after 2s [id=sg-0dca86b0366ce3e4d]
+aws_vpc_security_group_egress_rule.all: Creating...
+aws_vpc_security_group_ingress_rule.http["0.0.0.0/0"]: Creating...
+aws_vpc_security_group_egress_rule.all: Creation complete after 0s [id=sgr-080eaeee5a1418b06]
+aws_vpc_security_group_ingress_rule.http["0.0.0.0/0"]: Creation complete after 0s [id=sgr-0eb4ad9aa72a97935]
+aws_subnet.public: Still creating... [10s elapsed]
+aws_subnet.public: Creation complete after 11s [id=subnet-007e2fe2c50b2acec]
+aws_route_table_association.public: Creating...
+aws_route_table_association.public: Creation complete after 0s [id=rtbassoc-01b862e8c94197fb2]
+aws_instance.web: Creating...
+aws_instance.web: Still creating... [10s elapsed]
+aws_instance.web: Creation complete after 13s [id=i-082156859f1453d40]
+
+Apply complete! Resources: 13 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+ami_id = "ami-0c25f859a8b518798"
+assets_bucket = "scaler-homework-24bcs10053-assets-d7851d88"
+instance_id = "i-082156859f1453d40"
+instance_public_ip = "13.206.222.74"
+public_subnet_id = "subnet-007e2fe2c50b2acec"
+security_group_id = "sg-0dca86b0366ce3e4d"
+vpc_id = "vpc-09c8ec25f59d416dc"
+website_url = "http://ec2-13-206-222-74.ap-south-1.compute.amazonaws.com"

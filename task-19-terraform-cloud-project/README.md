@@ -56,3 +56,13 @@ $ terraform init -migrate-state
 ```
 
 </details>
+
+## Verified rerun — 18 October 2026
+
+Applied the VPC/subnet/routing/security-group/EC2/S3 project in AWS. Verified the public nginx endpoint and matching instance identity, checked a no-change plan, destroyed all 13 managed resources and verified cleanup.
+
+[Recorded results](../review/results/2026-10-18/aws/task19-http.txt) · [Screenshot](../review/results/2026-10-18/screenshots/task19-terraform.png) · [Complete evidence index and environment notes](../review/results/2026-10-18/README.md).
+
+![Terraform cloud project: saved execution log view](../review/results/2026-10-18/screenshots/task19-terraform.png)
+
+*Saved execution log view from the verified rerun; complete results are linked above.*

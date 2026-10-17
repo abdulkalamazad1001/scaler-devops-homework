@@ -1,0 +1,26 @@
+NAMESPACE         NAME                                                        READY   STATUS      RESTARTS        AGE   IP             NODE              NOMINATED NODE   READINESS GATES
+ingress-nginx     ingress-nginx-admission-create-hsrr5                        0/1     Completed   0               17m   10.244.0.5     homework-review   <none>           <none>
+ingress-nginx     ingress-nginx-admission-patch-vmfgk                         0/1     Completed   2               17m   10.244.0.3     homework-review   <none>           <none>
+ingress-nginx     ingress-nginx-controller-8446d9d4d6-fz9m4                   1/1     Running     0               17m   10.244.0.8     homework-review   <none>           <none>
+kube-system       coredns-7d764666f9-522bk                                    1/1     Running     0               17m   10.244.0.4     homework-review   <none>           <none>
+kube-system       etcd-homework-review                                        1/1     Running     0               17m   192.168.49.2   homework-review   <none>           <none>
+kube-system       kindnet-qcrkb                                               1/1     Running     0               17m   192.168.49.2   homework-review   <none>           <none>
+kube-system       kube-apiserver-homework-review                              1/1     Running     0               17m   192.168.49.2   homework-review   <none>           <none>
+kube-system       kube-controller-manager-homework-review                     1/1     Running     0               17m   192.168.49.2   homework-review   <none>           <none>
+kube-system       kube-proxy-zmlzr                                            1/1     Running     0               17m   192.168.49.2   homework-review   <none>           <none>
+kube-system       kube-scheduler-homework-review                              1/1     Running     0               17m   192.168.49.2   homework-review   <none>           <none>
+kube-system       metrics-server-64cf85ffb8-bwdfj                             1/1     Running     0               17m   10.244.0.2     homework-review   <none>           <none>
+kube-system       storage-provisioner                                         1/1     Running     1 (5m45s ago)   17m   192.168.49.2   homework-review   <none>           <none>
+metallb-system    controller-cff57fcb5-9zzwr                                  1/1     Running     0               15m   10.244.0.19    homework-review   <none>           <none>
+metallb-system    speaker-whg7s                                               1/1     Running     0               15m   192.168.49.2   homework-review   <none>           <none>
+monitoring-demo   alert-sink-566658c5cd-twc5v                                 1/1     Running     0               10m   10.244.0.65    homework-review   <none>           <none>
+monitoring-demo   metrics-demo-6dd56cd4d5-knv8k                               1/1     Running     0               10m   10.244.0.66    homework-review   <none>           <none>
+monitoring-demo   metrics-demo-6dd56cd4d5-qmb54                               1/1     Running     0               10m   10.244.0.67    homework-review   <none>           <none>
+monitoring        alertmanager-kube-prometheus-stack-alertmanager-0           2/2     Running     0               13m   10.244.0.34    homework-review   <none>           <none>
+monitoring        kube-prometheus-stack-grafana-5b6465849f-r7q2v              3/3     Running     0               15m   10.244.0.22    homework-review   <none>           <none>
+monitoring        kube-prometheus-stack-kube-state-metrics-5ff4575db7-gvv7j   1/1     Running     0               15m   10.244.0.20    homework-review   <none>           <none>
+monitoring        kube-prometheus-stack-operator-d69fb75b9-79rtb              1/1     Running     0               15m   10.244.0.21    homework-review   <none>           <none>
+monitoring        kube-prometheus-stack-prometheus-node-exporter-grsrf        1/1     Running     0               15m   192.168.49.2   homework-review   <none>           <none>
+monitoring        loki-0                                                      1/1     Running     0               13m   10.244.0.36    homework-review   <none>           <none>
+monitoring        loki-promtail-5gsfz                                         1/1     Running     0               13m   10.244.0.35    homework-review   <none>           <none>
+monitoring        prometheus-kube-prometheus-stack-prometheus-0               2/2     Running     0               13m   10.244.0.33    homework-review   <none>           <none>

@@ -1,0 +1,2 @@
+NAMES                          IMAGE                                PORTS                       STATUS
+task5-python-review-1c2b163c   homework-review/task5-python:local   127.0.0.1:51857->5000/tcp   Up 1 second

@@ -1,0 +1,78 @@
+{
+  "conditions": [
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:02:16Z",
+      "status": "True",
+      "type": "PodReadyToStartContainers"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:02:15Z",
+      "status": "True",
+      "type": "Initialized"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:02:15Z",
+      "message": "containers with unready status: [broken-image]",
+      "reason": "ContainersNotReady",
+      "status": "False",
+      "type": "Ready"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:02:15Z",
+      "message": "containers with unready status: [broken-image]",
+      "reason": "ContainersNotReady",
+      "status": "False",
+      "type": "ContainersReady"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:02:15Z",
+      "status": "True",
+      "type": "PodScheduled"
+    }
+  ],
+  "containerStatuses": [
+    {
+      "image": "doesnotexist/no-such-image:1.0",
+      "imageID": "",
+      "lastState": {},
+      "name": "broken-image",
+      "ready": false,
+      "restartCount": 0,
+      "started": false,
+      "state": {
+        "waiting": {
+          "message": "failed to pull and unpack image \"docker.io/doesnotexist/no-such-image:1.0\": failed to resolve reference \"docker.io/doesnotexist/no-such-image:1.0\": pull access denied, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed",
+          "reason": "ErrImagePull"
+        }
+      },
+      "volumeMounts": [
+        {
+          "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+          "name": "kube-api-access-25vbx",
+          "readOnly": true,
+          "recursiveReadOnly": "Disabled"
+        }
+      ]
+    }
+  ],
+  "hostIP": "172.18.0.2",
+  "hostIPs": [
+    {
+      "ip": "172.18.0.2"
+    }
+  ],
+  "phase": "Pending",
+  "podIP": "10.244.0.101",
+  "podIPs": [
+    {
+      "ip": "10.244.0.101"
+    }
+  ],
+  "qosClass": "BestEffort",
+  "startTime": "2026-10-17T19:02:15Z"
+}

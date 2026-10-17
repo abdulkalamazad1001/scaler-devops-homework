@@ -37,3 +37,13 @@ manifests intentionally contain errors and should be applied one scenario at a t
 The output and terminal-style images in the original write-up are labelled expected
 output, not captures from a live deployment. Current test logs are kept separately
 under the project review. Validation alone does not prove every exercise was run.
+
+## Verified rerun — 18 October 2026
+
+Verified host/path routing, ConfigMap and Secret consumption, broken backend and ingress-class diagnosis/repair, missing ConfigMap recovery and newline handling.
+
+[Recorded results](../review/results/2026-10-18/ingress.json) · [Screenshot](../review/results/2026-10-18/screenshots/task12-ingress.png) · [Complete evidence index and environment notes](../review/results/2026-10-18/README.md).
+
+![Ingress, ConfigMaps and Secrets: saved execution log view](../review/results/2026-10-18/screenshots/task12-ingress.png)
+
+*Saved execution log view from the verified rerun; complete results are linked above.*

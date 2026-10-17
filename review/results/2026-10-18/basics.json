@@ -1,0 +1,425 @@
+{
+  "captured_at": "2026-10-17T18:58:56.283961+00:00",
+  "context": "homework-review",
+  "error": null,
+  "checks": [
+    {
+      "check": "basics-namespace",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:55:32.886378+00:00",
+      "duration_seconds": 0.05,
+      "log": "basics-namespace.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "create",
+        "namespace",
+        "homework-basics-489b6324"
+      ]
+    },
+    {
+      "check": "basics-client-create",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:55:32.932972+00:00",
+      "duration_seconds": 0.07,
+      "log": "basics-client-create.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "run",
+        "lab-client",
+        "--image=busybox:1.36",
+        "--restart=Never",
+        "--",
+        "sleep",
+        "3600"
+      ]
+    },
+    {
+      "check": "basics-lab-client-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:55:33.002914+00:00",
+      "duration_seconds": 0.89,
+      "log": "basics-lab-client-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "wait",
+        "--for=condition=Ready",
+        "pod/lab-client",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "basics-bootcamp",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:55:33.891861+00:00",
+      "duration_seconds": 0.09,
+      "log": "basics-bootcamp.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "basics-deploy-kubernetes-bootcamp-rollout-4",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:55:33.977022+00:00",
+      "duration_seconds": 38.85,
+      "log": "basics-deploy-kubernetes-bootcamp-rollout-4.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "rollout",
+        "status",
+        "deploy/kubernetes-bootcamp",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "basics-bootcamp-http",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:12.830735+00:00",
+      "duration_seconds": 0.45,
+      "log": "basics-bootcamp-http.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in 1 2 3 4 5; do wget -T 5 -qO- http://kubernetes-bootcamp:8080 | grep 'Hello' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "basics-explore",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:13.285474+00:00",
+      "duration_seconds": 0.08,
+      "log": "basics-explore.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "get",
+        "deploy,rs,pods,svc",
+        "-o",
+        "wide"
+      ]
+    },
+    {
+      "check": "basics-logs",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:13.362347+00:00",
+      "duration_seconds": 0.1,
+      "log": "basics-logs.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "logs",
+        "deploy/kubernetes-bootcamp"
+      ]
+    },
+    {
+      "check": "basics-exec",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:13.457478+00:00",
+      "duration_seconds": 0.21,
+      "log": "basics-exec.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "exec",
+        "deploy/kubernetes-bootcamp",
+        "--",
+        "env"
+      ]
+    },
+    {
+      "check": "basics-scale",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:13.670527+00:00",
+      "duration_seconds": 0.82,
+      "log": "basics-scale.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "scale",
+        "deployment",
+        "kubernetes-bootcamp",
+        "--replicas=4"
+      ]
+    },
+    {
+      "check": "basics-deploy-kubernetes-bootcamp-rollout-10",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:14.494338+00:00",
+      "duration_seconds": 3.32,
+      "log": "basics-deploy-kubernetes-bootcamp-rollout-10.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "rollout",
+        "status",
+        "deploy/kubernetes-bootcamp",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "basics-scale-down",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:17.817903+00:00",
+      "duration_seconds": 0.09,
+      "log": "basics-scale-down.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "scale",
+        "deployment",
+        "kubernetes-bootcamp",
+        "--replicas=2"
+      ]
+    },
+    {
+      "check": "basics-deploy-kubernetes-bootcamp-rollout-12",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:17.904560+00:00",
+      "duration_seconds": 0.39,
+      "log": "basics-deploy-kubernetes-bootcamp-rollout-12.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "rollout",
+        "status",
+        "deploy/kubernetes-bootcamp",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "basics-update-v2",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:18.297735+00:00",
+      "duration_seconds": 0.11,
+      "log": "basics-update-v2.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "set",
+        "image",
+        "deployment/kubernetes-bootcamp",
+        "kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v2"
+      ]
+    },
+    {
+      "check": "basics-deploy-kubernetes-bootcamp-rollout-14",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:18.410115+00:00",
+      "duration_seconds": 96.29,
+      "log": "basics-deploy-kubernetes-bootcamp-rollout-14.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "rollout",
+        "status",
+        "deploy/kubernetes-bootcamp",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "basics-updated-http",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:57:54.704991+00:00",
+      "duration_seconds": 2.29,
+      "log": "basics-updated-http.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in 1 2 3 4 5; do wget -T 5 -qO- http://kubernetes-bootcamp:8080 | grep 'v=2' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "basics-broken-update",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:57:56.993075+00:00",
+      "duration_seconds": 0.05,
+      "log": "basics-broken-update.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "set",
+        "image",
+        "deployment/kubernetes-bootcamp",
+        "kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v10"
+      ]
+    },
+    {
+      "check": "basics-broken-image-observed",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "get",
+        "pods",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 16.47,
+      "log": "basics-broken-image-observed.txt"
+    },
+    {
+      "check": "basics-rollback",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:13.515819+00:00",
+      "duration_seconds": 0.05,
+      "log": "basics-rollback.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "rollout",
+        "undo",
+        "deployment/kubernetes-bootcamp"
+      ]
+    },
+    {
+      "check": "basics-deploy-kubernetes-bootcamp-rollout-19",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:13.567496+00:00",
+      "duration_seconds": 0.06,
+      "log": "basics-deploy-kubernetes-bootcamp-rollout-19.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "rollout",
+        "status",
+        "deploy/kubernetes-bootcamp",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "basics-rollback-http",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:13.625571+00:00",
+      "duration_seconds": 0.1,
+      "log": "basics-rollback-http.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in 1 2 3 4 5; do wget -T 5 -qO- http://kubernetes-bootcamp:8080 | grep 'v=2' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "basics-history",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:13.729275+00:00",
+      "duration_seconds": 0.07,
+      "log": "basics-history.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "rollout",
+        "history",
+        "deployment/kubernetes-bootcamp"
+      ]
+    },
+    {
+      "check": "basics-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:13.800082+00:00",
+      "duration_seconds": 42.48,
+      "log": "basics-cleanup.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-basics-489b6324",
+        "delete",
+        "namespace",
+        "homework-basics-489b6324",
+        "--ignore-not-found",
+        "--wait=true",
+        "--timeout=180s"
+      ]
+    }
+  ]
+}

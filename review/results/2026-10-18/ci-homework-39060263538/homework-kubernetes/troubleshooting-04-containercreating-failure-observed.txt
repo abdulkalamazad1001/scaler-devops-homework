@@ -1,0 +1,77 @@
+{
+  "conditions": [
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:55Z",
+      "status": "False",
+      "type": "PodReadyToStartContainers"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:55Z",
+      "status": "True",
+      "type": "Initialized"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:55Z",
+      "message": "containers with unready status: [nginx]",
+      "reason": "ContainersNotReady",
+      "status": "False",
+      "type": "Ready"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:55Z",
+      "message": "containers with unready status: [nginx]",
+      "reason": "ContainersNotReady",
+      "status": "False",
+      "type": "ContainersReady"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:55Z",
+      "status": "True",
+      "type": "PodScheduled"
+    }
+  ],
+  "containerStatuses": [
+    {
+      "image": "nginx:1.27",
+      "imageID": "",
+      "lastState": {},
+      "name": "nginx",
+      "ready": false,
+      "restartCount": 0,
+      "started": false,
+      "state": {
+        "waiting": {
+          "reason": "ContainerCreating"
+        }
+      },
+      "volumeMounts": [
+        {
+          "mountPath": "/etc/app",
+          "name": "app-settings",
+          "readOnly": true,
+          "recursiveReadOnly": "Disabled"
+        },
+        {
+          "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+          "name": "kube-api-access-pcxs9",
+          "readOnly": true,
+          "recursiveReadOnly": "Disabled"
+        }
+      ]
+    }
+  ],
+  "hostIP": "172.18.0.2",
+  "hostIPs": [
+    {
+      "ip": "172.18.0.2"
+    }
+  ],
+  "phase": "Pending",
+  "qosClass": "BestEffort",
+  "startTime": "2026-10-17T18:59:55Z"
+}

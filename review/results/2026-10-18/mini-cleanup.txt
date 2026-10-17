@@ -1,0 +1,2 @@
+Warning: deleting cluster-scoped resources, not scoped to the provided namespace
+namespace "homework-mini-c7ab0cb9" deleted

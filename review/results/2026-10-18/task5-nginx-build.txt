@@ -1,0 +1,35 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 176B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/nginx:1.27-alpine
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/2] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#4 resolve docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10 done
+#4 CACHED
+
+#5 [internal] load build context
+#5 transferring context: 274B done
+#5 DONE 0.0s
+
+#6 [2/2] COPY index.html /usr/share/nginx/html/index.html
+#6 DONE 0.0s
+
+#7 exporting to image
+#7 exporting layers 0.0s done
+#7 exporting manifest sha256:3226c544b930f1827b1edd2b47df874dec404ae8a2f3cfacaa93243fc1f25301 done
+#7 exporting config sha256:ba5ddaffa0c23e124ca60bd17326de3ea9c525a8b12fe7e82a4d0d5d71e93a71 done
+#7 exporting attestation manifest sha256:4b454a93e843261f8e1921d501ec80ee8b8b9410399bf24e63909334c187f434 0.0s done
+#7 exporting manifest list sha256:8cc1f7ec88b93b31ce7aaa5260e3197fe3906736f64bb8b6fca0d0a35e804ed4 done
+#7 naming to docker.io/homework-review/task5-nginx:local done
+#7 unpacking to docker.io/homework-review/task5-nginx:local 0.0s done
+#7 DONE 0.1s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/7ot7yrv74tpunbjwi9udb1kxo

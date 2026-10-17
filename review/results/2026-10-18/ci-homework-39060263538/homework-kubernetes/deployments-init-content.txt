@@ -1,0 +1,2 @@
+Defaulted container "web" out of: web, write-content (init), wait-for-deps (init)
+page written by init container

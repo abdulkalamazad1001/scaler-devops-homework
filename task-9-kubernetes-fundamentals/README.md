@@ -31,3 +31,13 @@ used Kind; it does not establish that the Minikube installation was executed.
 The output and terminal-style images in the original write-up are labelled expected
 output, not captures from a live deployment. Current test logs are kept separately
 under the project review. Validation alone does not prove every exercise was run.
+
+## Verified rerun — 18 October 2026
+
+Started Minikube and checked cluster/node status. Ran Kubernetes Basics: deploy, explore, expose, scale, update to v2, observe a broken image and roll back with restored HTTP responses.
+
+[Recorded results](../review/results/2026-10-18/basics.json) · [Screenshot](../review/results/2026-10-18/screenshots/task9-kubernetes.png) · [Complete evidence index and environment notes](../review/results/2026-10-18/README.md).
+
+![Kubernetes fundamentals: saved execution log view](../review/results/2026-10-18/screenshots/task9-kubernetes.png)
+
+*Saved execution log view from the verified rerun; complete results are linked above.*

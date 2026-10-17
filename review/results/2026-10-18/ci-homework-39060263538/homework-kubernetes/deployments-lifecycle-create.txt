@@ -1,0 +1,13 @@
+pod/lifecycle-running created
+pod/lifecycle-pending created
+pod/lifecycle-succeeded created
+pod/lifecycle-failed created
+pod/lifecycle-crashloop created
+pod/lifecycle-image-error created
+pod/lifecycle-init created
+pod/lifecycle-hooks created
+pod/rp-always-exit0 created
+pod/rp-onfailure-exit0 created
+pod/rp-onfailure-exit1 created
+pod/rp-never-exit1 created
+pod/lifecycle-liveness created

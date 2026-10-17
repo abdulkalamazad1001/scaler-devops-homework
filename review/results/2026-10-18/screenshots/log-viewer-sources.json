@@ -1,0 +1,138 @@
+[
+  {
+    "image": "task1-linux.png",
+    "sources": [
+      "shell-tests.txt",
+      "task1-journalctl.txt"
+    ],
+    "type": "Browser screenshot of a saved-run-log viewer; excerpts, not simulated output"
+  },
+  {
+    "image": "task2-shell.png",
+    "sources": [
+      "shell-tests.txt"
+    ],
+    "type": "Browser screenshot of a saved-run-log viewer; excerpts, not simulated output"
+  },
+  {
+    "image": "task3-networking.png",
+    "sources": [
+      "task3-network-commands.txt"
+    ],
+    "type": "Browser screenshot of a saved-run-log viewer; excerpts, not simulated output"
+  },
+  {
+    "image": "task4-git.png",
+    "sources": [
+      "shell-tests.txt"
+    ],
+    "type": "Browser screenshot of a saved-run-log viewer; excerpts, not simulated output"
+  },
+  {
+    "image": "task7-networks.png",
+    "sources": [
+      "network-retry/task7-mysql-query.txt",
+      "network-retry/task7-front-isolated-from-db.txt",
+      "network-retry/task7-bind-updated.txt",
+      "network-retry/task7-host-port80.txt"
+    ],
+    "type": "Browser screenshot of a saved-run-log viewer; excerpts, not simulated output"
+  },
+  {
+    "image": "task9-kubernetes.png",
+    "sources": [
+      "task9-minikube-status.txt",
+      "task9-nodes.txt",
+      "basics-updated-http.txt",
+      "basics-rollback-http.txt"
+    ],
+    "type": "Browser screenshot of a saved-run-log viewer; excerpts, not simulated output"
+  },
+  {
+    "image": "task10-deployments.png",
+    "sources": [
+      "ci-homework-39060263538/homework-kubernetes/deployments-app-rolling-v2-traffic.txt",
+      "ci-homework-39060263538/homework-kubernetes/deployments-app-recreate-v2-traffic.txt",
+      "task10-traffic-blue.txt",
+      "task10-traffic-green.txt"
+    ],
+    "type": "Browser screenshot of a saved-run-log viewer; excerpts, not simulated output"
+  },
+  {
+    "image": "task11-services.png",
+    "sources": [
+      "loadbalancer-external-http.txt",
+      "task11-dns-http.txt"
+    ],
+    "type": "Browser screenshot of a saved-run-log viewer; excerpts, not simulated output"
+  },
+  {
+    "image": "task12-ingress.png",
+    "sources": [
+      "ingress-host-web.txt",
+      "ingress-path-api.txt",
+      "ingress-wrong-backend-service-observed.txt",
+      "ingress-wrong-backend-service-recovered.txt",
+      "ingress-secret-newline-false.txt"
+    ],
+    "type": "Browser screenshot of a saved-run-log viewer; excerpts, not simulated output"
+  },
+  {
+    "image": "task13-storage.png",
+    "sources": [
+      "storage-retained-volume.txt",
+      "storage-static-persisted.txt",
+      "probes-hpa-final.txt"
+    ],
+    "type": "Browser screenshot of a saved-run-log viewer; excerpts, not simulated output"
+  },
+  {
+    "image": "task14-troubleshooting.png",
+    "sources": [
+      "mini-empty-endpoints.txt",
+      "mini-ready-endpoints.txt",
+      "mini-service-recovered.txt"
+    ],
+    "type": "Browser screenshot of a saved-run-log viewer; excerpts, not simulated output"
+  },
+  {
+    "image": "task15-helm.png",
+    "sources": [
+      "task15-lifecycle-history.txt",
+      "task15-lifecycle-third-content.txt",
+      "task15-lifecycle-restored-content.txt",
+      "task15-lifecycle-uninstall.txt"
+    ],
+    "type": "Browser screenshot of a saved-run-log viewer; excerpts, not simulated output"
+  },
+  {
+    "image": "task18-terraform.png",
+    "sources": [
+      "aws/task18-outputs.txt",
+      "aws/task18-bucket-private.txt",
+      "aws/task18-destroy.txt",
+      "aws/cleanup-verified.json"
+    ],
+    "type": "Browser screenshot of a saved-run-log viewer; excerpts, not simulated output"
+  },
+  {
+    "image": "task19-terraform.png",
+    "sources": [
+      "aws/task19-http.txt",
+      "aws/task19-no-drift.txt",
+      "aws/task19-destroy.txt",
+      "aws/cleanup-verified.json"
+    ],
+    "type": "Browser screenshot of a saved-run-log viewer; excerpts, not simulated output"
+  },
+  {
+    "image": "task13-autoscaling.png",
+    "sources": [
+      "ci-homework-39060263538/homework-autoscaling/hpa-walkthrough-scale-out.txt",
+      "ci-homework-39060263538/homework-autoscaling/hpa-walkthrough-scale-down.txt",
+      "ci-homework-39060263538/homework-autoscaling/probes-hpa-scale-out.txt",
+      "ci-homework-39060263538/homework-autoscaling/probes-hpa-scale-down.txt"
+    ],
+    "type": "Browser screenshot of a saved-run-log viewer; excerpts, not simulated output"
+  }
+]

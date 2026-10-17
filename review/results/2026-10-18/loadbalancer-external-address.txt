@@ -1,0 +1,10 @@
+{
+  "loadBalancer": {
+    "ingress": [
+      {
+        "ip": "192.168.49.230",
+        "ipMode": "VIP"
+      }
+    ]
+  }
+}

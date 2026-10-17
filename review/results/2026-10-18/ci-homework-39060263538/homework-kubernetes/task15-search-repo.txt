@@ -1,0 +1,41 @@
+NAME                                                           	CHART VERSION	APP VERSION	DESCRIPTION                                                                     
+prometheus-community/prometheus                                	29.37.0      	v3.15.0    	Prometheus is a monitoring system and time series database.                     
+prometheus-community/prometheus-adapter                        	5.3.0        	v0.12.0    	A Helm chart for k8s prometheus adapter                                         
+prometheus-community/prometheus-blackbox-exporter              	11.20.0      	v0.29.0    	Prometheus Blackbox Exporter                                                    
+prometheus-community/prometheus-cloudwatch-exporter            	0.28.2       	0.16.0     	A Helm chart for prometheus cloudwatch-exporter                                 
+prometheus-community/prometheus-conntrack-stats-exporter       	0.5.41       	v0.4.49    	A Helm chart for conntrack-stats-exporter                                       
+prometheus-community/prometheus-consul-exporter                	1.1.1        	v0.13.0    	A Helm chart for the Prometheus Consul Exporter                                 
+prometheus-community/prometheus-couchdb-exporter               	1.1.0        	1.0        	A Helm chart to export the metrics from couchdb in Prometheus format.           
+prometheus-community/prometheus-druid-exporter                 	1.2.0        	v0.11.0    	Druid exporter to monitor druid metrics with Prometheus                         
+prometheus-community/prometheus-elasticsearch-exporter         	7.4.0        	v1.11.0    	Elasticsearch stats exporter for Prometheus                                     
+prometheus-community/prometheus-fastly-exporter                	0.14.1       	v10.3.0    	A Helm chart for the Prometheus Fastly Exporter                                 
+prometheus-community/prometheus-ipmi-exporter                  	0.8.2        	v1.10.1    	This is an IPMI exporter for Prometheus.                                        
+prometheus-community/prometheus-json-exporter                  	0.20.1       	v0.7.0     	Install prometheus-json-exporter                                                
+prometheus-community/prometheus-kafka-exporter                 	4.0.0        	v1.9.0     	A Helm chart to export metrics from Kafka in Prometheus format using kafka_ex...
+prometheus-community/prometheus-memcached-exporter             	0.6.0        	v0.17.0    	Prometheus exporter for Memcached metrics                                       
+prometheus-community/prometheus-modbus-exporter                	0.1.4        	0.4.1      	A Helm chart for prometheus-modbus-exporter                                     
+prometheus-community/prometheus-mongodb-exporter               	3.22.0       	0.53.0     	A Prometheus exporter for MongoDB metrics                                       
+prometheus-community/prometheus-mysql-exporter                 	2.15.0       	v0.20.0    	A Helm chart for prometheus mysql exporter with cloudsqlproxy                   
+prometheus-community/prometheus-nats-exporter                  	2.23.2       	0.20.2     	A Helm chart for prometheus-nats-exporter                                       
+prometheus-community/prometheus-nginx-exporter                 	1.23.1       	1.5.3      	A Helm chart for NGINX Prometheus Exporter                                      
+prometheus-community/prometheus-node-exporter                  	4.60.0       	1.12.1     	A Helm chart for prometheus node-exporter                                       
+prometheus-community/prometheus-opencost-exporter              	0.1.2        	1.108.0    	Prometheus OpenCost Exporter                                                    
+prometheus-community/prometheus-operator                       	9.3.2        	0.38.1     	DEPRECATED - This chart will be renamed. See https://github.com/prometheus-co...
+prometheus-community/prometheus-operator-admission-webhook     	0.46.0       	0.94.1     	Prometheus Operator Admission Webhook                                           
+prometheus-community/prometheus-operator-crds                  	32.0.1       	v0.94.1    	A Helm chart that collects custom resource definitions (CRDs) from the Promet...
+prometheus-community/prometheus-pgbouncer-exporter             	0.10.1       	v0.12.1    	A Helm chart for prometheus pgbouncer-exporter                                  
+prometheus-community/prometheus-pingdom-exporter               	3.4.4        	v0.5.7     	A Helm chart for Prometheus Pingdom Exporter                                    
+prometheus-community/prometheus-pingmesh-exporter              	0.5.0        	v1.2.2     	Prometheus Pingmesh Exporter                                                    
+prometheus-community/prometheus-postgres-exporter              	8.2.0        	v0.20.1    	A Helm chart for prometheus postgres-exporter                                   
+prometheus-community/prometheus-pushgateway                    	3.9.1        	v1.11.4    	A Helm chart for prometheus pushgateway                                         
+prometheus-community/prometheus-rabbitmq-exporter              	2.1.2        	1.0.0      	Rabbitmq metrics exporter for prometheus                                        
+prometheus-community/prometheus-redis-exporter                 	6.34.0       	v1.94.0    	Prometheus exporter for Redis metrics                                           
+prometheus-community/prometheus-smartctl-exporter              	0.17.1       	v0.14.0    	A Helm chart for Kubernetes                                                     
+prometheus-community/prometheus-snmp-exporter                  	9.18.1       	v0.30.1    	Prometheus SNMP Exporter                                                        
+prometheus-community/prometheus-sql-exporter                   	0.5.0        	v0.8       	Prometheus SQL Exporter                                                         
+prometheus-community/prometheus-stackdriver-exporter           	5.2.0        	v0.19.0    	Stackdriver exporter for Prometheus                                             
+prometheus-community/prometheus-statsd-exporter                	1.0.0        	v0.28.0    	A Helm chart for prometheus stats-exporter                                      
+prometheus-community/prometheus-systemd-exporter               	0.5.2        	0.7.0      	A Helm chart for prometheus systemd-exporter                                    
+prometheus-community/prometheus-to-sd                          	0.5.1        	v0.9.2     	Scrape metrics stored in prometheus format and push them to the Stackdriver     
+prometheus-community/prometheus-windows-exporter               	0.12.9       	0.31.9     	A Helm chart for prometheus windows-exporter                                    
+prometheus-community/prometheus-yet-another-cloudwatch-exporter	0.48.0       	v0.68.0    	Yace - Yet Another CloudWatch Exporter                                          

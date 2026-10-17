@@ -1,0 +1,2 @@
+configmap/crashloop-app-config created
+pod/fail-1-crashloop-pod created

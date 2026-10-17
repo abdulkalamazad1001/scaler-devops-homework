@@ -1,0 +1,4 @@
+deployment.apps/web created
+service/web-svc created
+deployment.apps/api created
+service/api-svc created

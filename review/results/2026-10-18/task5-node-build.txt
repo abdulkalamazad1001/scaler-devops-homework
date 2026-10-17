@@ -1,0 +1,90 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 516B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 35.3s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 67B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 812B done
+#4 DONE 0.0s
+
+#5 [1/5] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#5 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 done
+#5 sha256:cd322d0ddd02673e6c24a2158d1f12f6ec7c6fd9c0dc67123244d0f0eb0f8806 0B / 443B 0.2s
+#5 sha256:cd322d0ddd02673e6c24a2158d1f12f6ec7c6fd9c0dc67123244d0f0eb0f8806 443B / 443B 0.2s done
+#5 sha256:13e45b12880fbbfe3554ecf6b70131ace701d0c2fd3e2fb9abb842ba2494cd40 0B / 1.26MB 0.3s
+#5 sha256:bda5d7ef971f8ede8ea80002d2ac886ef6807fe32cfe46c38704a7ba0429475d 0B / 43.55MB 0.2s
+#5 sha256:d17f077ada118cc762df373ff803592abf2dfa3ddafaa7381e364dd27a88fca7 0B / 4.20MB 0.2s
+#5 sha256:13e45b12880fbbfe3554ecf6b70131ace701d0c2fd3e2fb9abb842ba2494cd40 1.26MB / 1.26MB 0.6s
+#5 sha256:13e45b12880fbbfe3554ecf6b70131ace701d0c2fd3e2fb9abb842ba2494cd40 1.26MB / 1.26MB 0.6s done
+#5 sha256:bda5d7ef971f8ede8ea80002d2ac886ef6807fe32cfe46c38704a7ba0429475d 3.15MB / 43.55MB 1.4s
+#5 sha256:bda5d7ef971f8ede8ea80002d2ac886ef6807fe32cfe46c38704a7ba0429475d 6.29MB / 43.55MB 1.8s
+#5 sha256:bda5d7ef971f8ede8ea80002d2ac886ef6807fe32cfe46c38704a7ba0429475d 9.44MB / 43.55MB 2.3s
+#5 sha256:d17f077ada118cc762df373ff803592abf2dfa3ddafaa7381e364dd27a88fca7 1.05MB / 4.20MB 2.4s
+#5 sha256:bda5d7ef971f8ede8ea80002d2ac886ef6807fe32cfe46c38704a7ba0429475d 12.58MB / 43.55MB 3.0s
+#5 sha256:d17f077ada118cc762df373ff803592abf2dfa3ddafaa7381e364dd27a88fca7 2.10MB / 4.20MB 2.9s
+#5 sha256:d17f077ada118cc762df373ff803592abf2dfa3ddafaa7381e364dd27a88fca7 3.15MB / 4.20MB 3.3s
+#5 sha256:d17f077ada118cc762df373ff803592abf2dfa3ddafaa7381e364dd27a88fca7 4.20MB / 4.20MB 3.5s done
+#5 extracting sha256:d17f077ada118cc762df373ff803592abf2dfa3ddafaa7381e364dd27a88fca7 0.1s done
+#5 sha256:bda5d7ef971f8ede8ea80002d2ac886ef6807fe32cfe46c38704a7ba0429475d 15.73MB / 43.55MB 3.8s
+#5 sha256:bda5d7ef971f8ede8ea80002d2ac886ef6807fe32cfe46c38704a7ba0429475d 18.87MB / 43.55MB 4.2s
+#5 sha256:bda5d7ef971f8ede8ea80002d2ac886ef6807fe32cfe46c38704a7ba0429475d 22.02MB / 43.55MB 4.7s
+#5 sha256:bda5d7ef971f8ede8ea80002d2ac886ef6807fe32cfe46c38704a7ba0429475d 25.17MB / 43.55MB 5.1s
+#5 sha256:bda5d7ef971f8ede8ea80002d2ac886ef6807fe32cfe46c38704a7ba0429475d 28.31MB / 43.55MB 5.6s
+#5 sha256:bda5d7ef971f8ede8ea80002d2ac886ef6807fe32cfe46c38704a7ba0429475d 31.46MB / 43.55MB 6.0s
+#5 sha256:bda5d7ef971f8ede8ea80002d2ac886ef6807fe32cfe46c38704a7ba0429475d 34.60MB / 43.55MB 6.5s
+#5 sha256:bda5d7ef971f8ede8ea80002d2ac886ef6807fe32cfe46c38704a7ba0429475d 37.75MB / 43.55MB 6.9s
+#5 sha256:bda5d7ef971f8ede8ea80002d2ac886ef6807fe32cfe46c38704a7ba0429475d 40.89MB / 43.55MB 7.4s
+#5 sha256:bda5d7ef971f8ede8ea80002d2ac886ef6807fe32cfe46c38704a7ba0429475d 43.55MB / 43.55MB 7.8s done
+#5 extracting sha256:bda5d7ef971f8ede8ea80002d2ac886ef6807fe32cfe46c38704a7ba0429475d
+#5 extracting sha256:bda5d7ef971f8ede8ea80002d2ac886ef6807fe32cfe46c38704a7ba0429475d 0.5s done
+#5 DONE 8.3s
+
+#5 [1/5] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#5 extracting sha256:13e45b12880fbbfe3554ecf6b70131ace701d0c2fd3e2fb9abb842ba2494cd40 0.0s done
+#5 extracting sha256:cd322d0ddd02673e6c24a2158d1f12f6ec7c6fd9c0dc67123244d0f0eb0f8806 done
+#5 DONE 8.3s
+
+#6 [2/5] WORKDIR /app
+#6 DONE 0.2s
+
+#7 [3/5] COPY package.json ./
+#7 DONE 0.0s
+
+#8 [4/5] RUN npm install --omit=dev
+#8 2.674 
+#8 2.674 added 68 packages, and audited 69 packages in 3s
+#8 2.674 
+#8 2.674 16 packages are looking for funding
+#8 2.674   run `npm fund` for details
+#8 2.674 
+#8 2.674 found 0 vulnerabilities
+#8 2.675 npm notice
+#8 2.675 npm notice New major version of npm available! 10.8.2 -> 12.2.0
+#8 2.675 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+#8 2.675 npm notice To update run: npm install -g npm@12.2.0
+#8 2.675 npm notice
+#8 DONE 2.7s
+
+#9 [5/5] COPY server.js ./
+#9 DONE 0.0s
+
+#10 exporting to image
+#10 exporting layers 0.1s done
+#10 exporting manifest sha256:5dd356cc6d472471b96a97862a55235b597658d572e657b615c0eceac089ed9d done
+#10 exporting config sha256:beb8fc7b92add463c04ad4031415b4a78a6d97dcd38587db51472c226210fea5 done
+#10 exporting attestation manifest sha256:be085803e957ab2240431ce1916ddf5647a92de9d2ba7fe250eacd1873f2c2ad done
+#10 exporting manifest list sha256:f2f8348553d4b6ec0116fc82d0ff470baa22376022fb1e7f6493dad130616592 done
+#10 naming to docker.io/homework-review/task5-node:local done
+#10 unpacking to docker.io/homework-review/task5-node:local
+#10 unpacking to docker.io/homework-review/task5-node:local 0.2s done
+#10 DONE 0.4s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/te3ftgxqzxwvryne8b1pota2l

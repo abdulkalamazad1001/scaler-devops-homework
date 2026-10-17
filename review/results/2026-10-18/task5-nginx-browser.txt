@@ -1,0 +1,7 @@
+{
+  "url": "http://127.0.0.1:52230/",
+  "status": 200,
+  "text": "Hello World\n\nServed by Nginx inside Docker",
+  "javascriptErrors": [],
+  "screenshot": "/Users/abdulkalamazad/Documents/scaler-devops-homework/review/results/2026-10-18/screenshots/task5-nginx.png"
+}

@@ -1,0 +1,25 @@
+{
+  "availableReplicas": 2,
+  "conditions": [
+    {
+      "lastTransitionTime": "2026-10-17T19:03:58Z",
+      "lastUpdateTime": "2026-10-17T19:04:15Z",
+      "message": "ReplicaSet \"web-app-69856bc4d\" has successfully progressed.",
+      "reason": "NewReplicaSetAvailable",
+      "status": "True",
+      "type": "Progressing"
+    },
+    {
+      "lastTransitionTime": "2026-10-17T19:05:37Z",
+      "lastUpdateTime": "2026-10-17T19:05:37Z",
+      "message": "Deployment has minimum availability.",
+      "reason": "MinimumReplicasAvailable",
+      "status": "True",
+      "type": "Available"
+    }
+  ],
+  "observedGeneration": 4,
+  "readyReplicas": 2,
+  "replicas": 2,
+  "updatedReplicas": 2
+}

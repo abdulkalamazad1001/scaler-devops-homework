@@ -1,0 +1,23 @@
+LAST SEEN   TYPE      REASON              OBJECT                                     MESSAGE
+113s        Normal    Scheduled           Pod/lab-client                             Successfully assigned homework-mini-c7ab0cb9/lab-client to homework-review
+113s        Normal    Pulling             Pod/lab-client                             Pulling image "busybox:1.36"
+63s         Normal    Scheduled           Pod/troubleshooting-app-9d7b5cd79-w5zqh    Successfully assigned homework-mini-c7ab0cb9/troubleshooting-app-9d7b5cd79-w5zqh to homework-review
+63s         Normal    Pulled              Pod/lab-client                             Successfully pulled image "busybox:1.36" in 7.395s (49.048s including waiting). Image size: 1906887 bytes.
+63s         Normal    Started             Pod/lab-client                             Container started
+63s         Normal    Scheduled           Pod/project-broken-pod                     Successfully assigned homework-mini-c7ab0cb9/project-broken-pod to homework-review
+63s         Normal    ScalingReplicaSet   Deployment/troubleshooting-app             Scaled up replica set troubleshooting-app-9d7b5cd79 from 0 to 2
+63s         Normal    SuccessfulCreate    ReplicaSet/troubleshooting-app-9d7b5cd79   Created pod: troubleshooting-app-9d7b5cd79-qbs4b
+63s         Normal    SuccessfulCreate    ReplicaSet/troubleshooting-app-9d7b5cd79   Created pod: troubleshooting-app-9d7b5cd79-w5zqh
+63s         Normal    Created             Pod/lab-client                             Container created
+63s         Normal    Scheduled           Pod/troubleshooting-app-9d7b5cd79-qbs4b    Successfully assigned homework-mini-c7ab0cb9/troubleshooting-app-9d7b5cd79-qbs4b to homework-review
+62s         Normal    Pulled              Pod/troubleshooting-app-9d7b5cd79-qbs4b    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+62s         Normal    Created             Pod/troubleshooting-app-9d7b5cd79-qbs4b    Container created
+62s         Normal    Started             Pod/troubleshooting-app-9d7b5cd79-qbs4b    Container started
+62s         Normal    Pulled              Pod/troubleshooting-app-9d7b5cd79-w5zqh    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+62s         Normal    Created             Pod/troubleshooting-app-9d7b5cd79-w5zqh    Container created
+62s         Normal    Started             Pod/troubleshooting-app-9d7b5cd79-w5zqh    Container started
+62s         Normal    Pulling             Pod/project-broken-pod                     Pulling image "nginx:this-tag-does-not-exist"
+1s          Warning   Failed              Pod/project-broken-pod                     Error: ImagePullBackOff
+1s          Normal    BackOff             Pod/project-broken-pod                     Back-off pulling image "nginx:this-tag-does-not-exist"
+1s          Warning   Failed              Pod/project-broken-pod                     Error: ErrImagePull
+1s          Warning   Failed              Pod/project-broken-pod                     Failed to pull image "nginx:this-tag-does-not-exist": rpc error: code = NotFound desc = failed to pull and unpack image "docker.io/library/nginx:this-tag-does-not-exist": failed to resolve reference "docker.io/library/nginx:this-tag-does-not-exist": docker.io/library/nginx:this-tag-does-not-exist: not found

@@ -1,0 +1,27 @@
+{
+  "bucket_arn": {
+    "sensitive": false,
+    "type": "string",
+    "value": "arn:aws:s3:::scaler-homework-24bcs10053-06edb033"
+  },
+  "bucket_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "scaler-homework-24bcs10053-06edb033"
+  },
+  "bucket_region": {
+    "sensitive": false,
+    "type": "string",
+    "value": "ap-south-1"
+  },
+  "bucket_regional_domain_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "scaler-homework-24bcs10053-06edb033.s3.ap-south-1.amazonaws.com"
+  },
+  "versioning_status": {
+    "sensitive": false,
+    "type": "string",
+    "value": "Enabled"
+  }
+}

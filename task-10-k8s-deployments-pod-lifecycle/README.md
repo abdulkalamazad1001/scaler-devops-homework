@@ -37,3 +37,13 @@ not by itself measure zero downtime or prove an exact 90/10 request distribution
 The output and terminal-style images in the original write-up are labelled expected
 output, not captures from a live deployment. Current test logs are kept separately
 under the project review. Validation alone does not prove every exercise was run.
+
+## Verified rerun — 18 October 2026
+
+Exercised rolling, Recreate, blue/green and canary deployments, update/rollback traffic, Pod phases, restart policies, init content and lifecycle/probe behavior.
+
+[Recorded results](../review/results/2026-10-18/ci-homework-39060263538/homework-kubernetes/deployments.json) · [Screenshot](../review/results/2026-10-18/screenshots/task10-deployments.png) · [Complete evidence index and environment notes](../review/results/2026-10-18/README.md).
+
+![Deployments and lifecycle: saved execution log view](../review/results/2026-10-18/screenshots/task10-deployments.png)
+
+*Saved execution log view from the verified rerun; complete results are linked above.*

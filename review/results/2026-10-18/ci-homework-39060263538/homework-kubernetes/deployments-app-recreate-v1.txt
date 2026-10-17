@@ -1,0 +1,2 @@
+deployment.apps/app-recreate created
+service/app-recreate-service created

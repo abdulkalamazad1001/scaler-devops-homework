@@ -1,0 +1,9 @@
+namespace/monitoring-demo created
+configmap/alert-sink created
+deployment.apps/alert-sink created
+service/alert-sink created
+deployment.apps/metrics-demo created
+prometheusrule.monitoring.coreos.com/metrics-demo created
+service/metrics-demo created
+servicemonitor.monitoring.coreos.com/metrics-demo created
+configmap/metrics-demo-dashboard created

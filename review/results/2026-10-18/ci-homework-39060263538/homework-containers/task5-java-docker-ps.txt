@@ -1,0 +1,2 @@
+NAMES                        IMAGE                              PORTS                       STATUS
+task5-java-review-8d7ffc74   homework-review/task5-java:local   127.0.0.1:32770->8080/tcp   Up 1 second

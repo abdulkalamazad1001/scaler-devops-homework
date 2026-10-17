@@ -1,0 +1,3 @@
+wget: server returned error: HTTP/1.1 404 Not Found
+wget: server returned error: HTTP/1.1 404 Not Found
+Hello from the API app (pod api-659988fb49-2xxg8)

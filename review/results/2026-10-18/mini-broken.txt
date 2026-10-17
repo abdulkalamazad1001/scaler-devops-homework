@@ -1,0 +1,3 @@
+deployment.apps/troubleshooting-app created
+service/troubleshooting-service created
+pod/project-broken-pod created

@@ -1,0 +1,5 @@
+NAME                                  READY   STATUS         RESTARTS   AGE    IP            NODE              NOMINATED NODE   READINESS GATES
+lab-client                            1/1     Running        0          113s   10.244.0.7    homework-review   <none>           <none>
+project-broken-pod                    0/1     ErrImagePull   0          63s    10.244.0.18   homework-review   <none>           <none>
+troubleshooting-app-9d7b5cd79-qbs4b   1/1     Running        0          63s    10.244.0.17   homework-review   <none>           <none>
+troubleshooting-app-9d7b5cd79-w5zqh   1/1     Running        0          63s    10.244.0.16   homework-review   <none>           <none>

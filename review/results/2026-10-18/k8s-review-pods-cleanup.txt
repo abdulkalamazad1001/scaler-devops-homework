@@ -1,0 +1,17 @@
+pod "app-blue-84658fdc69-mhrwn" deleted from homework-review-b1aa04f9 namespace
+pod "app-blue-84658fdc69-pl55q" deleted from homework-review-b1aa04f9 namespace
+pod "app-blue-84658fdc69-wszh5" deleted from homework-review-b1aa04f9 namespace
+pod "app-green-859989478b-kmm86" deleted from homework-review-b1aa04f9 namespace
+pod "app-green-859989478b-ljnb5" deleted from homework-review-b1aa04f9 namespace
+pod "app-green-859989478b-xw7gn" deleted from homework-review-b1aa04f9 namespace
+pod "config-demo" deleted from homework-review-b1aa04f9 namespace
+pod "dynamic-demo" deleted from homework-review-b1aa04f9 namespace
+pod "emptydir-demo" deleted from homework-review-b1aa04f9 namespace
+pod "fail-2-imagepull-pod" deleted from homework-review-b1aa04f9 namespace
+pod "image-demo" deleted from homework-review-b1aa04f9 namespace
+pod "nginx-pod" deleted from homework-review-b1aa04f9 namespace
+pod "review-notes-deploy-c447d5f87-l6x85" deleted from homework-review-b1aa04f9 namespace
+pod "secret-demo" deleted from homework-review-b1aa04f9 namespace
+pod "web-clusterip-6f446c8fd6-7xt7s" deleted from homework-review-b1aa04f9 namespace
+pod "web-clusterip-6f446c8fd6-b7jmv" deleted from homework-review-b1aa04f9 namespace
+pod "web-clusterip-6f446c8fd6-zwkds" deleted from homework-review-b1aa04f9 namespace

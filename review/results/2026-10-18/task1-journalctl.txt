@@ -1,0 +1,27 @@
+Journal service status
+active
+
+Recent kubelet service logs
+Oct 17 18:46:10 homework-review kubelet[1396]: I1017 18:46:10.511620    1396 reconciler_common.go:251] "operationExecutor.VerifyControllerAttachedVolume started for volume \"kube-proxy\" (UniqueName: \"kubernetes.io/configmap/bb1d5384-6c7b-4761-883e-00435d3546bb-kube-proxy\") pod \"kube-proxy-zmlzr\" (UID: \"bb1d5384-6c7b-4761-883e-00435d3546bb\") " pod="kube-system/kube-proxy-zmlzr"
+Oct 17 18:46:10 homework-review kubelet[1396]: I1017 18:46:10.511631    1396 reconciler_common.go:251] "operationExecutor.VerifyControllerAttachedVolume started for volume \"kube-api-access-fhdcm\" (UniqueName: \"kubernetes.io/projected/99517694-aa12-44d6-89bf-1a879e13d7af-kube-api-access-fhdcm\") pod \"kindnet-qcrkb\" (UID: \"99517694-aa12-44d6-89bf-1a879e13d7af\") " pod="kube-system/kindnet-qcrkb"
+Oct 17 18:46:10 homework-review kubelet[1396]: I1017 18:46:10.511638    1396 reconciler_common.go:251] "operationExecutor.VerifyControllerAttachedVolume started for volume \"lib-modules\" (UniqueName: \"kubernetes.io/host-path/bb1d5384-6c7b-4761-883e-00435d3546bb-lib-modules\") pod \"kube-proxy-zmlzr\" (UID: \"bb1d5384-6c7b-4761-883e-00435d3546bb\") " pod="kube-system/kube-proxy-zmlzr"
+Oct 17 18:46:10 homework-review kubelet[1396]: I1017 18:46:10.511644    1396 reconciler_common.go:251] "operationExecutor.VerifyControllerAttachedVolume started for volume \"kube-api-access-2kclj\" (UniqueName: \"kubernetes.io/projected/bb1d5384-6c7b-4761-883e-00435d3546bb-kube-api-access-2kclj\") pod \"kube-proxy-zmlzr\" (UID: \"bb1d5384-6c7b-4761-883e-00435d3546bb\") " pod="kube-system/kube-proxy-zmlzr"
+Oct 17 18:46:10 homework-review kubelet[1396]: I1017 18:46:10.511650    1396 reconciler_common.go:251] "operationExecutor.VerifyControllerAttachedVolume started for volume \"xtables-lock\" (UniqueName: \"kubernetes.io/host-path/99517694-aa12-44d6-89bf-1a879e13d7af-xtables-lock\") pod \"kindnet-qcrkb\" (UID: \"99517694-aa12-44d6-89bf-1a879e13d7af\") " pod="kube-system/kindnet-qcrkb"
+Oct 17 18:46:10 homework-review kubelet[1396]: E1017 18:46:10.524264    1396 prober_manager.go:197] "Startup probe already exists for container" pod="kube-system/kube-scheduler-homework-review" containerName="kube-scheduler"
+Oct 17 18:46:11 homework-review kubelet[1396]: I1017 18:46:11.509978    1396 pod_startup_latency_tracker.go:108] "Observed pod startup duration" pod="kube-system/kube-proxy-zmlzr" podStartSLOduration=1.5099472550000002 podStartE2EDuration="1.509947255s" podCreationTimestamp="2026-10-17 18:46:10 +0000 UTC" firstStartedPulling="0001-01-01 00:00:00 +0000 UTC" lastFinishedPulling="0001-01-01 00:00:00 +0000 UTC" observedRunningTime="2026-10-17 18:46:11.509677922 +0000 UTC m=+7.097702171" watchObservedRunningTime="2026-10-17 18:46:11.509947255 +0000 UTC m=+7.097971421"
+Oct 17 18:46:12 homework-review kubelet[1396]: E1017 18:46:12.644708    1396 prober_manager.go:197] "Startup probe already exists for container" pod="kube-system/etcd-homework-review" containerName="etcd"
+Oct 17 18:46:16 homework-review kubelet[1396]: E1017 18:46:16.331742    1396 prober_manager.go:197] "Startup probe already exists for container" pod="kube-system/kube-controller-manager-homework-review" containerName="kube-controller-manager"
+Oct 17 18:46:19 homework-review kubelet[1396]: E1017 18:46:19.777173    1396 prober_manager.go:197] "Startup probe already exists for container" pod="kube-system/kube-apiserver-homework-review" containerName="kube-apiserver"
+Oct 17 18:46:20 homework-review kubelet[1396]: E1017 18:46:20.528618    1396 prober_manager.go:197] "Startup probe already exists for container" pod="kube-system/kube-scheduler-homework-review" containerName="kube-scheduler"
+Oct 17 18:46:22 homework-review kubelet[1396]: E1017 18:46:22.647760    1396 prober_manager.go:197] "Startup probe already exists for container" pod="kube-system/etcd-homework-review" containerName="etcd"
+
+Current boot journal
+Oct 17 18:46:32 homework-review sudo[1973]:   docker : PWD=/home/docker ; USER=root ; COMMAND=/usr/bin/mkdir -p /etc/kubernetes/addons
+Oct 17 18:46:32 homework-review sudo[1973]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)
+Oct 17 18:46:32 homework-review sudo[1973]: pam_unix(sudo:session): session closed for user root
+Oct 17 18:46:32 homework-review sudo[1972]:   docker : PWD=/home/docker ; USER=root ; COMMAND=/usr/bin/scp -t /etc/kubernetes/addons
+Oct 17 18:46:32 homework-review sudo[1972]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)
+Oct 17 18:46:32 homework-review sudo[1972]: pam_unix(sudo:session): session closed for user root
+
+Journal disk usage
+Archived and active journals take up 8.0M in the file system.

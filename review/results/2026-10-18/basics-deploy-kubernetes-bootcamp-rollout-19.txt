@@ -1,0 +1,1 @@
+deployment "kubernetes-bootcamp" successfully rolled out

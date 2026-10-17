@@ -1,0 +1,106 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 402B done
+#1 DONE 0.0s
+
+#2 [auth] library/nginx:pull token for registry-1.docker.io
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:20-alpine
+#3 DONE 0.1s
+
+#4 [internal] load metadata for docker.io/library/nginx:1.27-alpine
+#4 DONE 0.3s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 58B done
+#5 DONE 0.0s
+
+#6 [build 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 1.97kB done
+#7 DONE 0.0s
+
+#8 [build 2/6] WORKDIR /app
+#8 CACHED
+
+#9 [build 3/6] COPY package.json ./
+#9 DONE 0.0s
+
+#10 [stage-1 1/2] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#10 resolve docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10 done
+#10 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870
+#10 sha256:81bd8ed7ec6789b0cb7f1b47ee731c522f6dba83201ec73cd6bca1350f582948 402B / 402B 0.1s done
+#10 sha256:39c2ddfd6010082a4a646e7ca44e95aca9bf3eaebc00f17f7ccc2954004f2a7d 2.10MB / 15.52MB 0.1s
+#10 sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10 10.33kB / 10.33kB done
+#10 sha256:62223d644fa234c3a1cc785ee14242ec47a77364226f1c811d2f669f96dc2ac8 2.50kB / 2.50kB done
+#10 sha256:b464cfdf2a6319875aeb27359ec549790ce14d8214fcb16ef915e4530e5ed235 629B / 629B 0.0s done
+#10 sha256:d7e5070240863957ebb0b5a44a5729963c3462666baa2947d00628cb5f2d5773 955B / 955B 0.1s done
+#10 sha256:197eb75867ef4fcecd4724f17b0972ab0489436860a594a9445f8eaff8155053 1.21kB / 1.21kB 0.1s done
+#10 sha256:34a64644b756511a2e217f0508e11d1a572085d66cd6dc9a555a082ad49a3102 1.40kB / 1.40kB 0.1s done
+#10 sha256:6769dc3a703c719c1d2756bda113659be28ae16cf0da58dd5fd823d6b9a050ea 10.79kB / 10.79kB done
+#10 sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 3.64MB / 3.64MB 0.1s done
+#10 sha256:61ca4f733c802afd9e05a32f0de0361b6d713b8b53292dc15fb093229f648674 1.79MB / 1.79MB 0.1s done
+#10 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 0.1s done
+#10 sha256:39c2ddfd6010082a4a646e7ca44e95aca9bf3eaebc00f17f7ccc2954004f2a7d 15.52MB / 15.52MB 0.1s done
+#10 extracting sha256:61ca4f733c802afd9e05a32f0de0361b6d713b8b53292dc15fb093229f648674 0.1s done
+#10 extracting sha256:b464cfdf2a6319875aeb27359ec549790ce14d8214fcb16ef915e4530e5ed235
+#10 extracting sha256:b464cfdf2a6319875aeb27359ec549790ce14d8214fcb16ef915e4530e5ed235 done
+#10 extracting sha256:d7e5070240863957ebb0b5a44a5729963c3462666baa2947d00628cb5f2d5773 done
+#10 extracting sha256:81bd8ed7ec6789b0cb7f1b47ee731c522f6dba83201ec73cd6bca1350f582948 done
+#10 extracting sha256:197eb75867ef4fcecd4724f17b0972ab0489436860a594a9445f8eaff8155053 done
+#10 extracting sha256:34a64644b756511a2e217f0508e11d1a572085d66cd6dc9a555a082ad49a3102 done
+#10 extracting sha256:39c2ddfd6010082a4a646e7ca44e95aca9bf3eaebc00f17f7ccc2954004f2a7d 0.1s
+#10 extracting sha256:39c2ddfd6010082a4a646e7ca44e95aca9bf3eaebc00f17f7ccc2954004f2a7d 0.4s done
+#10 DONE 0.9s
+
+#11 [build 4/6] RUN npm install
+#11 7.613 
+#11 7.613 added 62 packages, and audited 63 packages in 7s
+#11 7.613 
+#11 7.613 7 packages are looking for funding
+#11 7.613   run `npm fund` for details
+#11 7.623 
+#11 7.623 2 vulnerabilities (1 moderate, 1 high)
+#11 7.623 
+#11 7.623 To address all issues (including breaking changes), run:
+#11 7.623   npm audit fix --force
+#11 7.623 
+#11 7.623 Run `npm audit` for details.
+#11 7.624 npm notice
+#11 7.624 npm notice New major version of npm available! 10.8.2 -> 12.2.0
+#11 7.624 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+#11 7.624 npm notice To update run: npm install -g npm@12.2.0
+#11 7.624 npm notice
+#11 DONE 7.8s
+
+#12 [build 5/6] COPY . .
+#12 DONE 0.0s
+
+#13 [build 6/6] RUN npm run build
+#13 0.263 
+#13 0.263 > react-hello-world@1.0.0 build
+#13 0.263 > vite build
+#13 0.263 
+#13 0.509 vite v5.4.21 building for production...
+#13 0.571 transforming...
+#13 1.374 ✓ 30 modules transformed.
+#13 1.469 rendering chunks...
+#13 1.475 computing gzip size...
+#13 1.481 dist/index.html                  0.33 kB │ gzip:  0.24 kB
+#13 1.481 dist/assets/index--CZZryWG.js  142.85 kB │ gzip: 45.91 kB
+#13 1.481 ✓ built in 938ms
+#13 DONE 1.5s
+
+#14 [stage-1 2/2] COPY --from=build /app/dist /usr/share/nginx/html
+#14 DONE 0.0s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 0.7s done
+#15 writing image sha256:91d3fe6c1065ad764eefd85549422fc742656574d565ec7437aa921cdbb97d5e done
+#15 naming to docker.io/homework-review/task5-react:local done
+#15 DONE 0.7s

@@ -1,0 +1,1 @@
+persistentvolumeclaim "manual-pvc" deleted from homework-storage-b6673792 namespace

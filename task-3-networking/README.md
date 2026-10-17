@@ -380,3 +380,13 @@ The order I would use when something is not reachable: check the interface has a
 with ip addr, check there is a default route with ip route, ping the gateway, ping an IP
 like 8.8.8.8 to test raw connectivity, then ping a domain name to test DNS separately,
 and finally use ss to confirm the service on the other end is actually listening.
+
+## Verified rerun — 18 October 2026
+
+Ran interface, route, neighbour, socket, DNS, HTTP and traceroute commands; exercised isolated interface/address/route creation and deletion.
+
+[Recorded results](../review/results/2026-10-18/task3-network-commands.txt) · [Screenshot](../review/results/2026-10-18/screenshots/task3-networking.png) · [Complete evidence index and environment notes](../review/results/2026-10-18/README.md).
+
+![Networking: saved execution log view](../review/results/2026-10-18/screenshots/task3-networking.png)
+
+*Saved execution log view from the verified rerun; complete results are linked above.*

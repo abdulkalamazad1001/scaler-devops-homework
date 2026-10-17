@@ -1,0 +1,2 @@
+service/troubleshooting-service configured
+pod/project-broken-pod created

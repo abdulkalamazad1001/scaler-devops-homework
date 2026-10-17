@@ -1,0 +1,7 @@
+NAME                         READY   STATUS              RESTARTS   AGE   IP            NODE                         NOMINATED NODE   READINESS GATES
+load-generator               1/1     Running             0          31s   10.244.0.8    homework-hpa-control-plane   <none>           <none>
+php-apache-9b7d89b84-2rwhw   1/1     Running             0          2s    10.244.0.9    homework-hpa-control-plane   <none>           <none>
+php-apache-9b7d89b84-cgpb5   1/1     Running             0          2s    10.244.0.12   homework-hpa-control-plane   <none>           <none>
+php-apache-9b7d89b84-gf9qd   1/1     Running             0          47s   10.244.0.7    homework-hpa-control-plane   <none>           <none>
+php-apache-9b7d89b84-kbhn4   0/1     ContainerCreating   0          2s    <none>        homework-hpa-control-plane   <none>           <none>
+php-apache-9b7d89b84-m5fp6   1/1     Running             0          2s    10.244.0.10   homework-hpa-control-plane   <none>           <none>

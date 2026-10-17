@@ -1,0 +1,20 @@
+random_id.suffix: Refreshing state... [id=14UdiA]
+data.aws_ami.al2023: Reading...
+aws_vpc.main: Refreshing state... [id=vpc-09c8ec25f59d416dc]
+aws_s3_bucket.assets: Refreshing state... [id=scaler-homework-24bcs10053-assets-d7851d88]
+data.aws_ami.al2023: Read complete after 0s [id=ami-0c25f859a8b518798]
+aws_internet_gateway.main: Refreshing state... [id=igw-06a72fc306ad28fa2]
+aws_security_group.web: Refreshing state... [id=sg-0dca86b0366ce3e4d]
+aws_subnet.public: Refreshing state... [id=subnet-007e2fe2c50b2acec]
+aws_route_table.public: Refreshing state... [id=rtb-00f969fd9ad6dfc79]
+aws_vpc_security_group_egress_rule.all: Refreshing state... [id=sgr-080eaeee5a1418b06]
+aws_vpc_security_group_ingress_rule.http["0.0.0.0/0"]: Refreshing state... [id=sgr-0eb4ad9aa72a97935]
+aws_route_table_association.public: Refreshing state... [id=rtbassoc-01b862e8c94197fb2]
+aws_s3_bucket_public_access_block.assets: Refreshing state... [id=scaler-homework-24bcs10053-assets-d7851d88]
+aws_s3_bucket_versioning.assets: Refreshing state... [id=scaler-homework-24bcs10053-assets-d7851d88]
+aws_instance.web: Refreshing state... [id=i-082156859f1453d40]
+
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.

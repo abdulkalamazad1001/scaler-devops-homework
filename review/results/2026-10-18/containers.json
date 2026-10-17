@@ -1,0 +1,644 @@
+{
+  "captured_at": "2026-10-17T18:56:52.714168+00:00",
+  "checks": [
+    {
+      "check": "task5-node-build",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:54:15.068896+00:00",
+      "duration_seconds": 47.53,
+      "log": "task5-node-build.txt",
+      "command": [
+        "docker",
+        "build",
+        "-t",
+        "homework-review/task5-node:local",
+        "task-5-docker/nodejs-app"
+      ]
+    },
+    {
+      "check": "task5-node-start",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:55:02.598569+00:00",
+      "duration_seconds": 0.15,
+      "log": "task5-node-start.txt",
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "task5-node-review-44c818c5",
+        "-p",
+        "127.0.0.1::3000",
+        "homework-review/task5-node:local"
+      ]
+    },
+    {
+      "check": "task5-node-http",
+      "exit_code": 0,
+      "error": ""
+    },
+    {
+      "check": "task5-node-docker-ps",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:55:03.790078+00:00",
+      "duration_seconds": 0.03,
+      "log": "task5-node-docker-ps.txt",
+      "command": [
+        "docker",
+        "ps",
+        "--filter",
+        "name=task5-node-review-44c818c5",
+        "--format",
+        "table {{.Names}}\t{{.Image}}\t{{.Ports}}\t{{.Status}} "
+      ]
+    },
+    {
+      "check": "task5-node-browser",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:55:03.815505+00:00",
+      "duration_seconds": 1.26,
+      "log": "task5-node-browser.txt",
+      "command": [
+        "node",
+        "review/check_demo_browser.mjs",
+        "http://127.0.0.1:51810/",
+        "/Users/abdulkalamazad/Documents/scaler-devops-homework/review/results/2026-10-18/screenshots/task5-node.png"
+      ]
+    },
+    {
+      "check": "task5-node-logs",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:55:05.073495+00:00",
+      "duration_seconds": 0.02,
+      "log": "task5-node-logs.txt",
+      "command": [
+        "docker",
+        "logs",
+        "task5-node-review-44c818c5"
+      ]
+    },
+    {
+      "check": "task5-node-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:55:05.089706+00:00",
+      "duration_seconds": 0.18,
+      "log": "task5-node-cleanup.txt",
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "task5-node-review-44c818c5"
+      ]
+    },
+    {
+      "check": "task5-python-build",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:55:05.271331+00:00",
+      "duration_seconds": 7.13,
+      "log": "task5-python-build.txt",
+      "command": [
+        "docker",
+        "build",
+        "-t",
+        "homework-review/task5-python:local",
+        "task-5-docker/python-app"
+      ]
+    },
+    {
+      "check": "task5-python-start",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:55:12.398595+00:00",
+      "duration_seconds": 0.11,
+      "log": "task5-python-start.txt",
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "task5-python-review-1c2b163c",
+        "-p",
+        "127.0.0.1::5000",
+        "homework-review/task5-python:local"
+      ]
+    },
+    {
+      "check": "task5-python-http",
+      "exit_code": 0,
+      "error": ""
+    },
+    {
+      "check": "task5-python-docker-ps",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:55:13.538835+00:00",
+      "duration_seconds": 0.02,
+      "log": "task5-python-docker-ps.txt",
+      "command": [
+        "docker",
+        "ps",
+        "--filter",
+        "name=task5-python-review-1c2b163c",
+        "--format",
+        "table {{.Names}}\t{{.Image}}\t{{.Ports}}\t{{.Status}} "
+      ]
+    },
+    {
+      "check": "task5-python-browser",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:55:13.561330+00:00",
+      "duration_seconds": 0.92,
+      "log": "task5-python-browser.txt",
+      "command": [
+        "node",
+        "review/check_demo_browser.mjs",
+        "http://127.0.0.1:51857/",
+        "/Users/abdulkalamazad/Documents/scaler-devops-homework/review/results/2026-10-18/screenshots/task5-python.png"
+      ]
+    },
+    {
+      "check": "task5-python-logs",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:55:14.485112+00:00",
+      "duration_seconds": 0.02,
+      "log": "task5-python-logs.txt",
+      "command": [
+        "docker",
+        "logs",
+        "task5-python-review-1c2b163c"
+      ]
+    },
+    {
+      "check": "task5-python-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:55:14.502958+00:00",
+      "duration_seconds": 0.13,
+      "log": "task5-python-cleanup.txt",
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "task5-python-review-1c2b163c"
+      ]
+    },
+    {
+      "check": "task5-java-build",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:55:14.629473+00:00",
+      "duration_seconds": 51.24,
+      "log": "task5-java-build.txt",
+      "command": [
+        "docker",
+        "build",
+        "-t",
+        "homework-review/task5-java:local",
+        "task-5-docker/java-app"
+      ]
+    },
+    {
+      "check": "task5-java-start",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:05.870573+00:00",
+      "duration_seconds": 0.18,
+      "log": "task5-java-start.txt",
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "task5-java-review-36819d56",
+        "-p",
+        "127.0.0.1::8080",
+        "homework-review/task5-java:local"
+      ]
+    },
+    {
+      "check": "task5-java-http",
+      "exit_code": 0,
+      "error": ""
+    },
+    {
+      "check": "task5-java-docker-ps",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:07.122324+00:00",
+      "duration_seconds": 0.02,
+      "log": "task5-java-docker-ps.txt",
+      "command": [
+        "docker",
+        "ps",
+        "--filter",
+        "name=task5-java-review-36819d56",
+        "--format",
+        "table {{.Names}}\t{{.Image}}\t{{.Ports}}\t{{.Status}} "
+      ]
+    },
+    {
+      "check": "task5-java-browser",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:07.146088+00:00",
+      "duration_seconds": 1.01,
+      "log": "task5-java-browser.txt",
+      "command": [
+        "node",
+        "review/check_demo_browser.mjs",
+        "http://127.0.0.1:52097/",
+        "/Users/abdulkalamazad/Documents/scaler-devops-homework/review/results/2026-10-18/screenshots/task5-java.png"
+      ]
+    },
+    {
+      "check": "task5-java-logs",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:08.156770+00:00",
+      "duration_seconds": 0.02,
+      "log": "task5-java-logs.txt",
+      "command": [
+        "docker",
+        "logs",
+        "task5-java-review-36819d56"
+      ]
+    },
+    {
+      "check": "task5-java-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:08.175990+00:00",
+      "duration_seconds": 0.21,
+      "log": "task5-java-cleanup.txt",
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "task5-java-review-36819d56"
+      ]
+    },
+    {
+      "check": "task5-react-build",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:08.383949+00:00",
+      "duration_seconds": 28.86,
+      "log": "task5-react-build.txt",
+      "command": [
+        "docker",
+        "build",
+        "-t",
+        "homework-review/task5-react:local",
+        "task-5-docker/React-app"
+      ]
+    },
+    {
+      "check": "task5-react-start",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:37.239137+00:00",
+      "duration_seconds": 0.13,
+      "log": "task5-react-start.txt",
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "task5-react-review-903ae91f",
+        "-p",
+        "127.0.0.1::80",
+        "homework-review/task5-react:local"
+      ]
+    },
+    {
+      "check": "task5-react-http",
+      "exit_code": 0,
+      "error": ""
+    },
+    {
+      "check": "task5-react-docker-ps",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:38.408836+00:00",
+      "duration_seconds": 0.02,
+      "log": "task5-react-docker-ps.txt",
+      "command": [
+        "docker",
+        "ps",
+        "--filter",
+        "name=task5-react-review-903ae91f",
+        "--format",
+        "table {{.Names}}\t{{.Image}}\t{{.Ports}}\t{{.Status}} "
+      ]
+    },
+    {
+      "check": "task5-react-browser",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:38.432799+00:00",
+      "duration_seconds": 0.94,
+      "log": "task5-react-browser.txt",
+      "command": [
+        "node",
+        "review/check_demo_browser.mjs",
+        "http://127.0.0.1:52211/",
+        "/Users/abdulkalamazad/Documents/scaler-devops-homework/review/results/2026-10-18/screenshots/task5-react.png"
+      ]
+    },
+    {
+      "check": "task5-react-logs",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:39.368065+00:00",
+      "duration_seconds": 0.04,
+      "log": "task5-react-logs.txt",
+      "command": [
+        "docker",
+        "logs",
+        "task5-react-review-903ae91f"
+      ]
+    },
+    {
+      "check": "task5-react-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:39.412347+00:00",
+      "duration_seconds": 0.2,
+      "log": "task5-react-cleanup.txt",
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "task5-react-review-903ae91f"
+      ]
+    },
+    {
+      "check": "task5-nginx-build",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:39.614891+00:00",
+      "duration_seconds": 0.49,
+      "log": "task5-nginx-build.txt",
+      "command": [
+        "docker",
+        "build",
+        "-t",
+        "homework-review/task5-nginx:local",
+        "task-5-docker/nginx-app"
+      ]
+    },
+    {
+      "check": "task5-nginx-start",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:40.109055+00:00",
+      "duration_seconds": 0.32,
+      "log": "task5-nginx-start.txt",
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "task5-nginx-review-a03f4e14",
+        "-p",
+        "127.0.0.1::80",
+        "homework-review/task5-nginx:local"
+      ]
+    },
+    {
+      "check": "task5-nginx-http",
+      "exit_code": 0,
+      "error": ""
+    },
+    {
+      "check": "task5-nginx-docker-ps",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:40.452922+00:00",
+      "duration_seconds": 0.09,
+      "log": "task5-nginx-docker-ps.txt",
+      "command": [
+        "docker",
+        "ps",
+        "--filter",
+        "name=task5-nginx-review-a03f4e14",
+        "--format",
+        "table {{.Names}}\t{{.Image}}\t{{.Ports}}\t{{.Status}} "
+      ]
+    },
+    {
+      "check": "task5-nginx-browser",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:40.541977+00:00",
+      "duration_seconds": 1.04,
+      "log": "task5-nginx-browser.txt",
+      "command": [
+        "node",
+        "review/check_demo_browser.mjs",
+        "http://127.0.0.1:52230/",
+        "/Users/abdulkalamazad/Documents/scaler-devops-homework/review/results/2026-10-18/screenshots/task5-nginx.png"
+      ]
+    },
+    {
+      "check": "task5-nginx-logs",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:41.581729+00:00",
+      "duration_seconds": 0.02,
+      "log": "task5-nginx-logs.txt",
+      "command": [
+        "docker",
+        "logs",
+        "task5-nginx-review-a03f4e14"
+      ]
+    },
+    {
+      "check": "task5-nginx-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:41.600980+00:00",
+      "duration_seconds": 0.16,
+      "log": "task5-nginx-cleanup.txt",
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "task5-nginx-review-a03f4e14"
+      ]
+    },
+    {
+      "check": "task5-apache-build",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:41.760458+00:00",
+      "duration_seconds": 0.5,
+      "log": "task5-apache-build.txt",
+      "command": [
+        "docker",
+        "build",
+        "-t",
+        "homework-review/task5-apache:local",
+        "task-5-docker/Apache-app"
+      ]
+    },
+    {
+      "check": "task5-apache-start",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:42.257764+00:00",
+      "duration_seconds": 0.11,
+      "log": "task5-apache-start.txt",
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "task5-apache-review-5db57e33",
+        "-p",
+        "127.0.0.1::80",
+        "homework-review/task5-apache:local"
+      ]
+    },
+    {
+      "check": "task5-apache-http",
+      "exit_code": 0,
+      "error": ""
+    },
+    {
+      "check": "task5-apache-docker-ps",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:43.414438+00:00",
+      "duration_seconds": 0.03,
+      "log": "task5-apache-docker-ps.txt",
+      "command": [
+        "docker",
+        "ps",
+        "--filter",
+        "name=task5-apache-review-5db57e33",
+        "--format",
+        "table {{.Names}}\t{{.Image}}\t{{.Ports}}\t{{.Status}} "
+      ]
+    },
+    {
+      "check": "task5-apache-browser",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:43.440788+00:00",
+      "duration_seconds": 0.9,
+      "log": "task5-apache-browser.txt",
+      "command": [
+        "node",
+        "review/check_demo_browser.mjs",
+        "http://127.0.0.1:52234/",
+        "/Users/abdulkalamazad/Documents/scaler-devops-homework/review/results/2026-10-18/screenshots/task5-apache.png"
+      ]
+    },
+    {
+      "check": "task5-apache-logs",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:44.341379+00:00",
+      "duration_seconds": 0.02,
+      "log": "task5-apache-logs.txt",
+      "command": [
+        "docker",
+        "logs",
+        "task5-apache-review-5db57e33"
+      ]
+    },
+    {
+      "check": "task5-apache-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:44.358722+00:00",
+      "duration_seconds": 0.17,
+      "log": "task5-apache-cleanup.txt",
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "task5-apache-review-5db57e33"
+      ]
+    },
+    {
+      "check": "task6-multistage-build",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:44.529481+00:00",
+      "duration_seconds": 5.85,
+      "log": "task6-multistage-build.txt",
+      "command": [
+        "docker",
+        "build",
+        "-t",
+        "homework-review/task6-multistage:local",
+        "task-6-docker-multistage/multi-stage-app"
+      ]
+    },
+    {
+      "check": "task6-multistage-start",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:50.381756+00:00",
+      "duration_seconds": 0.14,
+      "log": "task6-multistage-start.txt",
+      "command": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "task6-multistage-review-af13a618",
+        "-p",
+        "127.0.0.1:8080:3000",
+        "homework-review/task6-multistage:local"
+      ]
+    },
+    {
+      "check": "task6-multistage-http",
+      "exit_code": 0,
+      "error": ""
+    },
+    {
+      "check": "task6-multistage-docker-ps",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:51.552637+00:00",
+      "duration_seconds": 0.03,
+      "log": "task6-multistage-docker-ps.txt",
+      "command": [
+        "docker",
+        "ps",
+        "--filter",
+        "name=task6-multistage-review-af13a618",
+        "--format",
+        "table {{.Names}}\t{{.Image}}\t{{.Ports}}\t{{.Status}} "
+      ]
+    },
+    {
+      "check": "task6-multistage-browser",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:51.579209+00:00",
+      "duration_seconds": 0.92,
+      "log": "task6-multistage-browser.txt",
+      "command": [
+        "node",
+        "review/check_demo_browser.mjs",
+        "http://127.0.0.1:8080/",
+        "/Users/abdulkalamazad/Documents/scaler-devops-homework/review/results/2026-10-18/screenshots/task6-multistage.png"
+      ]
+    },
+    {
+      "check": "task6-multistage-nonroot",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:52.497883+00:00",
+      "duration_seconds": 0.04,
+      "log": "task6-multistage-nonroot.txt",
+      "command": [
+        "docker",
+        "exec",
+        "task6-multistage-review-af13a618",
+        "sh",
+        "-ec",
+        "test \"$(id -u)\" != 0; id"
+      ]
+    },
+    {
+      "check": "task6-multistage-logs",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:52.535097+00:00",
+      "duration_seconds": 0.02,
+      "log": "task6-multistage-logs.txt",
+      "command": [
+        "docker",
+        "logs",
+        "task6-multistage-review-af13a618"
+      ]
+    },
+    {
+      "check": "task6-multistage-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:56:52.551108+00:00",
+      "duration_seconds": 0.16,
+      "log": "task6-multistage-cleanup.txt",
+      "command": [
+        "docker",
+        "rm",
+        "-f",
+        "task6-multistage-review-af13a618"
+      ]
+    }
+  ],
+  "scope": "Docker builds and HTTP smoke checks, not browser or security certification."
+}

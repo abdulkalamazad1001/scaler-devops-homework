@@ -1,0 +1,115 @@
+{
+  "captured_at": "2026-10-17T18:50:58.999712+00:00",
+  "context": "homework-review",
+  "error": null,
+  "checks": [
+    {
+      "check": "loadbalancer-namespace",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:50:47.239390+00:00",
+      "duration_seconds": 0.04,
+      "log": "loadbalancer-namespace.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-loadbalancer-ebbd7f72",
+        "create",
+        "namespace",
+        "homework-loadbalancer-ebbd7f72"
+      ]
+    },
+    {
+      "check": "loadbalancer-service",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:50:47.279030+00:00",
+      "duration_seconds": 0.09,
+      "log": "loadbalancer-service.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-loadbalancer-ebbd7f72",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "loadbalancer-deploy-web-lb-rollout-2",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:50:47.369820+00:00",
+      "duration_seconds": 0.95,
+      "log": "loadbalancer-deploy-web-lb-rollout-2.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-loadbalancer-ebbd7f72",
+        "rollout",
+        "status",
+        "deploy/web-lb",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "loadbalancer-external-address",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-loadbalancer-ebbd7f72",
+        "get",
+        "service",
+        "web-lb",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.04,
+      "log": "loadbalancer-external-address.txt"
+    },
+    {
+      "check": "loadbalancer-external-http",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:50:48.359052+00:00",
+      "duration_seconds": 0.38,
+      "log": "loadbalancer-external-http.txt",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "homework-review",
+        "alpine:3.22",
+        "sh",
+        "-ec",
+        "for i in $(seq 1 20); do wget -T 3 -qO- http://192.168.49.230 && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "loadbalancer-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:50:48.741506+00:00",
+      "duration_seconds": 10.26,
+      "log": "loadbalancer-cleanup.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-loadbalancer-ebbd7f72",
+        "delete",
+        "namespace",
+        "homework-loadbalancer-ebbd7f72",
+        "--ignore-not-found",
+        "--wait=true",
+        "--timeout=180s"
+      ]
+    }
+  ]
+}

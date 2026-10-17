@@ -1,0 +1,2 @@
+deployment.apps "app-stable" deleted
+deployment.apps "app-canary" deleted

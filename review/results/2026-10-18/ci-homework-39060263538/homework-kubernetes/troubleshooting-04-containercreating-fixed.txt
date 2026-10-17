@@ -1,0 +1,2 @@
+configmap/app-settings created
+pod/configvol-demo created

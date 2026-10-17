@@ -1,0 +1,2 @@
+NAMES                              IMAGE                                    PORTS                      STATUS
+task6-multistage-review-1e1bc5e3   homework-review/task6-multistage:local   127.0.0.1:8080->3000/tcp   Up 1 second

@@ -1,0 +1,11 @@
+{
+  "verified_at": "2026-10-17T18:58:13.140051+00:00",
+  "health": true,
+  "targets": 2,
+  "cpu_memory": true,
+  "loki_logs": true,
+  "alert_pending": true,
+  "alert_firing": true,
+  "alert_resolved": true,
+  "note": "Verification continued after increasing the disposable Minikube container from 2 CPUs/3 GiB to 4 CPUs/4 GiB; an initial local HTTP timeout is retained."
+}

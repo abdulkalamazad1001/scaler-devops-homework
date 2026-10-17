@@ -1,0 +1,108 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "streams",
+    "result": [
+      {
+        "stream": {
+          "node_name": "homework-review",
+          "pod": "metrics-demo-6dd56cd4d5-knv8k",
+          "stream": "stdout",
+          "app": "metrics-demo",
+          "container": "metrics-demo",
+          "filename": "/var/log/pods/monitoring-demo_metrics-demo-6dd56cd4d5-knv8k_00f139d0-fe6a-4e18-b35d-ddabb0e89135/metrics-demo/0.log",
+          "job": "monitoring-demo/metrics-demo",
+          "namespace": "monitoring-demo"
+        },
+        "values": [
+          [
+            "1792263370299378255",
+            "{\"ts\": \"2026-10-17T18:56:10Z\", \"level\": \"error\", \"msg\": \"request\", \"method\": \"GET\", \"path\": \"/error\", \"status\": 500, \"duration_ms\": 0.1}"
+          ],
+          [
+            "1792263369889157255",
+            "{\"ts\": \"2026-10-17T18:56:09Z\", \"level\": \"info\", \"msg\": \"request\", \"method\": \"GET\", \"path\": \"/work\", \"status\": 200, \"duration_ms\": 186.1}"
+          ],
+          [
+            "1792263369696651963",
+            "{\"ts\": \"2026-10-17T18:56:09Z\", \"level\": \"error\", \"msg\": \"request\", \"method\": \"GET\", \"path\": \"/error\", \"status\": 500, \"duration_ms\": 0.3}"
+          ],
+          [
+            "1792263369288841088",
+            "{\"ts\": \"2026-10-17T18:56:09Z\", \"level\": \"info\", \"msg\": \"request\", \"method\": \"GET\", \"path\": \"/work\", \"status\": 200, \"duration_ms\": 183.4}"
+          ],
+          [
+            "1792263369100762629",
+            "{\"ts\": \"2026-10-17T18:56:09Z\", \"level\": \"error\", \"msg\": \"request\", \"method\": \"GET\", \"path\": \"/error\", \"status\": 500, \"duration_ms\": 0.1}"
+          ],
+          [
+            "1792263368692302587",
+            "{\"ts\": \"2026-10-17T18:56:08Z\", \"level\": \"info\", \"msg\": \"request\", \"method\": \"GET\", \"path\": \"/work\", \"status\": 200, \"duration_ms\": 184.7}"
+          ],
+          [
+            "1792263368501337337",
+            "{\"ts\": \"2026-10-17T18:56:08Z\", \"level\": \"error\", \"msg\": \"request\", \"method\": \"GET\", \"path\": \"/error\", \"status\": 500, \"duration_ms\": 0.2}"
+          ],
+          [
+            "1792263368091181879",
+            "{\"ts\": \"2026-10-17T18:56:08Z\", \"level\": \"info\", \"msg\": \"request\", \"method\": \"GET\", \"path\": \"/work\", \"status\": 200, \"duration_ms\": 184.4}"
+          ],
+          [
+            "1792263367899701212",
+            "{\"ts\": \"2026-10-17T18:56:07Z\", \"level\": \"error\", \"msg\": \"request\", \"method\": \"GET\", \"path\": \"/error\", \"status\": 500, \"duration_ms\": 0.1}"
+          ],
+          [
+            "1792263367489175628",
+            "{\"ts\": \"2026-10-17T18:56:07Z\", \"level\": \"info\", \"msg\": \"request\", \"method\": \"GET\", \"path\": \"/work\", \"status\": 200, \"duration_ms\": 190.6}"
+          ]
+        ]
+      }
+    ],
+    "stats": {
+      "summary": {
+        "bytesProcessedPerSecond": 17895348,
+        "linesProcessedPerSecond": 132321,
+        "totalBytesProcessed": 71137,
+        "totalLinesProcessed": 526,
+        "execTime": 0.003975167,
+        "queueTime": 0.000129334,
+        "subqueries": 1,
+        "totalEntriesReturned": 10
+      },
+      "querier": {
+        "store": {
+          "totalChunksRef": 0,
+          "totalChunksDownloaded": 0,
+          "chunksDownloadTime": 0,
+          "chunk": {
+            "headChunkBytes": 0,
+            "headChunkLines": 0,
+            "decompressedBytes": 0,
+            "decompressedLines": 0,
+            "compressedBytes": 0,
+            "totalDuplicates": 0
+          }
+        }
+      },
+      "ingester": {
+        "totalReached": 1,
+        "totalChunksMatched": 3,
+        "totalBatches": 1,
+        "totalLinesSent": 10,
+        "store": {
+          "totalChunksRef": 0,
+          "totalChunksDownloaded": 0,
+          "chunksDownloadTime": 0,
+          "chunk": {
+            "headChunkBytes": 70449,
+            "headChunkLines": 518,
+            "decompressedBytes": 688,
+            "decompressedLines": 8,
+            "compressedBytes": 390,
+            "totalDuplicates": 0
+          }
+        }
+      }
+    }
+  }
+}

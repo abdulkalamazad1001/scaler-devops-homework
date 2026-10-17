@@ -1,0 +1,2 @@
+Warning: deleting cluster-scoped resources, not scoped to the provided namespace
+namespace "homework-loadbalancer-ebbd7f72" deleted

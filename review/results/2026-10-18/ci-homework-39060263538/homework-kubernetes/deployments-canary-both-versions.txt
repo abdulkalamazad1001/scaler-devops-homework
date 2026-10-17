@@ -1,0 +1,11 @@
+stable v1 served by app-stable-6b9778ff79-6jd5m
+stable v1 served by app-stable-6b9778ff79-r5g7c
+stable v1 served by app-stable-6b9778ff79-26fvw
+stable v1 served by app-stable-6b9778ff79-26fvw
+stable v1 served by app-stable-6b9778ff79-v4xr5
+stable v1 served by app-stable-6b9778ff79-v4xr5
+stable v1 served by app-stable-6b9778ff79-s8njp
+stable v1 served by app-stable-6b9778ff79-6jd5m
+stable v1 served by app-stable-6b9778ff79-kndqw
+stable v1 served by app-stable-6b9778ff79-r5g7c
+canary v2 served by app-canary-dc4ffc8f6-266w7

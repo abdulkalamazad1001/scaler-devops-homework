@@ -37,3 +37,13 @@ provider. A pending external address on bare Kind is not proof of a broken Servi
 The output and terminal-style images in the original write-up are labelled expected
 output, not captures from a live deployment. Current test logs are kept separately
 under the project review. Validation alone does not prove every exercise was run.
+
+## Verified rerun — 18 October 2026
+
+Verified ClusterIP, NodePort, headless and ExternalName services and DNS recovery. Provisioned a MetalLB external address and reached the LoadBalancer from a Docker client outside the cluster.
+
+[Recorded results](../review/results/2026-10-18/loadbalancer.json) · [Screenshot](../review/results/2026-10-18/screenshots/task11-services.png) · [Complete evidence index and environment notes](../review/results/2026-10-18/README.md).
+
+![Services and DNS: saved execution log view](../review/results/2026-10-18/screenshots/task11-services.png)
+
+*Saved execution log view from the verified rerun; complete results are linked above.*

@@ -1,0 +1,2174 @@
+[
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-17T18:56:05Z",
+    "databaseId": 39060263538,
+    "event": "push",
+    "headSha": "7fe0efaf1f2a4b9143c870949cc4d59a85e9124d",
+    "jobs": [
+      {
+        "completedAt": "2026-10-17T19:05:18Z",
+        "conclusion": "success",
+        "databaseId": 117476597084,
+        "name": "kubernetes",
+        "startedAt": "2026-10-17T18:56:08Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:56:11Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:56:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:12Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v5",
+            "number": 2,
+            "startedAt": "2026-10-17T18:56:11Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:12Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v6",
+            "number": 3,
+            "startedAt": "2026-10-17T18:56:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:13Z",
+            "conclusion": "success",
+            "name": "Run python -m pip install PyYAML==6.0.3",
+            "number": 4,
+            "startedAt": "2026-10-17T18:56:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:14Z",
+            "conclusion": "success",
+            "name": "Run azure/setup-helm@v4.3.1",
+            "number": 5,
+            "startedAt": "2026-10-17T18:56:13Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:57:01Z",
+            "conclusion": "success",
+            "name": "Run helm/kind-action@v1.12.0",
+            "number": 6,
+            "startedAt": "2026-10-17T18:56:14Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:58:30Z",
+            "conclusion": "success",
+            "name": "Run python review/check_kubernetes.py --context kind-homework-review",
+            "number": 7,
+            "startedAt": "2026-10-17T18:57:01Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:59:34Z",
+            "conclusion": "success",
+            "name": "Run python review/check_helm_lifecycle.py --context kind-homework-review",
+            "number": 8,
+            "startedAt": "2026-10-17T18:58:30Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:59:35Z",
+            "conclusion": "success",
+            "name": "Run python -m pip install pytest==9.1.1",
+            "number": 9,
+            "startedAt": "2026-10-17T18:59:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:59:35Z",
+            "conclusion": "success",
+            "name": "Run python -m pytest -q review/test_lab_scenarios.py",
+            "number": 10,
+            "startedAt": "2026-10-17T18:59:35Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T19:01:05Z",
+            "conclusion": "success",
+            "name": "Run python review/check_lab_scenarios.py --context kind-homework-review --suite troubleshooting",
+            "number": 11,
+            "startedAt": "2026-10-17T18:59:35Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T19:03:43Z",
+            "conclusion": "success",
+            "name": "Run python review/check_lab_scenarios.py --context kind-homework-review --suite deployments",
+            "number": 12,
+            "startedAt": "2026-10-17T19:01:05Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T19:05:11Z",
+            "conclusion": "success",
+            "name": "Run python review/check_lab_scenarios.py --context kind-homework-review --suite dns",
+            "number": 13,
+            "startedAt": "2026-10-17T19:03:43Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T19:05:12Z",
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@v4",
+            "number": 14,
+            "startedAt": "2026-10-17T19:05:11Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T19:05:15Z",
+            "conclusion": "success",
+            "name": "Post Run helm/kind-action@v1.12.0",
+            "number": 26,
+            "startedAt": "2026-10-17T19:05:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T19:05:16Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v6",
+            "number": 27,
+            "startedAt": "2026-10-17T19:05:15Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T19:05:16Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v5",
+            "number": 28,
+            "startedAt": "2026-10-17T19:05:16Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T19:05:16Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 29,
+            "startedAt": "2026-10-17T19:05:16Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39060263538/job/117476597084"
+      },
+      {
+        "completedAt": "2026-10-17T18:57:00Z",
+        "conclusion": "success",
+        "databaseId": 117476597183,
+        "name": "validate (infra)",
+        "startedAt": "2026-10-17T18:56:08Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:56:10Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:56:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:12Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v5",
+            "number": 2,
+            "startedAt": "2026-10-17T18:56:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:12Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v6",
+            "number": 3,
+            "startedAt": "2026-10-17T18:56:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:16Z",
+            "conclusion": "success",
+            "name": "Run python -m pip install PyYAML==6.0.3",
+            "number": 4,
+            "startedAt": "2026-10-17T18:56:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:17Z",
+            "conclusion": "success",
+            "name": "Run azure/setup-helm@v4.3.1",
+            "number": 5,
+            "startedAt": "2026-10-17T18:56:16Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:18Z",
+            "conclusion": "success",
+            "name": "Run hashicorp/setup-terraform@v3",
+            "number": 6,
+            "startedAt": "2026-10-17T18:56:17Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:19Z",
+            "conclusion": "success",
+            "name": "Run python review/check_sources.py",
+            "number": 7,
+            "startedAt": "2026-10-17T18:56:18Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:57Z",
+            "conclusion": "success",
+            "name": "Run python review/run_checks.py infra",
+            "number": 8,
+            "startedAt": "2026-10-17T18:56:19Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:58Z",
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@v4",
+            "number": 9,
+            "startedAt": "2026-10-17T18:56:57Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:58Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v6",
+            "number": 17,
+            "startedAt": "2026-10-17T18:56:58Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:58Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v5",
+            "number": 18,
+            "startedAt": "2026-10-17T18:56:58Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:58Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 19,
+            "startedAt": "2026-10-17T18:56:58Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39060263538/job/117476597183"
+      },
+      {
+        "completedAt": "2026-10-17T19:12:48Z",
+        "conclusion": "success",
+        "databaseId": 117476597215,
+        "name": "autoscaling",
+        "startedAt": "2026-10-17T18:56:08Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:56:10Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:56:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:12Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v5",
+            "number": 2,
+            "startedAt": "2026-10-17T18:56:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:12Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v6",
+            "number": 3,
+            "startedAt": "2026-10-17T18:56:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:13Z",
+            "conclusion": "success",
+            "name": "Run python -m pip install PyYAML==6.0.3",
+            "number": 4,
+            "startedAt": "2026-10-17T18:56:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:55Z",
+            "conclusion": "success",
+            "name": "Run helm/kind-action@v1.12.0",
+            "number": 5,
+            "startedAt": "2026-10-17T18:56:13Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:57:20Z",
+            "conclusion": "success",
+            "name": "Enable metrics in the disposable Kind cluster",
+            "number": 6,
+            "startedAt": "2026-10-17T18:56:55Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T19:03:58Z",
+            "conclusion": "success",
+            "name": "PHP Apache scale out and scale down",
+            "number": 7,
+            "startedAt": "2026-10-17T18:57:20Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T19:12:40Z",
+            "conclusion": "success",
+            "name": "Mini-project probes and autoscaling recovery",
+            "number": 8,
+            "startedAt": "2026-10-17T19:03:58Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T19:12:41Z",
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@v4",
+            "number": 9,
+            "startedAt": "2026-10-17T19:12:40Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T19:12:45Z",
+            "conclusion": "success",
+            "name": "Post Run helm/kind-action@v1.12.0",
+            "number": 16,
+            "startedAt": "2026-10-17T19:12:41Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T19:12:45Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v6",
+            "number": 17,
+            "startedAt": "2026-10-17T19:12:45Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T19:12:46Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v5",
+            "number": 18,
+            "startedAt": "2026-10-17T19:12:45Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T19:12:46Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 19,
+            "startedAt": "2026-10-17T19:12:46Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39060263538/job/117476597215"
+      },
+      {
+        "completedAt": "2026-10-17T18:57:25Z",
+        "conclusion": "success",
+        "databaseId": 117476597217,
+        "name": "containers",
+        "startedAt": "2026-10-17T18:56:08Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:56:09Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:56:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:10Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v5",
+            "number": 2,
+            "startedAt": "2026-10-17T18:56:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:11Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v6",
+            "number": 3,
+            "startedAt": "2026-10-17T18:56:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:57Z",
+            "conclusion": "success",
+            "name": "Run python review/smoke_containers.py",
+            "number": 4,
+            "startedAt": "2026-10-17T18:56:11Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:57:23Z",
+            "conclusion": "success",
+            "name": "Run python review/check_networks.py",
+            "number": 5,
+            "startedAt": "2026-10-17T18:56:57Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:57:24Z",
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@v4",
+            "number": 6,
+            "startedAt": "2026-10-17T18:57:23Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:57:24Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v6",
+            "number": 11,
+            "startedAt": "2026-10-17T18:57:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:57:24Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v5",
+            "number": 12,
+            "startedAt": "2026-10-17T18:57:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:57:24Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "startedAt": "2026-10-17T18:57:24Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39060263538/job/117476597217"
+      },
+      {
+        "completedAt": "2026-10-17T18:56:15Z",
+        "conclusion": "success",
+        "databaseId": 117476597220,
+        "name": "workflows",
+        "startedAt": "2026-10-17T18:56:08Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:56:09Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:56:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:11Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v5",
+            "number": 2,
+            "startedAt": "2026-10-17T18:56:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:13Z",
+            "conclusion": "success",
+            "name": "Run docker run --rm -v \"$PWD:/repo:ro\" -w /repo rhysd/actionlint:1.7.7",
+            "number": 3,
+            "startedAt": "2026-10-17T18:56:11Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:13Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v5",
+            "number": 6,
+            "startedAt": "2026-10-17T18:56:13Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:13Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 7,
+            "startedAt": "2026-10-17T18:56:13Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39060263538/job/117476597220"
+      },
+      {
+        "completedAt": "2026-10-17T18:56:37Z",
+        "conclusion": "success",
+        "databaseId": 117476597231,
+        "name": "validate (shell)",
+        "startedAt": "2026-10-17T18:56:08Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:56:11Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:56:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:13Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v5",
+            "number": 2,
+            "startedAt": "2026-10-17T18:56:11Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:13Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v6",
+            "number": 3,
+            "startedAt": "2026-10-17T18:56:13Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:15Z",
+            "conclusion": "success",
+            "name": "Run python -m pip install PyYAML==6.0.3",
+            "number": 4,
+            "startedAt": "2026-10-17T18:56:13Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:15Z",
+            "conclusion": "skipped",
+            "name": "Run azure/setup-helm@v4.3.1",
+            "number": 5,
+            "startedAt": "2026-10-17T18:56:15Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:15Z",
+            "conclusion": "skipped",
+            "name": "Run hashicorp/setup-terraform@v3",
+            "number": 6,
+            "startedAt": "2026-10-17T18:56:15Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:15Z",
+            "conclusion": "success",
+            "name": "Run python review/check_sources.py",
+            "number": 7,
+            "startedAt": "2026-10-17T18:56:15Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:34Z",
+            "conclusion": "success",
+            "name": "Run python review/run_checks.py shell",
+            "number": 8,
+            "startedAt": "2026-10-17T18:56:15Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:35Z",
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@v4",
+            "number": 9,
+            "startedAt": "2026-10-17T18:56:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:35Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v6",
+            "number": 17,
+            "startedAt": "2026-10-17T18:56:35Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:35Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v5",
+            "number": 18,
+            "startedAt": "2026-10-17T18:56:35Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:35Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 19,
+            "startedAt": "2026-10-17T18:56:35Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39060263538/job/117476597231"
+      },
+      {
+        "completedAt": "2026-10-17T18:56:54Z",
+        "conclusion": "success",
+        "databaseId": 117476597344,
+        "name": "validate (apps)",
+        "startedAt": "2026-10-17T18:56:08Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:56:09Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:56:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:11Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v5",
+            "number": 2,
+            "startedAt": "2026-10-17T18:56:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:11Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v6",
+            "number": 3,
+            "startedAt": "2026-10-17T18:56:11Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:13Z",
+            "conclusion": "success",
+            "name": "Run python -m pip install PyYAML==6.0.3",
+            "number": 4,
+            "startedAt": "2026-10-17T18:56:11Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:13Z",
+            "conclusion": "skipped",
+            "name": "Run azure/setup-helm@v4.3.1",
+            "number": 5,
+            "startedAt": "2026-10-17T18:56:13Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:13Z",
+            "conclusion": "skipped",
+            "name": "Run hashicorp/setup-terraform@v3",
+            "number": 6,
+            "startedAt": "2026-10-17T18:56:13Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:14Z",
+            "conclusion": "success",
+            "name": "Run python review/check_sources.py",
+            "number": 7,
+            "startedAt": "2026-10-17T18:56:13Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:52Z",
+            "conclusion": "success",
+            "name": "Run python review/run_checks.py apps",
+            "number": 8,
+            "startedAt": "2026-10-17T18:56:14Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:52Z",
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@v4",
+            "number": 9,
+            "startedAt": "2026-10-17T18:56:52Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:53Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v6",
+            "number": 17,
+            "startedAt": "2026-10-17T18:56:52Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:53Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v5",
+            "number": 18,
+            "startedAt": "2026-10-17T18:56:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:56:53Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 19,
+            "startedAt": "2026-10-17T18:56:53Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39060263538/job/117476597344"
+      }
+    ],
+    "name": "Homework validation",
+    "status": "completed",
+    "updatedAt": "2026-10-17T19:12:49Z",
+    "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39060263538"
+  },
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-17T18:45:15Z",
+    "databaseId": 39059479821,
+    "event": "push",
+    "headSha": "7da12e62688a4de26191495b784f15d2934acddc",
+    "jobs": [
+      {
+        "completedAt": "2026-10-17T18:45:25Z",
+        "conclusion": "success",
+        "databaseId": 117474308416,
+        "name": "Lint (flake8)",
+        "startedAt": "2026-10-17T18:45:17Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:45:18Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:45:17Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:20Z",
+            "conclusion": "success",
+            "name": "Checkout",
+            "number": 2,
+            "startedAt": "2026-10-17T18:45:18Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:20Z",
+            "conclusion": "success",
+            "name": "Set up Python 3.12",
+            "number": 3,
+            "startedAt": "2026-10-17T18:45:20Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:22Z",
+            "conclusion": "success",
+            "name": "Install flake8",
+            "number": 4,
+            "startedAt": "2026-10-17T18:45:20Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:23Z",
+            "conclusion": "success",
+            "name": "Run flake8",
+            "number": 5,
+            "startedAt": "2026-10-17T18:45:22Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:23Z",
+            "conclusion": "success",
+            "name": "Post Set up Python 3.12",
+            "number": 9,
+            "startedAt": "2026-10-17T18:45:23Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:23Z",
+            "conclusion": "success",
+            "name": "Post Checkout",
+            "number": 10,
+            "startedAt": "2026-10-17T18:45:23Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:23Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-17T18:45:23Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39059479821/job/117474308416"
+      },
+      {
+        "completedAt": "2026-10-17T18:45:29Z",
+        "conclusion": "success",
+        "databaseId": 117474308610,
+        "name": "Test (Python 3.11)",
+        "startedAt": "2026-10-17T18:45:17Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:45:18Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:45:18Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:20Z",
+            "conclusion": "success",
+            "name": "Checkout",
+            "number": 2,
+            "startedAt": "2026-10-17T18:45:18Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:22Z",
+            "conclusion": "success",
+            "name": "Set up Python 3.11",
+            "number": 3,
+            "startedAt": "2026-10-17T18:45:20Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:25Z",
+            "conclusion": "success",
+            "name": "Install dependencies",
+            "number": 4,
+            "startedAt": "2026-10-17T18:45:22Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:26Z",
+            "conclusion": "success",
+            "name": "Run tests with coverage",
+            "number": 5,
+            "startedAt": "2026-10-17T18:45:25Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:27Z",
+            "conclusion": "success",
+            "name": "Upload test report",
+            "number": 6,
+            "startedAt": "2026-10-17T18:45:26Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:27Z",
+            "conclusion": "success",
+            "name": "Post Set up Python 3.11",
+            "number": 11,
+            "startedAt": "2026-10-17T18:45:27Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:27Z",
+            "conclusion": "success",
+            "name": "Post Checkout",
+            "number": 12,
+            "startedAt": "2026-10-17T18:45:27Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:27Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "startedAt": "2026-10-17T18:45:27Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39059479821/job/117474308610"
+      },
+      {
+        "completedAt": "2026-10-17T18:45:24Z",
+        "conclusion": "success",
+        "databaseId": 117474308611,
+        "name": "Security check",
+        "startedAt": "2026-10-17T18:45:17Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:45:19Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:45:18Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:21Z",
+            "conclusion": "success",
+            "name": "Checkout",
+            "number": 2,
+            "startedAt": "2026-10-17T18:45:19Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:21Z",
+            "conclusion": "success",
+            "name": "Check for committed secret files",
+            "number": 3,
+            "startedAt": "2026-10-17T18:45:21Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:21Z",
+            "conclusion": "success",
+            "name": "Post Checkout",
+            "number": 6,
+            "startedAt": "2026-10-17T18:45:21Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:21Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 7,
+            "startedAt": "2026-10-17T18:45:21Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39059479821/job/117474308611"
+      },
+      {
+        "completedAt": "2026-10-17T18:45:29Z",
+        "conclusion": "success",
+        "databaseId": 117474308618,
+        "name": "Test (Python 3.12)",
+        "startedAt": "2026-10-17T18:45:17Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:45:18Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:45:18Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:20Z",
+            "conclusion": "success",
+            "name": "Checkout",
+            "number": 2,
+            "startedAt": "2026-10-17T18:45:18Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:22Z",
+            "conclusion": "success",
+            "name": "Set up Python 3.12",
+            "number": 3,
+            "startedAt": "2026-10-17T18:45:20Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:25Z",
+            "conclusion": "success",
+            "name": "Install dependencies",
+            "number": 4,
+            "startedAt": "2026-10-17T18:45:22Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:25Z",
+            "conclusion": "success",
+            "name": "Run tests with coverage",
+            "number": 5,
+            "startedAt": "2026-10-17T18:45:25Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:26Z",
+            "conclusion": "success",
+            "name": "Upload test report",
+            "number": 6,
+            "startedAt": "2026-10-17T18:45:25Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:26Z",
+            "conclusion": "success",
+            "name": "Post Set up Python 3.12",
+            "number": 11,
+            "startedAt": "2026-10-17T18:45:26Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:27Z",
+            "conclusion": "success",
+            "name": "Post Checkout",
+            "number": 12,
+            "startedAt": "2026-10-17T18:45:26Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:27Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "startedAt": "2026-10-17T18:45:27Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39059479821/job/117474308618"
+      },
+      {
+        "completedAt": "2026-10-17T18:46:15Z",
+        "conclusion": "success",
+        "databaseId": 117474361757,
+        "name": "Build Docker image",
+        "startedAt": "2026-10-17T18:45:31Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:45:34Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:45:32Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:35Z",
+            "conclusion": "success",
+            "name": "Checkout",
+            "number": 2,
+            "startedAt": "2026-10-17T18:45:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:44Z",
+            "conclusion": "success",
+            "name": "Set up Docker Buildx",
+            "number": 3,
+            "startedAt": "2026-10-17T18:45:35Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:59Z",
+            "conclusion": "success",
+            "name": "Build image",
+            "number": 4,
+            "startedAt": "2026-10-17T18:45:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:01Z",
+            "conclusion": "success",
+            "name": "Smoke test the container",
+            "number": 5,
+            "startedAt": "2026-10-17T18:45:59Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:07Z",
+            "conclusion": "success",
+            "name": "Save image as a tarball",
+            "number": 6,
+            "startedAt": "2026-10-17T18:46:01Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:10Z",
+            "conclusion": "success",
+            "name": "Upload image artifact",
+            "number": 7,
+            "startedAt": "2026-10-17T18:46:07Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:10Z",
+            "conclusion": "success",
+            "name": "Write job summary",
+            "number": 8,
+            "startedAt": "2026-10-17T18:46:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:12Z",
+            "conclusion": "success",
+            "name": "Post Build image",
+            "number": 14,
+            "startedAt": "2026-10-17T18:46:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:13Z",
+            "conclusion": "success",
+            "name": "Post Set up Docker Buildx",
+            "number": 15,
+            "startedAt": "2026-10-17T18:46:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:13Z",
+            "conclusion": "success",
+            "name": "Post Checkout",
+            "number": 16,
+            "startedAt": "2026-10-17T18:46:13Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:13Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 17,
+            "startedAt": "2026-10-17T18:46:13Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39059479821/job/117474361757"
+      }
+    ],
+    "name": "Task16 CI",
+    "status": "completed",
+    "updatedAt": "2026-10-17T18:46:16Z",
+    "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39059479821"
+  },
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-17T18:46:17Z",
+    "databaseId": 39059558499,
+    "event": "workflow_run",
+    "headSha": "7da12e62688a4de26191495b784f15d2934acddc",
+    "jobs": [
+      {
+        "completedAt": "2026-10-17T18:46:48Z",
+        "conclusion": "success",
+        "databaseId": 117474534337,
+        "name": "Build and push image to GHCR",
+        "startedAt": "2026-10-17T18:46:20Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:46:23Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:46:21Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:25Z",
+            "conclusion": "success",
+            "name": "Checkout tested commit",
+            "number": 2,
+            "startedAt": "2026-10-17T18:46:23Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:26Z",
+            "conclusion": "success",
+            "name": "Work out image name",
+            "number": 3,
+            "startedAt": "2026-10-17T18:46:25Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:33Z",
+            "conclusion": "success",
+            "name": "Set up Docker Buildx",
+            "number": 4,
+            "startedAt": "2026-10-17T18:46:26Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:33Z",
+            "conclusion": "success",
+            "name": "Log in to GHCR",
+            "number": 5,
+            "startedAt": "2026-10-17T18:46:33Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:42Z",
+            "conclusion": "success",
+            "name": "Build and push",
+            "number": 6,
+            "startedAt": "2026-10-17T18:46:33Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:44Z",
+            "conclusion": "success",
+            "name": "Post Build and push",
+            "number": 9,
+            "startedAt": "2026-10-17T18:46:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:44Z",
+            "conclusion": "success",
+            "name": "Post Log in to GHCR",
+            "number": 10,
+            "startedAt": "2026-10-17T18:46:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:45Z",
+            "conclusion": "success",
+            "name": "Post Set up Docker Buildx",
+            "number": 11,
+            "startedAt": "2026-10-17T18:46:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:45Z",
+            "conclusion": "success",
+            "name": "Post Checkout tested commit",
+            "number": 12,
+            "startedAt": "2026-10-17T18:46:45Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:45Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "startedAt": "2026-10-17T18:46:45Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39059558499/job/117474534337"
+      },
+      {
+        "completedAt": "2026-10-17T18:47:53Z",
+        "conclusion": "success",
+        "databaseId": 117474639255,
+        "name": "Deploy to staging (kind)",
+        "startedAt": "2026-10-17T18:46:50Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:46:52Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:46:51Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:53Z",
+            "conclusion": "success",
+            "name": "Checkout tested commit",
+            "number": 2,
+            "startedAt": "2026-10-17T18:46:52Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:53Z",
+            "conclusion": "success",
+            "name": "Check required secret",
+            "number": 3,
+            "startedAt": "2026-10-17T18:46:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:31Z",
+            "conclusion": "success",
+            "name": "Create kind cluster",
+            "number": 4,
+            "startedAt": "2026-10-17T18:46:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:31Z",
+            "conclusion": "success",
+            "name": "Log in to GHCR",
+            "number": 5,
+            "startedAt": "2026-10-17T18:47:31Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:38Z",
+            "conclusion": "success",
+            "name": "Pull image and load it into kind",
+            "number": 6,
+            "startedAt": "2026-10-17T18:47:31Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:38Z",
+            "conclusion": "success",
+            "name": "Create app secret in the cluster",
+            "number": 7,
+            "startedAt": "2026-10-17T18:47:38Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:46Z",
+            "conclusion": "success",
+            "name": "Deploy manifests",
+            "number": 8,
+            "startedAt": "2026-10-17T18:47:38Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:49Z",
+            "conclusion": "success",
+            "name": "Smoke test",
+            "number": 9,
+            "startedAt": "2026-10-17T18:47:46Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:49Z",
+            "conclusion": "skipped",
+            "name": "Show pod details on failure",
+            "number": 10,
+            "startedAt": "2026-10-17T18:47:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:49Z",
+            "conclusion": "success",
+            "name": "Write job summary",
+            "number": 11,
+            "startedAt": "2026-10-17T18:47:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:49Z",
+            "conclusion": "success",
+            "name": "Post Log in to GHCR",
+            "number": 20,
+            "startedAt": "2026-10-17T18:47:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:51Z",
+            "conclusion": "success",
+            "name": "Post Create kind cluster",
+            "number": 21,
+            "startedAt": "2026-10-17T18:47:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:51Z",
+            "conclusion": "success",
+            "name": "Post Checkout tested commit",
+            "number": 22,
+            "startedAt": "2026-10-17T18:47:51Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:51Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 23,
+            "startedAt": "2026-10-17T18:47:51Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39059558499/job/117474639255"
+      }
+    ],
+    "name": "Task16 CD (workflow_run) on main",
+    "status": "completed",
+    "updatedAt": "2026-10-17T18:47:53Z",
+    "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39059558499"
+  },
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-17T18:45:14Z",
+    "databaseId": 39059479655,
+    "event": "push",
+    "headSha": "7da12e62688a4de26191495b784f15d2934acddc",
+    "jobs": [
+      {
+        "completedAt": "2026-10-17T18:45:31Z",
+        "conclusion": "success",
+        "databaseId": 117474308300,
+        "name": "Build",
+        "startedAt": "2026-10-17T18:45:17Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:45:19Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:45:18Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:21Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "startedAt": "2026-10-17T18:45:19Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:24Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v5",
+            "number": 3,
+            "startedAt": "2026-10-17T18:45:21Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:28Z",
+            "conclusion": "success",
+            "name": "Install dependencies",
+            "number": 4,
+            "startedAt": "2026-10-17T18:45:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:28Z",
+            "conclusion": "success",
+            "name": "Check dependency tree is consistent",
+            "number": 5,
+            "startedAt": "2026-10-17T18:45:28Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:28Z",
+            "conclusion": "success",
+            "name": "Byte-compile the application",
+            "number": 6,
+            "startedAt": "2026-10-17T18:45:28Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:28Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v5",
+            "number": 11,
+            "startedAt": "2026-10-17T18:45:28Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:28Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 12,
+            "startedAt": "2026-10-17T18:45:28Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:28Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "startedAt": "2026-10-17T18:45:28Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39059479655/job/117474308300"
+      },
+      {
+        "completedAt": "2026-10-17T18:45:46Z",
+        "conclusion": "success",
+        "databaseId": 117474369497,
+        "name": "Unit test",
+        "startedAt": "2026-10-17T18:45:33Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:45:35Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:45:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:36Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "startedAt": "2026-10-17T18:45:35Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:38Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v5",
+            "number": 3,
+            "startedAt": "2026-10-17T18:45:36Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:42Z",
+            "conclusion": "success",
+            "name": "Run pip install -r requirements-dev.txt",
+            "number": 4,
+            "startedAt": "2026-10-17T18:45:38Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:44Z",
+            "conclusion": "success",
+            "name": "Run pytest",
+            "number": 5,
+            "startedAt": "2026-10-17T18:45:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:44Z",
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@v4",
+            "number": 6,
+            "startedAt": "2026-10-17T18:45:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:45Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v5",
+            "number": 11,
+            "startedAt": "2026-10-17T18:45:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:45Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 12,
+            "startedAt": "2026-10-17T18:45:45Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:45Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "startedAt": "2026-10-17T18:45:45Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39059479655/job/117474369497"
+      },
+      {
+        "completedAt": "2026-10-17T18:45:56Z",
+        "conclusion": "success",
+        "databaseId": 117474425772,
+        "name": "Secret scan (Gitleaks)",
+        "startedAt": "2026-10-17T18:45:48Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:45:50Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:45:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:52Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "startedAt": "2026-10-17T18:45:50Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:52Z",
+            "conclusion": "success",
+            "name": "Install Gitleaks",
+            "number": 3,
+            "startedAt": "2026-10-17T18:45:52Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:53Z",
+            "conclusion": "success",
+            "name": "Run Gitleaks",
+            "number": 4,
+            "startedAt": "2026-10-17T18:45:52Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:54Z",
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@v4",
+            "number": 5,
+            "startedAt": "2026-10-17T18:45:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:54Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 10,
+            "startedAt": "2026-10-17T18:45:54Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:54Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-17T18:45:54Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39059479655/job/117474425772"
+      },
+      {
+        "completedAt": "2026-10-17T18:46:14Z",
+        "conclusion": "success",
+        "databaseId": 117474425794,
+        "name": "SCA (pip-audit)",
+        "startedAt": "2026-10-17T18:45:48Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:45:50Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:45:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:51Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "startedAt": "2026-10-17T18:45:50Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:51Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v5",
+            "number": 3,
+            "startedAt": "2026-10-17T18:45:51Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:58Z",
+            "conclusion": "success",
+            "name": "Run pip install \"pip-audit==${PIP_AUDIT_VERSION}\"",
+            "number": 4,
+            "startedAt": "2026-10-17T18:45:51Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:12Z",
+            "conclusion": "success",
+            "name": "Run pip-audit",
+            "number": 5,
+            "startedAt": "2026-10-17T18:45:58Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:12Z",
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@v4",
+            "number": 6,
+            "startedAt": "2026-10-17T18:46:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:13Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v5",
+            "number": 11,
+            "startedAt": "2026-10-17T18:46:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:13Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 12,
+            "startedAt": "2026-10-17T18:46:13Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:13Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "startedAt": "2026-10-17T18:46:13Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39059479655/job/117474425794"
+      },
+      {
+        "completedAt": "2026-10-17T18:45:59Z",
+        "conclusion": "success",
+        "databaseId": 117474425847,
+        "name": "SAST (Bandit)",
+        "startedAt": "2026-10-17T18:45:49Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:45:50Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:45:50Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:53Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "startedAt": "2026-10-17T18:45:50Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:53Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v5",
+            "number": 3,
+            "startedAt": "2026-10-17T18:45:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:55Z",
+            "conclusion": "success",
+            "name": "Run pip install \"bandit==${BANDIT_VERSION}\"",
+            "number": 4,
+            "startedAt": "2026-10-17T18:45:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:56Z",
+            "conclusion": "success",
+            "name": "Run Bandit",
+            "number": 5,
+            "startedAt": "2026-10-17T18:45:55Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:57Z",
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@v4",
+            "number": 6,
+            "startedAt": "2026-10-17T18:45:56Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:57Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v5",
+            "number": 11,
+            "startedAt": "2026-10-17T18:45:57Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:57Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 12,
+            "startedAt": "2026-10-17T18:45:57Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:45:57Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "startedAt": "2026-10-17T18:45:57Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39059479655/job/117474425847"
+      },
+      {
+        "completedAt": "2026-10-17T18:46:41Z",
+        "conclusion": "success",
+        "databaseId": 117474523085,
+        "name": "Docker build",
+        "startedAt": "2026-10-17T18:46:17Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:46:18Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:46:17Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:20Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "startedAt": "2026-10-17T18:46:18Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:33Z",
+            "conclusion": "success",
+            "name": "Build image",
+            "number": 3,
+            "startedAt": "2026-10-17T18:46:20Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:33Z",
+            "conclusion": "success",
+            "name": "Check the image does not run as root",
+            "number": 4,
+            "startedAt": "2026-10-17T18:46:33Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:34Z",
+            "conclusion": "success",
+            "name": "Save image",
+            "number": 5,
+            "startedAt": "2026-10-17T18:46:33Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:39Z",
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@v4",
+            "number": 6,
+            "startedAt": "2026-10-17T18:46:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:39Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 12,
+            "startedAt": "2026-10-17T18:46:39Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:39Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "startedAt": "2026-10-17T18:46:39Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39059479655/job/117474523085"
+      },
+      {
+        "completedAt": "2026-10-17T18:47:04Z",
+        "conclusion": "success",
+        "databaseId": 117474615020,
+        "name": "Image scan (Trivy)",
+        "startedAt": "2026-10-17T18:46:44Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:46:46Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:46:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:48Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "startedAt": "2026-10-17T18:46:46Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:51Z",
+            "conclusion": "success",
+            "name": "Run actions/download-artifact@v4",
+            "number": 3,
+            "startedAt": "2026-10-17T18:46:48Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:46:53Z",
+            "conclusion": "success",
+            "name": "Install Trivy",
+            "number": 4,
+            "startedAt": "2026-10-17T18:46:51Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:01Z",
+            "conclusion": "success",
+            "name": "Run Trivy",
+            "number": 5,
+            "startedAt": "2026-10-17T18:46:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:02Z",
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@v4",
+            "number": 6,
+            "startedAt": "2026-10-17T18:47:01Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:02Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 12,
+            "startedAt": "2026-10-17T18:47:02Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:02Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "startedAt": "2026-10-17T18:47:02Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39059479655/job/117474615020"
+      },
+      {
+        "completedAt": "2026-10-17T18:47:15Z",
+        "conclusion": "success",
+        "databaseId": 117474696148,
+        "name": "Security gate",
+        "startedAt": "2026-10-17T18:47:06Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:47:09Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:47:07Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:10Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "startedAt": "2026-10-17T18:47:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:10Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v5",
+            "number": 3,
+            "startedAt": "2026-10-17T18:47:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:12Z",
+            "conclusion": "success",
+            "name": "Run actions/download-artifact@v4",
+            "number": 4,
+            "startedAt": "2026-10-17T18:47:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:12Z",
+            "conclusion": "success",
+            "name": "Evaluate reports",
+            "number": 5,
+            "startedAt": "2026-10-17T18:47:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:12Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@v5",
+            "number": 9,
+            "startedAt": "2026-10-17T18:47:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:12Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 10,
+            "startedAt": "2026-10-17T18:47:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:12Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-17T18:47:12Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39059479655/job/117474696148"
+      },
+      {
+        "completedAt": "2026-10-17T18:47:36Z",
+        "conclusion": "success",
+        "databaseId": 117474734792,
+        "name": "Push image (GHCR)",
+        "startedAt": "2026-10-17T18:47:17Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:47:18Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:47:17Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:20Z",
+            "conclusion": "success",
+            "name": "Run actions/download-artifact@v4",
+            "number": 2,
+            "startedAt": "2026-10-17T18:47:18Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:21Z",
+            "conclusion": "success",
+            "name": "Run docker/login-action@v3",
+            "number": 3,
+            "startedAt": "2026-10-17T18:47:20Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:34Z",
+            "conclusion": "success",
+            "name": "Load, tag and push",
+            "number": 4,
+            "startedAt": "2026-10-17T18:47:21Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:34Z",
+            "conclusion": "success",
+            "name": "Post Run docker/login-action@v3",
+            "number": 8,
+            "startedAt": "2026-10-17T18:47:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:34Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 9,
+            "startedAt": "2026-10-17T18:47:34Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39059479655/job/117474734792"
+      },
+      {
+        "completedAt": "2026-10-17T18:48:38Z",
+        "conclusion": "success",
+        "databaseId": 117474805657,
+        "name": "Deploy to Kubernetes",
+        "startedAt": "2026-10-17T18:47:38Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-17T18:47:40Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-17T18:47:39Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:47:42Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "startedAt": "2026-10-17T18:47:40Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:48:22Z",
+            "conclusion": "success",
+            "name": "Create kind cluster",
+            "number": 3,
+            "startedAt": "2026-10-17T18:47:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:48:22Z",
+            "conclusion": "success",
+            "name": "Create namespace and image pull secret",
+            "number": 4,
+            "startedAt": "2026-10-17T18:48:22Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:48:32Z",
+            "conclusion": "success",
+            "name": "Apply manifests with the new image tag",
+            "number": 5,
+            "startedAt": "2026-10-17T18:48:22Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:48:34Z",
+            "conclusion": "success",
+            "name": "Smoke test",
+            "number": 6,
+            "startedAt": "2026-10-17T18:48:32Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:48:36Z",
+            "conclusion": "success",
+            "name": "Post Create kind cluster",
+            "number": 11,
+            "startedAt": "2026-10-17T18:48:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:48:36Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 12,
+            "startedAt": "2026-10-17T18:48:36Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-17T18:48:36Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "startedAt": "2026-10-17T18:48:36Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39059479655/job/117474805657"
+      }
+    ],
+    "name": "Task17 DevSecOps",
+    "status": "completed",
+    "updatedAt": "2026-10-17T18:48:39Z",
+    "url": "https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39059479655"
+  }
+]

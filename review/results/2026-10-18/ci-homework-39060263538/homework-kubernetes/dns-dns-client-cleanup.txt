@@ -1,0 +1,2 @@
+Warning: deleting cluster-scoped resources, not scoped to the provided namespace
+namespace "homework-dns-165172eb-client" deleted

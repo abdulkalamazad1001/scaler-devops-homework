@@ -1,0 +1,348 @@
+{
+  "captured_at": "2026-10-17T18:49:32.305048+00:00",
+  "context": "homework-review",
+  "error": null,
+  "checks": [
+    {
+      "check": "mini-namespace",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:46:54.545994+00:00",
+      "duration_seconds": 0.03,
+      "log": "mini-namespace.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-mini-c7ab0cb9",
+        "create",
+        "namespace",
+        "homework-mini-c7ab0cb9"
+      ]
+    },
+    {
+      "check": "mini-client-create",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:46:54.578537+00:00",
+      "duration_seconds": 0.03,
+      "log": "mini-client-create.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-mini-c7ab0cb9",
+        "run",
+        "lab-client",
+        "--image=busybox:1.36",
+        "--restart=Never",
+        "--",
+        "sleep",
+        "3600"
+      ]
+    },
+    {
+      "check": "mini-lab-client-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:46:54.612475+00:00",
+      "duration_seconds": 50.12,
+      "log": "mini-lab-client-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-mini-c7ab0cb9",
+        "wait",
+        "--for=condition=Ready",
+        "pod/lab-client",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "mini-broken",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:47:44.733030+00:00",
+      "duration_seconds": 0.09,
+      "log": "mini-broken.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-mini-c7ab0cb9",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "mini-deploy-troubleshooting-app-rollout-4",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:47:44.827841+00:00",
+      "duration_seconds": 0.97,
+      "log": "mini-deploy-troubleshooting-app-rollout-4.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-mini-c7ab0cb9",
+        "rollout",
+        "status",
+        "deploy/troubleshooting-app",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "mini-image-failure",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-mini-c7ab0cb9",
+        "get",
+        "pod",
+        "project-broken-pod",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 61.62,
+      "log": "mini-image-failure.txt"
+    },
+    {
+      "check": "mini-empty-endpoints",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-mini-c7ab0cb9",
+        "get",
+        "endpoints",
+        "troubleshooting-service",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.03,
+      "log": "mini-empty-endpoints.txt"
+    },
+    {
+      "check": "mini-get-wide",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:48:47.446454+00:00",
+      "duration_seconds": 0.03,
+      "log": "mini-get-wide.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-mini-c7ab0cb9",
+        "get",
+        "pods",
+        "-o",
+        "wide"
+      ]
+    },
+    {
+      "check": "mini-describe",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:48:47.478825+00:00",
+      "duration_seconds": 0.04,
+      "log": "mini-describe.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-mini-c7ab0cb9",
+        "describe",
+        "pod",
+        "project-broken-pod"
+      ]
+    },
+    {
+      "check": "mini-events",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:48:47.519402+00:00",
+      "duration_seconds": 0.03,
+      "log": "mini-events.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-mini-c7ab0cb9",
+        "events"
+      ]
+    },
+    {
+      "check": "mini-explain",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:48:47.546764+00:00",
+      "duration_seconds": 0.04,
+      "log": "mini-explain.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-mini-c7ab0cb9",
+        "explain",
+        "pod.spec.containers"
+      ]
+    },
+    {
+      "check": "mini-logs",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:48:47.587439+00:00",
+      "duration_seconds": 0.04,
+      "log": "mini-logs.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-mini-c7ab0cb9",
+        "logs",
+        "deploy/troubleshooting-app"
+      ]
+    },
+    {
+      "check": "mini-exec",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:48:47.626477+00:00",
+      "duration_seconds": 0.06,
+      "log": "mini-exec.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-mini-c7ab0cb9",
+        "exec",
+        "deploy/troubleshooting-app",
+        "--",
+        "nginx",
+        "-v"
+      ]
+    },
+    {
+      "check": "mini-project-broken-pod-delete",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:48:47.685610+00:00",
+      "duration_seconds": 1.22,
+      "log": "mini-project-broken-pod-delete.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-mini-c7ab0cb9",
+        "delete",
+        "pod",
+        "project-broken-pod",
+        "--wait=true",
+        "--timeout=90s"
+      ]
+    },
+    {
+      "check": "mini-fixed",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:48:48.910382+00:00",
+      "duration_seconds": 0.13,
+      "log": "mini-fixed.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-mini-c7ab0cb9",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "mini-project-broken-pod-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:48:49.041656+00:00",
+      "duration_seconds": 0.86,
+      "log": "mini-project-broken-pod-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-mini-c7ab0cb9",
+        "wait",
+        "--for=condition=Ready",
+        "pod/project-broken-pod",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "mini-service-recovered",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:48:49.904096+00:00",
+      "duration_seconds": 0.06,
+      "log": "mini-service-recovered.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-mini-c7ab0cb9",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in 1 2 3 4 5; do wget -T 5 -qO- http://troubleshooting-service | grep 'Welcome to nginx' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "mini-ready-endpoints",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:48:49.968037+00:00",
+      "duration_seconds": 0.03,
+      "log": "mini-ready-endpoints.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-mini-c7ab0cb9",
+        "get",
+        "endpoints",
+        "troubleshooting-service",
+        "-o",
+        "wide"
+      ]
+    },
+    {
+      "check": "mini-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:48:50.002578+00:00",
+      "duration_seconds": 42.3,
+      "log": "mini-cleanup.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "homework-review",
+        "-n",
+        "homework-mini-c7ab0cb9",
+        "delete",
+        "namespace",
+        "homework-mini-c7ab0cb9",
+        "--ignore-not-found",
+        "--wait=true",
+        "--timeout=180s"
+      ]
+    }
+  ]
+}

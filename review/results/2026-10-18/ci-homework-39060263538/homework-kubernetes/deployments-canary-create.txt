@@ -1,0 +1,3 @@
+deployment.apps/app-stable created
+deployment.apps/app-canary created
+service/myapp-canary-service created

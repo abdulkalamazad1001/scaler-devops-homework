@@ -1,0 +1,2 @@
+pod/image-demo condition met
+pod/fail-2-imagepull-pod condition met

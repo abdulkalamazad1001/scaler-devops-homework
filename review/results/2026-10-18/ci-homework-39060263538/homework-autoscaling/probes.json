@@ -1,0 +1,339 @@
+{
+  "captured_at": "2026-10-17T19:12:40.322263+00:00",
+  "context": "kind-homework-hpa",
+  "namespace": "homework-probes-3bced3c0",
+  "error": null,
+  "checks": [
+    {
+      "check": "probes-namespace",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:03:58.230102+00:00",
+      "duration_seconds": 0.05,
+      "log": "probes-namespace.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-probes-3bced3c0",
+        "create",
+        "namespace",
+        "homework-probes-3bced3c0"
+      ]
+    },
+    {
+      "check": "probes-mini-project",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:03:58.296489+00:00",
+      "duration_seconds": 0.19,
+      "log": "probes-mini-project.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-probes-3bced3c0",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "probes-deployment-web-app-rollout-2",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:03:58.483270+00:00",
+      "duration_seconds": 16.6,
+      "log": "probes-deployment-web-app-rollout-2.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-probes-3bced3c0",
+        "rollout",
+        "status",
+        "deployment/web-app",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "probes-initial-pods",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:04:15.084973+00:00",
+      "duration_seconds": 0.05,
+      "log": "probes-initial-pods.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-probes-3bced3c0",
+        "get",
+        "pods",
+        "-l",
+        "app=web-app",
+        "-o",
+        "json"
+      ]
+    },
+    {
+      "check": "probes-break-probe",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:04:15.138003+00:00",
+      "duration_seconds": 0.1,
+      "log": "probes-break-probe.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-probes-3bced3c0",
+        "exec",
+        "web-app-69856bc4d-dpgvj",
+        "--",
+        "sh",
+        "-ec",
+        "mv /usr/share/nginx/html/index.html /tmp/index.html"
+      ]
+    },
+    {
+      "check": "probes-readiness-failed",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-probes-3bced3c0",
+        "get",
+        "pod",
+        "web-app-69856bc4d-dpgvj",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 8.25,
+      "log": "probes-readiness-failed.txt"
+    },
+    {
+      "check": "probes-liveness-restarted",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-probes-3bced3c0",
+        "get",
+        "pod",
+        "web-app-69856bc4d-dpgvj",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 6.2,
+      "log": "probes-liveness-restarted.txt"
+    },
+    {
+      "check": "probes-web-app-69856bc4d-dpgvj-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:04:29.685562+00:00",
+      "duration_seconds": 7.43,
+      "log": "probes-web-app-69856bc4d-dpgvj-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-probes-3bced3c0",
+        "wait",
+        "--for=condition=Ready",
+        "pod/web-app-69856bc4d-dpgvj",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "probes-hpa-metrics-ready",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-probes-3bced3c0",
+        "get",
+        "hpa",
+        "web-app-hpa",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.06,
+      "log": "probes-hpa-metrics-ready.txt"
+    },
+    {
+      "check": "probes-load-web-app-69856bc4d-dpgvj",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:04:37.175086+00:00",
+      "duration_seconds": 0.08,
+      "log": "probes-load-web-app-69856bc4d-dpgvj.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-probes-3bced3c0",
+        "exec",
+        "web-app-69856bc4d-dpgvj",
+        "--",
+        "sh",
+        "-ec",
+        "timeout 150 sh -c 'while :; do :; done' >/dev/null 2>&1 </dev/null &"
+      ]
+    },
+    {
+      "check": "probes-load-web-app-69856bc4d-x45mf",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:04:37.259854+00:00",
+      "duration_seconds": 0.1,
+      "log": "probes-load-web-app-69856bc4d-x45mf.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-probes-3bced3c0",
+        "exec",
+        "web-app-69856bc4d-x45mf",
+        "--",
+        "sh",
+        "-ec",
+        "timeout 150 sh -c 'while :; do :; done' >/dev/null 2>&1 </dev/null &"
+      ]
+    },
+    {
+      "check": "probes-hpa-scale-out",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-probes-3bced3c0",
+        "get",
+        "deployment",
+        "web-app",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 45.22,
+      "log": "probes-hpa-scale-out.txt"
+    },
+    {
+      "check": "probes-hpa-final",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:05:22.587455+00:00",
+      "duration_seconds": 0.06,
+      "log": "probes-hpa-final.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-probes-3bced3c0",
+        "get",
+        "hpa",
+        "web-app-hpa",
+        "-o",
+        "json"
+      ]
+    },
+    {
+      "check": "probes-cpu-memory",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:05:22.645350+00:00",
+      "duration_seconds": 0.06,
+      "log": "probes-cpu-memory.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-probes-3bced3c0",
+        "top",
+        "pods"
+      ]
+    },
+    {
+      "check": "probes-hpa-description",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:05:22.700624+00:00",
+      "duration_seconds": 0.06,
+      "log": "probes-hpa-description.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-probes-3bced3c0",
+        "describe",
+        "hpa",
+        "web-app-hpa"
+      ]
+    },
+    {
+      "check": "probes-hpa-scale-down",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-probes-3bced3c0",
+        "get",
+        "deployment",
+        "web-app",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 426.87,
+      "log": "probes-hpa-scale-down.txt"
+    },
+    {
+      "check": "probes-hpa-after-load",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:12:29.627779+00:00",
+      "duration_seconds": 0.05,
+      "log": "probes-hpa-after-load.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-probes-3bced3c0",
+        "get",
+        "hpa",
+        "web-app-hpa",
+        "-o",
+        "json"
+      ]
+    },
+    {
+      "check": "probes-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:12:29.681732+00:00",
+      "duration_seconds": 10.64,
+      "log": "probes-cleanup.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-probes-3bced3c0",
+        "delete",
+        "namespace",
+        "homework-probes-3bced3c0",
+        "--wait=true",
+        "--timeout=180s"
+      ]
+    }
+  ],
+  "scope": "Disposable local lab. Namespaces isolated; NodePort values dynamically assigned. No cloud deployment."
+}

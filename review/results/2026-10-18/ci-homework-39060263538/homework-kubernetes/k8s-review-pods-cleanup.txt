@@ -1,0 +1,17 @@
+pod "app-blue-67b4d7455c-mlfh5" deleted
+pod "app-blue-67b4d7455c-prcv9" deleted
+pod "app-blue-67b4d7455c-qc767" deleted
+pod "app-green-665dcc99bd-fvbl2" deleted
+pod "app-green-665dcc99bd-vvqcq" deleted
+pod "app-green-665dcc99bd-xtkn2" deleted
+pod "config-demo" deleted
+pod "dynamic-demo" deleted
+pod "emptydir-demo" deleted
+pod "fail-2-imagepull-pod" deleted
+pod "image-demo" deleted
+pod "nginx-pod" deleted
+pod "review-notes-deploy-85df775ffc-7g559" deleted
+pod "secret-demo" deleted
+pod "web-clusterip-7477759d58-946dm" deleted
+pod "web-clusterip-7477759d58-qtcsv" deleted
+pod "web-clusterip-7477759d58-sbn5q" deleted

@@ -1,0 +1,50 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "vector",
+    "result": [
+      {
+        "metric": {
+          "__name__": "container_memory_working_set_bytes",
+          "container": "metrics-demo",
+          "endpoint": "https-metrics",
+          "id": "/kubepods/burstable/pod00f139d0-fe6a-4e18-b35d-ddabb0e89135/7fee7e57022f04c851b8769cd96073a568e82ce1d83fc7cb3cc066f222ee72df",
+          "image": "docker.io/library/metrics-demo:1.0",
+          "instance": "192.168.49.2:10250",
+          "job": "kubelet",
+          "metrics_path": "/metrics/cadvisor",
+          "name": "7fee7e57022f04c851b8769cd96073a568e82ce1d83fc7cb3cc066f222ee72df",
+          "namespace": "monitoring-demo",
+          "node": "homework-review",
+          "pod": "metrics-demo-6dd56cd4d5-knv8k",
+          "service": "kube-prometheus-stack-kubelet"
+        },
+        "value": [
+          1792263218.071,
+          "45785088"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "container_memory_working_set_bytes",
+          "container": "metrics-demo",
+          "endpoint": "https-metrics",
+          "id": "/kubepods/burstable/pod750fd172-31c4-4a0a-9608-f417047d9047/1ea8e46b2c17fffed42a30f8ea505e7c545e10bfbadf281d8b3ec6c76b87d725",
+          "image": "docker.io/library/metrics-demo:1.0",
+          "instance": "192.168.49.2:10250",
+          "job": "kubelet",
+          "metrics_path": "/metrics/cadvisor",
+          "name": "1ea8e46b2c17fffed42a30f8ea505e7c545e10bfbadf281d8b3ec6c76b87d725",
+          "namespace": "monitoring-demo",
+          "node": "homework-review",
+          "pod": "metrics-demo-6dd56cd4d5-qmb54",
+          "service": "kube-prometheus-stack-kubelet"
+        },
+        "value": [
+          1792263218.071,
+          "48541696"
+        ]
+      }
+    ]
+  }
+}

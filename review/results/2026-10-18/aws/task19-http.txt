@@ -1,0 +1,16 @@
+GET http://13.206.222.74
+HTTP 200
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>scaler-homework-24bcs10053</title></head>
+<body>
+<h1>scaler-homework-24bcs10053</h1>
+<p>Deployed with Terraform on Amazon Linux 2023 and nginx.</p>
+<ul>
+<li>Instance: i-082156859f1453d40</li>
+<li>Availability Zone: ap-south-1a</li>
+<li>Private IP: 10.20.1.223</li>
+<li>Assets bucket: scaler-homework-24bcs10053-assets-d7851d88</li>
+</ul>
+</body>
+</html>

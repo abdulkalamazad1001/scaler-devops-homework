@@ -1,0 +1,2 @@
+NAMES                         IMAGE                               PORTS                     STATUS
+task5-nginx-review-2f392191   homework-review/task5-nginx:local   127.0.0.1:32772->80/tcp   Up 1 second

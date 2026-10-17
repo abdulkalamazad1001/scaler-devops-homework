@@ -66,3 +66,13 @@ A push to `main` that changes this task starts the complete pipeline. Manual
 workflow runs validate the code and security checks; publishing and deployment
 are restricted to successful runs triggered by a push to `main`. Review the
 individual job results, since a green manual run can contain skipped deployment jobs.
+
+## Verified rerun — 18 October 2026
+
+Completed GitHub CI and CD, including tests, image publication to GHCR and deployment verification in an ephemeral Kubernetes cluster.
+
+[Recorded results](../review/results/2026-10-18/ci-task16-39059479821/) · [Screenshot](../review/results/2026-10-18/screenshots/task16-github-cd.png) · [Complete evidence index and environment notes](../review/results/2026-10-18/README.md).
+
+![CI/CD: live browser capture](../review/results/2026-10-18/screenshots/task16-github-cd.png)
+
+*Live browser capture from the verified rerun; complete results are linked above.*

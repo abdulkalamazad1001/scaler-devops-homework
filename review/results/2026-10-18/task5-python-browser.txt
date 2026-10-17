@@ -1,0 +1,7 @@
+{
+  "url": "http://127.0.0.1:51857/",
+  "status": 200,
+  "text": "Hello World\n\nServed by Python and Flask inside Docker",
+  "javascriptErrors": [],
+  "screenshot": "/Users/abdulkalamazad/Documents/scaler-devops-homework/review/results/2026-10-18/screenshots/task5-python.png"
+}

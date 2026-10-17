@@ -1,0 +1,14 @@
+{
+  "conditions": [
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:52Z",
+      "message": "0/1 nodes are available: 1 node(s) didn't match Pod's node affinity/selector. preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.",
+      "reason": "Unschedulable",
+      "status": "False",
+      "type": "PodScheduled"
+    }
+  ],
+  "phase": "Pending",
+  "qosClass": "BestEffort"
+}

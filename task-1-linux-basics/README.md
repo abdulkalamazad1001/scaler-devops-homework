@@ -108,3 +108,13 @@ x is extract, z is gzip, v is verbose, f is filename.
 Pipes and help: | passes output to the next command, > writes to a file, >> appends, 2>
 redirects errors, for example cat access.log | grep 500 | wc -l counts the 500 errors.
 Then man ls, ls --help, history, and Ctrl+R to search history.
+
+## Verified rerun — 18 October 2026
+
+Created and removed accounts with both adduser and useradd; checked links, permissions and archives. Read real system and kubelet service logs with journalctl.
+
+[Recorded results](../review/results/2026-10-18/shell.json) · [Screenshot](../review/results/2026-10-18/screenshots/task1-linux.png) · [Complete evidence index and environment notes](../review/results/2026-10-18/README.md).
+
+![Linux: saved execution log view](../review/results/2026-10-18/screenshots/task1-linux.png)
+
+*Saved execution log view from the verified rerun; complete results are linked above.*

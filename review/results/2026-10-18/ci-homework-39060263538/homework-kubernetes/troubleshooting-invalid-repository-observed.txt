@@ -1,0 +1,78 @@
+{
+  "conditions": [
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:47Z",
+      "status": "True",
+      "type": "PodReadyToStartContainers"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:46Z",
+      "status": "True",
+      "type": "Initialized"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:46Z",
+      "message": "containers with unready status: [web-app]",
+      "reason": "ContainersNotReady",
+      "status": "False",
+      "type": "Ready"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:46Z",
+      "message": "containers with unready status: [web-app]",
+      "reason": "ContainersNotReady",
+      "status": "False",
+      "type": "ContainersReady"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:46Z",
+      "status": "True",
+      "type": "PodScheduled"
+    }
+  ],
+  "containerStatuses": [
+    {
+      "image": "yatri-api-service:v999-invalid-tag-does-not-exist",
+      "imageID": "",
+      "lastState": {},
+      "name": "web-app",
+      "ready": false,
+      "restartCount": 0,
+      "started": false,
+      "state": {
+        "waiting": {
+          "message": "failed to pull and unpack image \"docker.io/library/yatri-api-service:v999-invalid-tag-does-not-exist\": failed to resolve reference \"docker.io/library/yatri-api-service:v999-invalid-tag-does-not-exist\": pull access denied, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed",
+          "reason": "ErrImagePull"
+        }
+      },
+      "volumeMounts": [
+        {
+          "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+          "name": "kube-api-access-k94nw",
+          "readOnly": true,
+          "recursiveReadOnly": "Disabled"
+        }
+      ]
+    }
+  ],
+  "hostIP": "172.18.0.2",
+  "hostIPs": [
+    {
+      "ip": "172.18.0.2"
+    }
+  ],
+  "phase": "Pending",
+  "podIP": "10.244.0.49",
+  "podIPs": [
+    {
+      "ip": "10.244.0.49"
+    }
+  ],
+  "qosClass": "BestEffort",
+  "startTime": "2026-10-17T18:59:46Z"
+}

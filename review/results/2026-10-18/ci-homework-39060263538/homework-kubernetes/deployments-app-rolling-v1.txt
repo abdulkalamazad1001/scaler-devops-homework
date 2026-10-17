@@ -1,0 +1,2 @@
+deployment.apps/app-rolling created
+service/app-rolling-service created

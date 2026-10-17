@@ -1,0 +1,2 @@
+Warning: deleting cluster-scoped resources, not scoped to the provided namespace
+namespace "homework-basics-489b6324" deleted

@@ -1,0 +1,254 @@
+{
+  "captured_at": "2026-10-17T19:03:58.136020+00:00",
+  "context": "kind-homework-hpa",
+  "error": null,
+  "checks": [
+    {
+      "check": "hpa-walkthrough-namespace",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:57:20.453493+00:00",
+      "duration_seconds": 0.15,
+      "log": "hpa-walkthrough-namespace.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-hpa-walkthrough-5c3e980a",
+        "create",
+        "namespace",
+        "homework-hpa-walkthrough-5c3e980a"
+      ]
+    },
+    {
+      "check": "hpa-walkthrough-deploy",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:57:20.609700+00:00",
+      "duration_seconds": 0.22,
+      "log": "hpa-walkthrough-deploy.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-hpa-walkthrough-5c3e980a",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "hpa-walkthrough-deploy-php-apache-rollout-2",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:57:20.828120+00:00",
+      "duration_seconds": 7.52,
+      "log": "hpa-walkthrough-deploy-php-apache-rollout-2.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-hpa-walkthrough-5c3e980a",
+        "rollout",
+        "status",
+        "deploy/php-apache",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "hpa-walkthrough-metrics-ready",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-hpa-walkthrough-5c3e980a",
+        "get",
+        "hpa",
+        "php-apache",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 8.26,
+      "log": "hpa-walkthrough-metrics-ready.txt"
+    },
+    {
+      "check": "hpa-walkthrough-generate-load",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:57:36.609777+00:00",
+      "duration_seconds": 0.1,
+      "log": "hpa-walkthrough-generate-load.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-hpa-walkthrough-5c3e980a",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "hpa-walkthrough-scale-out",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-hpa-walkthrough-5c3e980a",
+        "get",
+        "deployment",
+        "php-apache",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 30.92,
+      "log": "hpa-walkthrough-scale-out.txt"
+    },
+    {
+      "check": "hpa-walkthrough-hpa-loaded",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:07.626792+00:00",
+      "duration_seconds": 0.07,
+      "log": "hpa-walkthrough-hpa-loaded.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-hpa-walkthrough-5c3e980a",
+        "get",
+        "hpa",
+        "-o",
+        "wide"
+      ]
+    },
+    {
+      "check": "hpa-walkthrough-pods-loaded",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:07.693098+00:00",
+      "duration_seconds": 0.06,
+      "log": "hpa-walkthrough-pods-loaded.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-hpa-walkthrough-5c3e980a",
+        "get",
+        "pods",
+        "-o",
+        "wide"
+      ]
+    },
+    {
+      "check": "hpa-walkthrough-top",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:07.754045+00:00",
+      "duration_seconds": 0.06,
+      "log": "hpa-walkthrough-top.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-hpa-walkthrough-5c3e980a",
+        "top",
+        "pods"
+      ]
+    },
+    {
+      "check": "hpa-walkthrough-describe",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:07.810831+00:00",
+      "duration_seconds": 0.06,
+      "log": "hpa-walkthrough-describe.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-hpa-walkthrough-5c3e980a",
+        "describe",
+        "hpa",
+        "php-apache"
+      ]
+    },
+    {
+      "check": "hpa-walkthrough-stop-load",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:07.871789+00:00",
+      "duration_seconds": 30.62,
+      "log": "hpa-walkthrough-stop-load.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-hpa-walkthrough-5c3e980a",
+        "delete",
+        "pod",
+        "load-generator"
+      ]
+    },
+    {
+      "check": "hpa-walkthrough-scale-down",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-hpa-walkthrough-5c3e980a",
+        "get",
+        "deployment",
+        "php-apache",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 313.8,
+      "log": "hpa-walkthrough-scale-down.txt"
+    },
+    {
+      "check": "hpa-walkthrough-hpa-idle",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:03:52.285479+00:00",
+      "duration_seconds": 0.05,
+      "log": "hpa-walkthrough-hpa-idle.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-hpa-walkthrough-5c3e980a",
+        "get",
+        "hpa",
+        "-o",
+        "wide"
+      ]
+    },
+    {
+      "check": "hpa-walkthrough-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:03:52.336819+00:00",
+      "duration_seconds": 5.8,
+      "log": "hpa-walkthrough-cleanup.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-hpa",
+        "-n",
+        "homework-hpa-walkthrough-5c3e980a",
+        "delete",
+        "namespace",
+        "homework-hpa-walkthrough-5c3e980a",
+        "--ignore-not-found",
+        "--wait=true",
+        "--timeout=180s"
+      ]
+    }
+  ]
+}

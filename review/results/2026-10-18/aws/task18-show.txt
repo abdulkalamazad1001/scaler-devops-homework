@@ -1,0 +1,105 @@
+# aws_s3_bucket.demo:
+resource "aws_s3_bucket" "demo" {
+    acceleration_status         = null
+    arn                         = "arn:aws:s3:::scaler-homework-24bcs10053-06edb033"
+    bucket                      = "scaler-homework-24bcs10053-06edb033"
+    bucket_domain_name          = "scaler-homework-24bcs10053-06edb033.s3.amazonaws.com"
+    bucket_prefix               = null
+    bucket_regional_domain_name = "scaler-homework-24bcs10053-06edb033.s3.ap-south-1.amazonaws.com"
+    force_destroy               = true
+    hosted_zone_id              = "Z11RGJOFQNVJUP"
+    id                          = "scaler-homework-24bcs10053-06edb033"
+    object_lock_enabled         = false
+    policy                      = null
+    region                      = "ap-south-1"
+    request_payer               = "BucketOwner"
+    tags                        = {
+        "Name" = "scaler-homework-24bcs10053"
+    }
+    tags_all                    = {
+        "Environment" = "dev"
+        "ManagedBy"   = "Terraform"
+        "Name"        = "scaler-homework-24bcs10053"
+        "Project"     = "terraform-s3-demo"
+    }
+
+    grant {
+        id          = "d506bebb272fabe517651b0a403f918d59039b6856c5fd2e41a1df94377d4daa"
+        permissions = [
+            "FULL_CONTROL",
+        ]
+        type        = "CanonicalUser"
+        uri         = null
+    }
+
+    server_side_encryption_configuration {
+        rule {
+            bucket_key_enabled = false
+
+            apply_server_side_encryption_by_default {
+                kms_master_key_id = null
+                sse_algorithm     = "AES256"
+            }
+        }
+    }
+
+    versioning {
+        enabled    = false
+        mfa_delete = false
+    }
+}
+
+# aws_s3_bucket_public_access_block.demo:
+resource "aws_s3_bucket_public_access_block" "demo" {
+    block_public_acls       = true
+    block_public_policy     = true
+    bucket                  = "scaler-homework-24bcs10053-06edb033"
+    id                      = "scaler-homework-24bcs10053-06edb033"
+    ignore_public_acls      = true
+    restrict_public_buckets = true
+}
+
+# aws_s3_bucket_server_side_encryption_configuration.demo:
+resource "aws_s3_bucket_server_side_encryption_configuration" "demo" {
+    bucket                = "scaler-homework-24bcs10053-06edb033"
+    expected_bucket_owner = null
+    id                    = "scaler-homework-24bcs10053-06edb033"
+
+    rule {
+        apply_server_side_encryption_by_default {
+            kms_master_key_id = null
+            sse_algorithm     = "AES256"
+        }
+    }
+}
+
+# aws_s3_bucket_versioning.demo:
+resource "aws_s3_bucket_versioning" "demo" {
+    bucket                = "scaler-homework-24bcs10053-06edb033"
+    expected_bucket_owner = null
+    id                    = "scaler-homework-24bcs10053-06edb033"
+
+    versioning_configuration {
+        mfa_delete = null
+        status     = "Enabled"
+    }
+}
+
+# random_id.suffix:
+resource "random_id" "suffix" {
+    b64_std     = "Bu2wMw=="
+    b64_url     = "Bu2wMw"
+    byte_length = 4
+    dec         = "116240435"
+    hex         = "06edb033"
+    id          = "Bu2wMw"
+}
+
+
+Outputs:
+
+bucket_arn = "arn:aws:s3:::scaler-homework-24bcs10053-06edb033"
+bucket_name = "scaler-homework-24bcs10053-06edb033"
+bucket_region = "ap-south-1"
+bucket_regional_domain_name = "scaler-homework-24bcs10053-06edb033.s3.ap-south-1.amazonaws.com"
+versioning_status = "Enabled"

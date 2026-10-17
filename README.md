@@ -16,12 +16,14 @@ Terraform configuration for AWS VPC/EKS.
 
 | Deliverable | Location |
 |---|---|
-| Application, architecture and setup | [CampusDesk README](capstone-campusdesk/README.md) |
-| Submission status by rubric module | [Submission checklist](capstone-campusdesk/SUBMISSION.md) |
-| Detailed requirements and evidence | [Grading audit](capstone-campusdesk/GRADING-AUDIT.md) |
-| Screenshots and test reports | [Evidence inventory](capstone-campusdesk/evidence/README.md) |
+| Application, architecture and setup | [Current CampusDesk README](https://github.com/abdulkalamazad1001/campusdesk-devops-capstone) |
+| Submission status by rubric module | [Current submission checklist](https://github.com/abdulkalamazad1001/campusdesk-devops-capstone/blob/main/SUBMISSION.md) |
+| Detailed requirements and evidence | [Final audit](https://github.com/abdulkalamazad1001/campusdesk-devops-capstone/blob/main/FINAL-AUDIT.md) |
+| Screenshots and test reports | [Verified evidence](https://github.com/abdulkalamazad1001/campusdesk-devops-capstone/tree/main/evidence/2026-10-17) |
 | AWS provisioning and cleanup instructions | [Terraform runbook](capstone-campusdesk/terraform/README.md) |
-| Presentation (18 slides) | [PowerPoint](capstone-campusdesk/demo/presentation.pptx) · [PDF](capstone-campusdesk/demo/slides.pdf) · [all demo files](demo/README.md) |
+| Presentation and videos | [12-slide PDF and narrated demonstrations](https://github.com/abdulkalamazad1001/campusdesk-devops-capstone/tree/main/demo) |
+
+The `capstone-campusdesk/` directory is an earlier local snapshot retained with the submitted work. The links above lead to the completed capstone and its current evidence.
 
 ### Run Locally
 
@@ -66,23 +68,38 @@ networking and volumes topic is covered by task 7.
 | 20 | Monitoring and GitOps | [Task 20](task-20-monitoring-gitops/README.md) |
 | 21 | TaskBoard reference project | [Task 21](task-21-final-devops-project/README.md) |
 
-## Verification and Remaining Work
+## Verification and Evidence
 
 The [project-by-project review](review/README.md) links the recorded checks,
-successful CI runs, fixes and remaining lab scenarios. Verification scripts and
+successful CI runs, fixes and the scope of each lab verification. Verification scripts and
 run-specific reports are kept together under `review/`.
 
 - Recorded checks include 106 Python tests across tasks 16, 17, 20 and 21,
   Docker builds, infrastructure validation and selected live Kubernetes/Helm exercises.
 - CampusDesk's tests, security scans, browser checks and local GitOps deployment
   have passed; detailed evidence is linked above.
-- CampusDesk's own AWS deployment, the complete narrated walkthrough and final
-  course submission remain pending. Shared TaskBoard AWS screenshots are
-  [separately credited](capstone-campusdesk/evidence/shared-aws/README.md), not
-  evidence of a CampusDesk cloud deployment.
+- CampusDesk's completed AWS deployment/cleanup, narrated walkthrough and submission
+  status are recorded in its [current final audit](https://github.com/abdulkalamazad1001/campusdesk-devops-capstone/blob/main/FINAL-AUDIT.md).
+  The older snapshot and separately credited reference images remain historical material.
 - The `submission.md` transcripts and terminal-style images in tasks 9-21 are
   labelled expected-output examples. Actual execution evidence is in the review
   reports; examples are not substitutes for completed exercises.
+
+### Latest lab rerun — 18 October 2026
+
+The [task-by-task evidence index](review/results/2026-10-18/README.md) links real
+execution logs and screenshots for Linux through GitOps, including AWS provisioning
+and cleanup. Existing assignment instructions and earlier reports are retained.
+
+- Six Docker application pages and the multi-stage app were checked in a browser.
+- Minikube, Kubernetes routing, persistence, failure recovery and Helm were exercised.
+- The [final homework workflow](https://github.com/abdulkalamazad1001/scaler-devops-homework/actions/runs/39060263538) passed all seven jobs, including scale-out and scale-down for both HPA exercises.
+- Task 16 and 17 completed their image publication and deployment pipelines.
+- Task 18 and 19 AWS resources were verified and destroyed after the demonstration.
+- Monitoring recorded a firing/resolved alert; GitOps deployed v2 and corrected drift.
+
+Screenshots distinguish actual application interfaces from clearly labelled views
+of saved command output. Raw results accompany both.
 
 ## Reference Material
 

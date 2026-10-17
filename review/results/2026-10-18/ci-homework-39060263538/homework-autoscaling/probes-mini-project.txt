@@ -1,0 +1,4 @@
+persistentvolumeclaim/web-data created
+deployment.apps/web-app created
+service/web-service created
+horizontalpodautoscaler.autoscaling/web-app-hpa created

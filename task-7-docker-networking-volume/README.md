@@ -369,3 +369,13 @@ should not touch the network.
 
     docker rm -f frontend backend database bindmount-nginx
     docker network rm frontend-net backend-net database-net
+
+## Verified rerun — 18 October 2026
+
+Verified three networks, a backend connected to two networks, real MySQL queries, frontend/database isolation, Apache on host-network port 80, named-volume persistence and live bind-mount edits.
+
+[Recorded results](../review/results/2026-10-18/network-retry/networks.json) · [Screenshot](../review/results/2026-10-18/screenshots/task7-networks.png) · [Complete evidence index and environment notes](../review/results/2026-10-18/README.md).
+
+![Docker networking and volumes: saved execution log view](../review/results/2026-10-18/screenshots/task7-networks.png)
+
+*Saved execution log view from the verified rerun; complete results are linked above.*

@@ -1,0 +1,14 @@
+{
+  "conditions": [
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:52Z",
+      "message": "0/1 nodes are available: 1 Insufficient cpu, 1 Insufficient memory. preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.",
+      "reason": "Unschedulable",
+      "status": "False",
+      "type": "PodScheduled"
+    }
+  ],
+  "phase": "Pending",
+  "qosClass": "Burstable"
+}

@@ -1,0 +1,12 @@
+NAME                                  READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS            IMAGES                                         SELECTOR
+deployment.apps/kubernetes-bootcamp   1/1     1            1           40s   kubernetes-bootcamp   gcr.io/google-samples/kubernetes-bootcamp:v1   app=kubernetes-bootcamp
+
+NAME                                             DESIRED   CURRENT   READY   AGE   CONTAINERS            IMAGES                                         SELECTOR
+replicaset.apps/kubernetes-bootcamp-6b8bd7c8db   1         1         1       40s   kubernetes-bootcamp   gcr.io/google-samples/kubernetes-bootcamp:v1   app=kubernetes-bootcamp,pod-template-hash=6b8bd7c8db
+
+NAME                                       READY   STATUS    RESTARTS   AGE   IP            NODE              NOMINATED NODE   READINESS GATES
+pod/kubernetes-bootcamp-6b8bd7c8db-d7cwc   1/1     Running   0          40s   10.244.0.83   homework-review   <none>           <none>
+pod/lab-client                             1/1     Running   0          41s   10.244.0.82   homework-review   <none>           <none>
+
+NAME                          TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE   SELECTOR
+service/kubernetes-bootcamp   NodePort   10.105.217.122   <none>        8080:31317/TCP   40s   app=kubernetes-bootcamp

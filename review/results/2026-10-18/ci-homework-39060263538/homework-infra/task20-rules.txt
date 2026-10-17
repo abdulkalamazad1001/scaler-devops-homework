@@ -1,0 +1,52 @@
+Unable to find image 'prom/prometheus:v3.2.1' locally
+v3.2.1: Pulling from prom/prometheus
+9fa9226be034: Pulling fs layer
+1617e25568b2: Pulling fs layer
+3488d0e317d1: Pulling fs layer
+e0d996230080: Pulling fs layer
+5805cfa1a34e: Pulling fs layer
+c8c5fe18afab: Pulling fs layer
+34c169812ca7: Pulling fs layer
+f5d2fa6280ad: Pulling fs layer
+0ff6b3eeee94: Pulling fs layer
+4a3afe08a0ac: Pulling fs layer
+c8c5fe18afab: Waiting
+34c169812ca7: Waiting
+f5d2fa6280ad: Waiting
+0ff6b3eeee94: Waiting
+4a3afe08a0ac: Waiting
+e0d996230080: Waiting
+5805cfa1a34e: Waiting
+9fa9226be034: Download complete
+1617e25568b2: Verifying Checksum
+1617e25568b2: Download complete
+9fa9226be034: Pull complete
+5805cfa1a34e: Download complete
+3488d0e317d1: Verifying Checksum
+3488d0e317d1: Download complete
+c8c5fe18afab: Verifying Checksum
+c8c5fe18afab: Download complete
+e0d996230080: Verifying Checksum
+e0d996230080: Download complete
+34c169812ca7: Verifying Checksum
+34c169812ca7: Download complete
+4a3afe08a0ac: Verifying Checksum
+4a3afe08a0ac: Download complete
+f5d2fa6280ad: Verifying Checksum
+f5d2fa6280ad: Download complete
+0ff6b3eeee94: Verifying Checksum
+0ff6b3eeee94: Download complete
+1617e25568b2: Pull complete
+3488d0e317d1: Pull complete
+e0d996230080: Pull complete
+5805cfa1a34e: Pull complete
+c8c5fe18afab: Pull complete
+34c169812ca7: Pull complete
+f5d2fa6280ad: Pull complete
+0ff6b3eeee94: Pull complete
+4a3afe08a0ac: Pull complete
+Digest: sha256:6927e0919a144aa7616fd0137d4816816d42f6b816de3af269ab065250859a62
+Status: Downloaded newer image for prom/prometheus:v3.2.1
+Checking metrics-demo-rules.yaml
+  SUCCESS: 7 rules found
+

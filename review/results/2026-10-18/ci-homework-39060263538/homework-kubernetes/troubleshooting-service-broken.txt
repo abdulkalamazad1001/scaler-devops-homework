@@ -1,0 +1,2 @@
+deployment.apps/web created
+service/web-service created

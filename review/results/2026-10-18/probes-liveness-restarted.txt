@@ -1,0 +1,119 @@
+{
+  "conditions": [
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:51:13Z",
+      "observedGeneration": 1,
+      "status": "True",
+      "type": "PodReadyToStartContainers"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:51:12Z",
+      "observedGeneration": 1,
+      "status": "True",
+      "type": "Initialized"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:51:30Z",
+      "message": "containers with unready status: [nginx]",
+      "observedGeneration": 1,
+      "reason": "ContainersNotReady",
+      "status": "False",
+      "type": "Ready"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:51:30Z",
+      "message": "containers with unready status: [nginx]",
+      "observedGeneration": 1,
+      "reason": "ContainersNotReady",
+      "status": "False",
+      "type": "ContainersReady"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:51:12Z",
+      "observedGeneration": 1,
+      "status": "True",
+      "type": "PodScheduled"
+    }
+  ],
+  "containerStatuses": [
+    {
+      "allocatedResources": {
+        "cpu": "100m",
+        "memory": "64Mi"
+      },
+      "containerID": "containerd://186438448abe904678fe20cdb8320f88c47092c9846249be5bca4f70956e92ee",
+      "image": "docker.io/library/nginx:1.27",
+      "imageID": "docker.io/library/nginx@sha256:6784fb0834aa7dbbe12e3d7471e69c290df3e6ba810dc38b34ae33d3c1c05f7d",
+      "lastState": {
+        "terminated": {
+          "containerID": "containerd://fdcd63647e81241cd340fc86ded23f72eb049369cdcbc9ac1bcc6dd01b330570",
+          "exitCode": 0,
+          "finishedAt": "2026-10-17T18:51:32Z",
+          "reason": "Completed",
+          "startedAt": "2026-10-17T18:51:12Z"
+        }
+      },
+      "name": "nginx",
+      "ready": false,
+      "resources": {
+        "limits": {
+          "cpu": "200m",
+          "memory": "128Mi"
+        },
+        "requests": {
+          "cpu": "100m",
+          "memory": "64Mi"
+        }
+      },
+      "restartCount": 1,
+      "started": false,
+      "state": {
+        "running": {
+          "startedAt": "2026-10-17T18:51:32Z"
+        }
+      },
+      "user": {
+        "linux": {
+          "gid": 0,
+          "supplementalGroups": [
+            0
+          ],
+          "uid": 0
+        }
+      },
+      "volumeMounts": [
+        {
+          "mountPath": "/data",
+          "name": "persistent-storage"
+        },
+        {
+          "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+          "name": "kube-api-access-qp4sz",
+          "readOnly": true,
+          "recursiveReadOnly": "Disabled"
+        }
+      ]
+    }
+  ],
+  "hostIP": "192.168.49.2",
+  "hostIPs": [
+    {
+      "ip": "192.168.49.2"
+    }
+  ],
+  "observedGeneration": 1,
+  "phase": "Running",
+  "podIP": "10.244.0.50",
+  "podIPs": [
+    {
+      "ip": "10.244.0.50"
+    }
+  ],
+  "qosClass": "Burstable",
+  "startTime": "2026-10-17T18:51:12Z"
+}

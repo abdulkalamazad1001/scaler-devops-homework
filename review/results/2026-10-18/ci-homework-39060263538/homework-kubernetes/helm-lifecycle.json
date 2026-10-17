@@ -1,0 +1,371 @@
+{
+  "captured_at": "2026-10-17T18:59:34.411380+00:00",
+  "context": "kind-homework-review",
+  "checks": [
+    {
+      "check": "task15-create-chart",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:30.515776+00:00",
+      "duration_seconds": 0.02,
+      "log": "task15-create-chart.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "create",
+        "/tmp/homework-helm-create-vb4nwp99/practice"
+      ]
+    },
+    {
+      "check": "task15-repo-add",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:30.537844+00:00",
+      "duration_seconds": 0.44,
+      "log": "task15-repo-add.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "repo",
+        "add",
+        "prometheus-community",
+        "https://prometheus-community.github.io/helm-charts"
+      ]
+    },
+    {
+      "check": "task15-repo-list",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:30.982040+00:00",
+      "duration_seconds": 0.02,
+      "log": "task15-repo-list.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "repo",
+        "list"
+      ]
+    },
+    {
+      "check": "task15-search-repo",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:31.001912+00:00",
+      "duration_seconds": 0.36,
+      "log": "task15-search-repo.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "search",
+        "repo",
+        "prometheus-community/prometheus",
+        "--max-col-width",
+        "80"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-namespace",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:31.364781+00:00",
+      "duration_seconds": 0.04,
+      "log": "task15-lifecycle-namespace.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-helm-67a5ec7c",
+        "create",
+        "namespace",
+        "homework-helm-67a5ec7c"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-install",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:31.404057+00:00",
+      "duration_seconds": 8.14,
+      "log": "task15-lifecycle-install.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "--kube-context",
+        "kind-homework-review",
+        "-n",
+        "homework-helm-67a5ec7c",
+        "install",
+        "notes-review",
+        "task-15-helm/notes-chart",
+        "--set",
+        "service.type=ClusterIP",
+        "--wait",
+        "--timeout",
+        "3m"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-test",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:39.541695+00:00",
+      "duration_seconds": 2.44,
+      "log": "task15-lifecycle-test.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "--kube-context",
+        "kind-homework-review",
+        "-n",
+        "homework-helm-67a5ec7c",
+        "test",
+        "notes-review",
+        "--logs",
+        "--timeout",
+        "2m"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-list",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:41.984552+00:00",
+      "duration_seconds": 0.04,
+      "log": "task15-lifecycle-list.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "--kube-context",
+        "kind-homework-review",
+        "-n",
+        "homework-helm-67a5ec7c",
+        "list"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-status",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:42.021036+00:00",
+      "duration_seconds": 0.03,
+      "log": "task15-lifecycle-status.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "--kube-context",
+        "kind-homework-review",
+        "-n",
+        "homework-helm-67a5ec7c",
+        "status",
+        "notes-review"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-get",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:42.051559+00:00",
+      "duration_seconds": 0.03,
+      "log": "task15-lifecycle-get.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "--kube-context",
+        "kind-homework-review",
+        "-n",
+        "homework-helm-67a5ec7c",
+        "get",
+        "all",
+        "notes-review"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-upgrade",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:42.079520+00:00",
+      "duration_seconds": 14.2,
+      "log": "task15-lifecycle-upgrade.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "--kube-context",
+        "kind-homework-review",
+        "-n",
+        "homework-helm-67a5ec7c",
+        "upgrade",
+        "notes-review",
+        "task-15-helm/notes-chart",
+        "--set",
+        "service.type=ClusterIP",
+        "--set",
+        "replicaCount=2",
+        "--set",
+        "app.message=Updated review release",
+        "--wait",
+        "--timeout",
+        "3m"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-upgraded-content",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:56.282531+00:00",
+      "duration_seconds": 0.07,
+      "log": "task15-lifecycle-upgraded-content.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-helm-67a5ec7c",
+        "exec",
+        "deploy/notes-review-deploy",
+        "--",
+        "sh",
+        "-ec",
+        "test \"$(cat /usr/share/nginx/html/index.html | grep -c \"Updated review release\")\" = 1"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-upgrade-again",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:58:56.349777+00:00",
+      "duration_seconds": 22.18,
+      "log": "task15-lifecycle-upgrade-again.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "--kube-context",
+        "kind-homework-review",
+        "-n",
+        "homework-helm-67a5ec7c",
+        "upgrade",
+        "notes-review",
+        "task-15-helm/notes-chart",
+        "--set",
+        "service.type=ClusterIP",
+        "--set",
+        "replicaCount=3",
+        "--set",
+        "app.message=Third review release",
+        "--wait",
+        "--timeout",
+        "3m"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-third-content",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:18.533490+00:00",
+      "duration_seconds": 0.07,
+      "log": "task15-lifecycle-third-content.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-helm-67a5ec7c",
+        "exec",
+        "deploy/notes-review-deploy",
+        "--",
+        "grep",
+        "Third review release",
+        "/usr/share/nginx/html/index.html"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-rollback",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:18.602547+00:00",
+      "duration_seconds": 8.07,
+      "log": "task15-lifecycle-rollback.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "--kube-context",
+        "kind-homework-review",
+        "-n",
+        "homework-helm-67a5ec7c",
+        "rollback",
+        "notes-review",
+        "1",
+        "--wait",
+        "--timeout",
+        "3m"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-rollback-test",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:26.673539+00:00",
+      "duration_seconds": 2.38,
+      "log": "task15-lifecycle-rollback-test.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "--kube-context",
+        "kind-homework-review",
+        "-n",
+        "homework-helm-67a5ec7c",
+        "test",
+        "notes-review",
+        "--logs",
+        "--timeout",
+        "2m"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-restored-content",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:29.053599+00:00",
+      "duration_seconds": 0.06,
+      "log": "task15-lifecycle-restored-content.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-helm-67a5ec7c",
+        "exec",
+        "deploy/notes-review-deploy",
+        "--",
+        "grep",
+        "Welcome to the Notes app",
+        "/usr/share/nginx/html/index.html"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-history",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:29.115177+00:00",
+      "duration_seconds": 0.03,
+      "log": "task15-lifecycle-history.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "--kube-context",
+        "kind-homework-review",
+        "-n",
+        "homework-helm-67a5ec7c",
+        "history",
+        "notes-review"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-uninstall",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:29.143476+00:00",
+      "duration_seconds": 0.07,
+      "log": "task15-lifecycle-uninstall.txt",
+      "command": [
+        "/opt/hostedtoolcache/helm/3.17.4/x64/linux-amd64/helm",
+        "--kube-context",
+        "kind-homework-review",
+        "-n",
+        "homework-helm-67a5ec7c",
+        "uninstall",
+        "notes-review",
+        "--wait",
+        "--timeout",
+        "2m"
+      ]
+    },
+    {
+      "check": "task15-lifecycle-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:29.211161+00:00",
+      "duration_seconds": 5.2,
+      "log": "task15-lifecycle-cleanup.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-helm-67a5ec7c",
+        "delete",
+        "namespace",
+        "homework-helm-67a5ec7c",
+        "--wait=true",
+        "--timeout=120s"
+      ]
+    }
+  ],
+  "scope": "Local Helm lifecycle; no AWS resources."
+}

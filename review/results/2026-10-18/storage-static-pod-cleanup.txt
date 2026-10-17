@@ -1,0 +1,1 @@
+pod "pvc-demo" deleted from homework-storage-b6673792 namespace

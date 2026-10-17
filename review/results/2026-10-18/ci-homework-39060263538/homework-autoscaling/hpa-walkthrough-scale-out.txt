@@ -1,0 +1,26 @@
+{
+  "availableReplicas": 4,
+  "conditions": [
+    {
+      "lastTransitionTime": "2026-10-17T18:57:20Z",
+      "lastUpdateTime": "2026-10-17T18:57:28Z",
+      "message": "ReplicaSet \"php-apache-9b7d89b84\" has successfully progressed.",
+      "reason": "NewReplicaSetAvailable",
+      "status": "True",
+      "type": "Progressing"
+    },
+    {
+      "lastTransitionTime": "2026-10-17T18:58:07Z",
+      "lastUpdateTime": "2026-10-17T18:58:07Z",
+      "message": "Deployment has minimum availability.",
+      "reason": "MinimumReplicasAvailable",
+      "status": "True",
+      "type": "Available"
+    }
+  ],
+  "observedGeneration": 2,
+  "readyReplicas": 4,
+  "replicas": 5,
+  "unavailableReplicas": 1,
+  "updatedReplicas": 5
+}

@@ -1,0 +1,82 @@
+{
+  "conditions": [
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:04:06Z",
+      "status": "True",
+      "type": "PodReadyToStartContainers"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:04:02Z",
+      "status": "True",
+      "type": "Initialized"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:04:23Z",
+      "message": "containers with unready status: [nginx]",
+      "reason": "ContainersNotReady",
+      "status": "False",
+      "type": "Ready"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:04:23Z",
+      "message": "containers with unready status: [nginx]",
+      "reason": "ContainersNotReady",
+      "status": "False",
+      "type": "ContainersReady"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T19:04:02Z",
+      "status": "True",
+      "type": "PodScheduled"
+    }
+  ],
+  "containerStatuses": [
+    {
+      "containerID": "containerd://635dc04b90f062a095b91c8ea9c88a04a3f3b85aafebb75e3b594c243037311e",
+      "image": "docker.io/library/nginx:1.27",
+      "imageID": "docker.io/library/nginx@sha256:6784fb0834aa7dbbe12e3d7471e69c290df3e6ba810dc38b34ae33d3c1c05f7d",
+      "lastState": {},
+      "name": "nginx",
+      "ready": false,
+      "restartCount": 0,
+      "started": true,
+      "state": {
+        "running": {
+          "startedAt": "2026-10-17T19:04:06Z"
+        }
+      },
+      "volumeMounts": [
+        {
+          "mountPath": "/data",
+          "name": "persistent-storage"
+        },
+        {
+          "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+          "name": "kube-api-access-f2xf2",
+          "readOnly": true,
+          "recursiveReadOnly": "Disabled"
+        }
+      ]
+    }
+  ],
+  "hostIP": "172.18.0.2",
+  "hostIPs": [
+    {
+      "ip": "172.18.0.2"
+    }
+  ],
+  "phase": "Running",
+  "podIP": "10.244.0.14",
+  "podIPs": [
+    {
+      "ip": "10.244.0.14"
+    }
+  ],
+  "qosClass": "Burstable",
+  "startTime": "2026-10-17T19:04:02Z"
+}

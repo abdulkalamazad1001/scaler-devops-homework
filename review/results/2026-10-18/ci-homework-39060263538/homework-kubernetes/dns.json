@@ -1,0 +1,245 @@
+{
+  "captured_at": "2026-10-17T19:05:11.029688+00:00",
+  "context": "kind-homework-review",
+  "namespace": "homework-dns-165172eb",
+  "error": null,
+  "checks": [
+    {
+      "check": "dns-namespace",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:03:43.949290+00:00",
+      "duration_seconds": 0.04,
+      "log": "dns-namespace.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-dns-165172eb",
+        "create",
+        "namespace",
+        "homework-dns-165172eb"
+      ]
+    },
+    {
+      "check": "dns-dns-server",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:03:43.986795+00:00",
+      "duration_seconds": 0.07,
+      "log": "dns-dns-server.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-dns-165172eb",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "dns-deployment-orders-api-rollout-2",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:03:44.060687+00:00",
+      "duration_seconds": 0.71,
+      "log": "dns-deployment-orders-api-rollout-2.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-dns-165172eb",
+        "rollout",
+        "status",
+        "deployment/orders-api",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "dns-dns-client-namespace",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:03:44.772965+00:00",
+      "duration_seconds": 0.03,
+      "log": "dns-dns-client-namespace.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-dns-165172eb",
+        "create",
+        "namespace",
+        "homework-dns-165172eb-client"
+      ]
+    },
+    {
+      "check": "dns-dns-broken-client",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:03:44.809177+00:00",
+      "duration_seconds": 0.06,
+      "log": "dns-dns-broken-client.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-dns-165172eb-client",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "dns-dns-client-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:03:44.867678+00:00",
+      "duration_seconds": 2.9,
+      "log": "dns-dns-client-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-dns-165172eb-client",
+        "wait",
+        "--for=condition=Ready",
+        "pod/dns-client",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "dns-dns-short-name-fails",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:03:47.770690+00:00",
+      "duration_seconds": 3.06,
+      "log": "dns-dns-short-name-fails.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-dns-165172eb-client",
+        "exec",
+        "dns-client",
+        "--",
+        "sh",
+        "-ec",
+        "if curl -fsS --connect-timeout 3 http://orders-api; then exit 1; fi"
+      ]
+    },
+    {
+      "check": "dns-dns-client-delete",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:03:50.833113+00:00",
+      "duration_seconds": 30.99,
+      "log": "dns-dns-client-delete.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-dns-165172eb-client",
+        "delete",
+        "pod",
+        "dns-client",
+        "--wait=true",
+        "--timeout=90s"
+      ]
+    },
+    {
+      "check": "dns-dns-fixed-client",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:04:21.820224+00:00",
+      "duration_seconds": 0.06,
+      "log": "dns-dns-fixed-client.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-dns-165172eb-client",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "dns-dns-client-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:04:21.878983+00:00",
+      "duration_seconds": 0.94,
+      "log": "dns-dns-client-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-dns-165172eb-client",
+        "wait",
+        "--for=condition=Ready",
+        "pod/dns-client",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "dns-dns-qualified-name-works",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:04:22.818305+00:00",
+      "duration_seconds": 0.06,
+      "log": "dns-dns-qualified-name-works.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-dns-165172eb-client",
+        "exec",
+        "dns-client",
+        "--",
+        "sh",
+        "-ec",
+        "curl -fsS --connect-timeout 5 http://orders-api.homework-dns-165172eb.svc.cluster.local | grep 'Welcome to nginx'"
+      ]
+    },
+    {
+      "check": "dns-dns-client-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:04:22.879463+00:00",
+      "duration_seconds": 42.29,
+      "log": "dns-dns-client-cleanup.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-dns-165172eb",
+        "delete",
+        "namespace",
+        "homework-dns-165172eb-client",
+        "--wait=true",
+        "--timeout=180s"
+      ]
+    },
+    {
+      "check": "dns-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:05:05.170786+00:00",
+      "duration_seconds": 5.86,
+      "log": "dns-cleanup.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-dns-165172eb",
+        "delete",
+        "namespace",
+        "homework-dns-165172eb",
+        "--wait=true",
+        "--timeout=180s"
+      ]
+    }
+  ],
+  "scope": "Disposable local lab. Namespaces isolated; NodePort values dynamically assigned. No cloud deployment."
+}

@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "vector",
+    "result": [
+      {
+        "metric": {
+          "__name__": "ALERTS",
+          "alertname": "MetricsDemoHighErrorRate",
+          "alertstate": "firing",
+          "job": "metrics-demo",
+          "namespace": "monitoring-demo",
+          "severity": "warning"
+        },
+        "value": [
+          1792263371.104,
+          "1"
+        ]
+      }
+    ]
+  }
+}

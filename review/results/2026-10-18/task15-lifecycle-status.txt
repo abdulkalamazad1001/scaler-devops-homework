@@ -1,0 +1,21 @@
+NAME: notes-review
+LAST DEPLOYED: Sun Oct 18 00:22:33 2026
+NAMESPACE: homework-helm-99fc4f08
+STATUS: deployed
+REVISION: 1
+TEST SUITE:     notes-review-test-connection
+Last Started:   Sun Oct 18 00:22:42 2026
+Last Completed: Sun Oct 18 00:22:43 2026
+Phase:          Succeeded
+NOTES:
+notes-app (development) is running as release "notes-review" in namespace "homework-helm-99fc4f08".
+
+  Replicas: 1
+  Image:    nginx:1.24
+
+Check the pods:
+  kubectl get pods -n homework-helm-99fc4f08 -l app.kubernetes.io/instance=notes-review
+
+Open the app:
+  kubectl port-forward -n homework-helm-99fc4f08 svc/notes-review-svc 8080:80
+  curl http://127.0.0.1:8080

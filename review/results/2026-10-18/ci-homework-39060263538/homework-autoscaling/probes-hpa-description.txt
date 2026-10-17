@@ -1,0 +1,25 @@
+Name:                                                  web-app-hpa
+Namespace:                                             homework-probes-3bced3c0
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Sat, 17 Oct 2026 19:03:58 +0000
+Reference:                                             Deployment/web-app
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  193% (193m) / 50%
+Min replicas:                                          2
+Max replicas:                                          5
+Deployment pods:                                       2 current / 4 desired
+Conditions:
+  Type            Status  Reason            Message
+  ----            ------  ------            -------
+  AbleToScale     True    SucceededRescale  the HPA controller was able to update the target scale to 4
+  ScalingActive   True    ValidMetricFound  the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  True    ScaleUpLimit      the desired replica count is increasing faster than the maximum scale rate
+Events:
+  Type     Reason                        Age                From                       Message
+  ----     ------                        ----               ----                       -------
+  Warning  FailedGetResourceMetric       54s (x2 over 69s)  horizontal-pod-autoscaler  failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+  Warning  FailedComputeMetricsReplicas  54s (x2 over 69s)  horizontal-pod-autoscaler  invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+  Warning  FailedGetResourceMetric       39s                horizontal-pod-autoscaler  failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)
+  Warning  FailedComputeMetricsReplicas  39s                horizontal-pod-autoscaler  invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)
+  Normal   SuccessfulRescale             9s                 horizontal-pod-autoscaler  New size: 4; reason: cpu resource utilization (percentage of request) above target

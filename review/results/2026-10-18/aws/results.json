@@ -1,0 +1,292 @@
+[
+  {
+    "check": "identity",
+    "command": [
+      "aws",
+      "sts",
+      "get-caller-identity",
+      "--query",
+      "Account",
+      "--output",
+      "text"
+    ],
+    "started_at": "2026-10-17T18:48:58.090194+00:00",
+    "exit_code": 0,
+    "log": "identity.txt"
+  },
+  {
+    "check": "task18-validate",
+    "command": [
+      "terraform",
+      "-chdir=/Users/abdulkalamazad/Documents/scaler-devops-homework/tools/aws-labs/18",
+      "validate",
+      "-no-color"
+    ],
+    "started_at": "2026-10-17T18:49:01.827072+00:00",
+    "exit_code": 0,
+    "log": "task18-validate.txt"
+  },
+  {
+    "check": "task18-apply",
+    "command": [
+      "terraform",
+      "-chdir=/Users/abdulkalamazad/Documents/scaler-devops-homework/tools/aws-labs/18",
+      "apply",
+      "-input=false",
+      "-no-color",
+      "review.tfplan"
+    ],
+    "started_at": "2026-10-17T18:49:03.031539+00:00",
+    "exit_code": 0,
+    "log": "task18-apply.txt"
+  },
+  {
+    "check": "task18-outputs",
+    "command": [
+      "terraform",
+      "-chdir=/Users/abdulkalamazad/Documents/scaler-devops-homework/tools/aws-labs/18",
+      "output",
+      "-json"
+    ],
+    "started_at": "2026-10-17T18:49:12.366579+00:00",
+    "exit_code": 0,
+    "log": "task18-outputs.txt"
+  },
+  {
+    "check": "task18-show",
+    "command": [
+      "terraform",
+      "-chdir=/Users/abdulkalamazad/Documents/scaler-devops-homework/tools/aws-labs/18",
+      "show",
+      "-no-color"
+    ],
+    "started_at": "2026-10-17T18:49:12.644096+00:00",
+    "exit_code": 0,
+    "log": "task18-show.txt"
+  },
+  {
+    "check": "task18-state-list",
+    "command": [
+      "terraform",
+      "-chdir=/Users/abdulkalamazad/Documents/scaler-devops-homework/tools/aws-labs/18",
+      "state",
+      "list"
+    ],
+    "started_at": "2026-10-17T18:49:13.648564+00:00",
+    "exit_code": 0,
+    "log": "task18-state-list.txt"
+  },
+  {
+    "check": "task18-bucket-versioning",
+    "command": [
+      "aws",
+      "s3api",
+      "get-bucket-versioning",
+      "--bucket",
+      "scaler-homework-24bcs10053-06edb033"
+    ],
+    "started_at": "2026-10-17T18:49:13.902678+00:00",
+    "exit_code": 0,
+    "log": "task18-bucket-versioning.txt"
+  },
+  {
+    "check": "task18-bucket-private",
+    "command": [
+      "aws",
+      "s3api",
+      "get-public-access-block",
+      "--bucket",
+      "scaler-homework-24bcs10053-06edb033"
+    ],
+    "started_at": "2026-10-17T18:49:14.543141+00:00",
+    "exit_code": 0,
+    "log": "task18-bucket-private.txt"
+  },
+  {
+    "check": "task18-no-drift",
+    "command": [
+      "terraform",
+      "-chdir=/Users/abdulkalamazad/Documents/scaler-devops-homework/tools/aws-labs/18",
+      "plan",
+      "-input=false",
+      "-no-color",
+      "-detailed-exitcode",
+      "-var=bucket_prefix=scaler-homework-24bcs10053"
+    ],
+    "started_at": "2026-10-17T18:49:15.030975+00:00",
+    "exit_code": 0,
+    "log": "task18-no-drift.txt"
+  },
+  {
+    "check": "task18-destroy",
+    "command": [
+      "terraform",
+      "-chdir=/Users/abdulkalamazad/Documents/scaler-devops-homework/tools/aws-labs/18",
+      "destroy",
+      "-input=false",
+      "-auto-approve",
+      "-no-color",
+      "-var=bucket_prefix=scaler-homework-24bcs10053"
+    ],
+    "started_at": "2026-10-17T18:49:18.907348+00:00",
+    "exit_code": 0,
+    "log": "task18-destroy.txt"
+  },
+  {
+    "check": "task18-state-after-cleanup",
+    "command": [
+      "terraform",
+      "-chdir=/Users/abdulkalamazad/Documents/scaler-devops-homework/tools/aws-labs/18",
+      "state",
+      "list"
+    ],
+    "started_at": "2026-10-17T18:49:24.320397+00:00",
+    "exit_code": 0,
+    "log": "task18-state-after-cleanup.txt"
+  },
+  {
+    "check": "task19-validate",
+    "command": [
+      "terraform",
+      "-chdir=/Users/abdulkalamazad/Documents/scaler-devops-homework/tools/aws-labs/19",
+      "validate",
+      "-no-color"
+    ],
+    "started_at": "2026-10-17T18:49:24.584204+00:00",
+    "exit_code": 0,
+    "log": "task19-validate.txt"
+  },
+  {
+    "check": "task19-apply",
+    "command": [
+      "terraform",
+      "-chdir=/Users/abdulkalamazad/Documents/scaler-devops-homework/tools/aws-labs/19",
+      "apply",
+      "-input=false",
+      "-no-color",
+      "review.tfplan"
+    ],
+    "started_at": "2026-10-17T18:49:25.616438+00:00",
+    "exit_code": 0,
+    "log": "task19-apply.txt"
+  },
+  {
+    "check": "task19-outputs",
+    "command": [
+      "terraform",
+      "-chdir=/Users/abdulkalamazad/Documents/scaler-devops-homework/tools/aws-labs/19",
+      "output",
+      "-json"
+    ],
+    "started_at": "2026-10-17T18:50:11.646851+00:00",
+    "exit_code": 0,
+    "log": "task19-outputs.txt"
+  },
+  {
+    "check": "task19-show",
+    "command": [
+      "terraform",
+      "-chdir=/Users/abdulkalamazad/Documents/scaler-devops-homework/tools/aws-labs/19",
+      "show",
+      "-no-color"
+    ],
+    "started_at": "2026-10-17T18:50:11.913123+00:00",
+    "exit_code": 0,
+    "log": "task19-show.txt"
+  },
+  {
+    "check": "task19-state-list",
+    "command": [
+      "terraform",
+      "-chdir=/Users/abdulkalamazad/Documents/scaler-devops-homework/tools/aws-labs/19",
+      "state",
+      "list"
+    ],
+    "started_at": "2026-10-17T18:50:12.917522+00:00",
+    "exit_code": 0,
+    "log": "task19-state-list.txt"
+  },
+  {
+    "check": "task19-bucket-versioning",
+    "command": [
+      "aws",
+      "s3api",
+      "get-bucket-versioning",
+      "--bucket",
+      "scaler-homework-24bcs10053-assets-d7851d88"
+    ],
+    "started_at": "2026-10-17T18:50:13.162607+00:00",
+    "exit_code": 0,
+    "log": "task19-bucket-versioning.txt"
+  },
+  {
+    "check": "task19-bucket-private",
+    "command": [
+      "aws",
+      "s3api",
+      "get-public-access-block",
+      "--bucket",
+      "scaler-homework-24bcs10053-assets-d7851d88"
+    ],
+    "started_at": "2026-10-17T18:50:13.648612+00:00",
+    "exit_code": 0,
+    "log": "task19-bucket-private.txt"
+  },
+  {
+    "check": "task19-instance",
+    "command": [
+      "aws",
+      "ec2",
+      "describe-instances",
+      "--instance-ids",
+      "i-082156859f1453d40",
+      "--query",
+      "Reservations[].Instances[].{ID:InstanceId,State:State.Name,Type:InstanceType,VPC:VpcId,IP:PublicIpAddress,Metadata:MetadataOptions}"
+    ],
+    "started_at": "2026-10-17T18:50:14.000114+00:00",
+    "exit_code": 0,
+    "log": "task19-instance.txt"
+  },
+  {
+    "check": "task19-no-drift",
+    "command": [
+      "terraform",
+      "-chdir=/Users/abdulkalamazad/Documents/scaler-devops-homework/tools/aws-labs/19",
+      "plan",
+      "-input=false",
+      "-no-color",
+      "-detailed-exitcode",
+      "-var=project=scaler-homework-24bcs10053"
+    ],
+    "started_at": "2026-10-17T18:50:44.725600+00:00",
+    "exit_code": 0,
+    "log": "task19-no-drift.txt"
+  },
+  {
+    "check": "task19-destroy",
+    "command": [
+      "terraform",
+      "-chdir=/Users/abdulkalamazad/Documents/scaler-devops-homework/tools/aws-labs/19",
+      "destroy",
+      "-input=false",
+      "-auto-approve",
+      "-no-color",
+      "-var=project=scaler-homework-24bcs10053"
+    ],
+    "started_at": "2026-10-17T18:50:58.908273+00:00",
+    "exit_code": 0,
+    "log": "task19-destroy.txt"
+  },
+  {
+    "check": "task19-state-after-cleanup",
+    "command": [
+      "terraform",
+      "-chdir=/Users/abdulkalamazad/Documents/scaler-devops-homework/tools/aws-labs/19",
+      "state",
+      "list"
+    ],
+    "started_at": "2026-10-17T18:51:47.846096+00:00",
+    "exit_code": 0,
+    "log": "task19-state-after-cleanup.txt"
+  }
+]

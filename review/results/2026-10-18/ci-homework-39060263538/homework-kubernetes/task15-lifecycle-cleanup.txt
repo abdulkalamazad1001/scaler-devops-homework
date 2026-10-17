@@ -1,0 +1,2 @@
+Warning: deleting cluster-scoped resources, not scoped to the provided namespace
+namespace "homework-helm-67a5ec7c" deleted

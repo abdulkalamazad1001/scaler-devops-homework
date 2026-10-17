@@ -1,0 +1,206 @@
+{
+    "apiVersion": "argoproj.io/v1alpha1",
+    "kind": "Application",
+    "metadata": {
+        "annotations": {
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"argoproj.io/v1alpha1\",\"kind\":\"Application\",\"metadata\":{\"annotations\":{},\"finalizers\":[\"resources-finalizer.argocd.argoproj.io\"],\"name\":\"gitops-demo\",\"namespace\":\"argocd\"},\"spec\":{\"destination\":{\"namespace\":\"gitops-demo\",\"server\":\"https://kubernetes.default.svc\"},\"project\":\"default\",\"source\":{\"path\":\"task-20-monitoring-gitops/gitops/manifests\",\"repoURL\":\"https://github.com/abdulkalamazad1001/scaler-devops-homework.git\",\"targetRevision\":\"main\"},\"syncPolicy\":{\"automated\":{\"prune\":true,\"selfHeal\":true},\"retry\":{\"backoff\":{\"duration\":\"10s\",\"factor\":2,\"maxDuration\":\"3m\"},\"limit\":5},\"syncOptions\":[\"CreateNamespace=true\"]}}}\n"
+        },
+        "creationTimestamp": "2026-10-17T18:47:19Z",
+        "finalizers": [
+            "resources-finalizer.argocd.argoproj.io"
+        ],
+        "generation": 12,
+        "name": "gitops-demo",
+        "namespace": "argocd",
+        "resourceVersion": "15805",
+        "uid": "035fd62e-62b3-43fc-91af-25361cfb11f0"
+    },
+    "spec": {
+        "destination": {
+            "namespace": "gitops-demo",
+            "server": "https://kubernetes.default.svc"
+        },
+        "project": "default",
+        "source": {
+            "path": "task-20-monitoring-gitops/gitops/manifests",
+            "repoURL": "https://github.com/abdulkalamazad1001/scaler-devops-homework.git",
+            "targetRevision": "main"
+        },
+        "syncPolicy": {
+            "automated": {
+                "prune": true,
+                "selfHeal": true
+            },
+            "retry": {
+                "backoff": {
+                    "duration": "10s",
+                    "factor": 2,
+                    "maxDuration": "3m"
+                },
+                "limit": 5
+            },
+            "syncOptions": [
+                "CreateNamespace=true"
+            ]
+        }
+    },
+    "status": {
+        "controllerNamespace": "argocd",
+        "health": {
+            "lastTransitionTime": "2026-10-17T18:48:09Z",
+            "status": "Healthy"
+        },
+        "history": [
+            {
+                "deployStartedAt": "2026-10-17T18:47:54Z",
+                "deployedAt": "2026-10-17T18:47:54Z",
+                "id": 0,
+                "initiatedBy": {
+                    "automated": true
+                },
+                "revision": "7da12e62688a4de26191495b784f15d2934acddc",
+                "source": {
+                    "path": "task-20-monitoring-gitops/gitops/manifests",
+                    "repoURL": "https://github.com/abdulkalamazad1001/scaler-devops-homework.git",
+                    "targetRevision": "main"
+                }
+            }
+        ],
+        "operationState": {
+            "finishedAt": "2026-10-17T18:47:54Z",
+            "message": "successfully synced (all tasks run)",
+            "operation": {
+                "initiatedBy": {
+                    "automated": true
+                },
+                "retry": {
+                    "backoff": {
+                        "duration": "10s",
+                        "factor": 2,
+                        "maxDuration": "3m"
+                    },
+                    "limit": 5
+                },
+                "sync": {
+                    "prune": true,
+                    "revision": "7da12e62688a4de26191495b784f15d2934acddc",
+                    "source": {
+                        "path": "task-20-monitoring-gitops/gitops/manifests",
+                        "repoURL": "https://github.com/abdulkalamazad1001/scaler-devops-homework.git",
+                        "targetRevision": "main"
+                    },
+                    "syncOptions": [
+                        "CreateNamespace=true"
+                    ]
+                }
+            },
+            "phase": "Succeeded",
+            "startedAt": "2026-10-17T18:47:54Z",
+            "syncResult": {
+                "resources": [
+                    {
+                        "group": "",
+                        "hookPhase": "Running",
+                        "kind": "Namespace",
+                        "message": "namespace/gitops-demo created",
+                        "name": "gitops-demo",
+                        "namespace": "",
+                        "status": "Synced",
+                        "syncPhase": "PreSync",
+                        "version": "v1"
+                    },
+                    {
+                        "group": "",
+                        "hookPhase": "Running",
+                        "kind": "ConfigMap",
+                        "message": "configmap/web-content created",
+                        "name": "web-content",
+                        "namespace": "gitops-demo",
+                        "status": "Synced",
+                        "syncPhase": "Sync",
+                        "version": "v1"
+                    },
+                    {
+                        "group": "",
+                        "hookPhase": "Running",
+                        "kind": "Service",
+                        "message": "service/web created",
+                        "name": "web",
+                        "namespace": "gitops-demo",
+                        "status": "Synced",
+                        "syncPhase": "Sync",
+                        "version": "v1"
+                    },
+                    {
+                        "group": "apps",
+                        "hookPhase": "Running",
+                        "images": [
+                            "nginxinc/nginx-unprivileged:1.27-alpine"
+                        ],
+                        "kind": "Deployment",
+                        "message": "deployment.apps/web created",
+                        "name": "web",
+                        "namespace": "gitops-demo",
+                        "status": "Synced",
+                        "syncPhase": "Sync",
+                        "version": "v1"
+                    }
+                ],
+                "revision": "7da12e62688a4de26191495b784f15d2934acddc",
+                "source": {
+                    "path": "task-20-monitoring-gitops/gitops/manifests",
+                    "repoURL": "https://github.com/abdulkalamazad1001/scaler-devops-homework.git",
+                    "targetRevision": "main"
+                }
+            }
+        },
+        "reconciledAt": "2026-10-17T18:47:54Z",
+        "resourceHealthSource": "appTree",
+        "resources": [
+            {
+                "kind": "ConfigMap",
+                "name": "web-content",
+                "namespace": "gitops-demo",
+                "status": "Synced",
+                "version": "v1"
+            },
+            {
+                "kind": "Service",
+                "name": "web",
+                "namespace": "gitops-demo",
+                "status": "Synced",
+                "version": "v1"
+            },
+            {
+                "group": "apps",
+                "kind": "Deployment",
+                "name": "web",
+                "namespace": "gitops-demo",
+                "status": "Synced",
+                "version": "v1"
+            }
+        ],
+        "sourceHydrator": {},
+        "sourceType": "Directory",
+        "summary": {
+            "images": [
+                "nginxinc/nginx-unprivileged:1.27-alpine"
+            ]
+        },
+        "sync": {
+            "comparedTo": {
+                "destination": {
+                    "namespace": "gitops-demo",
+                    "server": "https://kubernetes.default.svc"
+                },
+                "source": {
+                    "path": "task-20-monitoring-gitops/gitops/manifests",
+                    "repoURL": "https://github.com/abdulkalamazad1001/scaler-devops-homework.git",
+                    "targetRevision": "main"
+                }
+            },
+            "revision": "7da12e62688a4de26191495b784f15d2934acddc",
+            "status": "Synced"
+        }
+    }
+}

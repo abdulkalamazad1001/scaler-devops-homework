@@ -1,0 +1,18 @@
+NAME                                  READY   STATUS    RESTARTS   AGE     IP            NODE              NOMINATED NODE   READINESS GATES
+app-blue-84658fdc69-mhrwn             1/1     Running   0          4m36s   10.244.0.11   homework-review   <none>           <none>
+app-blue-84658fdc69-pl55q             1/1     Running   0          4m36s   10.244.0.10   homework-review   <none>           <none>
+app-blue-84658fdc69-wszh5             1/1     Running   0          4m36s   10.244.0.12   homework-review   <none>           <none>
+app-green-859989478b-kmm86            1/1     Running   0          4m36s   10.244.0.15   homework-review   <none>           <none>
+app-green-859989478b-ljnb5            1/1     Running   0          4m36s   10.244.0.13   homework-review   <none>           <none>
+app-green-859989478b-xw7gn            1/1     Running   0          4m36s   10.244.0.14   homework-review   <none>           <none>
+config-demo                           1/1     Running   0          3m23s   10.244.0.24   homework-review   <none>           <none>
+dynamic-demo                          1/1     Running   0          74s     10.244.0.43   homework-review   <none>           <none>
+emptydir-demo                         2/2     Running   0          106s    10.244.0.38   homework-review   <none>           <none>
+fail-2-imagepull-pod                  1/1     Running   0          73s     10.244.0.45   homework-review   <none>           <none>
+image-demo                            1/1     Running   0          73s     10.244.0.44   homework-review   <none>           <none>
+nginx-pod                             1/1     Running   0          5m53s   10.244.0.6    homework-review   <none>           <none>
+review-notes-deploy-c447d5f87-l6x85   1/1     Running   0          72s     10.244.0.46   homework-review   <none>           <none>
+secret-demo                           1/1     Running   0          107s    10.244.0.37   homework-review   <none>           <none>
+web-clusterip-6f446c8fd6-7xt7s        1/1     Running   0          3m21s   10.244.0.27   homework-review   <none>           <none>
+web-clusterip-6f446c8fd6-b7jmv        1/1     Running   0          3m21s   10.244.0.25   homework-review   <none>           <none>
+web-clusterip-6f446c8fd6-zwkds        1/1     Running   0          3m21s   10.244.0.26   homework-review   <none>           <none>

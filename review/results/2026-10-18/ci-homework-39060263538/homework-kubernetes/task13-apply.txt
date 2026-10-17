@@ -1,0 +1,3 @@
+pod/emptydir-demo created
+persistentvolumeclaim/dynamic-pvc created
+pod/dynamic-demo created

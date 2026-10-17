@@ -1,0 +1,2 @@
+deployment.apps/orders-api created
+service/orders-api created

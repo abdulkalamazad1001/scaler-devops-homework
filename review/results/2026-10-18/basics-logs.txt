@@ -1,0 +1,3 @@
+Kubernetes Bootcamp App Started At: 2026-10-17T18:56:11.617Z | Running On:  kubernetes-bootcamp-6b8bd7c8db-d7cwc 
+
+Running On: kubernetes-bootcamp-6b8bd7c8db-d7cwc | Total Requests: 1 | App Uptime: 1.655 seconds | Log Time: 2026-10-17T18:56:13.273Z

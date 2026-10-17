@@ -1,0 +1,75 @@
+{
+    "apiVersion": "autoscaling/v2",
+    "kind": "HorizontalPodAutoscaler",
+    "metadata": {
+        "annotations": {
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"autoscaling/v2\",\"kind\":\"HorizontalPodAutoscaler\",\"metadata\":{\"annotations\":{},\"name\":\"web-app-hpa\",\"namespace\":\"homework-probes-3bced3c0\"},\"spec\":{\"maxReplicas\":5,\"metrics\":[{\"resource\":{\"name\":\"cpu\",\"target\":{\"averageUtilization\":50,\"type\":\"Utilization\"}},\"type\":\"Resource\"}],\"minReplicas\":2,\"scaleTargetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"web-app\"}}}\n"
+        },
+        "creationTimestamp": "2026-10-17T19:03:58Z",
+        "name": "web-app-hpa",
+        "namespace": "homework-probes-3bced3c0",
+        "resourceVersion": "1515",
+        "uid": "327bdf9e-556a-4fe0-ad8a-6e2a926b1440"
+    },
+    "spec": {
+        "maxReplicas": 5,
+        "metrics": [
+            {
+                "resource": {
+                    "name": "cpu",
+                    "target": {
+                        "averageUtilization": 50,
+                        "type": "Utilization"
+                    }
+                },
+                "type": "Resource"
+            }
+        ],
+        "minReplicas": 2,
+        "scaleTargetRef": {
+            "apiVersion": "apps/v1",
+            "kind": "Deployment",
+            "name": "web-app"
+        }
+    },
+    "status": {
+        "conditions": [
+            {
+                "lastTransitionTime": "2026-10-17T19:04:13Z",
+                "message": "the HPA controller was able to update the target scale to 4",
+                "reason": "SucceededRescale",
+                "status": "True",
+                "type": "AbleToScale"
+            },
+            {
+                "lastTransitionTime": "2026-10-17T19:04:58Z",
+                "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+                "reason": "ValidMetricFound",
+                "status": "True",
+                "type": "ScalingActive"
+            },
+            {
+                "lastTransitionTime": "2026-10-17T19:05:13Z",
+                "message": "the desired replica count is increasing faster than the maximum scale rate",
+                "reason": "ScaleUpLimit",
+                "status": "True",
+                "type": "ScalingLimited"
+            }
+        ],
+        "currentMetrics": [
+            {
+                "resource": {
+                    "current": {
+                        "averageUtilization": 193,
+                        "averageValue": "193m"
+                    },
+                    "name": "cpu"
+                },
+                "type": "Resource"
+            }
+        ],
+        "currentReplicas": 2,
+        "desiredReplicas": 4,
+        "lastScaleTime": "2026-10-17T19:05:13Z"
+    }
+}

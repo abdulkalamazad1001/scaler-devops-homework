@@ -1,0 +1,998 @@
+{
+  "captured_at": "2026-10-17T19:01:05.982334+00:00",
+  "context": "kind-homework-review",
+  "namespace": "homework-troubleshooting-f8ed5f2f",
+  "error": null,
+  "checks": [
+    {
+      "check": "troubleshooting-namespace",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:35.938604+00:00",
+      "duration_seconds": 0.03,
+      "log": "troubleshooting-namespace.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "create",
+        "namespace",
+        "homework-troubleshooting-f8ed5f2f"
+      ]
+    },
+    {
+      "check": "troubleshooting-client-create",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:35.972589+00:00",
+      "duration_seconds": 0.04,
+      "log": "troubleshooting-client-create.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "run",
+        "lab-client",
+        "--image=busybox:1.36",
+        "--restart=Never",
+        "--",
+        "sleep",
+        "3600"
+      ]
+    },
+    {
+      "check": "troubleshooting-lab-client-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:36.010042+00:00",
+      "duration_seconds": 1.01,
+      "log": "troubleshooting-lab-client-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "wait",
+        "--for=condition=Ready",
+        "pod/lab-client",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "troubleshooting-01-crashloopbackoff-broken",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:37.019805+00:00",
+      "duration_seconds": 0.06,
+      "log": "troubleshooting-01-crashloopbackoff-broken.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "troubleshooting-01-crashloopbackoff-failure-observed",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "get",
+        "pod",
+        "fail-1-crashloop-pod",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 6.14,
+      "log": "troubleshooting-01-crashloopbackoff-failure-observed.txt"
+    },
+    {
+      "check": "troubleshooting-fail-1-crashloop-pod-delete",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:43.223525+00:00",
+      "duration_seconds": 1.81,
+      "log": "troubleshooting-fail-1-crashloop-pod-delete.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "delete",
+        "pod",
+        "fail-1-crashloop-pod",
+        "--wait=true",
+        "--timeout=90s"
+      ]
+    },
+    {
+      "check": "troubleshooting-01-crashloopbackoff-fixed",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:45.040036+00:00",
+      "duration_seconds": 0.08,
+      "log": "troubleshooting-01-crashloopbackoff-fixed.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "troubleshooting-fail-1-crashloop-pod-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:45.117046+00:00",
+      "duration_seconds": 0.92,
+      "log": "troubleshooting-fail-1-crashloop-pod-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "wait",
+        "--for=condition=Ready",
+        "pod/fail-1-crashloop-pod",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "troubleshooting-02-imagepullbackoff-broken",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:46.036793+00:00",
+      "duration_seconds": 0.08,
+      "log": "troubleshooting-02-imagepullbackoff-broken.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "troubleshooting-02-imagepullbackoff-failure-observed",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "get",
+        "pod",
+        "image-demo",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 2.07,
+      "log": "troubleshooting-02-imagepullbackoff-failure-observed.txt"
+    },
+    {
+      "check": "troubleshooting-image-demo-delete",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:48.185432+00:00",
+      "duration_seconds": 1.86,
+      "log": "troubleshooting-image-demo-delete.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "delete",
+        "pod",
+        "image-demo",
+        "--wait=true",
+        "--timeout=90s"
+      ]
+    },
+    {
+      "check": "troubleshooting-invalid-repository-observed",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "get",
+        "pod",
+        "fail-2-imagepull-pod",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.03,
+      "log": "troubleshooting-invalid-repository-observed.txt"
+    },
+    {
+      "check": "troubleshooting-fail-2-imagepull-pod-delete",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:50.076309+00:00",
+      "duration_seconds": 0.98,
+      "log": "troubleshooting-fail-2-imagepull-pod-delete.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "delete",
+        "pod",
+        "fail-2-imagepull-pod",
+        "--wait=true",
+        "--timeout=90s"
+      ]
+    },
+    {
+      "check": "troubleshooting-02-imagepullbackoff-fixed",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:51.054245+00:00",
+      "duration_seconds": 0.08,
+      "log": "troubleshooting-02-imagepullbackoff-fixed.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "troubleshooting-image-demo-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:51.138081+00:00",
+      "duration_seconds": 0.91,
+      "log": "troubleshooting-image-demo-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "wait",
+        "--for=condition=Ready",
+        "pod/image-demo",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "troubleshooting-fail-2-imagepull-pod-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:52.050217+00:00",
+      "duration_seconds": 0.13,
+      "log": "troubleshooting-fail-2-imagepull-pod-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "wait",
+        "--for=condition=Ready",
+        "pod/fail-2-imagepull-pod",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "troubleshooting-03-pending-broken",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:52.185961+00:00",
+      "duration_seconds": 0.06,
+      "log": "troubleshooting-03-pending-broken.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "troubleshooting-pending-selector-broken",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:52.246446+00:00",
+      "duration_seconds": 0.06,
+      "log": "troubleshooting-pending-selector-broken.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "troubleshooting-pending-selector-observed",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "get",
+        "pod",
+        "pending-demo",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.03,
+      "log": "troubleshooting-pending-selector-observed.txt"
+    },
+    {
+      "check": "troubleshooting-pending-demo-delete",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:52.341405+00:00",
+      "duration_seconds": 0.04,
+      "log": "troubleshooting-pending-demo-delete.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "delete",
+        "pod",
+        "pending-demo",
+        "--wait=true",
+        "--timeout=90s"
+      ]
+    },
+    {
+      "check": "troubleshooting-03-pending-failure-observed",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "get",
+        "pod",
+        "fail-3-pending-pod",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.03,
+      "log": "troubleshooting-03-pending-failure-observed.txt"
+    },
+    {
+      "check": "troubleshooting-fail-3-pending-pod-delete",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:52.410481+00:00",
+      "duration_seconds": 0.04,
+      "log": "troubleshooting-fail-3-pending-pod-delete.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "delete",
+        "pod",
+        "fail-3-pending-pod",
+        "--wait=true",
+        "--timeout=90s"
+      ]
+    },
+    {
+      "check": "troubleshooting-03-pending-fixed",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:52.449159+00:00",
+      "duration_seconds": 0.08,
+      "log": "troubleshooting-03-pending-fixed.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "troubleshooting-fail-3-pending-pod-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:52.530348+00:00",
+      "duration_seconds": 2.52,
+      "log": "troubleshooting-fail-3-pending-pod-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "wait",
+        "--for=condition=Ready",
+        "pod/fail-3-pending-pod",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "troubleshooting-pending-demo-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:55.051537+00:00",
+      "duration_seconds": 0.14,
+      "log": "troubleshooting-pending-demo-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "wait",
+        "--for=condition=Ready",
+        "pod/pending-demo",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "troubleshooting-04-containercreating-broken",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:55.190849+00:00",
+      "duration_seconds": 0.06,
+      "log": "troubleshooting-04-containercreating-broken.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "troubleshooting-04-containercreating-failure-observed",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "get",
+        "pod",
+        "configvol-demo",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.04,
+      "log": "troubleshooting-04-containercreating-failure-observed.txt"
+    },
+    {
+      "check": "troubleshooting-missing-configmap-event",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "get",
+        "events",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 2.08,
+      "log": "troubleshooting-missing-configmap-event.txt"
+    },
+    {
+      "check": "troubleshooting-configvol-demo-delete",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:57.372029+00:00",
+      "duration_seconds": 1.69,
+      "log": "troubleshooting-configvol-demo-delete.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "delete",
+        "pod",
+        "configvol-demo",
+        "--wait=true",
+        "--timeout=90s"
+      ]
+    },
+    {
+      "check": "troubleshooting-04-containercreating-fixed",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:59.067515+00:00",
+      "duration_seconds": 0.08,
+      "log": "troubleshooting-04-containercreating-fixed.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "troubleshooting-configvol-demo-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T18:59:59.146331+00:00",
+      "duration_seconds": 0.91,
+      "log": "troubleshooting-configvol-demo-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "wait",
+        "--for=condition=Ready",
+        "pod/configvol-demo",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "troubleshooting-service-broken",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:00:00.063701+00:00",
+      "duration_seconds": 0.08,
+      "log": "troubleshooting-service-broken.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "troubleshooting-deployment-web-rollout-32",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:00:00.145048+00:00",
+      "duration_seconds": 0.92,
+      "log": "troubleshooting-deployment-web-rollout-32.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "rollout",
+        "status",
+        "deployment/web",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "troubleshooting-service-no-endpoints",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "get",
+        "endpoints",
+        "web-service",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 0.03,
+      "log": "troubleshooting-service-no-endpoints.txt"
+    },
+    {
+      "check": "troubleshooting-service-fixed",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:00:01.101922+00:00",
+      "duration_seconds": 0.09,
+      "log": "troubleshooting-service-fixed.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "troubleshooting-service-http-restored",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:00:01.196747+00:00",
+      "duration_seconds": 0.07,
+      "log": "troubleshooting-service-http-restored.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in 1 2 3 4 5; do wget -T 5 -qO- http://web-service | grep 'Welcome to nginx' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "troubleshooting-loopback-broken",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:00:01.266401+00:00",
+      "duration_seconds": 0.1,
+      "log": "troubleshooting-loopback-broken.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "troubleshooting-deployment-inventory-rollout-37",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:00:01.364187+00:00",
+      "duration_seconds": 4.71,
+      "log": "troubleshooting-deployment-inventory-rollout-37.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "rollout",
+        "status",
+        "deployment/inventory",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "troubleshooting-loopback-unreachable",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:00:06.079123+00:00",
+      "duration_seconds": 0.06,
+      "log": "troubleshooting-loopback-unreachable.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "if wget -T 3 -qO- http://inventory; then exit 1; fi"
+      ]
+    },
+    {
+      "check": "troubleshooting-loopback-fixed",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:00:06.143117+00:00",
+      "duration_seconds": 0.13,
+      "log": "troubleshooting-loopback-fixed.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "troubleshooting-deployment-inventory-rollout-40",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:00:06.271154+00:00",
+      "duration_seconds": 6.84,
+      "log": "troubleshooting-deployment-inventory-rollout-40.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "rollout",
+        "status",
+        "deployment/inventory",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "troubleshooting-pod-network-restored",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:00:13.107240+00:00",
+      "duration_seconds": 0.07,
+      "log": "troubleshooting-pod-network-restored.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "exec",
+        "lab-client",
+        "--",
+        "sh",
+        "-ec",
+        "for i in 1 2 3 4 5; do wget -T 5 -qO- http://inventory | grep 'Directory listing' && exit 0; sleep 2; done; exit 1"
+      ]
+    },
+    {
+      "check": "troubleshooting-secret-key-broken",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:00:13.176771+00:00",
+      "duration_seconds": 0.08,
+      "log": "troubleshooting-secret-key-broken.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "troubleshooting-secret-key-failure-observed",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "get",
+        "pod",
+        "config-app",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 2.07,
+      "log": "troubleshooting-secret-key-failure-observed.txt"
+    },
+    {
+      "check": "troubleshooting-config-app-delete",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:00:15.331588+00:00",
+      "duration_seconds": 1.77,
+      "log": "troubleshooting-config-app-delete.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "delete",
+        "pod",
+        "config-app",
+        "--wait=true",
+        "--timeout=90s"
+      ]
+    },
+    {
+      "check": "troubleshooting-secret-key-fixed",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:00:17.105956+00:00",
+      "duration_seconds": 0.11,
+      "log": "troubleshooting-secret-key-fixed.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "troubleshooting-config-app-ready",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:00:17.216211+00:00",
+      "duration_seconds": 0.88,
+      "log": "troubleshooting-config-app-ready.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "wait",
+        "--for=condition=Ready",
+        "pod/config-app",
+        "--timeout=240s"
+      ]
+    },
+    {
+      "check": "troubleshooting-secret-key-present",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:00:18.097424+00:00",
+      "duration_seconds": 0.06,
+      "log": "troubleshooting-secret-key-present.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "exec",
+        "config-app",
+        "--",
+        "sh",
+        "-ec",
+        "test -n \"$DB_PASSWORD\""
+      ]
+    },
+    {
+      "check": "troubleshooting-oomkilled-broken",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:00:18.159095+00:00",
+      "duration_seconds": 0.06,
+      "log": "troubleshooting-oomkilled-broken.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "troubleshooting-oomkilled-failure-observed",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "get",
+        "pod",
+        "fail-5-oomkilled-pod",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 2.07,
+      "log": "troubleshooting-oomkilled-failure-observed.txt"
+    },
+    {
+      "check": "troubleshooting-fail-5-oomkilled-pod-delete",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:00:20.287329+00:00",
+      "duration_seconds": 1.82,
+      "log": "troubleshooting-fail-5-oomkilled-pod-delete.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "delete",
+        "pod",
+        "fail-5-oomkilled-pod",
+        "--wait=true",
+        "--timeout=90s"
+      ]
+    },
+    {
+      "check": "troubleshooting-oomkilled-fixed",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:00:22.112519+00:00",
+      "duration_seconds": 0.06,
+      "log": "troubleshooting-oomkilled-fixed.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "apply",
+        "-f",
+        "-"
+      ]
+    },
+    {
+      "check": "troubleshooting-bounded-memory-completed",
+      "exit_code": 0,
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "get",
+        "pod",
+        "fail-5-oomkilled-pod",
+        "-o",
+        "json"
+      ],
+      "duration_seconds": 2.07,
+      "log": "troubleshooting-bounded-memory-completed.txt"
+    },
+    {
+      "check": "troubleshooting-bounded-memory-log",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:00:24.242880+00:00",
+      "duration_seconds": 0.03,
+      "log": "troubleshooting-bounded-memory-log.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "logs",
+        "fail-5-oomkilled-pod"
+      ]
+    },
+    {
+      "check": "troubleshooting-cleanup",
+      "exit_code": 0,
+      "started_at": "2026-10-17T19:00:24.277686+00:00",
+      "duration_seconds": 41.7,
+      "log": "troubleshooting-cleanup.txt",
+      "command": [
+        "kubectl",
+        "--context",
+        "kind-homework-review",
+        "-n",
+        "homework-troubleshooting-f8ed5f2f",
+        "delete",
+        "namespace",
+        "homework-troubleshooting-f8ed5f2f",
+        "--wait=true",
+        "--timeout=180s"
+      ]
+    }
+  ],
+  "scope": "Disposable local lab. Namespaces isolated; NodePort values dynamically assigned. No cloud deployment."
+}

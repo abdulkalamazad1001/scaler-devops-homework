@@ -1,0 +1,6 @@
+PING homework-review-8b5f44d2-backend (192.168.0.3): 56 data bytes
+64 bytes from 192.168.0.3: seq=0 ttl=64 time=0.082 ms
+
+--- homework-review-8b5f44d2-backend ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 0.082/0.082/0.082 ms

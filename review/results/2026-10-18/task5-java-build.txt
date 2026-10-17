@@ -1,0 +1,125 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 395B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#3 DONE 2.5s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#2 DONE 2.5s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 1.42kB done
+#5 DONE 0.0s
+
+#6 [stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#6 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555 done
+#6 DONE 0.1s
+
+#7 [build 1/4] FROM docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#7 resolve docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159 done
+#7 sha256:794d8b8fb47ba05f395f78c45b91f2e8ead46216c584a8dfcdb22f4f7b2c2558 0B / 2.46kB 0.2s
+#7 sha256:166f645a3063ab63a42a670309a370a7fb7933e3a9d7b68cf3f3ea3becdcdb56 0B / 129B 0.2s
+#7 sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 0B / 156.34MB 0.2s
+#7 sha256:c807d060ae33e5d5997c7313f9cfce87a3f219dcf1e33b59a3bced411008d43e 0B / 21.42MB 0.2s
+#7 sha256:794d8b8fb47ba05f395f78c45b91f2e8ead46216c584a8dfcdb22f4f7b2c2558 2.46kB / 2.46kB 0.3s done
+#7 sha256:166f645a3063ab63a42a670309a370a7fb7933e3a9d7b68cf3f3ea3becdcdb56 129B / 129B 0.9s done
+#7 sha256:c807d060ae33e5d5997c7313f9cfce87a3f219dcf1e33b59a3bced411008d43e 2.10MB / 21.42MB 0.9s
+#7 sha256:c807d060ae33e5d5997c7313f9cfce87a3f219dcf1e33b59a3bced411008d43e 4.19MB / 21.42MB 1.2s
+#7 sha256:c807d060ae33e5d5997c7313f9cfce87a3f219dcf1e33b59a3bced411008d43e 6.29MB / 21.42MB 1.7s
+#7 sha256:c807d060ae33e5d5997c7313f9cfce87a3f219dcf1e33b59a3bced411008d43e 8.39MB / 21.42MB 2.4s
+#7 sha256:c807d060ae33e5d5997c7313f9cfce87a3f219dcf1e33b59a3bced411008d43e 10.49MB / 21.42MB 3.0s
+#7 sha256:c807d060ae33e5d5997c7313f9cfce87a3f219dcf1e33b59a3bced411008d43e 12.58MB / 21.42MB 3.8s
+#7 sha256:c807d060ae33e5d5997c7313f9cfce87a3f219dcf1e33b59a3bced411008d43e 14.68MB / 21.42MB 4.5s
+#7 sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 5.24MB / 156.34MB 5.3s
+#7 sha256:c807d060ae33e5d5997c7313f9cfce87a3f219dcf1e33b59a3bced411008d43e 16.78MB / 21.42MB 5.4s
+#7 sha256:c807d060ae33e5d5997c7313f9cfce87a3f219dcf1e33b59a3bced411008d43e 18.87MB / 21.42MB 6.6s
+#7 sha256:c807d060ae33e5d5997c7313f9cfce87a3f219dcf1e33b59a3bced411008d43e 21.42MB / 21.42MB 8.1s done
+#7 extracting sha256:c807d060ae33e5d5997c7313f9cfce87a3f219dcf1e33b59a3bced411008d43e
+#7 extracting sha256:c807d060ae33e5d5997c7313f9cfce87a3f219dcf1e33b59a3bced411008d43e 0.3s done
+#7 sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 13.63MB / 156.34MB 10.1s
+#7 ...
+
+#6 [stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#6 sha256:23e2976f95e64f0a33600dd4ba28b88b637584eedeeca850d0d7e88357a7b99e 2.46kB / 2.46kB 0.5s done
+#6 sha256:fc16cce3c3e4b11becdb6c87f9a883c034eadebbb60d66fa46f838c6953e94b0 127B / 127B 0.3s done
+#6 sha256:c5063e83da68bce2695069ca8260ed5d9ef1927ff03f9f0b7ff0af4e736d0c5c 16.90MB / 16.90MB 8.4s done
+#6 sha256:89353c5827a60532ea55b749dccecf05d297b18210f8fa40e3e64be39e8ec09d 12.58MB / 52.32MB 8.9s
+#6 extracting sha256:c5063e83da68bce2695069ca8260ed5d9ef1927ff03f9f0b7ff0af4e736d0c5c 0.2s done
+#6 ...
+
+#7 [build 1/4] FROM docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#7 sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 22.02MB / 156.34MB 14.1s
+#7 sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 30.41MB / 156.34MB 17.6s
+#7 ...
+
+#6 [stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#6 sha256:89353c5827a60532ea55b749dccecf05d297b18210f8fa40e3e64be39e8ec09d 52.32MB / 52.32MB 17.8s done
+#6 extracting sha256:89353c5827a60532ea55b749dccecf05d297b18210f8fa40e3e64be39e8ec09d 0.9s done
+#6 DONE 20.0s
+
+#6 [stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#6 extracting sha256:fc16cce3c3e4b11becdb6c87f9a883c034eadebbb60d66fa46f838c6953e94b0 0.0s done
+#6 extracting sha256:23e2976f95e64f0a33600dd4ba28b88b637584eedeeca850d0d7e88357a7b99e done
+#6 DONE 20.0s
+
+#8 [stage-1 2/3] WORKDIR /app
+#8 DONE 0.1s
+
+#7 [build 1/4] FROM docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#7 sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 38.80MB / 156.34MB 20.0s
+#7 sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 47.19MB / 156.34MB 21.2s
+#7 sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 55.57MB / 156.34MB 22.4s
+#7 sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 63.96MB / 156.34MB 23.7s
+#7 sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 72.35MB / 156.34MB 25.8s
+#7 sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 80.74MB / 156.34MB 27.8s
+#7 sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 90.18MB / 156.34MB 29.4s
+#7 sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 98.57MB / 156.34MB 30.9s
+#7 sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 106.95MB / 156.34MB 32.6s
+#7 sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 115.34MB / 156.34MB 34.2s
+#7 sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 123.73MB / 156.34MB 35.9s
+#7 sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 132.12MB / 156.34MB 38.0s
+#7 sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 140.51MB / 156.34MB 40.7s
+#7 sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 148.90MB / 156.34MB 43.7s
+#7 sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 156.34MB / 156.34MB 45.7s done
+#7 extracting sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c
+#7 extracting sha256:8438b55bfa39bf94c0be01accbc3ffad4dc8d2d7ad997a468531d1f6acd5c68c 1.8s done
+#7 DONE 47.6s
+
+#7 [build 1/4] FROM docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#7 extracting sha256:166f645a3063ab63a42a670309a370a7fb7933e3a9d7b68cf3f3ea3becdcdb56 0.1s done
+#7 extracting sha256:794d8b8fb47ba05f395f78c45b91f2e8ead46216c584a8dfcdb22f4f7b2c2558 0.0s done
+#7 DONE 47.7s
+
+#9 [build 2/4] WORKDIR /src
+#9 DONE 0.0s
+
+#10 [build 3/4] COPY HelloWorld.java ./
+#10 DONE 0.0s
+
+#11 [build 4/4] RUN javac HelloWorld.java
+#11 DONE 0.5s
+
+#12 [stage-1 3/3] COPY --from=build /src/HelloWorld.class ./
+#12 DONE 0.0s
+
+#13 exporting to image
+#13 exporting layers 0.1s done
+#13 exporting manifest sha256:ae5115d1032b82bccb838ec81cf82c232706913d712fd7ca9224fef5ac7486a1 done
+#13 exporting config sha256:9dd36c40d24e18a1111a5c94b745d360c84639ac08c282fe9f77713d6435f157 done
+#13 exporting attestation manifest sha256:b42aaedf091b64353cd221efbf77979a81ad9e843c07ca4169e61b4610309beb done
+#13 exporting manifest list sha256:e8dcfde2573ef68e184cbac2d80db3328ee9e6eadf27fa60908c441c4008e66c done
+#13 naming to docker.io/homework-review/task5-java:local done
+#13 unpacking to docker.io/homework-review/task5-java:local 0.0s done
+#13 DONE 0.1s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/say2e44oty3zp0qnsdahwmvs1

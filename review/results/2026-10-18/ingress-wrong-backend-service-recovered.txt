@@ -1,0 +1,3 @@
+wget: server returned error: HTTP/1.1 503 Service Temporarily Unavailable
+wget: server returned error: HTTP/1.1 503 Service Temporarily Unavailable
+Hello from the API app (pod api-659988fb49-2xxg8)

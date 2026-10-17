@@ -1,0 +1,41 @@
+{
+  "revision": "68be534ed67dd6de7ce520821e07e4dde137e26c",
+  "same_files": 563,
+  "added": [
+    "DevOps-Exam-Practice-Quentions/session-14-kubernetes-troubleshooting.md",
+    "DevOps-Exam-Practice-Quentions/session1-devops-engineer-roadmap.md",
+    "DevOps-Exam-Practice-Quentions/session4-networking.md",
+    "DevOps-Exam-Practice-Quentions/session-15-helm.md",
+    "DevOps-Exam-Practice-Quentions/session19-cloud-terraform.md",
+    "DevOps-Exam-Practice-Quentions/session20-monitoring-observability-gitops.md",
+    "DevOps-Exam-Practice-Quentions/session-16-github-actions.md",
+    "DevOps-Exam-Practice-Quentions/session18-terraform-iac.md",
+    "DevOps-Exam-Practice-Quentions/session-12-ingress-configmaps-secrets.md",
+    "DevOps-Exam-Practice-Quentions/session8-docker-networking-volume.md",
+    "DevOps-Exam-Practice-Quentions/session-13-storage-hpa-probes.md",
+    "DevOps-Exam-Practice-Quentions/session6-7-docker.md",
+    "DevOps-Exam-Practice-Quentions/session-17-devsecops.md",
+    "DevOps-Exam-Practice-Quentions/session3-shell-scripting.md",
+    "DevOps-Exam-Practice-Quentions/session2-linux.md",
+    "DevOps-Exam-Practice-Quentions/session-11-kubernetes-services.md",
+    "DevOps-Exam-Practice-Quentions/session9-k8s.md",
+    "DevOps-Exam-Practice-Quentions/session5-git-github.md",
+    "DevOps-Exam-Practice-Quentions/session10-k8s-core-objects.md",
+    "session21-python/backend/tests/__pycache__/test_api.cpython-313.pyc",
+    "session21-python/backend/app/__pycache__/main.cpython-313.pyc",
+    "session21-python/backend/app/__pycache__/schemas.cpython-313.pyc",
+    "session21-python/backend/app/__pycache__/config.cpython-313.pyc",
+    "session21-python/backend/app/__pycache__/db.cpython-313.pyc",
+    "session21-python/backend/app/__pycache__/models.cpython-313.pyc",
+    "session21-python/backend/app/__pycache__/__init__.cpython-313.pyc",
+    "session-17-devsecops/demo/tests/__pycache__/test_app.cpython-314-pytest-8.4.2.pyc",
+    "session-17-devsecops/demo/tests/__pycache__/test_app.cpython-313-pytest-8.4.2.pyc",
+    "session-17-devsecops/demo/app/__pycache__/app.cpython-314.pyc",
+    "session-17-devsecops/demo/app/__pycache__/app.cpython-313.pyc",
+    "session-17-devsecops/demo/app/__pycache__/__init__.cpython-314.pyc",
+    "session-17-devsecops/demo/app/__pycache__/__init__.cpython-313.pyc"
+  ],
+  "changed": [
+    "session19-cloud-terraform/06-terraform-vpc/variables.tf"
+  ]
+}

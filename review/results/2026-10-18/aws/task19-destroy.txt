@@ -1,0 +1,442 @@
+random_id.suffix: Refreshing state... [id=14UdiA]
+data.aws_ami.al2023: Reading...
+aws_vpc.main: Refreshing state... [id=vpc-09c8ec25f59d416dc]
+aws_s3_bucket.assets: Refreshing state... [id=scaler-homework-24bcs10053-assets-d7851d88]
+data.aws_ami.al2023: Read complete after 1s [id=ami-0c25f859a8b518798]
+aws_internet_gateway.main: Refreshing state... [id=igw-06a72fc306ad28fa2]
+aws_security_group.web: Refreshing state... [id=sg-0dca86b0366ce3e4d]
+aws_subnet.public: Refreshing state... [id=subnet-007e2fe2c50b2acec]
+aws_route_table.public: Refreshing state... [id=rtb-00f969fd9ad6dfc79]
+aws_s3_bucket_public_access_block.assets: Refreshing state... [id=scaler-homework-24bcs10053-assets-d7851d88]
+aws_s3_bucket_versioning.assets: Refreshing state... [id=scaler-homework-24bcs10053-assets-d7851d88]
+aws_vpc_security_group_egress_rule.all: Refreshing state... [id=sgr-080eaeee5a1418b06]
+aws_vpc_security_group_ingress_rule.http["0.0.0.0/0"]: Refreshing state... [id=sgr-0eb4ad9aa72a97935]
+aws_route_table_association.public: Refreshing state... [id=rtbassoc-01b862e8c94197fb2]
+aws_instance.web: Refreshing state... [id=i-082156859f1453d40]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_instance.web will be destroyed
+  - resource "aws_instance" "web" {
+      - ami                                  = "ami-0c25f859a8b518798" -> null
+      - arn                                  = "arn:aws:ec2:ap-south-1:273528188747:instance/i-082156859f1453d40" -> null
+      - associate_public_ip_address          = true -> null
+      - availability_zone                    = "ap-south-1a" -> null
+      - cpu_core_count                       = 1 -> null
+      - cpu_threads_per_core                 = 2 -> null
+      - disable_api_stop                     = false -> null
+      - disable_api_termination              = false -> null
+      - ebs_optimized                        = false -> null
+      - get_password_data                    = false -> null
+      - hibernation                          = false -> null
+      - id                                   = "i-082156859f1453d40" -> null
+      - instance_initiated_shutdown_behavior = "stop" -> null
+      - instance_state                       = "running" -> null
+      - instance_type                        = "t3.micro" -> null
+      - ipv6_address_count                   = 0 -> null
+      - ipv6_addresses                       = [] -> null
+      - monitoring                           = false -> null
+      - placement_partition_number           = 0 -> null
+      - primary_network_interface_id         = "eni-00261920ce9b70cd6" -> null
+      - private_dns                          = "ip-10-20-1-223.ap-south-1.compute.internal" -> null
+      - private_ip                           = "10.20.1.223" -> null
+      - public_dns                           = "ec2-13-206-222-74.ap-south-1.compute.amazonaws.com" -> null
+      - public_ip                            = "13.206.222.74" -> null
+      - secondary_private_ips                = [] -> null
+      - security_groups                      = [] -> null
+      - source_dest_check                    = true -> null
+      - subnet_id                            = "subnet-007e2fe2c50b2acec" -> null
+      - tags                                 = {
+          - "Name" = "scaler-homework-24bcs10053-web"
+        } -> null
+      - tags_all                             = {
+          - "Environment" = "dev"
+          - "ManagedBy"   = "Terraform"
+          - "Name"        = "scaler-homework-24bcs10053-web"
+          - "Project"     = "scaler-homework-24bcs10053"
+        } -> null
+      - tenancy                              = "default" -> null
+      - user_data                            = "919c638d3f5aa8863fd06025dd000a98b8f60a71" -> null
+      - user_data_replace_on_change          = true -> null
+      - vpc_security_group_ids               = [
+          - "sg-0dca86b0366ce3e4d",
+        ] -> null
+        # (8 unchanged attributes hidden)
+
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      - cpu_options {
+          - core_count       = 1 -> null
+          - threads_per_core = 2 -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - credit_specification {
+          - cpu_credits = "unlimited" -> null
+        }
+
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_protocol_ipv6          = "disabled" -> null
+          - http_put_response_hop_limit = 2 -> null
+          - http_tokens                 = "required" -> null
+          - instance_metadata_tags      = "disabled" -> null
+        }
+
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/xvda" -> null
+          - encrypted             = true -> null
+          - iops                  = 3000 -> null
+          - kms_key_id            = "arn:aws:kms:ap-south-1:273528188747:key/9dfcc613-f792-4565-9185-67c393eaea80" -> null
+          - tags                  = {} -> null
+          - tags_all              = {
+              - "Environment" = "dev"
+              - "ManagedBy"   = "Terraform"
+              - "Project"     = "scaler-homework-24bcs10053"
+            } -> null
+          - throughput            = 125 -> null
+          - volume_id             = "vol-0f2d6b584e0d1aa17" -> null
+          - volume_size           = 8 -> null
+          - volume_type           = "gp3" -> null
+        }
+    }
+
+  # aws_internet_gateway.main will be destroyed
+  - resource "aws_internet_gateway" "main" {
+      - arn      = "arn:aws:ec2:ap-south-1:273528188747:internet-gateway/igw-06a72fc306ad28fa2" -> null
+      - id       = "igw-06a72fc306ad28fa2" -> null
+      - owner_id = "273528188747" -> null
+      - tags     = {
+          - "Name" = "scaler-homework-24bcs10053-igw"
+        } -> null
+      - tags_all = {
+          - "Environment" = "dev"
+          - "ManagedBy"   = "Terraform"
+          - "Name"        = "scaler-homework-24bcs10053-igw"
+          - "Project"     = "scaler-homework-24bcs10053"
+        } -> null
+      - vpc_id   = "vpc-09c8ec25f59d416dc" -> null
+    }
+
+  # aws_route_table.public will be destroyed
+  - resource "aws_route_table" "public" {
+      - arn              = "arn:aws:ec2:ap-south-1:273528188747:route-table/rtb-00f969fd9ad6dfc79" -> null
+      - id               = "rtb-00f969fd9ad6dfc79" -> null
+      - owner_id         = "273528188747" -> null
+      - propagating_vgws = [] -> null
+      - route            = [
+          - {
+              - cidr_block                 = "0.0.0.0/0"
+              - gateway_id                 = "igw-06a72fc306ad28fa2"
+                # (11 unchanged attributes hidden)
+            },
+        ] -> null
+      - tags             = {
+          - "Name" = "scaler-homework-24bcs10053-public-rt"
+        } -> null
+      - tags_all         = {
+          - "Environment" = "dev"
+          - "ManagedBy"   = "Terraform"
+          - "Name"        = "scaler-homework-24bcs10053-public-rt"
+          - "Project"     = "scaler-homework-24bcs10053"
+        } -> null
+      - vpc_id           = "vpc-09c8ec25f59d416dc" -> null
+    }
+
+  # aws_route_table_association.public will be destroyed
+  - resource "aws_route_table_association" "public" {
+      - id             = "rtbassoc-01b862e8c94197fb2" -> null
+      - route_table_id = "rtb-00f969fd9ad6dfc79" -> null
+      - subnet_id      = "subnet-007e2fe2c50b2acec" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_s3_bucket.assets will be destroyed
+  - resource "aws_s3_bucket" "assets" {
+      - arn                         = "arn:aws:s3:::scaler-homework-24bcs10053-assets-d7851d88" -> null
+      - bucket                      = "scaler-homework-24bcs10053-assets-d7851d88" -> null
+      - bucket_domain_name          = "scaler-homework-24bcs10053-assets-d7851d88.s3.amazonaws.com" -> null
+      - bucket_regional_domain_name = "scaler-homework-24bcs10053-assets-d7851d88.s3.ap-south-1.amazonaws.com" -> null
+      - force_destroy               = true -> null
+      - hosted_zone_id              = "Z11RGJOFQNVJUP" -> null
+      - id                          = "scaler-homework-24bcs10053-assets-d7851d88" -> null
+      - object_lock_enabled         = false -> null
+      - region                      = "ap-south-1" -> null
+      - request_payer               = "BucketOwner" -> null
+      - tags                        = {
+          - "Name" = "scaler-homework-24bcs10053-assets"
+        } -> null
+      - tags_all                    = {
+          - "Environment" = "dev"
+          - "ManagedBy"   = "Terraform"
+          - "Name"        = "scaler-homework-24bcs10053-assets"
+          - "Project"     = "scaler-homework-24bcs10053"
+        } -> null
+        # (3 unchanged attributes hidden)
+
+      - grant {
+          - id          = "d506bebb272fabe517651b0a403f918d59039b6856c5fd2e41a1df94377d4daa" -> null
+          - permissions = [
+              - "FULL_CONTROL",
+            ] -> null
+          - type        = "CanonicalUser" -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - server_side_encryption_configuration {
+          - rule {
+              - bucket_key_enabled = false -> null
+
+              - apply_server_side_encryption_by_default {
+                  - sse_algorithm     = "AES256" -> null
+                    # (1 unchanged attribute hidden)
+                }
+            }
+        }
+
+      - versioning {
+          - enabled    = true -> null
+          - mfa_delete = false -> null
+        }
+    }
+
+  # aws_s3_bucket_public_access_block.assets will be destroyed
+  - resource "aws_s3_bucket_public_access_block" "assets" {
+      - block_public_acls       = true -> null
+      - block_public_policy     = true -> null
+      - bucket                  = "scaler-homework-24bcs10053-assets-d7851d88" -> null
+      - id                      = "scaler-homework-24bcs10053-assets-d7851d88" -> null
+      - ignore_public_acls      = true -> null
+      - restrict_public_buckets = true -> null
+    }
+
+  # aws_s3_bucket_versioning.assets will be destroyed
+  - resource "aws_s3_bucket_versioning" "assets" {
+      - bucket                = "scaler-homework-24bcs10053-assets-d7851d88" -> null
+      - id                    = "scaler-homework-24bcs10053-assets-d7851d88" -> null
+        # (1 unchanged attribute hidden)
+
+      - versioning_configuration {
+          - status     = "Enabled" -> null
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+  # aws_security_group.web will be destroyed
+  - resource "aws_security_group" "web" {
+      - arn                    = "arn:aws:ec2:ap-south-1:273528188747:security-group/sg-0dca86b0366ce3e4d" -> null
+      - description            = "HTTP to the web server" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "All outbound IPv4"
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-0dca86b0366ce3e4d" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "HTTP"
+              - from_port        = 80
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 80
+            },
+        ] -> null
+      - name                   = "scaler-homework-24bcs10053-web-sg" -> null
+      - owner_id               = "273528188747" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {
+          - "Name" = "scaler-homework-24bcs10053-web-sg"
+        } -> null
+      - tags_all               = {
+          - "Environment" = "dev"
+          - "ManagedBy"   = "Terraform"
+          - "Name"        = "scaler-homework-24bcs10053-web-sg"
+          - "Project"     = "scaler-homework-24bcs10053"
+        } -> null
+      - vpc_id                 = "vpc-09c8ec25f59d416dc" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_subnet.public will be destroyed
+  - resource "aws_subnet" "public" {
+      - arn                                            = "arn:aws:ec2:ap-south-1:273528188747:subnet/subnet-007e2fe2c50b2acec" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "ap-south-1a" -> null
+      - availability_zone_id                           = "aps1-az1" -> null
+      - cidr_block                                     = "10.20.1.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-007e2fe2c50b2acec" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = true -> null
+      - owner_id                                       = "273528188747" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - tags                                           = {
+          - "Name" = "scaler-homework-24bcs10053-public-ap-south-1a"
+        } -> null
+      - tags_all                                       = {
+          - "Environment" = "dev"
+          - "ManagedBy"   = "Terraform"
+          - "Name"        = "scaler-homework-24bcs10053-public-ap-south-1a"
+          - "Project"     = "scaler-homework-24bcs10053"
+        } -> null
+      - vpc_id                                         = "vpc-09c8ec25f59d416dc" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_vpc.main will be destroyed
+  - resource "aws_vpc" "main" {
+      - arn                                  = "arn:aws:ec2:ap-south-1:273528188747:vpc/vpc-09c8ec25f59d416dc" -> null
+      - assign_generated_ipv6_cidr_block     = false -> null
+      - cidr_block                           = "10.20.0.0/16" -> null
+      - default_network_acl_id               = "acl-02c65758fc985cd3e" -> null
+      - default_route_table_id               = "rtb-05e917d55a6166fdd" -> null
+      - default_security_group_id            = "sg-09559a5066f39dca6" -> null
+      - dhcp_options_id                      = "dopt-0c80c507d4e36c3d0" -> null
+      - enable_dns_hostnames                 = true -> null
+      - enable_dns_support                   = true -> null
+      - enable_network_address_usage_metrics = false -> null
+      - id                                   = "vpc-09c8ec25f59d416dc" -> null
+      - instance_tenancy                     = "default" -> null
+      - ipv6_netmask_length                  = 0 -> null
+      - main_route_table_id                  = "rtb-05e917d55a6166fdd" -> null
+      - owner_id                             = "273528188747" -> null
+      - tags                                 = {
+          - "Name" = "scaler-homework-24bcs10053-vpc"
+        } -> null
+      - tags_all                             = {
+          - "Environment" = "dev"
+          - "ManagedBy"   = "Terraform"
+          - "Name"        = "scaler-homework-24bcs10053-vpc"
+          - "Project"     = "scaler-homework-24bcs10053"
+        } -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_vpc_security_group_egress_rule.all will be destroyed
+  - resource "aws_vpc_security_group_egress_rule" "all" {
+      - arn                    = "arn:aws:ec2:ap-south-1:273528188747:security-group-rule/sgr-080eaeee5a1418b06" -> null
+      - cidr_ipv4              = "0.0.0.0/0" -> null
+      - description            = "All outbound IPv4" -> null
+      - id                     = "sgr-080eaeee5a1418b06" -> null
+      - ip_protocol            = "-1" -> null
+      - security_group_id      = "sg-0dca86b0366ce3e4d" -> null
+      - security_group_rule_id = "sgr-080eaeee5a1418b06" -> null
+      - tags_all               = {
+          - "Environment" = "dev"
+          - "ManagedBy"   = "Terraform"
+          - "Project"     = "scaler-homework-24bcs10053"
+        } -> null
+    }
+
+  # aws_vpc_security_group_ingress_rule.http["0.0.0.0/0"] will be destroyed
+  - resource "aws_vpc_security_group_ingress_rule" "http" {
+      - arn                    = "arn:aws:ec2:ap-south-1:273528188747:security-group-rule/sgr-0eb4ad9aa72a97935" -> null
+      - cidr_ipv4              = "0.0.0.0/0" -> null
+      - description            = "HTTP" -> null
+      - from_port              = 80 -> null
+      - id                     = "sgr-0eb4ad9aa72a97935" -> null
+      - ip_protocol            = "tcp" -> null
+      - security_group_id      = "sg-0dca86b0366ce3e4d" -> null
+      - security_group_rule_id = "sgr-0eb4ad9aa72a97935" -> null
+      - tags_all               = {
+          - "Environment" = "dev"
+          - "ManagedBy"   = "Terraform"
+          - "Project"     = "scaler-homework-24bcs10053"
+        } -> null
+      - to_port                = 80 -> null
+    }
+
+  # random_id.suffix will be destroyed
+  - resource "random_id" "suffix" {
+      - b64_std     = "14UdiA==" -> null
+      - b64_url     = "14UdiA" -> null
+      - byte_length = 4 -> null
+      - dec         = "3615825288" -> null
+      - hex         = "d7851d88" -> null
+      - id          = "14UdiA" -> null
+    }
+
+Plan: 0 to add, 0 to change, 13 to destroy.
+
+Changes to Outputs:
+  - ami_id             = "ami-0c25f859a8b518798" -> null
+  - assets_bucket      = "scaler-homework-24bcs10053-assets-d7851d88" -> null
+  - instance_id        = "i-082156859f1453d40" -> null
+  - instance_public_ip = "13.206.222.74" -> null
+  - public_subnet_id   = "subnet-007e2fe2c50b2acec" -> null
+  - security_group_id  = "sg-0dca86b0366ce3e4d" -> null
+  - vpc_id             = "vpc-09c8ec25f59d416dc" -> null
+  - website_url        = "http://ec2-13-206-222-74.ap-south-1.compute.amazonaws.com" -> null
+aws_s3_bucket_public_access_block.assets: Destroying... [id=scaler-homework-24bcs10053-assets-d7851d88]
+aws_vpc_security_group_ingress_rule.http["0.0.0.0/0"]: Destroying... [id=sgr-0eb4ad9aa72a97935]
+aws_s3_bucket_versioning.assets: Destroying... [id=scaler-homework-24bcs10053-assets-d7851d88]
+aws_vpc_security_group_egress_rule.all: Destroying... [id=sgr-080eaeee5a1418b06]
+aws_instance.web: Destroying... [id=i-082156859f1453d40]
+aws_vpc_security_group_egress_rule.all: Destruction complete after 1s
+aws_vpc_security_group_ingress_rule.http["0.0.0.0/0"]: Destruction complete after 1s
+aws_s3_bucket_public_access_block.assets: Destruction complete after 1s
+aws_s3_bucket_versioning.assets: Destruction complete after 1s
+aws_instance.web: Still destroying... [id=i-082156859f1453d40, 10s elapsed]
+aws_instance.web: Still destroying... [id=i-082156859f1453d40, 20s elapsed]
+aws_instance.web: Still destroying... [id=i-082156859f1453d40, 30s elapsed]
+aws_instance.web: Destruction complete after 31s
+aws_route_table_association.public: Destroying... [id=rtbassoc-01b862e8c94197fb2]
+aws_security_group.web: Destroying... [id=sg-0dca86b0366ce3e4d]
+aws_s3_bucket.assets: Destroying... [id=scaler-homework-24bcs10053-assets-d7851d88]
+aws_route_table_association.public: Destruction complete after 0s
+aws_subnet.public: Destroying... [id=subnet-007e2fe2c50b2acec]
+aws_route_table.public: Destroying... [id=rtb-00f969fd9ad6dfc79]
+aws_security_group.web: Destruction complete after 0s
+aws_subnet.public: Destruction complete after 1s
+aws_route_table.public: Destruction complete after 1s
+aws_internet_gateway.main: Destroying... [id=igw-06a72fc306ad28fa2]
+aws_internet_gateway.main: Destruction complete after 2s
+aws_vpc.main: Destroying... [id=vpc-09c8ec25f59d416dc]
+aws_vpc.main: Destruction complete after 0s
+aws_s3_bucket.assets: Still destroying... [id=scaler-homework-24bcs10053-assets-d7851d88, 10s elapsed]
+aws_s3_bucket.assets: Destruction complete after 14s
+random_id.suffix: Destroying... [id=14UdiA]
+random_id.suffix: Destruction complete after 0s
+
+Destroy complete! Resources: 13 destroyed.

@@ -1,0 +1,25 @@
+{
+  "conditions": [
+    {
+      "lastTransitionTime": "2026-10-17T19:04:13Z",
+      "message": "the HPA controller was able to get the target's current scale",
+      "reason": "SucceededGetScale",
+      "status": "True",
+      "type": "AbleToScale"
+    },
+    {
+      "lastTransitionTime": "2026-10-17T19:04:13Z",
+      "message": "the HPA was unable to compute the replica count: failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API",
+      "reason": "FailedGetResourceMetric",
+      "status": "False",
+      "type": "ScalingActive"
+    }
+  ],
+  "currentMetrics": [
+    {
+      "type": ""
+    }
+  ],
+  "currentReplicas": 2,
+  "desiredReplicas": 0
+}

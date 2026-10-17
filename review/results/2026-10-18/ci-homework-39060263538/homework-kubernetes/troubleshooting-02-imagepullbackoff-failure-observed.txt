@@ -1,0 +1,78 @@
+{
+  "conditions": [
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:48Z",
+      "status": "True",
+      "type": "PodReadyToStartContainers"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:46Z",
+      "status": "True",
+      "type": "Initialized"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:46Z",
+      "message": "containers with unready status: [app]",
+      "reason": "ContainersNotReady",
+      "status": "False",
+      "type": "Ready"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:46Z",
+      "message": "containers with unready status: [app]",
+      "reason": "ContainersNotReady",
+      "status": "False",
+      "type": "ContainersReady"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:46Z",
+      "status": "True",
+      "type": "PodScheduled"
+    }
+  ],
+  "containerStatuses": [
+    {
+      "image": "nginx:this-image-does-not-exist",
+      "imageID": "",
+      "lastState": {},
+      "name": "app",
+      "ready": false,
+      "restartCount": 0,
+      "started": false,
+      "state": {
+        "waiting": {
+          "message": "rpc error: code = NotFound desc = failed to pull and unpack image \"docker.io/library/nginx:this-image-does-not-exist\": failed to resolve reference \"docker.io/library/nginx:this-image-does-not-exist\": docker.io/library/nginx:this-image-does-not-exist: not found",
+          "reason": "ErrImagePull"
+        }
+      },
+      "volumeMounts": [
+        {
+          "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+          "name": "kube-api-access-r8k2q",
+          "readOnly": true,
+          "recursiveReadOnly": "Disabled"
+        }
+      ]
+    }
+  ],
+  "hostIP": "172.18.0.2",
+  "hostIPs": [
+    {
+      "ip": "172.18.0.2"
+    }
+  ],
+  "phase": "Pending",
+  "podIP": "10.244.0.50",
+  "podIPs": [
+    {
+      "ip": "10.244.0.50"
+    }
+  ],
+  "qosClass": "BestEffort",
+  "startTime": "2026-10-17T18:59:46Z"
+}

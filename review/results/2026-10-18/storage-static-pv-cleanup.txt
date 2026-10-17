@@ -1,0 +1,2 @@
+Warning: deleting cluster-scoped resources, not scoped to the provided namespace
+persistentvolume "homework-storage-b6673792-pv" deleted

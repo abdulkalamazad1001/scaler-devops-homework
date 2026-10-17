@@ -1,0 +1,87 @@
+{
+  "conditions": [
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:40Z",
+      "status": "True",
+      "type": "PodReadyToStartContainers"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:37Z",
+      "status": "True",
+      "type": "Initialized"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:41Z",
+      "message": "containers with unready status: [python-app]",
+      "reason": "ContainersNotReady",
+      "status": "False",
+      "type": "Ready"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:41Z",
+      "message": "containers with unready status: [python-app]",
+      "reason": "ContainersNotReady",
+      "status": "False",
+      "type": "ContainersReady"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-17T18:59:37Z",
+      "status": "True",
+      "type": "PodScheduled"
+    }
+  ],
+  "containerStatuses": [
+    {
+      "containerID": "containerd://624eaa4c930ae61a58fc4ef7206d73c9bf958281b5fd07b7fb12e8aef9aacae9",
+      "image": "docker.io/library/python:3.11-alpine",
+      "imageID": "docker.io/library/python@sha256:d9368b3a5ac59afea7b5d4f2e2aea0941dbf9fdee9c369c5bec00b98244bc929",
+      "lastState": {
+        "terminated": {
+          "containerID": "containerd://624eaa4c930ae61a58fc4ef7206d73c9bf958281b5fd07b7fb12e8aef9aacae9",
+          "exitCode": 1,
+          "finishedAt": "2026-10-17T18:59:41Z",
+          "reason": "Error",
+          "startedAt": "2026-10-17T18:59:41Z"
+        }
+      },
+      "name": "python-app",
+      "ready": false,
+      "restartCount": 1,
+      "started": false,
+      "state": {
+        "waiting": {
+          "message": "back-off 10s restarting failed container=python-app pod=fail-1-crashloop-pod_homework-troubleshooting-f8ed5f2f(65cd4665-bfce-40c1-bca5-27e692d216df)",
+          "reason": "CrashLoopBackOff"
+        }
+      },
+      "volumeMounts": [
+        {
+          "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+          "name": "kube-api-access-bbztk",
+          "readOnly": true,
+          "recursiveReadOnly": "Disabled"
+        }
+      ]
+    }
+  ],
+  "hostIP": "172.18.0.2",
+  "hostIPs": [
+    {
+      "ip": "172.18.0.2"
+    }
+  ],
+  "phase": "Running",
+  "podIP": "10.244.0.47",
+  "podIPs": [
+    {
+      "ip": "10.244.0.47"
+    }
+  ],
+  "qosClass": "BestEffort",
+  "startTime": "2026-10-17T18:59:37Z"
+}

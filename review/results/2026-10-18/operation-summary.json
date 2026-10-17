@@ -1,0 +1,151 @@
+{
+  "note": "Counts include setup/cleanup and are not independent test cases. The intentionally retained initial MySQL failure is followed by a passing retry.",
+  "reports": [
+    {
+      "report": "basics.json",
+      "recorded_operations": 23,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "ci-homework-39060263538/homework-apps/apps.json",
+      "recorded_operations": 4,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "ci-homework-39060263538/homework-autoscaling/hpa-walkthrough.json",
+      "recorded_operations": 14,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "ci-homework-39060263538/homework-autoscaling/probes.json",
+      "recorded_operations": 18,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "ci-homework-39060263538/homework-containers/containers.json",
+      "recorded_operations": 43,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "ci-homework-39060263538/homework-containers/networks.json",
+      "recorded_operations": 32,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "ci-homework-39060263538/homework-infra/infra.json",
+      "recorded_operations": 26,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "ci-homework-39060263538/homework-kubernetes/deployments.json",
+      "recorded_operations": 58,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "ci-homework-39060263538/homework-kubernetes/dns.json",
+      "recorded_operations": 13,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "ci-homework-39060263538/homework-kubernetes/helm-lifecycle.json",
+      "recorded_operations": 20,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "ci-homework-39060263538/homework-kubernetes/kubernetes.json",
+      "recorded_operations": 41,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "ci-homework-39060263538/homework-kubernetes/troubleshooting.json",
+      "recorded_operations": 55,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "ci-homework-39060263538/homework-shell/shell.json",
+      "recorded_operations": 1,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "containers.json",
+      "recorded_operations": 50,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "helm-lifecycle.json",
+      "recorded_operations": 20,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "ingress.json",
+      "recorded_operations": 28,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "kubernetes.json",
+      "recorded_operations": 41,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "loadbalancer.json",
+      "recorded_operations": 6,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "mini.json",
+      "recorded_operations": 19,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "network-retry/networks.json",
+      "recorded_operations": 32,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "networks-initial.json",
+      "recorded_operations": 20,
+      "nonzero_exit_codes": [
+        "task7-backend-mysql-port"
+      ],
+      "error": null
+    },
+    {
+      "report": "probes.json",
+      "recorded_operations": 14,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "shell.json",
+      "recorded_operations": 1,
+      "nonzero_exit_codes": [],
+      "error": null
+    },
+    {
+      "report": "storage.json",
+      "recorded_operations": 24,
+      "nonzero_exit_codes": [],
+      "error": null
+    }
+  ]
+}

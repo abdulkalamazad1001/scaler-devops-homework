@@ -1,0 +1,25 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "vector",
+    "result": [
+      {
+        "metric": {
+          "__name__": "kube_deployment_status_replicas_available",
+          "container": "kube-state-metrics",
+          "deployment": "metrics-demo",
+          "endpoint": "http",
+          "instance": "10.244.0.20:8080",
+          "job": "kube-state-metrics",
+          "namespace": "monitoring-demo",
+          "pod": "kube-prometheus-stack-kube-state-metrics-5ff4575db7-gvv7j",
+          "service": "kube-prometheus-stack-kube-state-metrics"
+        },
+        "value": [
+          1792263218.076,
+          "2"
+        ]
+      }
+    ]
+  }
+}

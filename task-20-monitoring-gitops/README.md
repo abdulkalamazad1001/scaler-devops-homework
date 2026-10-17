@@ -55,3 +55,15 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2
 kubectl apply -f gitops/argocd/application.yaml
 argocd app get gitops-demo
 ```
+
+## Verified rerun — 18 October 2026
+
+Verified two Prometheus targets, CPU/memory/health metrics, a Grafana dashboard, Loki application logs and an alert moving from pending to firing to resolved. Argo CD deployed v2 from Git and restored a manual replica change from five to three.
+
+[Recorded results](../review/results/2026-10-18/monitoring/result.json) · [Screenshot](../review/results/2026-10-18/screenshots/task20-grafana-dashboard.png) · [Complete evidence index and environment notes](../review/results/2026-10-18/README.md).
+
+Additional captures: [Argo CD](../review/results/2026-10-18/screenshots/task20-argocd-gitops.png) · [Prometheus targets](../review/results/2026-10-18/screenshots/task20-prometheus-targets.png). Raw [GitOps recovery](../review/results/2026-10-18/task20-gitops-selfheal.txt) and [webhook delivery](../review/results/2026-10-18/monitoring/alert-webhook.txt) are recorded separately.
+
+![Monitoring and GitOps: live browser capture](../review/results/2026-10-18/screenshots/task20-grafana-dashboard.png)
+
+*Live browser capture from the verified rerun; complete results are linked above.*

@@ -1,0 +1,129 @@
+random_id.suffix: Refreshing state... [id=Bu2wMw]
+aws_s3_bucket.demo: Refreshing state... [id=scaler-homework-24bcs10053-06edb033]
+aws_s3_bucket_public_access_block.demo: Refreshing state... [id=scaler-homework-24bcs10053-06edb033]
+aws_s3_bucket_versioning.demo: Refreshing state... [id=scaler-homework-24bcs10053-06edb033]
+aws_s3_bucket_server_side_encryption_configuration.demo: Refreshing state... [id=scaler-homework-24bcs10053-06edb033]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_s3_bucket.demo will be destroyed
+  - resource "aws_s3_bucket" "demo" {
+      - arn                         = "arn:aws:s3:::scaler-homework-24bcs10053-06edb033" -> null
+      - bucket                      = "scaler-homework-24bcs10053-06edb033" -> null
+      - bucket_domain_name          = "scaler-homework-24bcs10053-06edb033.s3.amazonaws.com" -> null
+      - bucket_regional_domain_name = "scaler-homework-24bcs10053-06edb033.s3.ap-south-1.amazonaws.com" -> null
+      - force_destroy               = true -> null
+      - hosted_zone_id              = "Z11RGJOFQNVJUP" -> null
+      - id                          = "scaler-homework-24bcs10053-06edb033" -> null
+      - object_lock_enabled         = false -> null
+      - region                      = "ap-south-1" -> null
+      - request_payer               = "BucketOwner" -> null
+      - tags                        = {
+          - "Name" = "scaler-homework-24bcs10053"
+        } -> null
+      - tags_all                    = {
+          - "Environment" = "dev"
+          - "ManagedBy"   = "Terraform"
+          - "Name"        = "scaler-homework-24bcs10053"
+          - "Project"     = "terraform-s3-demo"
+        } -> null
+        # (3 unchanged attributes hidden)
+
+      - grant {
+          - id          = "d506bebb272fabe517651b0a403f918d59039b6856c5fd2e41a1df94377d4daa" -> null
+          - permissions = [
+              - "FULL_CONTROL",
+            ] -> null
+          - type        = "CanonicalUser" -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - server_side_encryption_configuration {
+          - rule {
+              - bucket_key_enabled = false -> null
+
+              - apply_server_side_encryption_by_default {
+                  - sse_algorithm     = "AES256" -> null
+                    # (1 unchanged attribute hidden)
+                }
+            }
+        }
+
+      - versioning {
+          - enabled    = true -> null
+          - mfa_delete = false -> null
+        }
+    }
+
+  # aws_s3_bucket_public_access_block.demo will be destroyed
+  - resource "aws_s3_bucket_public_access_block" "demo" {
+      - block_public_acls       = true -> null
+      - block_public_policy     = true -> null
+      - bucket                  = "scaler-homework-24bcs10053-06edb033" -> null
+      - id                      = "scaler-homework-24bcs10053-06edb033" -> null
+      - ignore_public_acls      = true -> null
+      - restrict_public_buckets = true -> null
+    }
+
+  # aws_s3_bucket_server_side_encryption_configuration.demo will be destroyed
+  - resource "aws_s3_bucket_server_side_encryption_configuration" "demo" {
+      - bucket                = "scaler-homework-24bcs10053-06edb033" -> null
+      - id                    = "scaler-homework-24bcs10053-06edb033" -> null
+        # (1 unchanged attribute hidden)
+
+      - rule {
+          - bucket_key_enabled = false -> null
+
+          - apply_server_side_encryption_by_default {
+              - sse_algorithm     = "AES256" -> null
+                # (1 unchanged attribute hidden)
+            }
+        }
+    }
+
+  # aws_s3_bucket_versioning.demo will be destroyed
+  - resource "aws_s3_bucket_versioning" "demo" {
+      - bucket                = "scaler-homework-24bcs10053-06edb033" -> null
+      - id                    = "scaler-homework-24bcs10053-06edb033" -> null
+        # (1 unchanged attribute hidden)
+
+      - versioning_configuration {
+          - status     = "Enabled" -> null
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+  # random_id.suffix will be destroyed
+  - resource "random_id" "suffix" {
+      - b64_std     = "Bu2wMw==" -> null
+      - b64_url     = "Bu2wMw" -> null
+      - byte_length = 4 -> null
+      - dec         = "116240435" -> null
+      - hex         = "06edb033" -> null
+      - id          = "Bu2wMw" -> null
+    }
+
+Plan: 0 to add, 0 to change, 5 to destroy.
+
+Changes to Outputs:
+  - bucket_arn                  = "arn:aws:s3:::scaler-homework-24bcs10053-06edb033" -> null
+  - bucket_name                 = "scaler-homework-24bcs10053-06edb033" -> null
+  - bucket_region               = "ap-south-1" -> null
+  - bucket_regional_domain_name = "scaler-homework-24bcs10053-06edb033.s3.ap-south-1.amazonaws.com" -> null
+  - versioning_status           = "Enabled" -> null
+aws_s3_bucket_public_access_block.demo: Destroying... [id=scaler-homework-24bcs10053-06edb033]
+aws_s3_bucket_versioning.demo: Destroying... [id=scaler-homework-24bcs10053-06edb033]
+aws_s3_bucket_server_side_encryption_configuration.demo: Destroying... [id=scaler-homework-24bcs10053-06edb033]
+aws_s3_bucket_versioning.demo: Destruction complete after 0s
+aws_s3_bucket_server_side_encryption_configuration.demo: Destruction complete after 1s
+aws_s3_bucket_public_access_block.demo: Destruction complete after 1s
+aws_s3_bucket.demo: Destroying... [id=scaler-homework-24bcs10053-06edb033]
+aws_s3_bucket.demo: Destruction complete after 0s
+random_id.suffix: Destroying... [id=Bu2wMw]
+random_id.suffix: Destruction complete after 0s
+
+Destroy complete! Resources: 5 destroyed.
