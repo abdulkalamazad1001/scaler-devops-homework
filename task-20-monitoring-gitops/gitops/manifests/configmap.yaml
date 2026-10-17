@@ -10,6 +10,6 @@ data:
       <head><title>GitOps demo</title></head>
       <body>
         <h1>Deployed by Argo CD</h1>
-        <p>Release: v1</p>
+        <p>Release: v2 — verified homework deployment</p>
       </body>
     </html>
